@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
-namespace H3LibraryProject.API.Models
+namespace H3LibraryProject.Repositories.Database
 {
     public class Title
     {
@@ -16,8 +16,9 @@ namespace H3LibraryProject.API.Models
 
         [Column(TypeName = "nvarchar(32)")]
         public string Name { get; set; }
-        [Column(TypeName = "smallint")]
-        public int LanguageId { get; set; } //Bør denne her egentlig være et nyt table? 
+
+        [Column(TypeName = "int")]
+        public int LanguageId { get; set; }
 
         [Column(TypeName = "smallint")] //Rigeligt til årstal
         public int RYear { get; set; }
@@ -25,10 +26,10 @@ namespace H3LibraryProject.API.Models
         [Column(TypeName = "smallint")]
         public int Pages { get; set; }
 
-        [Column(TypeName = "smallint")]
+        [Column(TypeName = "int")]
         public int PublisherId { get; set; }
 
-        [Column(TypeName = "smallint")]
+        [Column(TypeName = "int")]
         public int GenreId { get; set; }
 
         public List<Material> Materials { get; set; } //Giver mening at kunne se instanserne af titlerne.

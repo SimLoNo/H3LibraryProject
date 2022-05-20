@@ -1,7 +1,11 @@
+using H3LibraryProject.Repositories.Database;
+using H3LibraryProject.Repositories.Repositories;
+using H3LibraryProject.Services.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,12 +30,29 @@ namespace H3LibraryProject.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("InitialRules",
+                builder =>
+                {
+                    builder.AllowAnyOrigin() // kan skrive port i stedet for
+                           .AllowAnyHeader()
+                           .AllowAnyMethod(); // kun get eller put mm.
+                });
+            });
+
+            services.AddDbContext<LibraryContext>(
+                x => x.UseSqlServer(Configuration.GetConnectionString("Default")));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "H3LibraryProject.API", Version = "v1" });
             });
+
+            services.AddScoped<ILoanerTypeRepository, LoanerTypeRepository>();
+            services.AddScoped<ILoanerTypeService, LoanerTypeService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +68,9 @@ namespace H3LibraryProject.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("InitialRules");
+
 
             app.UseAuthorization();
 
