@@ -6,19 +6,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace H3LibraryProject.API.Models
+namespace H3LibraryProject.Repositories.Database
 {
     public class Loan
     {
         [Key]
         public int LoanId { get; set; }
 
-        [Column(TypeName = "smallint")]
+        [Column(TypeName = "int")]
         public int LoanerId { get; set; }
+
         [Column(TypeName = "smallint")]
         public int MaterialId { get; set; }
+
         [Column(TypeName = "date")] //Ideel? Kan diskuteres
         public DateTime LoanDate { get; set; }
+
         [Column(TypeName = "date")] //Ideel? Kan diskuteres
         public DateTime ReturnDate { get; set; }
 

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace H3LibraryProject.API.Models
+namespace H3LibraryProject.Repositories.Database
 {
     public class Material
     {
@@ -15,10 +15,10 @@ namespace H3LibraryProject.API.Models
         [Key]
         public int MaterialId { get; set; }
 
-        [Column(TypeName = "smallint")]
+        [Column(TypeName = "int")]
         public int TitleId { get; set; }
 
-        [Column(TypeName = "smallint")]
+        [Column(TypeName = "int")]
         public int LocationId { get; set; }
 
         [Column(TypeName = "bit")] //hedder det det i SQL? Skal lige checkes. Vi må teste det ad. /RS
