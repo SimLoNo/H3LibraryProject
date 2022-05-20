@@ -1,4 +1,6 @@
 using H3LibraryProject.Repositories.Database;
+using H3LibraryProject.Repositories.Repositories;
+using H3LibraryProject.Services.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -48,6 +50,8 @@ namespace H3LibraryProject.API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "H3LibraryProject.API", Version = "v1" });
             });
 
+            services.AddScoped<ILoanerTypeRepository, LoanerTypeRepository>();
+            services.AddScoped<ILoanerTypeService, LoanerTypeService>();
 
         }
 
