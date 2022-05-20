@@ -11,10 +11,7 @@ namespace H3LibraryProject.API.DTOs
         public int LoanerId { get; set; }
 
         [Range(0, 3000000000, ErrorMessage = "Materialnr must be between 0 and 3 billion")]
-        public int MaterialId { get; set; }
-
-        [Required]
-        [StringLength(32, ErrorMessage = "Nationalitet max 32 anslag")]
+        public int MaterialId { get; set; }        
 
         [Column(TypeName = "date")] //Ideel? Kan diskuteres
         public DateTime LoanDate { get; set; }

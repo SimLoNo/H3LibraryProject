@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace H3LibraryProject.API.DTOs
 {
@@ -14,12 +15,10 @@ namespace H3LibraryProject.API.DTOs
 
     public class LoanerLoanResponse
     {
-        public int LoanerId { get; set; }
-        public string Name { get; set; }
-        public string Language { get; set; }
-        public int RYear { get; set; }
-        public int Pages { get; set; }
+        public int LoanerId { get; set; }        
+        public int MaterialId { get; set; }
         public int PublisherId { get; set; }
-        public int GenreId { get; set; }
+        public DateTime LoanDate { get; set; }
+        public DateTime ReturnDate { get; set; }
     }
 }
