@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
-namespace H3LibraryProject.API.Models
+namespace H3LibraryProject.Repositories.Database
 {
     public class Publisher
     {
