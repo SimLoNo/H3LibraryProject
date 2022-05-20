@@ -16,8 +16,8 @@ namespace H3LibraryProject.API.Models
 
         [Column(TypeName = "nvarchar(32)")]
         public string Name { get; set; }
-        [Column(TypeName = "nvarchar(32)")]
-        public string Language { get; set; } //Bør denne her egentlig være et nyt table? 
+        [Column(TypeName = "smallint")]
+        public int LanguageId { get; set; } //Bør denne her egentlig være et nyt table? 
 
         [Column(TypeName = "smallint")] //Rigeligt til årstal
         public int RYear { get; set; }
