@@ -14,7 +14,7 @@ namespace H3LibraryProject.Services.Services
         Task<LoanerType> CreateLoanerType(LoanerType loanerType);
         Task<LoanerType> GetLoanerTypeById(int id);
         Task<LoanerType> UpdateLoanerType(int id, LoanerType loanerType);
-        Task<LoanerType> DeleteLoanerType(LoanerType loanerType)
+        Task<LoanerType> DeleteLoanerType(int id);
     }
     public class LoanerTypeService : ILoanerTypeService
     {
@@ -29,9 +29,9 @@ namespace H3LibraryProject.Services.Services
             return await _repository.CreateLoanerType(newLoanerType);
         }
 
-        public Task<LoanerType> DeleteLoanerType(LoanerType loanerType)
+        public async Task<LoanerType> DeleteLoanerType(int id)
         {
-            throw new NotImplementedException();
+            return await _repository.DeleteLoanerType(id);
         }
 
         public async Task<List<LoanerType>> GetAllLoanerTypes()
@@ -39,14 +39,16 @@ namespace H3LibraryProject.Services.Services
             return await _repository.GetAllLoanerTypes();
         }
 
-        public Task<LoanerType> GetLoanerTypeById(int id)
+        public async Task<LoanerType> GetLoanerTypeById(int id)
         {
-            throw new NotImplementedException();
+            return await _repository.GetLoanerTypeById(id);
         }
 
-        public Task<LoanerType> UpdateLoanerType(int id, LoanerType loanerType)
+        public async Task<LoanerType> UpdateLoanerType(int id, LoanerType loanerType)
         {
-            throw new NotImplementedException();
+            return await _repository.UpdateLoanerType(id, loanerType);
         }
+
+        
     }
 }

@@ -39,8 +39,20 @@ namespace H3LibraryProject.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetLoanerTypeById([FromRoute] int id)
         {
-            return NoContent();
+            try
+            {
+                LoanerType loanerType = await _service.GetLoanerTypeById(id);
+                if (loanerType != null)
+                {
+                    return Ok(loanerType);
+                }
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
 
+                return Problem(ex.Message);
+            }
         }
 
         [HttpPost]
