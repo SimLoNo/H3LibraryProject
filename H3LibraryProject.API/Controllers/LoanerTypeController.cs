@@ -23,10 +23,10 @@ namespace H3LibraryProject.API.Controllers
         {
             try
             {
-                List<LoanerTypeResponse> LoanerTypeList = await _service.GetAllLoanerTypes();
-                if (LoanerTypeList.Count > 0)
+                List<LoanerTypeResponse> loanerTypeList = await _service.GetAllLoanerTypes();
+                if (loanerTypeList.Count > 0)
                 {
-                    return Ok(LoanerTypeList);
+                    return Ok(loanerTypeList);
                 }
                 return NoContent();
             }
