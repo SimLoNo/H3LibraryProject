@@ -29,13 +29,23 @@ namespace H3LibraryProject.Services.Services
         {
             LoanerType loanerType = MapLoanerTypeRequestToLoanerType(newLoanerTypeRequest);
             loanerType = await _repository.CreateLoanerType(loanerType);
-            return MapLoanerTypeToLoanerTypeResponse(loanerType);
+            if (loanerType != null)
+            {
+                return MapLoanerTypeToLoanerTypeResponse(loanerType);
+
+            }
+            return null;
         }
 
         public async Task<LoanerTypeResponse> DeleteLoanerType(int id)
         {
             LoanerType deletedLoanerType = await _repository.DeleteLoanerType(id);
-            return MapLoanerTypeToLoanerTypeResponse(deletedLoanerType);
+            if (deletedLoanerType != null)
+            {
+                return MapLoanerTypeToLoanerTypeResponse(deletedLoanerType);
+
+            }
+            return null;
         }
 
         public async Task<List<LoanerTypeResponse>> GetAllLoanerTypes()
@@ -47,14 +57,24 @@ namespace H3LibraryProject.Services.Services
         public async Task<LoanerTypeResponse> GetLoanerTypeById(int id)
         {
             LoanerType loanerType = await _repository.GetLoanerTypeById(id);
-            return MapLoanerTypeToLoanerTypeResponse(loanerType);
+            if (loanerType != null)
+            {
+                return MapLoanerTypeToLoanerTypeResponse(loanerType);
+
+            }
+            return null;
         }
 
         public async Task<LoanerTypeResponse> UpdateLoanerType(int id, LoanerTypeRequest loanerTypeRequest)
         {
             LoanerType loanerType = MapLoanerTypeRequestToLoanerType(loanerTypeRequest);
             loanerType = await _repository.UpdateLoanerType(id, loanerType);
-            return MapLoanerTypeToLoanerTypeResponse(loanerType);
+            if (loanerType != null)
+            {
+                return MapLoanerTypeToLoanerTypeResponse(loanerType);
+
+            }
+            return null;
         }
 
         private LoanerType MapLoanerTypeRequestToLoanerType(LoanerTypeRequest request)
