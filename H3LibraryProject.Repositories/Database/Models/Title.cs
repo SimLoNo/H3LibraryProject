@@ -28,6 +28,8 @@ namespace H3LibraryProject.Repositories.Database
 
         [Column(TypeName = "int")]
         public int PublisherId { get; set; }
+        [Column(TypeName = "int")]
+        public int AuthorId { get; set; }
 
         [Column(TypeName = "int")]
         public int GenreId { get; set; }
