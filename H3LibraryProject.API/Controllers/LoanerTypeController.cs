@@ -36,6 +36,8 @@ namespace H3LibraryProject.API.Controllers
             }
         }
 
+        
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetLoanerTypeById([FromRoute] int id)
         {
@@ -67,10 +69,53 @@ namespace H3LibraryProject.API.Controllers
                 }
                 return Ok(createdLoanerType);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                return Problem(ex.Message);
+            }
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateLoanerType([FromRoute] int id, [FromBody] LoanerType loanerType)
+        {
+            if (id != loanerType.LoanerTypeId)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                LoanerType loanerTypeResult = await _service.UpdateLoanerType(id, loanerType);
+                if (loanerTypeResult != null)
+                {
+                    return Ok(loanerTypeResult);
+                }
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+
+                return Problem(ex.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteLoanerType([FromRoute] int id)
+        {
+            try
+            {
+                LoanerType loanerTypeResult = await _service.DeleteLoanerType(id);
+
+                if (loanerTypeResult != null)
+                {
+                    return Ok(loanerTypeResult);
+                }
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+
+                return Problem(ex.Message);
             }
         }
     }
