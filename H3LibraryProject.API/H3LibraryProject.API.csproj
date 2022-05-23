@@ -16,7 +16,6 @@
   <ItemGroup>
     <ProjectReference Include="..\H3LibraryProject.Repositories\H3LibraryProject.Repositories.csproj" />
     <ProjectReference Include="..\H3LibraryProject.Services\H3LibraryProject.Services.csproj" />
-    <ProjectReference Include="..\H3LibraryProject.Tests\H3LibraryProject.Tests.csproj" />
   </ItemGroup>
 
 </Project>
