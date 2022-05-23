@@ -27,7 +27,7 @@ namespace H3LibraryProject.Repositories.Repositories
         }
 
         //CREATE
-        public async Task<Language> InsertNewMaterial(Language material)
+        public async Task<Language> InsertNewLanguage(Language material)
         {
             _context.Language.Add(material);
             await _context.SaveChangesAsync();
@@ -35,14 +35,14 @@ namespace H3LibraryProject.Repositories.Repositories
         }
 
 
-        public async Task<List<Language>> ILanguageRepository.SelectAllLanguages()
+        public async Task<List<Language>> SelectAllLanguages()
         {
             return await _context.Language
                 .Include(b => b.Name)
                 .ToListAsync();
         }
 
-        public async Task<Language> ILanguageRepository.SelectLanguageById(int languageId)
+        public async Task<Language> SelectLanguageById(int languageId)
         {
             return await _context.Language
                 .FirstOrDefaultAsync(language => language.LanguageId == languageId);
@@ -54,7 +54,7 @@ namespace H3LibraryProject.Repositories.Repositories
         //        .FirstOrDefaultAsync(material => material.TitleId == titleId);
         //}
 
-        public async Task<Language> ILanguageRepository.UpdateExistingLanguage(int languageId, Language language)
+        public async Task<Language> UpdateExistingLanguage(int languageId, Language language)
         {
             Language updatelanguage = await _context.Language
                 .FirstOrDefaultAsync(language => language.LanguageId == languageId);
@@ -66,9 +66,9 @@ namespace H3LibraryProject.Repositories.Repositories
             return updatelanguage;
         }
 
-        public async Task<Language> ILanguageRepository.DeleteLanguage(int materialId)
+        public async Task<Language> DeleteLanguage(int languageId)
         {
-            Language deletelanguage = await _context.Language.FirstOrDefaultAsync(material => material.LanguageId == materialId);
+            Language deletelanguage = await _context.Language.FirstOrDefaultAsync(language => language.LanguageId == languageId);
             if (deletelanguage != null)
             {
                 _context.Language.Remove(deletelanguage);

@@ -11,13 +11,13 @@ namespace H3LibraryProject.Repositories.Repositories
 {
     public interface IGenreRepository
     {
-        Task<Genre> InsertNewAuthor(Genre genre);
-        Task<List<Genre>> SelectAllGenres(); //Vi kalder den "select" og ikke "get" da det er SQL-relateret
+        Task<Genre> InsertNewGenre(Genre genre);
+        Task<List<Genre>> SelectAllGenres();
         Task<Genre> SelectGenreById(int authorId);
         Task<Genre> UpdateExistingGenre(int authorId, Genre author);
         Task<Genre> DeleteGenre(int authorId);
     }
-    public class GenreRepository
+    public class GenreRepository : IGenreRepository
     {
         private readonly LibraryContext _context;
 
@@ -26,41 +26,30 @@ namespace H3LibraryProject.Repositories.Repositories
             _context = context;
         }
 
-        public class genreRepository : IGenreRepository
+        //CREATE
+        public async Task<Genre> InsertNewGenre(Genre genre)
         {
-            private readonly LibraryContext _context;
-
-            public genreRepository(LibraryContext context)
-            {
-                _context = context;
-            }
+            _context.Genre.Add(genre);
+            await _context.SaveChangesAsync();
+            return genre;
+        }
 
 
-
-            //CREATE
-            public async Task<Genre> InsertNewGenre(Genre genre)
-            {
-                _context.Genre.Add(genre);
-                await _context.SaveChangesAsync();
-                return genre;
-            }
-
-
-            public async Task<List<Genre>> IGenreRepository.SelectAllGenres()
-            {
+        public async Task<List<Genre>> SelectAllGenres()
+        {
                 return await _context.Genre
                     .Include(b => b.Name)
                     .OrderBy(b => b.Name)
                     .ToListAsync();
-            }
+        }
 
-            public async Task<Genre> IGenreRepository.SelectGenreById(int genreId)
+            public async Task<Genre> SelectGenreById(int genreId)
             {
                 return await _context.Genre
                     .FirstOrDefaultAsync(genre => genre.GenreId == genreId);
             }            
 
-            public async Task<Genre> IGenreRepository.UpdateExistingGenre(int genreId, Genre genre)
+            public async Task<Genre> UpdateExistingGenre(int genreId, Genre genre)
             {
                 Genre updategenre = await _context.Genre
                     .FirstOrDefaultAsync(genre => genre.GenreId == genreId);
@@ -74,7 +63,7 @@ namespace H3LibraryProject.Repositories.Repositories
                 return updategenre;
             }
 
-            public async Task<Genre> IGenreRepository.DeleteGenre(int genreId)
+            public async Task<Genre> DeleteGenre(int genreId)
             {
                 Genre deletegenre = await _context.Genre.FirstOrDefaultAsync(genre => genre.GenreId == genreId);
                 if (deletegenre != null)
@@ -84,6 +73,6 @@ namespace H3LibraryProject.Repositories.Repositories
                 }
                 return deletegenre;
             }
-        }
+        
     }
 }
