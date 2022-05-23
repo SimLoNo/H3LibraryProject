@@ -1,4 +1,5 @@
 ﻿using H3LibraryProject.Repositories.Database;
+using H3LibraryProject.Services.DTO;
 using H3LibraryProject.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -22,7 +23,7 @@ namespace H3LibraryProject.API.Controllers
         {
             try
             {
-                List<LoanerType> LoanerTypeList = await _service.GetAllLoanerTypes();
+                List<LoanerTypeResponse> LoanerTypeList = await _service.GetAllLoanerTypes();
                 if (LoanerTypeList.Count > 0)
                 {
                     return Ok(LoanerTypeList);
@@ -43,7 +44,7 @@ namespace H3LibraryProject.API.Controllers
         {
             try
             {
-                LoanerType loanerType = await _service.GetLoanerTypeById(id);
+                LoanerTypeResponse loanerType = await _service.GetLoanerTypeById(id);
                 if (loanerType != null)
                 {
                     return Ok(loanerType);
@@ -58,11 +59,11 @@ namespace H3LibraryProject.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateLoanerType([FromBody] LoanerType newLoanerType)
+        public async Task<IActionResult> CreateLoanerType([FromBody] LoanerTypeRequest newLoanerType)
         {
             try
             {
-                LoanerType createdLoanerType = await _service.CreateLoanerType(newLoanerType);
+                LoanerTypeResponse createdLoanerType = await _service.CreateLoanerType(newLoanerType);
                 if (createdLoanerType == null)
                 {
                     return NotFound();
@@ -77,15 +78,15 @@ namespace H3LibraryProject.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateLoanerType([FromRoute] int id, [FromBody] LoanerType loanerType)
+        public async Task<IActionResult> UpdateLoanerType([FromRoute] int id, [FromBody] LoanerTypeRequest loanerType)
         {
-            if (id != loanerType.LoanerTypeId)
+            if (id <= 0)
             {
                 return BadRequest();
             }
             try
             {
-                LoanerType loanerTypeResult = await _service.UpdateLoanerType(id, loanerType);
+                LoanerTypeResponse loanerTypeResult = await _service.UpdateLoanerType(id, loanerType);
                 if (loanerTypeResult != null)
                 {
                     return Ok(loanerTypeResult);
@@ -104,7 +105,7 @@ namespace H3LibraryProject.API.Controllers
         {
             try
             {
-                LoanerType loanerTypeResult = await _service.DeleteLoanerType(id);
+                LoanerTypeResponse loanerTypeResult = await _service.DeleteLoanerType(id);
 
                 if (loanerTypeResult != null)
                 {

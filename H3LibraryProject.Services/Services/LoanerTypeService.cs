@@ -1,5 +1,6 @@
 ﻿using H3LibraryProject.Repositories.Database;
 using H3LibraryProject.Repositories.Repositories;
+using H3LibraryProject.Services.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,11 @@ namespace H3LibraryProject.Services.Services
 {
     public interface ILoanerTypeService
     {
-        Task<List<LoanerType>> GetAllLoanerTypes();
-        Task<LoanerType> CreateLoanerType(LoanerType loanerType);
-        Task<LoanerType> GetLoanerTypeById(int id);
-        Task<LoanerType> UpdateLoanerType(int id, LoanerType loanerType);
-        Task<LoanerType> DeleteLoanerType(int id);
+        Task<List<LoanerTypeResponse>> GetAllLoanerTypes();
+        Task<LoanerTypeResponse> CreateLoanerType(LoanerTypeRequest newLoanerTypeRequest);
+        Task<LoanerTypeResponse> GetLoanerTypeById(int id);
+        Task<LoanerTypeResponse> UpdateLoanerType(int id, LoanerTypeRequest loanerTypeRequest);
+        Task<LoanerTypeResponse> DeleteLoanerType(int id);
     }
     public class LoanerTypeService : ILoanerTypeService
     {
@@ -24,31 +25,53 @@ namespace H3LibraryProject.Services.Services
         {
             _repository = repository;
         }
-        public async Task<LoanerType> CreateLoanerType(LoanerType newLoanerType)
+        public async Task<LoanerTypeResponse> CreateLoanerType(LoanerTypeRequest newLoanerTypeRequest)
         {
-            return await _repository.CreateLoanerType(newLoanerType);
+            LoanerType loanerType = MapLoanerTypeRequestToLoanerType(newLoanerTypeRequest);
+            loanerType = await _repository.CreateLoanerType(loanerType);
+            return MapLoanerTypeToLoanerTypeResponse(loanerType);
         }
 
-        public async Task<LoanerType> DeleteLoanerType(int id)
+        public async Task<LoanerTypeResponse> DeleteLoanerType(int id)
         {
-            return await _repository.DeleteLoanerType(id);
+            LoanerType deletedLoanerType = await _repository.DeleteLoanerType(id);
+            return MapLoanerTypeToLoanerTypeResponse(deletedLoanerType);
         }
 
-        public async Task<List<LoanerType>> GetAllLoanerTypes()
+        public async Task<List<LoanerTypeResponse>> GetAllLoanerTypes()
         {
-            return await _repository.GetAllLoanerTypes();
+            List<LoanerType> loanerTypeList = await _repository.GetAllLoanerTypes();
+            return loanerTypeList.Select(loanerType => MapLoanerTypeToLoanerTypeResponse(loanerType)).ToList();
         }
 
-        public async Task<LoanerType> GetLoanerTypeById(int id)
+        public async Task<LoanerTypeResponse> GetLoanerTypeById(int id)
         {
-            return await _repository.GetLoanerTypeById(id);
+            LoanerType loanerType = await _repository.GetLoanerTypeById(id);
+            return MapLoanerTypeToLoanerTypeResponse(loanerType);
         }
 
-        public async Task<LoanerType> UpdateLoanerType(int id, LoanerType loanerType)
+        public async Task<LoanerTypeResponse> UpdateLoanerType(int id, LoanerTypeRequest loanerTypeRequest)
         {
-            return await _repository.UpdateLoanerType(id, loanerType);
+            LoanerType loanerType = MapLoanerTypeRequestToLoanerType(loanerTypeRequest);
+            loanerType = await _repository.UpdateLoanerType(id, loanerType);
+            return MapLoanerTypeToLoanerTypeResponse(loanerType);
         }
 
-        
+        private LoanerType MapLoanerTypeRequestToLoanerType(LoanerTypeRequest request)
+        {
+            return new LoanerType()
+            {
+                Name = request.Name
+            };
+        }
+
+        private LoanerTypeResponse MapLoanerTypeToLoanerTypeResponse(LoanerType response)
+        {
+            return new LoanerTypeResponse()
+            {
+                LoanerTypeId = response.LoanerTypeId,
+                Name = response.Name
+            };
+        }
     }
 }
