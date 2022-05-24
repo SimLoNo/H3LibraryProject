@@ -88,12 +88,18 @@ namespace H3LibraryProject.Tests.RepositoryTests
             Loaner loaner = new()
             {
                 LoanerId = id,
-                LoanerTypeId = 1,
+                LoanerTypeId = id,
                 Name = "Test",
                 Password = "Passw0rd"
             };
+            LoanerType loanerType = new()
+            {
+                LoanerTypeId = id,
+                Name = "Test",
+            };
             await _context.Database.EnsureDeletedAsync();
             _context.Loaners.Add(loaner);
+            _context.LoanerTypes.Add(loanerType);
             await _context.SaveChangesAsync();
 
             //Act
@@ -168,13 +174,19 @@ namespace H3LibraryProject.Tests.RepositoryTests
             string newName = "New name!";
             Loaner loaner = new()
             {
-                LoanerTypeId = 1,
+                LoanerTypeId = id,
                 Name = "Test",
                 Password = "Passw0rd"
+            };
+            LoanerType loanerType = new()
+            {
+                LoanerTypeId = id,
+                Name = "Test",
             };
 
             await _context.Database.EnsureDeletedAsync();
             _context.Loaners.Add(loaner);
+            _context.LoanerTypes.Add(loanerType);
             await _context.SaveChangesAsync();
 
             loaner.Name = newName;
@@ -229,13 +241,19 @@ namespace H3LibraryProject.Tests.RepositoryTests
             Loaner loaner = new()
             {
                 LoanerId= id,
-                LoanerTypeId = 1,
+                LoanerTypeId = id,
                 Name = "Test",
                 Password = "Passw0rd"
+            };
+            LoanerType loanerType = new()
+            {
+                LoanerTypeId = id,
+                Name = "Test"
             };
 
             await _context.Database.EnsureDeletedAsync();
             _context.Loaners.Add(loaner);
+            _context.LoanerTypes.Add(loanerType);
             await _context.SaveChangesAsync();
             //Act
             var result = await _repository.DeleteLoaner(id);
