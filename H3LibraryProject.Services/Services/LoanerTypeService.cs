@@ -14,7 +14,7 @@ namespace H3LibraryProject.Services.Services
         Task<LoanerType> CreateLoanerType(LoanerType loanerType);
         Task<LoanerType> GetLoanerTypeById(int id);
         Task<LoanerType> UpdateLoanerType(int id, LoanerType loanerType);
-        Task<LoanerType> DeleteLoanerType(LoanerType loanerType)
+        Task<LoanerType> DeleteLoanerType(LoanerType loanerType);
     }
     public class LoanerTypeService : ILoanerTypeService
     {
