@@ -10,7 +10,7 @@ namespace H3LibraryProject.Repositories.Repositories
 {
     public interface ILoanerRepository
     {
-        Task<List<Loaner>> GetAllLoaner();
+        Task<List<Loaner>> GetAllLoaners();
         Task<Loaner> GetLoanerById(int id);
         Task<List<Loaner>> GetLoanerByName(string loanerName);
         Task<Loaner> CreateLoaner(Loaner loaner);
@@ -43,7 +43,7 @@ namespace H3LibraryProject.Repositories.Repositories
             return deletedLoaner;
         }
 
-        public async Task<List<Loaner>> GetAllLoaner()
+        public async Task<List<Loaner>> GetAllLoaners()
         {
             return await _context.Loaner.Include(loanerObj => loanerObj.TypeOfLoaner).ToListAsync();
         }
