@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace H3LibraryProject.API.Models
+namespace H3LibraryProject.Repositories.Database
 {
     public class Nationality
     {

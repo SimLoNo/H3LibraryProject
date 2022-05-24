@@ -12,44 +12,24 @@ namespace H3LibraryProject.API.DTOs
         [Required]
         [StringLength(256, ErrorMessage = "Title max 256 chars")]
         public string Name { get; set; }
-
+        
         [Required]
-        [StringLength(32, ErrorMessage = "Sprog max 32 chars")]
-        public string Language { get; set; }
-
-        [StringLength(32, ErrorMessage = "Mellemnavn max 32 chars")]
-        public string MName { get; set; }
-
+        [Range(0, 150000, ErrorMessage = "Pages must be between 0 and 150000")]
+        public int Pages { get; set; }
+        
         [Required]
-        [Range(0, 3000, ErrorMessage = "Fødselsår skal være mellem 0 og 3000")]
-        public int BYear { get; set; }
-
-        [Range(0, 3000, ErrorMessage = "Dødsår skal være mellem 0 og 3000")]
-        public int? DYear { get; set; }
-
-        [Required]
-        [StringLength(32, ErrorMessage = "Nationalitet max 32 anslag")]
-        public string Nationality { get; set; }
-    }
-}
-
-
-/*
-[Key]
-        public int TitleId { get; set; }
-       
-        [Column(TypeName = "smallint")] //Rigeligt til årstal
+        [Range(0, 3000, ErrorMessage = "Releaseyear must be between 0 and 3000")]
         public int RYear { get; set; }
 
-        [Column(TypeName = "smallint")]
-        public int Pages { get; set; }
-
-        [Column(TypeName = "smallint")]
-        public int PublisherId { get; set; }
-
-        [Column(TypeName = "smallint")]
+        [Required]
+        [Range(1, 1000000000, ErrorMessage = "Genre-ID must be above 0")]
         public int GenreId { get; set; }
 
-        public List<Material> Materials { get; set; } //Giver mening at kunne se instanserne af titlerne.
+        [Required]
+        [Range(1, 1000000000, ErrorMessage = "Forfatter-ID must be above 0")]
+        public int AuthorId { get; set; } //Så er der plads til en millard forfattere - burde være nok
+        [Required]
+        [Range(1, 1000000000, ErrorMessage = "Nationality-ID must be above 0")]
+        public int NationalityId { get; set; }
     }
-*/
+}

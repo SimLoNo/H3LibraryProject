@@ -6,15 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace H3LibraryProject.API.Models
+namespace H3LibraryProject.Repositories.Database
 {
     public class Loaner
     {
         [Key]
         public int LoanerId { get; set; }
 
-        [Column(TypeName = "smallint")]
-        public int LoanerType { get; set; } //Bør være connected til et eksternt table.
+        [Column(TypeName = "int")]
+        public int LoanerTypeId { get; set; } //Bør være connected til et eksternt table.
+
         [Column(TypeName = "nvarchar(32)")]
         public string Name { get; set; } //Måske username? Det er i al fald det, vi kommer til at bruge det til.
 

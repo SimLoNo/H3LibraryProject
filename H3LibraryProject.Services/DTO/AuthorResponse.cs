@@ -17,7 +17,7 @@ namespace H3LibraryProject.API.DTOs
         public int? DYear { get; set; }
         public string Nationality { get; set; }
 
-        public List<AuthorTitleResponse> Books { get; set; } = new List<AuthorTitleResponse>();
+        public List<AuthorTitleResponse> Titles { get; set; } = new List<AuthorTitleResponse>();
         //Sådan har den virket i mit program tidligere.
 
     }
