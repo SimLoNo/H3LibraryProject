@@ -10,7 +10,7 @@ namespace H3LibraryProject.Repositories.Repositories
 {
     public interface ILoanerRepository
     {
-        Task<List<Loaner>> GetAllLoaners();
+        Task<List<Loaner>> GetAllLoaner();
         Task<Loaner> GetLoanerById(int id);
         Task<List<Loaner>> GetLoanerByName(string loanerName);
         Task<Loaner> CreateLoaner(Loaner loaner);
@@ -27,41 +27,41 @@ namespace H3LibraryProject.Repositories.Repositories
         }
         public async Task<Loaner> CreateLoaner(Loaner loaner)
         {
-            _context.Loaners.Add(loaner);
+            _context.Loaner.Add(loaner);
             await _context.SaveChangesAsync();
             return loaner;
         }
 
         public async Task<Loaner> DeleteLoaner(int id)
         {
-            Loaner deletedLoaner = await _context.Loaners.Include(x => x.TypeOfLoaner).FirstOrDefaultAsync(loanerObj => loanerObj.LoanerId == id);
+            Loaner deletedLoaner = await _context.Loaner.Include(x => x.TypeOfLoaner).FirstOrDefaultAsync(loanerObj => loanerObj.LoanerId == id);
             if (deletedLoaner != null)
             {
-                _context.Loaners.Remove(deletedLoaner);
+                _context.Loaner.Remove(deletedLoaner);
                 await _context.SaveChangesAsync();
             }
             return deletedLoaner;
         }
 
-        public async Task<List<Loaner>> GetAllLoaners()
+        public async Task<List<Loaner>> GetAllLoaner()
         {
-            return await _context.Loaners.Include(loanerObj => loanerObj.TypeOfLoaner) .ToListAsync();
+            return await _context.Loaner.Include(loanerObj => loanerObj.TypeOfLoaner).ToListAsync();
         }
 
         public async Task<Loaner> GetLoanerById(int id)
         {
-            return await _context.Loaners.Include(x => x.TypeOfLoaner).FirstOrDefaultAsync(loaner => loaner.LoanerId == id);
+            return await _context.Loaner.Include(x => x.TypeOfLoaner).FirstOrDefaultAsync(loaner => loaner.LoanerId == id);
 
         }
 
         public async Task<List<Loaner>> GetLoanerByName(string loanerName)
         {
-            return await _context.Loaners.Where(loanerObj => loanerObj.Name.Contains(loanerName)).ToListAsync();
+            return await _context.Loaner.Where(loanerObj => loanerObj.Name.Contains(loanerName)).ToListAsync();
         }
 
         public async Task<Loaner> UpdateLoaner(int id, Loaner loaner)
         {
-            Loaner updatedLoaner = await _context.Loaners.Include(x => x.TypeOfLoaner).FirstOrDefaultAsync(loanerObj => loanerObj.LoanerId== id);
+            Loaner updatedLoaner = await _context.Loaner.Include(x => x.TypeOfLoaner).FirstOrDefaultAsync(loanerObj => loanerObj.LoanerId == id);
             if (updatedLoaner != null)
             {
                 updatedLoaner.Name = loaner.Name;
@@ -71,6 +71,6 @@ namespace H3LibraryProject.Repositories.Repositories
             return updatedLoaner;
         }
 
-        
+
     }
 }
