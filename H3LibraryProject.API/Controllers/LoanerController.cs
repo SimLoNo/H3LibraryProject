@@ -20,7 +20,7 @@ namespace H3LibraryProject.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllLoanerTypes()
+        public async Task<IActionResult> GetAllLoaners()
         {
             try
             {
@@ -59,24 +59,24 @@ namespace H3LibraryProject.API.Controllers
             }
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetLoanerByName([FromBody] string name)
-        {
-            try
-            {
-                List<LoanerResponse> loanerList = await _service.GetLoanerByName(name);
-                if (loanerList != null)
-                {
-                    return Ok(loanerList);
-                }
-                return NotFound();
-            }
-            catch (Exception ex)
-            {
+        //[HttpGet("{name}")]
+        //public async Task<IActionResult> GetLoanerByName([FromRoute] string name)
+        //{
+        //    try
+        //    {
+        //        List<LoanerResponse> loanerList = await _service.GetLoanerByName(name);
+        //        if (loanerList != null)
+        //        {
+        //            return Ok(loanerList);
+        //        }
+        //        return NotFound();
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                return Problem(ex.Message);
-            }
-        }
+        //        return Problem(ex.Message);
+        //    }
+        //}
 
         [HttpPost]
         public async Task<IActionResult> CreateLoaner([FromBody] LoanerRequest newLoaner)

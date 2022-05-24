@@ -23,6 +23,10 @@ namespace H3LibraryProject.Repositories.Database
         public string Password { get; set; }
 
 
+        public LoanerType TypeOfLoaner { get; set; }
+        public List<Loan> Loans { get; set; }
+
+
         //Her kunne man åbenlyst have rigtig meget mere info. F.eks. har man i den virkelige verden CPR-nr, adresse, fulde navn, og typisk tlf.nr. og email.
     }
 }

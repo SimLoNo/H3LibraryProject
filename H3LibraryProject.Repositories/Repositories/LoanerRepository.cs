@@ -34,7 +34,7 @@ namespace H3LibraryProject.Repositories.Repositories
 
         public async Task<Loaner> DeleteLoaner(int id)
         {
-            Loaner deletedLoaner = await _context.Loaners.FirstOrDefaultAsync(loanerObj => loanerObj.LoanerId == id);
+            Loaner deletedLoaner = await _context.Loaners.Include(x => x.TypeOfLoaner).FirstOrDefaultAsync(loanerObj => loanerObj.LoanerId == id);
             if (deletedLoaner != null)
             {
                 _context.Loaners.Remove(deletedLoaner);
@@ -45,12 +45,12 @@ namespace H3LibraryProject.Repositories.Repositories
 
         public async Task<List<Loaner>> GetAllLoaners()
         {
-            return await _context.Loaners.ToListAsync();
+            return await _context.Loaners.Include(loanerObj => loanerObj.TypeOfLoaner) .ToListAsync();
         }
 
         public async Task<Loaner> GetLoanerById(int id)
         {
-            return await _context.Loaners.FirstOrDefaultAsync(loaner => loaner.LoanerId == id);
+            return await _context.Loaners.Include(x => x.TypeOfLoaner).FirstOrDefaultAsync(loaner => loaner.LoanerId == id);
 
         }
 
@@ -61,7 +61,7 @@ namespace H3LibraryProject.Repositories.Repositories
 
         public async Task<Loaner> UpdateLoaner(int id, Loaner loaner)
         {
-            Loaner updatedLoaner = await _context.Loaners.FirstOrDefaultAsync(loaner => loaner.LoanerId== id);
+            Loaner updatedLoaner = await _context.Loaners.Include(x => x.TypeOfLoaner).FirstOrDefaultAsync(loanerObj => loanerObj.LoanerId== id);
             if (updatedLoaner != null)
             {
                 updatedLoaner.Name = loaner.Name;

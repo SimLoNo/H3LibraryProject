@@ -49,11 +49,13 @@ namespace H3LibraryProject.Tests.RepositoryTests
                     Password = "Passw0rd"
                 }
             };
+            LoanerType loanerType = new() { LoanerTypeId = 1, Name = "Test" };
             await _context.Database.EnsureDeletedAsync();
             foreach (Loaner item in loanerList)
             {
                 _context.Loaners.Add(item);
             }
+            _context.LoanerTypes.Add(loanerType);
             await _context.SaveChangesAsync();
 
             //Act

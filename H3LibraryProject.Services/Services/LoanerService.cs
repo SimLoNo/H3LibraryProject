@@ -1,5 +1,6 @@
 ﻿using H3LibraryProject.API.DTOs;
 using H3LibraryProject.Repositories.Database;
+using H3LibraryProject.Repositories.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,52 +20,109 @@ namespace H3LibraryProject.Services.Services
     }
     public class LoanerService : ILoanerService
     {
-        public Task<LoanerResponse> CreateLoaner(LoanerRequest request)
+        private readonly ILoanerRepository _repository;
+
+        public LoanerService(ILoanerRepository repository)
         {
-            throw new NotImplementedException();
+            _repository = repository;
+        }
+        public async Task<LoanerResponse> CreateLoaner(LoanerRequest request)
+        {
+            Loaner newLoaner = MapLoanerRequestToLoaner(request);
+            newLoaner = await _repository.CreateLoaner(newLoaner);
+
+            if (newLoaner != null)
+            {
+                return MapLoanerToLoanerResponse(newLoaner);
+
+            }
+            return null;
         }
 
-        public Task<LoanerResponse> DeleteLoaner(int id)
+        public async Task<LoanerResponse> DeleteLoaner(int id)
         {
-            throw new NotImplementedException();
+            Loaner deletedLoaner = await _repository.DeleteLoaner(id);
+            if (deletedLoaner != null)
+            {
+                return MapLoanerToLoanerResponse(deletedLoaner);
+            }
+            return null;
         }
 
-        public Task<List<LoanerResponse>> GetAllLoaners()
+        public async Task<List<LoanerResponse>> GetAllLoaners()
         {
-            throw new NotImplementedException();
+            List<Loaner> loaners = await _repository.GetAllLoaners();
+            return loaners.Select(loaner => MapLoanerToLoanerResponse(loaner)).ToList();
         }
 
-        public Task<LoanerResponse> GetLoanerById(int id)
+        public async Task<LoanerResponse> GetLoanerById(int id)
         {
-            throw new NotImplementedException();
+            Loaner loaner = await _repository.GetLoanerById(id);
+            if (loaner != null)
+            {
+                return MapLoanerToLoanerResponse(loaner);
+            }
+            return null;
         }
 
-        public Task<List<LoanerResponse>> GetLoanerByName(string name)
+        public async Task<List<LoanerResponse>> GetLoanerByName(string name)
         {
-            throw new NotImplementedException();
+            List<Loaner> loaners = await _repository.GetLoanerByName(name);
+
+            return loaners.Select(x => MapLoanerToLoanerResponse(x)).ToList();
         }
 
-        public Task<LoanerResponse> UpdateLoaner(int id, LoanerRequest request)
+        public async Task<LoanerResponse> UpdateLoaner(int id, LoanerRequest request)
         {
-            throw new NotImplementedException();
+            Loaner updateLoaner = MapLoanerRequestToLoaner(request);
+            updateLoaner = await _repository.UpdateLoaner(id, updateLoaner);
+
+            if (updateLoaner != null)
+            {
+                return MapLoanerToLoanerResponse(updateLoaner);
+            }
+            return null;
         }
 
         private Loaner MapLoanerRequestToLoaner(LoanerRequest request)
         {
             return new()
             {
-                LoanerTypeId = request.LoanerTypeId,
                 Name = request.Name,
+                LoanerTypeId = request.LoanerTypeId,
+                Password = request.Password
             };
         }
 
-        //private LoanerResponse MapLoanerToLoanerResponse(Loaner loaner)
-        //{
-        //    return new()
-        //    {
+        private LoanerResponse MapLoanerToLoanerResponse(Loaner loaner)
+        {
+            bool kaffe = true;
 
-        //    }
+            bool isTrue = true;
 
-        //}
+            kaffe = isTrue == true ? true: false;
+            return new()
+            {
+                LoanerId = loaner.LoanerId,
+                LoanerName = loaner.Name,
+                Password = loaner.Password,
+
+                Loans = loaner.Loans != null ? loaner.Loans.Select(loan => new LoanerLoanResponse
+                {
+                    LoanerId = loan.LoanId,
+                    MaterialId = loan.MaterialId,
+                    LoanDate = loan.LoanDate,
+                    ReturnDate = loan.ReturnDate
+                }).ToList() : null,
+
+                TypeOfLoaner = loaner.TypeOfLoaner != null ? new LoanerLoanerTypeResponse
+                {
+                    LoanerTypeId = loaner.TypeOfLoaner.LoanerTypeId,
+                    Name = loaner.TypeOfLoaner.Name
+                } : null
+
+            };
+
+        }
     }
 }
