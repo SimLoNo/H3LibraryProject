@@ -17,8 +17,8 @@ namespace H3LibraryProject.Repositories.Database
         public DbSet<Author> Author { get; set; }
         public DbSet<Genre> Genre { get; set; }
         public DbSet<Language> Language { get; set; }
-        public DbSet<Loan> Loans { get; set; }
-        public DbSet<Loaner> Loaners { get; set; }
+        public DbSet<Loan> Loan { get; set; }
+        public DbSet<Loaner> Loaner { get; set; }
         public DbSet<LoanerType> LoanerTypes { get; set; }
         public DbSet<Location> Location { get; set; }
         public DbSet<Material> Material { get; set; }

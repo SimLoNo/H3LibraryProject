@@ -64,7 +64,7 @@ namespace H3LibraryProject.Repositories.Repositories
 
             public async Task<Nationality> DeleteNationality(int nationalityId)
             {
-                Nationality deleteNationality = await _context.Nationality.FirstOrDefaultAsync(genre => genre.NationalityId == nationalityId);
+                Nationality deleteNationality = await _context.Nationality.FirstOrDefaultAsync(nationality => nationality.NationalityId == nationalityId);
                 if (deleteNationality != null)
                 {
                     _context.Nationality.Remove(deleteNationality);
