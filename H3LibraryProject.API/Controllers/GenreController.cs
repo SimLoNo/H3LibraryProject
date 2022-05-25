@@ -1,13 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using H3LibraryProject.API.DTOs;
+using H3LibraryProject.Services.Services;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace H3LibraryProject.API.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class GenreController : ControllerBase
-    {//private readonly  IGenreService _service; 
+    {private readonly  IGenreService _service; 
 
-        public GenreController(/*IGenreService _service*/)
+        public GenreController(IGenreService service)
         {
-            // _service = service;
+            _service = service;
         }
 
         [HttpGet]
@@ -110,10 +117,6 @@ namespace H3LibraryProject.API.Controllers
 
                 return Problem(ex.Message);
             }
-        }
-        public IActionResult Index()
-        {
-            return View();
         }
     }
 }

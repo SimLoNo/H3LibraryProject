@@ -13,12 +13,11 @@ namespace H3LibraryProject.Services.Services
     {
         Task<List<LanguageResponse>> GetAllLanguages();
         Task<LanguageResponse> GetLanguageById(int id);
-        Task<List<LanguageResponse>> GetLanguageByName(string name);
         Task<LanguageResponse> CreateLanguage(LanguageRequest request);
         Task<LanguageResponse> UpdateLanguage(int id, LanguageRequest request);
         Task<LanguageResponse> DeleteLanguage(int id);
     }
-    public class LanguageService
+    public class LanguageService : ILanguageService
     {
 
         private readonly ILanguageRepository _repository;
@@ -30,7 +29,7 @@ namespace H3LibraryProject.Services.Services
         public async Task<LanguageResponse> CreateLanguage(LanguageRequest request)
         {
             Language newLanguage = MapLanguageRequestToLanguage(request);
-            newLanguage = await _repository.CreateLanguage(newLanguage);
+            newLanguage = await _repository.InsertNewLanguage(newLanguage);
 
             if (newLanguage != null)
             {
@@ -53,7 +52,7 @@ namespace H3LibraryProject.Services.Services
         public async Task<List<LanguageResponse>> GetAllLanguages()
         {
             List<Language> languages = await _repository.SelectAllLanguages();
-            return languages.Select(language => MapLanguageToLanguageResponse(language)).ToList();
+            return languages.Select(languageA => MapLanguageToLanguageResponse(languageA)).ToList();
         }
 
         public async Task<LanguageResponse> GetLanguageById(int id)
@@ -86,22 +85,22 @@ namespace H3LibraryProject.Services.Services
             };
         }
 
-        private LanguageResponse MapLanguageToLanguageResponse(Language language)
+        private LanguageResponse MapLanguageToLanguageResponse(Language languageA)
         {
             return new()
             {
-                LanguageId = language.LanguageId,
-                Name = language.Name,
-                Titles = language.Titles != null ? language.Titles.Select(title => new LanguageTitleResponse
-                {
-                    TitleId = title.TitleId,
-                    Name = title.Name,
-                    Language = language.Name,
-                    RYear = title.RYear,
-                    Pages = title.Pages,
-                    PublisherId = title.PublisherId,
-                    GenreId = title.GenreId
-                }).ToList() : null
+                LanguageId = languageA.LanguageId,
+                Name = languageA.Name,
+                //Titles = languageA.Titles != null ? languageA.Titles.Select(title => new LanguageTitleResponse
+                //{
+                //    TitleId = title.TitleId,
+                //    Name = title.Name,
+                //    Language = languageA.Name,
+                //    RYear = title.RYear,
+                //    Pages = title.Pages,
+                //    PublisherId = title.PublisherId,
+                //    GenreId = title.GenreId
+                //}).ToList() : null
             };
 
         }

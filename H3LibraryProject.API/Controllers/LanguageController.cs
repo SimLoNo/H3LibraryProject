@@ -1,4 +1,5 @@
 ﻿using H3LibraryProject.API.DTOs;
+using H3LibraryProject.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -6,13 +7,15 @@ using System.Threading.Tasks;
 
 namespace H3LibraryProject.API.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class LanguageController : ControllerBase
     {
-        //private readonly  ILanguageService _service; 
+        private readonly  ILanguageService _service; 
 
-        public LanguageController(/*ILanguageService _service*/)
+        public LanguageController(ILanguageService service)
         {
-            // _service = service;
+            _service = service;
         }
 
         [HttpGet]

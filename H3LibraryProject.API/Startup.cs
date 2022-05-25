@@ -54,6 +54,10 @@ namespace H3LibraryProject.API
             services.AddScoped<ILoanerTypeService, LoanerTypeService>();
             services.AddScoped<ILoanerRepository, LoanerRepository>();
             services.AddScoped<ILoanerService, LoanerService>();
+            services.AddScoped<IGenreService, GenreService>();
+            services.AddScoped<IGenreRepository, GenreRepository>();
+            services.AddScoped<ILanguageService,LanguageService>();
+            services.AddScoped<ILanguageRepository,LanguageRepository>();
 
         }
 

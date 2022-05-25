@@ -38,7 +38,6 @@ namespace H3LibraryProject.Repositories.Repositories
         public async Task<List<Genre>> SelectAllGenres()
         {
                 return await _context.Genre
-                    .Include(b => b.Name)
                     .OrderBy(b => b.Name)
                     .ToListAsync();
         }
@@ -55,7 +54,7 @@ namespace H3LibraryProject.Repositories.Repositories
                     .FirstOrDefaultAsync(genre => genre.GenreId == genreId);
                 if (updategenre != null)
                 {
-                    updategenre.GenreId = genre.GenreId;
+                    //updategenre.GenreId = genre.GenreId;
                     updategenre.Name = genre.Name;
                     updategenre.LeasePeriod = genre.LeasePeriod;
                     await _context.SaveChangesAsync();
