@@ -21,6 +21,11 @@ namespace H3LibraryProject.Repositories.Repositories
     { 
         private readonly LibraryContext _context;
 
+        public PublisherRepository(LibraryContext context)
+        {
+            _context = context;
+        }
+
         //Create
         public async Task<Publisher> InsertNewPublisher(Publisher publisher)
         {
