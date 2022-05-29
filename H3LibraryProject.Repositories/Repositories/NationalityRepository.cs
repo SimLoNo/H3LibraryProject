@@ -39,7 +39,6 @@ namespace H3LibraryProject.Repositories.Repositories
             public async Task<List<Nationality>> SelectAllNationalities()
             {
                 return await _context.Nationality
-                    .Include(b => b.Name)
                     .OrderBy(b => b.Name)
                     .ToListAsync();
             }

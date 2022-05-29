@@ -38,7 +38,6 @@ namespace H3LibraryProject.Repositories.Repositories
         public async Task<List<Loan>> SelectAllLoans()
         {
             return await _context.Loan
-                .Include(b => b.LoanerId)
                 .ToListAsync(); 
         }
 

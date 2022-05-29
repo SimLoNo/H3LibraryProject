@@ -17,7 +17,7 @@ namespace H3LibraryProject.Services.Services
         Task<NationalityResponse> UpdateNationality(int id, NationalityRequest request);
         Task<NationalityResponse> DeleteNationality(int id);
     }
-    public class NationalityService
+    public class NationalityService :INationalityService
     {
         private readonly INationalityRepository _repository;
 

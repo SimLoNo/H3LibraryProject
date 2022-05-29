@@ -18,7 +18,7 @@ namespace H3LibraryProject.Services.Services
         Task<LoanResponse> DeleteLoan(int id);
     }
 
-        public class LoanService
+        public class LoanService : ILoanService
     {
             private readonly ILoanRepository _repository;
 
