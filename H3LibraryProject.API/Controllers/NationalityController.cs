@@ -9,24 +9,24 @@ namespace H3LibraryProject.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LoanController : ControllerBase
+    public class NationalityController : ControllerBase
     {
-        private readonly  ILoanService _service; 
+        private readonly INationalityService _service;
 
-        public LoanController(ILoanService service)
+        public NationalityController(INationalityService service)
         {
-             _service = service;
+            _service = service;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllLoans()
+        public async Task<IActionResult> GetAllNationalitys()
         {
             try
             {
-                List<LoanResponse> loanList = await _service.GetAllLoans();
-                if (loanList.Count > 0)
+                List<NationalityResponse> nationalityList = await _service.GetAllNationalitys();
+                if (nationalityList.Count > 0)
                 {
-                    return Ok(loanList);
+                    return Ok(nationalityList);
                 }
                 return NoContent();
             }
@@ -40,14 +40,14 @@ namespace H3LibraryProject.API.Controllers
 
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetLoanById([FromRoute] int id)
+        public async Task<IActionResult> GetNationalityById([FromRoute] int id)
         {
             try
             {
-                LoanResponse loan = await _service.GetLoanById(id);
-                if (loan != null)
+                NationalityResponse nationality = await _service.GetNationalityById(id);
+                if (nationality != null)
                 {
-                    return Ok(loan);
+                    return Ok(nationality);
                 }
                 return NotFound();
             }
@@ -59,16 +59,16 @@ namespace H3LibraryProject.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateLoan([FromBody] LoanRequest newLoan)
+        public async Task<IActionResult> CreateNationality([FromBody] NationalityRequest newNationality)
         {
             try
             {
-                LoanResponse createdLoan = await _service.CreateLoan(newLoan);
-                if (createdLoan == null)
+                NationalityResponse createdNationality = await _service.CreateNationality(newNationality);
+                if (createdNationality == null)
                 {
                     return NotFound();
                 }
-                return Ok(createdLoan);
+                return Ok(createdNationality);
             }
             catch (Exception ex)
             {
@@ -78,7 +78,7 @@ namespace H3LibraryProject.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateLoan([FromRoute] int id, [FromBody] LoanRequest loan)
+        public async Task<IActionResult> UpdateNationality([FromRoute] int id, [FromBody] NationalityRequest nationality)
         {
             if (id <= 0)
             {
@@ -86,10 +86,10 @@ namespace H3LibraryProject.API.Controllers
             }
             try
             {
-                LoanResponse loanResult = await _service.UpdateLoan(id, loan);
-                if (loanResult != null)
+                NationalityResponse nationalityResult = await _service.UpdateNationality(id, nationality);
+                if (nationalityResult != null)
                 {
-                    return Ok(loanResult);
+                    return Ok(nationalityResult);
                 }
                 return NotFound();
             }
@@ -101,15 +101,15 @@ namespace H3LibraryProject.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteLoan([FromRoute] int id)
+        public async Task<IActionResult> DeleteNationality([FromRoute] int id)
         {
             try
             {
-                LoanResponse loanResult = await _service.DeleteLoan(id);
+                NationalityResponse nationalityResult = await _service.DeleteNationality(id);
 
-                if (loanResult != null)
+                if (nationalityResult != null)
                 {
-                    return Ok(loanResult);
+                    return Ok(nationalityResult);
                 }
                 return NotFound();
             }
