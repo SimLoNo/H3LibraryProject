@@ -78,36 +78,18 @@ namespace H3LibraryProject.Services.Services
 
         private Nationality MapNationalityRequestToNationality(NationalityRequest request)
         {
-            return new()
-            {
-            };
+            return new() {
+                Name = request.Name
+        };
         }
 
         private NationalityResponse MapNationalityToNationalityResponse(Nationality nationality)
         {
-            if (nationality != null)
+            return new()
             {
-
-                return new();
-            }
-            return null;
-            //return new()
-            //{
-            //    NationalityId = nationality.NationalityId,
-            //    Name = nationality.Name,
-            //    LeasePeriod = nationality.LeasePeriod,
-            //    Titles = nationality.Titles != null ? nationality.Titles.Select(t => new NationalityTitleResponse
-            //    {
-            //        TitleId = t.TitleId,
-            //        Name = t.Name,
-            //        // Language needs a solution to be added.
-            //        RYear = t.RYear,
-            //        Pages = t.Pages,
-            //        PublisherId = t.PublisherId,
-            //        NationalityId = t.NationalityId
-            //    }).ToList() : null
-            //};
-
+                NationalityId = nationality.NationalityId,
+                Name = nationality.Name
+            };
         }
     }
 }

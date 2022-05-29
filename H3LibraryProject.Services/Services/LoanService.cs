@@ -90,29 +90,16 @@ namespace H3LibraryProject.Services.Services
 
             private LoanResponse MapLoanToLoanResponse(Loan loan)
             {
-            if (loan != null)
+
+            return new()
             {
+                LoanId = loan.LoanId,
+                LoanerId = loan.LoanerId,
+                MaterialId=loan.MaterialId,
+                LoanDate=loan.LoanDate,
+                ReturnDate=loan.ReturnDate
+            };
 
-                return new();
-            }
-            return null;
-                //return new()
-                //{
-                //    LoanId = loan.LoanId,
-                //    Name = loan.Name,
-                //    LeasePeriod = loan.LeasePeriod,
-                //    Titles = loan.Titles != null ? loan.Titles.Select(t => new LoanTitleResponse
-                //    {
-                //        TitleId = t.TitleId,
-                //        Name = t.Name,
-                //        // Language needs a solution to be added.
-                //        RYear = t.RYear,
-                //        Pages = t.Pages,
-                //        PublisherId = t.PublisherId,
-                //        LoanId = t.LoanId
-                //    }).ToList() : null
-                //};
-
-            }
+        }
         }
 }
