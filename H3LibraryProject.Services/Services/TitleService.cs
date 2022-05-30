@@ -49,7 +49,9 @@ namespace H3LibraryProject.Services.Services
                 RYear = title.RYear,
                 LanguageId = title.LanguageId,
                 GenreId = title.GenreId,
-                Author = new TitleAuthorResponse //Modsat AuthorTitleResponse ikke liste
+                foreach(AuthorObj in title.Author)
+            {
+                Author. //Modsat AuthorTitleResponse ikke liste
                 {
                     AuthorId = title.Author.AuthorId,
                     LName = title.Author.LName,
@@ -58,6 +60,8 @@ namespace H3LibraryProject.Services.Services
                     BYear = title.Author.BYear,
                     DYear = title.Author.DYear
                 }
+            }
+                
             };
 
         }

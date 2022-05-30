@@ -118,7 +118,6 @@ namespace H3LibraryProject.Services.Services
                 NationalityId = author.NationalityId
 
             };
-
         }
     }
 }

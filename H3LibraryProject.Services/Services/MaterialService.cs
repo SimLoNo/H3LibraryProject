@@ -11,12 +11,12 @@ namespace H3LibraryProject.Services.Services
 {
     public interface IMaterialService
     {
-        Task<List<Material>> GetAllMaterials();
-        Task<Material> CreateMaterial(MaterialRequest newMaterial);
-        Task<Material> GetLMaterialById(int id);
-        Task<List<Material>> GetLMaterialsByTitleId(int id);
-        Task<Material> UpdateMaterial(int materialId, MaterialRequest updateMaterial);
-        Task<Material> DeleteMaterial(int MaterialId);
+        Task<List<MaterialResponse>> GetAllMaterials();
+        Task<MaterialResponse> CreateMaterial(MaterialRequest newMaterial);
+        Task<MaterialResponse> GetMaterialById(int id);
+        Task<List<MaterialResponse>> GetMaterialsByTitleId(int id);
+        Task<MaterialResponse> UpdateMaterial(int materialId, MaterialRequest updateMaterial);
+        Task<MaterialResponse> DeleteMaterial(int MaterialId);
     }
     public class MaterialService : IMaterialService
     {
@@ -49,24 +49,23 @@ namespace H3LibraryProject.Services.Services
         }
        
         //Create
-        public async Task<Material> CreateMaterial(MaterialRequest newMaterial)
+        public async Task<MaterialResponse> CreateMaterial(MaterialRequest newMaterial)
         {
             Material material = MapMaterialRequestToMaterial(newMaterial);
-
             Material insertedMaterial = await _materialRepository.CreateMaterial(material);
             if (insertedMaterial != null)
             {
-                return MapMaterialRequestToMaterial(insertedMaterial);
+                return MapMaterialToMaterialResponse(insertedMaterial);
             }
             return null;
         }        
         //Read
-        public async Task<List<Material>> GetAllMaterials()
+        public async Task<List<MaterialResponse>> GetAllMaterials()
         {
             List<Material> materials = await _materialRepository.GetAllMaterials();
-            return materials.Select(material => MapMaterialToMaterialResponse(material)).ToList();
+            return materials.Select(materials => MapMaterialToMaterialResponse(materials)).ToList();
         }
-        public async Task<Material> GetLMaterialById(int id)
+        public async Task<MaterialResponse> GetMaterialById(int id)
         {
             Material material = await _materialRepository.GetMaterialById(id);
             if (material != null)
@@ -75,17 +74,17 @@ namespace H3LibraryProject.Services.Services
             }
             return null;
         }
-        public async Task<List<Material>> GetLMaterialsByTitleId(int id)
+        public async Task<List<MaterialResponse>> GetMaterialsByTitleId(int id)
         {
-            List <Material> material = await _materialRepository.GetMaterialsByTitleId(id);
-            if (material != null)
-            {
-                return MapMaterialToMaterialResponse(material);
+            List <Material> materials = await _materialRepository.GetMaterialsByTitleId(id);
+            if (materials != null)            {             
+
+                return materials.Select(materials => MapMaterialToMaterialResponse(materials)).ToList();
             }
             return null;
         }
         //Update
-        public async Task<Material> UpdateMaterial(int materialId, MaterialRequest updateMaterial)
+        public async Task<MaterialResponse> UpdateMaterial(int materialId, MaterialRequest updateMaterial)
         {
             Material Material = MapMaterialRequestToMaterial(updateMaterial);
 
@@ -98,7 +97,7 @@ namespace H3LibraryProject.Services.Services
             return null;
         }
         //Delete
-        public async Task<Material> DeleteMaterial(int MaterialId)
+        public async Task<MaterialResponse> DeleteMaterial(int MaterialId)
         {
             Material deletedMaterial = await _materialRepository.DeleteMaterial(MaterialId);
             if (deletedMaterial != null)
