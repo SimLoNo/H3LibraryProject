@@ -15,7 +15,7 @@ namespace H3LibraryProject.Services.Services
         Task<AuthorResponse> CreateAuthor(AuthorRequest newAuthor);
         Task<List<AuthorResponse>> GetAllAuthors(); 
         Task<AuthorResponse> GetAuthorById(int authorId);
-        Task<AuthorResponse> GetAuthorsByNationality(int nationalityId);
+        Task<List<AuthorResponse>> GetAuthorsByNationality(int nationalityId);
         Task<AuthorResponse> UpdateExistingAuthor(int authorId, AuthorRequest request);
         Task<AuthorResponse> DeleteAuthor(int authorId); //jeg har på et tidspunkt kaldt den DeleteAuthorById: måske vigtigt
     }

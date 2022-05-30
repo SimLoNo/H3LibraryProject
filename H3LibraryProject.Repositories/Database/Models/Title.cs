@@ -36,6 +36,6 @@ namespace H3LibraryProject.Repositories.Database
 
         public List<Material> Materials { get; set; } //Giver mening at kunne se instanserne af titlerne.
 
-        public List<Author> Authors { get; set; }
+        public Author Author { get; set; }
     }
 }
