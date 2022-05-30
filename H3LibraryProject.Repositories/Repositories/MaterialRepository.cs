@@ -11,11 +11,11 @@ namespace H3LibraryProject.Repositories.Repositories
 {
     public interface IMaterialRepository
     {
-        Task<Material> InsertNewMaterial(Material material);
-        Task<List<Material>> SelectAllMaterials(); //Vi kalder den "select" og ikke "get" da det er SQL-relateret        
-        Task<Material> SelectMaterialById(int materialId);
-        Task<Material> SelectMaterialByTitleId(int titleId);              
-        Task<Material> UpdateExistingMaterial(int materialId, Material material);
+        Task<Material> CreateMaterial(Material material);
+        Task<List<Material>> GetAllMaterials(); //Vi kalder den "select" og ikke "get" da det er SQL-relateret        
+        Task<Material> GetMaterialById(int materialId);
+        Task<Material> GetMaterialByTitleId(int titleId);              
+        Task<Material> UpdateMaterial(int materialId, Material material);
         Task<Material> DeleteMaterial(int materialId); //jeg har på et tidspunkt kaldt den DeleteTitleById: måske vigtigt
 
     }
@@ -31,7 +31,7 @@ namespace H3LibraryProject.Repositories.Repositories
 
 
         //CREATE
-        public async Task<Material> InsertNewMaterial(Material material)
+        public async Task<Material> CreateMaterial(Material material)
         {
             _context.Material.Add(material);
             await _context.SaveChangesAsync();
@@ -39,7 +39,7 @@ namespace H3LibraryProject.Repositories.Repositories
         }
 
 
-        public async Task<List<Material>> SelectAllMaterials()
+        public async Task<List<Material>> GetAllMaterials()
         {
             return await _context.Material
                 .Include(b => b.MaterialId)
@@ -47,19 +47,19 @@ namespace H3LibraryProject.Repositories.Repositories
                 .ToListAsync();
         }
 
-        public async Task<Material> SelectMaterialById(int materialId)
+        public async Task<Material> GetMaterialById(int materialId)
         {
             return await _context.Material
                 .FirstOrDefaultAsync(material => material.MaterialId == materialId);
         }
 
-        public async Task<Material> SelectMaterialByTitleId(int titleId)
+        public async Task<Material> GetMaterialByTitleId(int titleId)
         {
             return await _context.Material
                 .FirstOrDefaultAsync(material => material.TitleId == titleId);
         }
 
-        public async Task<Material> UpdateExistingMaterial(int materialId, Material material)
+        public async Task<Material> UpdateMaterial(int materialId, Material material)
         {
             Material updatematerial = await _context.Material
                 .FirstOrDefaultAsync(material => material.MaterialId == materialId);

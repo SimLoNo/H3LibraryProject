@@ -22,9 +22,9 @@ namespace H3LibraryProject.Services.Services
 
     public class AuthorService : IAuthorService
     {
-        private readonly IAuthorService _repository;
+        private readonly IAuthorRepository _repository;
 
-        public AuthorService(IAuthorService repository)
+        public AuthorService(IAuthorRepository repository)
         {
             _repository = repository;
         }
@@ -45,13 +45,13 @@ namespace H3LibraryProject.Services.Services
         //Read
         public async Task<List<AuthorResponse>> GetAllAuthors()
         {
-            List<Author> author = await _repository.SelectAllAuthors();
+            List<Author> author = await _repository.GetAllAuthors();
             return author.Select(author => MapAuthorToAuthorResponse(author)).ToList();
         }
 
         public async Task<AuthorResponse> GetAuthorById(int authorId)
         {
-            Author author = await _repository.SelectAuthorById(authorId);
+            Author author = await _repository.GetAuthorById(authorId);
             if (author != null)
             {
                 return MapAuthorToAuthorResponse(author);
@@ -59,7 +59,7 @@ namespace H3LibraryProject.Services.Services
             return null;
         }
 
-        public async Task<AuthorResponse> GetAuthorsByNationality(int nationalityId)
+        public async Task<List<AuthorResponse>> GetAuthorsByNationality(int nationalityId)
         {
             List<Author> author = await _repository.GetAuthorsByNationality(nationalityId);
 

@@ -27,8 +27,8 @@ namespace H3LibraryProject.API.DTOs
     {
         public int AuthorId { get; set; }
         public string LName { get; set; }
+        public string FName { get; set; }
         public string MName { get; set; }
-        public string FNname { get; set; }
         public int? DYear { get; set; }
         public int BYear { get; set; }
 }

@@ -49,7 +49,7 @@ namespace H3LibraryProject.Services.Services
         {
             Material material = MapMaterialRequestToMaterial(newMaterial);
 
-            Material insertedMaterial = await _materialRepository.InsertNewMaterial(material);
+            Material insertedMaterial = await _materialRepository.CreateMaterial(material);
             if (insertedMaterial != null)
             {
                 return MapMaterialRequestToMaterial(insertedMaterial);
@@ -59,12 +59,12 @@ namespace H3LibraryProject.Services.Services
         //Read
         public async Task<List<LoanerType>> GetAllMaterials()
         {
-            List<Material> materials = await _materialRepository.SelectAllMaterials();
+            List<Material> materials = await _materialRepository.GetAllMaterials();
             return materials.Select(material => MapMaterialToMaterialResponse(material)).ToList();
         }
         public async Task<LoanerType> GetLMaterialById(int id)
         {
-            Material material = await _materialRepository.SelectMaterialById(id);
+            Material material = await _materialRepository.GetLMaterialById(id);
             if (material != null)
             {
                 return MapMaterialToMaterialResponse(material);
@@ -76,7 +76,7 @@ namespace H3LibraryProject.Services.Services
         {
             Material Material = MapMaterialRequestToMaterial(updateMaterial);
 
-            Material updatedMaterial = await _MaterialRepository.UpdateExistingMaterial(materialId, Material);
+            Material updatedMaterial = await _MaterialRepository.UpdateMaterial(materialId, Material);
 
             if (updatedMaterial != null)
             {
