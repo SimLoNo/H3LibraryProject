@@ -19,7 +19,7 @@ namespace H3LibraryProject.Services.Services
         Task<List<TitleResponse>> GetAllTitles();
         Task<List<TitleResponse>> GetTitlesByAuthorId(int authorId);
         Task<List<TitleResponse>> GetTitlesByGenreId(int genreId);
-        Task<List<TitleResponse>> GetTitlesById(int titleId);
+        Task<TitleResponse> GetTitlesById(int titleId);
 
         //Update
         Task<TitleResponse> UpdateTitle(int titleId, TitleRequest updateTitle);
@@ -49,18 +49,18 @@ namespace H3LibraryProject.Services.Services
                 RYear = title.RYear,
                 LanguageId = title.LanguageId,
                 GenreId = title.GenreId,
-                foreach(AuthorObj in title.Author)
-            {
-                Author. //Modsat AuthorTitleResponse ikke liste
+
+
+                Author = title.Authors != null ? title.Authors.Select(AuthorObj => new TitleAuthorResponse //Modsat AuthorTitleResponse ikke liste
                 {
-                    AuthorId = title.Author.AuthorId,
-                    LName = title.Author.LName,
-                    FName = title.Author.FName,
-                    MName = title.Author.MName,
-                    BYear = title.Author.BYear,
-                    DYear = title.Author.DYear
-                }
-            }
+                    AuthorId = AuthorObj.AuthorId,
+                    LName = AuthorObj.LName,
+                    FName = AuthorObj.FName,
+                    MName = AuthorObj.MName,
+                    BYear = AuthorObj.BYear,
+                    DYear = AuthorObj.DYear
+                }).ToList(): null
+            
                 
             };
 
@@ -100,12 +100,12 @@ namespace H3LibraryProject.Services.Services
             return Titles.Select(Title => MapTitleToTitleResponse(Title)).ToList();
         }
 
-        public async Task<List<TitleResponse>> GetTitlesById(int titleId)
+        public async Task<TitleResponse> GetTitlesById(int titleId)
         {
-            List<Title> Titles = await _TitleRepository.SelectTitleById(titleId);
+            Title Titles = await _TitleRepository.SelectTitleById(titleId);
             if (Titles != null)
             {
-                return Titles.Select(Title => MapTitleToTitleResponse(Title)).ToList();
+                return MapTitleToTitleResponse(Titles);
             }
             return null;
         }
