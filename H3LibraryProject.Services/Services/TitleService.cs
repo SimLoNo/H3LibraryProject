@@ -39,7 +39,7 @@ namespace H3LibraryProject.Services.Services
 
         //Mappings
 
-        public TitleResponse MapTitleToTitleResponse(Title title)
+        private TitleResponse MapTitleToTitleResponse(Title title)
         { //Bruges til eksisterende titler
             return new TitleResponse
             {
@@ -61,7 +61,7 @@ namespace H3LibraryProject.Services.Services
             };
 
         }
-        public Title MapTitleRequestToTitle(TitleRequest titleRequest)
+        private Title MapTitleRequestToTitle(TitleRequest titleRequest)
         { //Bruges til nye titler
             return new Title
             {

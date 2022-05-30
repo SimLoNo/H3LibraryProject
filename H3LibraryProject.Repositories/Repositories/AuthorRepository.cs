@@ -69,7 +69,7 @@ namespace H3LibraryProject.Repositories.Repositories
                 updateAuthor.LName = author.LName;
                 updateAuthor.BYear = author.BYear;
                 updateAuthor.DYear = author.DYear;
-                updateAuthor.Nationality = author.Nationality;
+                updateAuthor.NationalityId = author.NationalityId;
                 await _context.SaveChangesAsync();
             }
             return updateAuthor;

@@ -28,7 +28,7 @@ namespace H3LibraryProject.Repositories.Database.Models
         public int? DYear { get; set; } //Nullable
 
         [Column(TypeName = "smallint")]
-        public int Nationality { get; set; }
+        public int NationalityId { get; set; }
 
         public List<Title> Titles { get; set; }
         //public ICollection<Course> courses  {get; set;} //Flemming foreviser denne her i stedet - måske generelt, men i al fald i forbindelse med mange-til-mange

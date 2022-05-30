@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using H3LibraryProject.Repositories.Database.Models;
 
 namespace H3LibraryProject.Repositories.Database
 {
@@ -35,5 +35,7 @@ namespace H3LibraryProject.Repositories.Database
         public int GenreId { get; set; }
 
         public List<Material> Materials { get; set; } //Giver mening at kunne se instanserne af titlerne.
+
+        public List<Author> Authors { get; set; }
     }
 }

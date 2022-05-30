@@ -12,10 +12,10 @@ namespace H3LibraryProject.Services.Services
 {
     public interface IAuthorService
     {
-        Task<AuthorResponse> InsertNewAuthor(AuthorRequest newAuthor);
-        Task<List<AuthorResponse>> SelectAllAuthors(); 
-        Task<AuthorResponse> SelectAuthorById(int authorId);
-        Task<AuthorResponse> SelectAuthorsByNationality(int nationalityId);
+        Task<AuthorResponse> CreateAuthor(AuthorRequest newAuthor);
+        Task<List<AuthorResponse>> GetAllAuthors(); 
+        Task<AuthorResponse> GetAuthorById(int authorId);
+        Task<AuthorResponse> GetAuthorsByNationality(int nationalityId);
         Task<AuthorResponse> UpdateExistingAuthor(int authorId, AuthorRequest request);
         Task<AuthorResponse> DeleteAuthor(int authorId); //jeg har på et tidspunkt kaldt den DeleteAuthorById: måske vigtigt
     }
@@ -30,10 +30,10 @@ namespace H3LibraryProject.Services.Services
         }
 
         //Create
-        public async Task<AuthorResponse> InsertNewAuthor(AuthorRequest newAuthor)
+        public async Task<AuthorResponse> CreateAuthor(AuthorRequest newAuthor)
         {
             Author author = MapAuthorRequestToAuthor(newAuthor);
-            Author insertedAuthor = await _repository.InsertNewAuthor(author);
+            Author insertedAuthor = await _repository.CreateAuthor(author);
 
             if (insertedAuthor != null)
             {
@@ -43,13 +43,13 @@ namespace H3LibraryProject.Services.Services
             return null;
         }
         //Read
-        public async Task<List<AuthorResponse>> SelectAllAuthors()
+        public async Task<List<AuthorResponse>> GetAllAuthors()
         {
             List<Author> author = await _repository.SelectAllAuthors();
             return author.Select(author => MapAuthorToAuthorResponse(author)).ToList();
         }
 
-        public async Task<AuthorResponse> SelectAuthorById(int authorId)
+        public async Task<AuthorResponse> GetAuthorById(int authorId)
         {
             Author author = await _repository.SelectAuthorById(authorId);
             if (author != null)
@@ -59,9 +59,9 @@ namespace H3LibraryProject.Services.Services
             return null;
         }
 
-        public async Task<AuthorResponse> SelectAuthorsByNationality(int nationalityId)
+        public async Task<AuthorResponse> GetAuthorsByNationality(int nationalityId)
         {
-            List<Author> author = await _repository.SelectAuthorsByNationality(nationalityId);
+            List<Author> author = await _repository.GetAuthorsByNationality(nationalityId);
 
             return author.Select(x => MapAuthorToAuthorResponse(x)).ToList();
         }
@@ -99,24 +99,25 @@ namespace H3LibraryProject.Services.Services
                 LName = request.LName,
                 BYear = request.BYear,
                 DYear = request.DYear,
-                Nationality = request.NationalityId
+                NationalityId = request.NationalityId
             };
         }
         private AuthorResponse MapAuthorToAuthorResponse(Author author)
         {
-            bool kaffe = true;
+            //bool kaffe = true;
 
-            bool isTrue = true;
+            //bool isTrue = true;
 
-            kaffe = isTrue == true ? true : false;
+            //kaffe = isTrue == true ? true : false;
             return new()
             {
                 AuthorId = author.AuthorId,
                 FName = author.FName,
-                LName= author.LName,
-                MName= author.MName,
-                BYear= author.BYear,
-                DYear= author.DYear                                             
+                LName = author.LName,
+                MName = author.MName,
+                BYear = author.BYear,
+                DYear = author.DYear,
+                NationalityId = author.NationalityId
 
             };
 
