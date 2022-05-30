@@ -105,9 +105,7 @@ namespace H3LibraryProject.Services.Services
         private AuthorResponse MapAuthorToAuthorResponse(Author author)
         {
             //bool kaffe = true;
-
             //bool isTrue = true;
-
             //kaffe = isTrue == true ? true : false;
             return new()
             {

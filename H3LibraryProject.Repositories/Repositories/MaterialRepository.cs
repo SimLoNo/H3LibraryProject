@@ -14,7 +14,7 @@ namespace H3LibraryProject.Repositories.Repositories
         Task<Material> CreateMaterial(Material material);
         Task<List<Material>> GetAllMaterials(); //Vi kalder den "select" og ikke "get" da det er SQL-relateret        
         Task<Material> GetMaterialById(int materialId);
-        Task<Material> GetMaterialsByTitleId(int titleId);              
+        Task<List<Material>> GetMaterialsByTitleId(int titleId);              
         Task<Material> UpdateMaterial(int materialId, Material material);
         Task<Material> DeleteMaterial(int materialId); //jeg har på et tidspunkt kaldt den DeleteTitleById: måske vigtigt
 
@@ -53,10 +53,11 @@ namespace H3LibraryProject.Repositories.Repositories
                 .FirstOrDefaultAsync(material => material.MaterialId == materialId);
         }
 
-        public async Task<Material> GetMaterialsByTitleId(int titleId)
+        public async Task<List<Material>> GetMaterialsByTitleId(int titleId)
         {
             return await _context.Material
-                .FirstOrDefaultAsync(material => material.TitleId == titleId);
+                .Include(material => material.TitleId == titleId)
+                .ToListAsync();
         }
 
         public async Task<Material> UpdateMaterial(int materialId, Material material)
