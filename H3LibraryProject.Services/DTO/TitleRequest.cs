@@ -29,7 +29,7 @@ namespace H3LibraryProject.API.DTOs
         [Range(1, 1000000000, ErrorMessage = "Forfatter-ID must be above 0")]
         public int AuthorId { get; set; } //Så er der plads til en millard forfattere - burde være nok
         [Required]
-        [Range(1, 1000000000, ErrorMessage = "Nationality-ID must be above 0")]
-        public int NationalityId { get; set; }
+        [Range(1, 1000000000, ErrorMessage = "Language-ID must be above 0")]
+        public int LanguageId { get; set; }
     }
 }

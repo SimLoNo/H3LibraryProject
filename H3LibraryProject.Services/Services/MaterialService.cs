@@ -10,7 +10,12 @@ using H3LibraryProject.Repositories.Repositories;
 namespace H3LibraryProject.Services.Services
 {
     public interface IMaterialService
-    { 
+    {
+        Task<List<LoanerType>> GetAllMaterials();
+        Task<LoanerType> CreateMaterial(Material newMaterial);
+        Task<LoanerType> GetLMaterialById(int id);
+        Task<LoanerType> UpdateMaterial(int materialId, MaterialRequest updateMaterial);
+        Task<LoanerType> DeleteMaterial(int MaterialId);
     }
     public class MaterialService : IMaterialService
     {
@@ -20,7 +25,74 @@ namespace H3LibraryProject.Services.Services
         {
             _materialRepository = repository;
         }
+        //Mappings
+        public Material MapMaterialRequestToMaterial(MaterialRequest materialRequest)
+        {
+            return new Material
+            {
+                TitleId = materialRequest.TitleId,
+                LocationId = materialRequest.LocationId,
+                Home = materialRequest.Home
+            };
+        }
+        public MaterialResponse MapMaterialToMaterialResponse(Material material)
+        {
+            return new MaterialResponse
+            {
+                TitleId = material.TitleId,
+                LocationId = material.LocationId,
+                Home = material.Home
+            };
+        }
+        //Create
+        public async Task<LoanerType> CreateMaterial(Material newMaterial)
+        {
+            Material material = MapMaterialRequestToMaterial(newMaterial);
 
+            Material insertedMaterial = await _materialRepository.InsertNewMaterial(material);
+            if (insertedMaterial != null)
+            {
+                return MapMaterialRequestToMaterial(insertedMaterial);
+            }
+            return null;
+        }        
+        //Read
+        public async Task<List<LoanerType>> GetAllMaterials()
+        {
+            List<Material> materials = await _materialRepository.SelectAllMaterials();
+            return materials.Select(material => MapMaterialToMaterialResponse(material)).ToList();
+        }
+        public async Task<LoanerType> GetLMaterialById(int id)
+        {
+            Material material = await _materialRepository.SelectMaterialById(id);
+            if (material != null)
+            {
+                return MapMaterialToMaterialResponse(material);
+            }
+            return null;
+        }
+        //Update
+        public async Task<LoanerType> UpdateMaterial(int materialId, MaterialRequest updateMaterial)
+        {
+            Material Material = MapMaterialRequestToMaterial(updateMaterial);
 
+            Material updatedMaterial = await _MaterialRepository.UpdateExistingMaterial(materialId, Material);
+
+            if (updatedMaterial != null)
+            {
+                return MapMaterialToMaterialResponse(updatedMaterial);
+            }
+            return null;
+        }
+        //Delete
+        public async Task<LoanerType> DeleteMaterial(int MaterialId)
+        {
+            Material deletedMaterial = await _materialRepository.DeleteMaterial(MaterialId);
+            if (deletedMaterial != null)
+            {
+                return MapMaterialToMaterialResponse(deletedMaterial);
+            }
+            return null;
+        }
     }
 }

@@ -11,12 +11,13 @@ namespace H3LibraryProject.Repositories.Repositories
 {
     public interface ITitleRepository
     {
-        Task<List<Title>> SelectAllTitles(); //Vi kalder den "select" og ikke "get" da det er SQL-relateret
+        Task<List<Title>> SelectAllTitles(); 
         Task<List<Title>> SelectTitlesByAuthorId(int authorId);
         Task<List<Title>> SelectTitlesByLanguageId(int LanguageId);
+        Task<List<Title>> SelectTitlesByGenreId(int LanguageId);
         Task<Title> SelectTitleById(int titleId);
         Task<Title> InsertNewTitle(Title title);
-        Task<Title> DeleteTitle(int titleId); //jeg har på et tidspunkt kaldt den DeleteTitleById: måske vigtigt
+        Task<Title> DeleteTitle(int titleId);
         Task<Title> UpdateExistingTitle(int titleId, Title title);
 
     }
@@ -70,6 +71,14 @@ namespace H3LibraryProject.Repositories.Repositories
                 .OrderBy(b => b.RYear)
                 .ThenBy(b => b.Name)
                 //.FirstOrDefaultAsync(title => title.AuthorId == authorId) // virker ikke. Hvad tænkte jeg egentlig på?
+                .ToListAsync();
+        }
+        public async Task<List<Title>> SelectTitlesByGenreId(int genreId)
+        {
+            return await _context.Title
+                .Include(b => b.GenreId == genreId) //Eksperimentel
+                .OrderBy(b => b.RYear)
+                .ThenBy(b => b.Name)
                 .ToListAsync();
         }
 

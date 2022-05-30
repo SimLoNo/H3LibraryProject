@@ -70,7 +70,7 @@ namespace H3LibraryProject.Services.Services
                 RYear = titleRequest.RYear,
                 LanguageId = titleRequest.LanguageId,
                 GenreId = titleRequest.GenreId,
-                //AuthorId = titleRequest.AuthorId
+                AuthorId = titleRequest.AuthorId
             };
         }
 

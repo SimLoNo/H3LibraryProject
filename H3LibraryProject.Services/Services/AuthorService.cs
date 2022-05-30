@@ -116,9 +116,7 @@ namespace H3LibraryProject.Services.Services
                 LName= author.LName,
                 MName= author.MName,
                 BYear= author.BYear,
-                DYear= author.DYear
-
-                                              
+                DYear= author.DYear                                             
 
             };
 
