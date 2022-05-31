@@ -10,16 +10,16 @@ using Xunit;
 
 namespace H3LibraryProject.Tests.RepositoryTests
 {
-    public class LanguageRepositoryTests
+    public class LocationRepositoryTests
     {
         private readonly DbContextOptions<LibraryContext> _options;
         private readonly LibraryContext _context;
-        private readonly LanguageRepository _repository;
+        private readonly LocationRepository _repository;
 
-        public LanguageRepositoryTests()
+        public LocationRepositoryTests()
         {
             _options = new DbContextOptionsBuilder<LibraryContext>()
-                .UseInMemoryDatabase(databaseName: "LibraryProjectLanguage")
+                .UseInMemoryDatabase(databaseName: "LibraryProjectLocation")
                 .Options;
             _context = new(_options);
 
@@ -27,75 +27,75 @@ namespace H3LibraryProject.Tests.RepositoryTests
         }
 
         [Fact]
-        public async void GetAllLanguages_ShouldReturnListOfLanguages_WhenLanguagesExist()
+        public async void GetAllLocations_ShouldReturnListOfLocations_WhenLocationsExist()
         {
             //Arrange
             int id = 1;
-            List<Language> languageList = new()
+            List<Location> locationList = new()
             {
                 new()
                 {
-                    LanguageId = id,
+                    LocationId = id,
                     Name = "Test"
                 },
                 new()
                 {
-                    LanguageId = id + 1,
+                    LocationId = id + 1,
                     Name = "Test"
                 }
             };
             await _context.Database.EnsureDeletedAsync();
-            foreach (Language item in languageList)
+            foreach (Location item in locationList)
             {
-                _context.Language.Add(item);
+                _context.Location.Add(item);
             }
             await _context.SaveChangesAsync();
 
             //Act
-            var result = await _repository.SelectAllLanguages();
+            var result = await _repository.GetAllLocations();
             //assert
             Assert.NotNull(result);
-            Assert.IsType<List<Language>>(result);
-            Assert.Equal(languageList.Count, result.Count);
+            Assert.IsType<List<Location>>(result);
+            Assert.Equal(locationList.Count, result.Count);
         }
         [Fact]
-        public async void GetAllLanguages_ShouldReturnEmptyListOfLanguages_WhenNoLanguagesExist()
+        public async void GetAllLocations_ShouldReturnEmptyListOfLocations_WhenNoLocationsExist()
         {
             //Arrange
             await _context.Database.EnsureDeletedAsync();
             await _context.SaveChangesAsync();
 
             //Act
-            var result = await _repository.SelectAllLanguages();
+            var result = await _repository.GetAllLocations();
             //assert
             Assert.NotNull(result);
-            Assert.IsType<List<Language>>(result);
+            Assert.IsType<List<Location>>(result);
             Assert.Empty(result);
         }
 
         [Fact]
-        public async void GetLanguageById_ShouldReturnLanguage_WhenTheLanguageExists()
+        public async void GetLocationById_ShouldReturnLocation_WhenTheLocationExists()
         {
             //Arrange
             int id = 1;
-            Language language = new()
+            Location location = new()
             {
-                LanguageId = id,
+                LocationId = id,
                 Name = "Test"
             };
             await _context.Database.EnsureDeletedAsync();
-            _context.Language.Add(language);
+            _context.Location.Add(location);
             await _context.SaveChangesAsync();
 
             //Act
-            var result = await _repository.SelectLanguageById(id);
+            var result = await _repository.GetLocationById(id);
             //assert
             Assert.NotNull(result);
-            Assert.IsType<Language>(result);
-            Assert.Equal(id, result.LanguageId);
+            Assert.IsType<Location>(result);
+            Assert.Equal(id, result.LocationId);
         }
         [Fact]
-        public async void GetLanguageById_ShouldReturnNull_WhenTheLanguageDoesNotExist()
+        public async void GetLocationById_ShouldReturnNull_WhenTheLocationDoesNotExist()
         {
             //Arrange
             int id = 1;
@@ -103,129 +103,126 @@ namespace H3LibraryProject.Tests.RepositoryTests
             await _context.SaveChangesAsync();
 
             //Act
-            var result = await _repository.SelectLanguageById(id);
+            var result = await _repository.GetLocationById(id);
             //assert
             Assert.Null(result);
         }
 
         [Fact]
-        public async void CreateLanguage_ShouldReturnError_WhenLanguageAlreadyExist()
+        public async void CreateLocation_ShouldReturnError_WhenLocationAlreadyExist()
         {
             //Arrange
             int id = 1;
-            Language language = new()
+            Location location = new()
             {
-                LanguageId = id,
+                LocationId = id,
                 Name = "Test"
             };
 
             await _context.Database.EnsureDeletedAsync();
-            _context.Language.Add(language);
+            _context.Location.Add(location);
             await _context.SaveChangesAsync();
 
             //Act
-            async Task action() => await _repository.InsertNewLanguage(language);
+            async Task action() => await _repository.CreateLocation(location);
             //Assert
             var ex = await Assert.ThrowsAsync<ArgumentException>(action);
             Assert.Contains("An item with the same key has already been added", ex.Message);
         }
 
         [Fact]
-        public async void CreateLanguageType_ShouldReturnLanguageType_WhenErrorIsNotFired()
+        public async void CreateLocationType_ShouldReturnLocationType_WhenErrorIsNotFired()
         {
             //Arrange
-            Language language = new()
+            Location location = new()
             {
-                LanguageId = 1,
-                Name = "Test",
+                LocationId = 1,
+                Name = "Test"
             };
             await _context.Database.EnsureDeletedAsync();
 
             //Act
-            var result = await _repository.InsertNewLanguage(language);
+            var result = await _repository.CreateLocation(location);
             //Assert
             Assert.NotNull(result);
-            Assert.IsType<Language>(result);
+            Assert.IsType<Location>(result);
         }
 
         [Fact]
-        public async void UpdateLanguagee_ShouldReturnLanguage_WhenLanguageIsUpdated()
+        public async void UpdateLocatione_ShouldReturnLocation_WhenLocationIsUpdated()
         {
             //Arrange
             int id = 1;
-            string newName = "New name!";
-            Language language = new()
+            Location location = new()
             {
-                LanguageId = id,
+                LocationId = id,
                 Name = "Test"
             };
 
             await _context.Database.EnsureDeletedAsync();
-            _context.Language.Add(language);
+            _context.Location.Add(location);
             await _context.SaveChangesAsync();
 
-            language.Name = newName;
             //Act
-            var result = await _repository.UpdateExistingLanguage(id, language);
+            var result = await _repository.UpdateLocation(id, location);
             //Assert
             Assert.NotNull(result);
-            Assert.IsType<Language>(result);
-            Assert.Equal(newName, result.Name);
+            Assert.IsType<Location>(result);
         }
 
         [Fact]
-        public async void UpdateLanguage_ShouldReturnNull_WhenNoLanguageIsUpdated()
+        public async void UpdateLocation_ShouldReturnNull_WhenNoLocationIsUpdated()
         {
             //Arrange
             int id = 1;
-            Language language = new()
+            Location location = new()
             {
-                LanguageId = id,
-                Name = "Test",
+                LocationId = id,
+                Name = "Test"
             };
 
             await _context.Database.EnsureDeletedAsync();
             await _context.SaveChangesAsync();
 
             //Act
-            var result = await _repository.UpdateExistingLanguage(id, language);
+            var result = await _repository.UpdateLocation(id, location);
             //Assert
             Assert.Null(result);
         }
 
         [Fact]
-        public async void DeleteLanguagee_ShouldReturnNull_WhenNoLanguageIsDeleted()
+        public async void DeleteLocatione_ShouldReturnNull_WhenNoLocationIsDeleted()
         {
             //Arrange
             int id = 1;
             await _context.Database.EnsureDeletedAsync();
             await _context.SaveChangesAsync();
             //Act
-            var result = await _repository.DeleteLanguage(id);
+            var result = await _repository.DeleteLocation(id);
             //Assert
             Assert.Null(result);
         }
 
         [Fact]
-        public async void DeleteLanguage_ShouldReturnLanguage_WhenLanguageIsDeleted()
+        public async void DeleteLocation_ShouldReturnLocation_WhenLocationIsDeleted()
         {
             //Arrange
             int id = 1;
-            Language language = new()
+            Location location = new()
             {
-                LanguageId = id,
-                Name = "Test",
+                LocationId = id,
+                Name = "Test"
             };
 
             await _context.Database.EnsureDeletedAsync();
-            _context.Language.Add(language);
+            _context.Location.Add(location);
             await _context.SaveChangesAsync();
             //Act
-            var result = await _repository.DeleteLanguage(id);
+            var result = await _repository.DeleteLocation(id);
             //Assert
             Assert.NotNull(result);
-            Assert.IsType<Language>(result);
-            Assert.Equal(id, result.LanguageId);
+            Assert.IsType<Location>(result);
+            Assert.Equal(id, result.LocationId);
 
         }
     }

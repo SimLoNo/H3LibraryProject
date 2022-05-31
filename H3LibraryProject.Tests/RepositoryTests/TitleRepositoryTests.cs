@@ -10,16 +10,16 @@ using Xunit;
 
 namespace H3LibraryProject.Tests.RepositoryTests
 {
-    public class LanguageRepositoryTests
+    public class TitleRepositoryTests
     {
         private readonly DbContextOptions<LibraryContext> _options;
         private readonly LibraryContext _context;
-        private readonly LanguageRepository _repository;
+        private readonly TitleRepository _repository;
 
-        public LanguageRepositoryTests()
+        public TitleRepositoryTests()
         {
             _options = new DbContextOptionsBuilder<LibraryContext>()
-                .UseInMemoryDatabase(databaseName: "LibraryProjectLanguage")
+                .UseInMemoryDatabase(databaseName: "LibraryProjectTitle")
                 .Options;
             _context = new(_options);
 
@@ -27,75 +27,75 @@ namespace H3LibraryProject.Tests.RepositoryTests
         }
 
         [Fact]
-        public async void GetAllLanguages_ShouldReturnListOfLanguages_WhenLanguagesExist()
+        public async void GetAllTitles_ShouldReturnListOfTitles_WhenTitlesExist()
         {
             //Arrange
             int id = 1;
-            List<Language> languageList = new()
+            List<Title> titleList = new()
             {
                 new()
                 {
-                    LanguageId = id,
+                    TitleId = id,
                     Name = "Test"
                 },
                 new()
                 {
-                    LanguageId = id + 1,
+                    TitleId = id + 1,
                     Name = "Test"
                 }
             };
             await _context.Database.EnsureDeletedAsync();
-            foreach (Language item in languageList)
+            foreach (Title item in titleList)
             {
-                _context.Language.Add(item);
+                _context.Title.Add(item);
             }
             await _context.SaveChangesAsync();
 
             //Act
-            var result = await _repository.SelectAllLanguages();
+            var result = await _repository.SelectAllTitles();
             //assert
             Assert.NotNull(result);
-            Assert.IsType<List<Language>>(result);
-            Assert.Equal(languageList.Count, result.Count);
+            Assert.IsType<List<Title>>(result);
+            Assert.Equal(titleList.Count, result.Count);
         }
         [Fact]
-        public async void GetAllLanguages_ShouldReturnEmptyListOfLanguages_WhenNoLanguagesExist()
+        public async void GetAllTitles_ShouldReturnEmptyListOfTitles_WhenNoTitlesExist()
         {
             //Arrange
             await _context.Database.EnsureDeletedAsync();
             await _context.SaveChangesAsync();
 
             //Act
-            var result = await _repository.SelectAllLanguages();
+            var result = await _repository.SelectAllTitles();
             //assert
             Assert.NotNull(result);
-            Assert.IsType<List<Language>>(result);
+            Assert.IsType<List<Title>>(result);
             Assert.Empty(result);
         }
 
         [Fact]
-        public async void GetLanguageById_ShouldReturnLanguage_WhenTheLanguageExists()
+        public async void GetTitleById_ShouldReturnTitle_WhenTheTitleExists()
         {
             //Arrange
             int id = 1;
-            Language language = new()
+            Title title = new()
             {
-                LanguageId = id,
+                TitleId = id,
                 Name = "Test"
             };
             await _context.Database.EnsureDeletedAsync();
-            _context.Language.Add(language);
+            _context.Title.Add(title);
             await _context.SaveChangesAsync();
 
             //Act
-            var result = await _repository.SelectLanguageById(id);
+            var result = await _repository.SelectTitleById(id);
             //assert
             Assert.NotNull(result);
-            Assert.IsType<Language>(result);
-            Assert.Equal(id, result.LanguageId);
+            Assert.IsType<Title>(result);
+            Assert.Equal(id, result.TitleId);
         }
         [Fact]
-        public async void GetLanguageById_ShouldReturnNull_WhenTheLanguageDoesNotExist()
+        public async void GetTitleById_ShouldReturnNull_WhenTheTitleDoesNotExist()
         {
             //Arrange
             int id = 1;
@@ -103,129 +103,128 @@ namespace H3LibraryProject.Tests.RepositoryTests
             await _context.SaveChangesAsync();
 
             //Act
-            var result = await _repository.SelectLanguageById(id);
+            var result = await _repository.SelectTitleById(id);
             //assert
             Assert.Null(result);
         }
 
         [Fact]
-        public async void CreateLanguage_ShouldReturnError_WhenLanguageAlreadyExist()
+        public async void CreateTitle_ShouldReturnError_WhenTitleAlreadyExist()
         {
             //Arrange
             int id = 1;
-            Language language = new()
+            Title title = new()
             {
-                LanguageId = id,
+                TitleId = id,
                 Name = "Test"
             };
 
             await _context.Database.EnsureDeletedAsync();
-            _context.Language.Add(language);
+            _context.Title.Add(title);
             await _context.SaveChangesAsync();
 
             //Act
-            async Task action() => await _repository.InsertNewLanguage(language);
+            async Task action() => await _repository.InsertNewTitle(title);
             //Assert
             var ex = await Assert.ThrowsAsync<ArgumentException>(action);
             Assert.Contains("An item with the same key has already been added", ex.Message);
         }
 
         [Fact]
-        public async void CreateLanguageType_ShouldReturnLanguageType_WhenErrorIsNotFired()
+        public async void CreateTitleType_ShouldReturnTitleType_WhenErrorIsNotFired()
         {
             //Arrange
-            Language language = new()
+            Title title = new()
             {
-                LanguageId = 1,
-                Name = "Test",
+                TitleId = 1,
+                Name = "Test"
             };
             await _context.Database.EnsureDeletedAsync();
 
             //Act
-            var result = await _repository.InsertNewLanguage(language);
+            var result = await _repository.InsertNewTitle(title);
             //Assert
             Assert.NotNull(result);
-            Assert.IsType<Language>(result);
+            Assert.IsType<Title>(result);
         }
 
         [Fact]
-        public async void UpdateLanguagee_ShouldReturnLanguage_WhenLanguageIsUpdated()
+        public async void UpdateTitlee_ShouldReturnTitle_WhenTitleIsUpdated()
         {
             //Arrange
             int id = 1;
-            string newName = "New name!";
-            Language language = new()
+            Title title = new()
             {
-                LanguageId = id,
+                TitleId = id,
                 Name = "Test"
             };
 
             await _context.Database.EnsureDeletedAsync();
-            _context.Language.Add(language);
+            _context.Title.Add(title);
             await _context.SaveChangesAsync();
 
-            language.Name = newName;
             //Act
-            var result = await _repository.UpdateExistingLanguage(id, language);
+            var result = await _repository.UpdateExistingTitle(id, title);
             //Assert
             Assert.NotNull(result);
-            Assert.IsType<Language>(result);
-            Assert.Equal(newName, result.Name);
+            Assert.IsType<Title>(result);
         }
 
         [Fact]
-        public async void UpdateLanguage_ShouldReturnNull_WhenNoLanguageIsUpdated()
+        public async void UpdateTitle_ShouldReturnNull_WhenNoTitleIsUpdated()
         {
             //Arrange
             int id = 1;
-            Language language = new()
+            Title title = new()
             {
-                LanguageId = id,
-                Name = "Test",
+                TitleId = id,
+                Name = "Test"
             };
 
             await _context.Database.EnsureDeletedAsync();
             await _context.SaveChangesAsync();
 
             //Act
-            var result = await _repository.UpdateExistingLanguage(id, language);
+            var result = await _repository.UpdateExistingTitle(id, title);
             //Assert
             Assert.Null(result);
         }
 
         [Fact]
-        public async void DeleteLanguagee_ShouldReturnNull_WhenNoLanguageIsDeleted()
+        public async void DeleteTitlee_ShouldReturnNull_WhenNoTitleIsDeleted()
         {
             //Arrange
             int id = 1;
             await _context.Database.EnsureDeletedAsync();
             await _context.SaveChangesAsync();
             //Act
-            var result = await _repository.DeleteLanguage(id);
+            var result = await _repository.DeleteTitle(id);
             //Assert
             Assert.Null(result);
         }
 
         [Fact]
-        public async void DeleteLanguage_ShouldReturnLanguage_WhenLanguageIsDeleted()
+        public async void DeleteTitle_ShouldReturnTitle_WhenTitleIsDeleted()
         {
             //Arrange
             int id = 1;
-            Language language = new()
+            Title title = new()
             {
-                LanguageId = id,
-                Name = "Test",
+                TitleId = id,
+                Name = "Test"
+
+
             };
 
             await _context.Database.EnsureDeletedAsync();
-            _context.Language.Add(language);
+            _context.Title.Add(title);
             await _context.SaveChangesAsync();
             //Act
-            var result = await _repository.DeleteLanguage(id);
+            var result = await _repository.DeleteTitle(id);
             //Assert
             Assert.NotNull(result);
-            Assert.IsType<Language>(result);
-            Assert.Equal(id, result.LanguageId);
+            Assert.IsType<Title>(result);
+            Assert.Equal(id, result.TitleId);
 
         }
     }

@@ -10,16 +10,16 @@ using Xunit;
 
 namespace H3LibraryProject.Tests.RepositoryTests
 {
-    public class LanguageRepositoryTests
+    public class PublisherRepositoryTests
     {
         private readonly DbContextOptions<LibraryContext> _options;
         private readonly LibraryContext _context;
-        private readonly LanguageRepository _repository;
+        private readonly PublisherRepository _repository;
 
-        public LanguageRepositoryTests()
+        public PublisherRepositoryTests()
         {
             _options = new DbContextOptionsBuilder<LibraryContext>()
-                .UseInMemoryDatabase(databaseName: "LibraryProjectLanguage")
+                .UseInMemoryDatabase(databaseName: "LibraryProjectPublisher")
                 .Options;
             _context = new(_options);
 
@@ -27,75 +27,75 @@ namespace H3LibraryProject.Tests.RepositoryTests
         }
 
         [Fact]
-        public async void GetAllLanguages_ShouldReturnListOfLanguages_WhenLanguagesExist()
+        public async void GetAllPublishers_ShouldReturnListOfPublishers_WhenPublishersExist()
         {
             //Arrange
             int id = 1;
-            List<Language> languageList = new()
+            List<Publisher> publisherList = new()
             {
                 new()
                 {
-                    LanguageId = id,
+                    PublisherId = id,
                     Name = "Test"
                 },
                 new()
                 {
-                    LanguageId = id + 1,
+                    PublisherId = id + 1,
                     Name = "Test"
                 }
             };
             await _context.Database.EnsureDeletedAsync();
-            foreach (Language item in languageList)
+            foreach (Publisher item in publisherList)
             {
-                _context.Language.Add(item);
+                _context.Publisher.Add(item);
             }
             await _context.SaveChangesAsync();
 
             //Act
-            var result = await _repository.SelectAllLanguages();
+            var result = await _repository.SelectAllPublishers();
             //assert
             Assert.NotNull(result);
-            Assert.IsType<List<Language>>(result);
-            Assert.Equal(languageList.Count, result.Count);
+            Assert.IsType<List<Publisher>>(result);
+            Assert.Equal(publisherList.Count, result.Count);
         }
         [Fact]
-        public async void GetAllLanguages_ShouldReturnEmptyListOfLanguages_WhenNoLanguagesExist()
+        public async void GetAllPublishers_ShouldReturnEmptyListOfPublishers_WhenNoPublishersExist()
         {
             //Arrange
             await _context.Database.EnsureDeletedAsync();
             await _context.SaveChangesAsync();
 
             //Act
-            var result = await _repository.SelectAllLanguages();
+            var result = await _repository.SelectAllPublishers();
             //assert
             Assert.NotNull(result);
-            Assert.IsType<List<Language>>(result);
+            Assert.IsType<List<Publisher>>(result);
             Assert.Empty(result);
         }
 
         [Fact]
-        public async void GetLanguageById_ShouldReturnLanguage_WhenTheLanguageExists()
+        public async void GetPublisherById_ShouldReturnPublisher_WhenThePublisherExists()
         {
             //Arrange
             int id = 1;
-            Language language = new()
+            Publisher publisher = new()
             {
-                LanguageId = id,
+                PublisherId = id,
                 Name = "Test"
             };
             await _context.Database.EnsureDeletedAsync();
-            _context.Language.Add(language);
+            _context.Publisher.Add(publisher);
             await _context.SaveChangesAsync();
 
             //Act
-            var result = await _repository.SelectLanguageById(id);
+            var result = await _repository.SelectPublisherById(id);
             //assert
             Assert.NotNull(result);
-            Assert.IsType<Language>(result);
-            Assert.Equal(id, result.LanguageId);
+            Assert.IsType<Publisher>(result);
+            Assert.Equal(id, result.PublisherId);
         }
         [Fact]
-        public async void GetLanguageById_ShouldReturnNull_WhenTheLanguageDoesNotExist()
+        public async void GetPublisherById_ShouldReturnNull_WhenThePublisherDoesNotExist()
         {
             //Arrange
             int id = 1;
@@ -103,129 +103,128 @@ namespace H3LibraryProject.Tests.RepositoryTests
             await _context.SaveChangesAsync();
 
             //Act
-            var result = await _repository.SelectLanguageById(id);
+            var result = await _repository.SelectPublisherById(id);
             //assert
             Assert.Null(result);
         }
 
         [Fact]
-        public async void CreateLanguage_ShouldReturnError_WhenLanguageAlreadyExist()
+        public async void CreatePublisher_ShouldReturnError_WhenPublisherAlreadyExist()
         {
             //Arrange
             int id = 1;
-            Language language = new()
+            Publisher publisher = new()
             {
-                LanguageId = id,
+                PublisherId = id,
                 Name = "Test"
             };
 
             await _context.Database.EnsureDeletedAsync();
-            _context.Language.Add(language);
+            _context.Publisher.Add(publisher);
             await _context.SaveChangesAsync();
 
             //Act
-            async Task action() => await _repository.InsertNewLanguage(language);
+            async Task action() => await _repository.InsertNewPublisher(publisher);
             //Assert
             var ex = await Assert.ThrowsAsync<ArgumentException>(action);
             Assert.Contains("An item with the same key has already been added", ex.Message);
         }
 
         [Fact]
-        public async void CreateLanguageType_ShouldReturnLanguageType_WhenErrorIsNotFired()
+        public async void CreatePublisherType_ShouldReturnPublisherType_WhenErrorIsNotFired()
         {
             //Arrange
-            Language language = new()
+            Publisher publisher = new()
             {
-                LanguageId = 1,
-                Name = "Test",
+                PublisherId = 1,
+                Name = "Test"
             };
             await _context.Database.EnsureDeletedAsync();
 
             //Act
-            var result = await _repository.InsertNewLanguage(language);
+            var result = await _repository.InsertNewPublisher(publisher);
             //Assert
             Assert.NotNull(result);
-            Assert.IsType<Language>(result);
+            Assert.IsType<Publisher>(result);
         }
 
         [Fact]
-        public async void UpdateLanguagee_ShouldReturnLanguage_WhenLanguageIsUpdated()
+        public async void UpdatePublishere_ShouldReturnPublisher_WhenPublisherIsUpdated()
         {
             //Arrange
             int id = 1;
-            string newName = "New name!";
-            Language language = new()
+            Publisher publisher = new()
             {
-                LanguageId = id,
+                PublisherId = id,
                 Name = "Test"
             };
 
             await _context.Database.EnsureDeletedAsync();
-            _context.Language.Add(language);
+            _context.Publisher.Add(publisher);
             await _context.SaveChangesAsync();
 
-            language.Name = newName;
             //Act
-            var result = await _repository.UpdateExistingLanguage(id, language);
+            var result = await _repository.UpdateExistingPublisher(id, publisher);
             //Assert
             Assert.NotNull(result);
-            Assert.IsType<Language>(result);
-            Assert.Equal(newName, result.Name);
+            Assert.IsType<Publisher>(result);
         }
 
         [Fact]
-        public async void UpdateLanguage_ShouldReturnNull_WhenNoLanguageIsUpdated()
+        public async void UpdatePublisher_ShouldReturnNull_WhenNoPublisherIsUpdated()
         {
             //Arrange
             int id = 1;
-            Language language = new()
+            Publisher publisher = new()
             {
-                LanguageId = id,
-                Name = "Test",
+                PublisherId = id,
+                Name = "Test"
             };
 
             await _context.Database.EnsureDeletedAsync();
             await _context.SaveChangesAsync();
 
             //Act
-            var result = await _repository.UpdateExistingLanguage(id, language);
+            var result = await _repository.UpdateExistingPublisher(id, publisher);
             //Assert
             Assert.Null(result);
         }
 
         [Fact]
-        public async void DeleteLanguagee_ShouldReturnNull_WhenNoLanguageIsDeleted()
+        public async void DeletePublishere_ShouldReturnNull_WhenNoPublisherIsDeleted()
         {
             //Arrange
             int id = 1;
             await _context.Database.EnsureDeletedAsync();
             await _context.SaveChangesAsync();
             //Act
-            var result = await _repository.DeleteLanguage(id);
+            var result = await _repository.DeletePublisherById(id);
             //Assert
             Assert.Null(result);
         }
 
         [Fact]
-        public async void DeleteLanguage_ShouldReturnLanguage_WhenLanguageIsDeleted()
+        public async void DeletePublisher_ShouldReturnPublisher_WhenPublisherIsDeleted()
         {
             //Arrange
             int id = 1;
-            Language language = new()
+            Publisher publisher = new()
             {
-                LanguageId = id,
-                Name = "Test",
+                PublisherId = id,
+                Name = "Test"
+
+
             };
 
             await _context.Database.EnsureDeletedAsync();
-            _context.Language.Add(language);
+            _context.Publisher.Add(publisher);
             await _context.SaveChangesAsync();
             //Act
-            var result = await _repository.DeleteLanguage(id);
+            var result = await _repository.DeletePublisherById(id);
             //Assert
             Assert.NotNull(result);
-            Assert.IsType<Language>(result);
-            Assert.Equal(id, result.LanguageId);
+            Assert.IsType<Publisher>(result);
+            Assert.Equal(id, result.PublisherId);
 
         }
     }
