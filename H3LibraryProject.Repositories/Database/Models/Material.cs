@@ -6,12 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace H3LibraryProject.Repositories.Database
 {
     public class Material
     {
-
         [Key]
         public int MaterialId { get; set; }
 
@@ -23,6 +21,8 @@ namespace H3LibraryProject.Repositories.Database
 
         [Column(TypeName = "bit")] //hedder det det i SQL? Skal lige checkes. Vi må teste det ad. /RS
         public bool Home { get; set; }
+
+        public Title BookTitle { get; set; }
 
         //giver det mening at lave en list of materialer? Ja, egentlig. Men den bør vel ligge på Titles, i virkeligheden.
     }

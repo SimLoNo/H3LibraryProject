@@ -4,14 +4,16 @@ using H3LibraryProject.Repositories.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace H3LibraryProject.Repositories.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    partial class LibraryContextModelSnapshot : ModelSnapshot
+    [Migration("20220531081516_AddedFkToLoan")]
+    partial class AddedFkToLoan
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -74,8 +76,6 @@ namespace H3LibraryProject.Repositories.Migrations
                     b.HasKey("LoanId");
 
                     b.HasIndex("LoanerId");
-
-                    b.HasIndex("MaterialId");
 
                     b.ToTable("Loan");
                 });
@@ -266,15 +266,7 @@ namespace H3LibraryProject.Repositories.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("H3LibraryProject.Repositories.Database.Material", "MaterialLoaned")
-                        .WithMany()
-                        .HasForeignKey("MaterialId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("LoanerLoaning");
-
-                    b.Navigation("MaterialLoaned");
                 });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Loaner", b =>
@@ -296,13 +288,11 @@ namespace H3LibraryProject.Repositories.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("H3LibraryProject.Repositories.Database.Title", "BookTitle")
+                    b.HasOne("H3LibraryProject.Repositories.Database.Title", null)
                         .WithMany("Materials")
                         .HasForeignKey("TitleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("BookTitle");
                 });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Title", b =>

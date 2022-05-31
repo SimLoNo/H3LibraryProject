@@ -113,7 +113,7 @@ namespace H3LibraryProject.Services.Services
                     MaterialId = loan.MaterialId,
                     LoanDate = loan.LoanDate,
                     ReturnDate = loan.ReturnDate
-                }).ToList() : null,
+                }).ToList() : new(),
 
                 TypeOfLoaner = loaner.TypeOfLoaner != null ? new LoanerLoanerTypeResponse
                 {

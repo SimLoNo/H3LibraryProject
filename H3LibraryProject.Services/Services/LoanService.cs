@@ -97,7 +97,20 @@ namespace H3LibraryProject.Services.Services
                 LoanerId = loan.LoanerId,
                 MaterialId=loan.MaterialId,
                 LoanDate=loan.LoanDate,
-                ReturnDate=loan.ReturnDate
+                ReturnDate=loan.ReturnDate,
+                Loaner = loan.LoanerLoaning != null ? new LoanLoanerResponse{
+                    LoanerId=loan.LoanerLoaning.LoanerId,
+                    LoanerTypeId=loan.LoanerLoaning.LoanerTypeId,
+                    Name=loan.LoanerLoaning.Name,
+                    LoanerTypeName = loan.LoanerLoaning.TypeOfLoaner.Name
+                } : null,
+                Material = loan.MaterialLoaned != null ? new LoanMaterialResponse
+                {
+                    MaterialId=loan.MaterialLoaned.MaterialId,
+                    TitleId=loan.MaterialLoaned.TitleId,
+                    LocationId =loan.MaterialLoaned.LocationId,
+                    TitleName = loan.MaterialLoaned.BookTitle.Name
+                } : null
             };
 
         }

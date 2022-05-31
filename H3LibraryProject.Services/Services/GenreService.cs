@@ -101,7 +101,7 @@ namespace H3LibraryProject.Services.Services
                     Pages = t.Pages,
                     PublisherId = t.PublisherId,
                     GenreId=t.GenreId
-                }).ToList() : null
+                }).ToList() : new()
             };
 
         }

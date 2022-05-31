@@ -38,6 +38,8 @@ namespace H3LibraryProject.Repositories.Repositories
         public async Task<List<Loan>> SelectAllLoans()
         {
             return await _context.Loan
+                .Include(b => b.LoanerLoaning).ThenInclude(b => b.TypeOfLoaner)
+                .Include(b => b.MaterialLoaned).ThenInclude(b => b.BookTitle)
                 .ToListAsync(); 
         }
 

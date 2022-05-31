@@ -66,6 +66,8 @@ namespace H3LibraryProject.API
             services.AddScoped<INationalityService, NationalityService>();
             services.AddScoped<IPublisherRepository, PublisherRepository>();
             services.AddScoped<IPublisherService, PublisherService>();
+            services.AddScoped<ILoanRepository, LoanRepository>();
+            services.AddScoped<ILoanService, LoanService>();
 
         }
 
