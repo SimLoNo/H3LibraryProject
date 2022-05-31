@@ -149,7 +149,6 @@ namespace H3LibraryProject.Tests.ServiceTests
         public async void CreateLoan_ShouldReturnNUll_WhenLoanIsNotCreated()
         {
             //Arrange
-            string name = "Test";
             LoanRequest request = new()
             {
                 LoanerId = 1,
@@ -227,7 +226,6 @@ namespace H3LibraryProject.Tests.ServiceTests
         {
             //Arrange
             int id = 1;
-            string name = "Test";
             Loan loan = new()
             {
                 LoanId = id,

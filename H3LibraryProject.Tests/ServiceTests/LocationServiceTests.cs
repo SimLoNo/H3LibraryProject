@@ -135,7 +135,6 @@ namespace H3LibraryProject.Tests.ServiceTests
         public async void CreateLocation_ShouldReturnNUll_WhenLocationIsNotCreated()
         {
             //Arrange
-            string name = "Test";
             LocationRequest request = new()
             {
                 Name = "Test"
