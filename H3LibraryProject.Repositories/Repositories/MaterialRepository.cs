@@ -42,7 +42,6 @@ namespace H3LibraryProject.Repositories.Repositories
         public async Task<List<Material>> SelectAllMaterials()
         {
             return await _context.Material
-                .Include(b => b.MaterialId)
                 .OrderBy(b => b.LocationId)
                 .ToListAsync();
         }

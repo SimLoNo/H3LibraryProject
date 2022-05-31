@@ -53,7 +53,7 @@ namespace H3LibraryProject.Tests.RepositoryTests
             await _context.Database.EnsureDeletedAsync();
             foreach (Loaner item in loanerList)
             {
-                _context.Loaners.Add(item);
+                _context.Loaner.Add(item);
             }
             _context.LoanerTypes.Add(loanerType);
             await _context.SaveChangesAsync();
@@ -98,7 +98,7 @@ namespace H3LibraryProject.Tests.RepositoryTests
                 Name = "Test",
             };
             await _context.Database.EnsureDeletedAsync();
-            _context.Loaners.Add(loaner);
+            _context.Loaner.Add(loaner);
             _context.LoanerTypes.Add(loanerType);
             await _context.SaveChangesAsync();
 
@@ -137,7 +137,7 @@ namespace H3LibraryProject.Tests.RepositoryTests
             };
 
             await _context.Database.EnsureDeletedAsync();
-            _context.Loaners.Add(loaner);
+            _context.Loaner.Add(loaner);
             await _context.SaveChangesAsync();
 
             //Act
@@ -185,7 +185,7 @@ namespace H3LibraryProject.Tests.RepositoryTests
             };
 
             await _context.Database.EnsureDeletedAsync();
-            _context.Loaners.Add(loaner);
+            _context.Loaner.Add(loaner);
             _context.LoanerTypes.Add(loanerType);
             await _context.SaveChangesAsync();
 
@@ -252,7 +252,7 @@ namespace H3LibraryProject.Tests.RepositoryTests
             };
 
             await _context.Database.EnsureDeletedAsync();
-            _context.Loaners.Add(loaner);
+            _context.Loaner.Add(loaner);
             _context.LoanerTypes.Add(loanerType);
             await _context.SaveChangesAsync();
             //Act
