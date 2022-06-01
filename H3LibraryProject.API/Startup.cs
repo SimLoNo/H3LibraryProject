@@ -52,7 +52,12 @@ namespace H3LibraryProject.API
 
             services.AddScoped<ILoanerTypeRepository, LoanerTypeRepository>();
             services.AddScoped<ILoanerTypeService, LoanerTypeService>();
-
+            services.AddScoped<IAuthorRepository, AuthorRepository>();
+            services.AddScoped<IAuthorService, AuthorService>();
+            services.AddScoped<ITitleRepository, TitleRepository>();
+            services.AddScoped<ITitleService, TitleService>();
+            services.AddScoped<IMaterialRepository, MaterialRepository>();
+            services.AddScoped<IMaterialService, MaterialService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
