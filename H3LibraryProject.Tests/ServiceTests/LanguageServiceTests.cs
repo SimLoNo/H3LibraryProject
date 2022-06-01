@@ -38,7 +38,7 @@ namespace H3LibraryProject.Tests.ServiceTests
                 };
 
                 _mockRepository
-                    .Setup(x => x.CreateLanguage(It.IsAny<Language>()))
+                    .Setup(x => x.InsertNewLanguage(It.IsAny<Language>()))
                     .ReturnsAsync(language);
                 //Act
                 var result = await _service.CreateLanguage(request);
@@ -58,7 +58,7 @@ namespace H3LibraryProject.Tests.ServiceTests
                 };
 
                 _mockRepository
-                    .Setup(x => x.CreateLanguage(It.IsAny<Language>()))
+                    .Setup(x => x.InsertNewLanguage(It.IsAny<Language>()))
                     .ReturnsAsync(() => null);
                 //Act
                 var result = await _service.CreateLanguage(request);

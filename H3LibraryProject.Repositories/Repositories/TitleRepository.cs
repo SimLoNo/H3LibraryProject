@@ -43,7 +43,7 @@ namespace H3LibraryProject.Repositories.Repositories
         public async Task<List<Title>> SelectAllTitles()
         {
             return await _context.Title
-                .Include(b => b.Name) //bruger Linq
+                //.Include(b => b.Name) //bruger Linq. Name er ikke en FK.
                 .OrderBy(b => b.LanguageId)
                 .ThenBy(b => b.AuthorId)
                 .ThenBy(b => b.RYear)

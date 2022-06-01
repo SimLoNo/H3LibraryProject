@@ -16,7 +16,7 @@ namespace H3LibraryProject.Repositories.Database
         [Column(TypeName = "int")]
         public int LoanerId { get; set; }
 
-        [Column(TypeName = "smallint")]
+        [Column(TypeName = "int")]
         public int MaterialId { get; set; }
 
         [Column(TypeName = "date")] //Ideel? Kan diskuteres
@@ -24,6 +24,9 @@ namespace H3LibraryProject.Repositories.Database
 
         [Column(TypeName = "date")] //Ideel? Kan diskuteres
         public DateTime ReturnDate { get; set; }
+
+        public Loaner LoanerLoaning { get; set; }
+        public Material MaterialLoaned { get; set; }
 
     }
 }

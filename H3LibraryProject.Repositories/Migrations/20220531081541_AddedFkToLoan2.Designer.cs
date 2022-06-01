@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace H3LibraryProject.Repositories.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20220520074112_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220531081541_AddedFkToLoan2")]
+    partial class AddedFkToLoan2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -51,7 +51,7 @@ namespace H3LibraryProject.Repositories.Migrations
 
                     b.HasKey("LanguageId");
 
-                    b.ToTable("Languages");
+                    b.ToTable("Language");
                 });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Loan", b =>
@@ -67,15 +67,19 @@ namespace H3LibraryProject.Repositories.Migrations
                     b.Property<int>("LoanerId")
                         .HasColumnType("int");
 
-                    b.Property<short>("MaterialId")
-                        .HasColumnType("smallint");
+                    b.Property<int>("MaterialId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("ReturnDate")
                         .HasColumnType("date");
 
                     b.HasKey("LoanId");
 
-                    b.ToTable("Loans");
+                    b.HasIndex("LoanerId");
+
+                    b.HasIndex("MaterialId");
+
+                    b.ToTable("Loan");
                 });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Loaner", b =>
@@ -91,9 +95,14 @@ namespace H3LibraryProject.Repositories.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(32)");
 
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(32)");
+
                     b.HasKey("LoanerId");
 
-                    b.ToTable("Loaners");
+                    b.HasIndex("LoanerTypeId");
+
+                    b.ToTable("Loaner");
                 });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.LoanerType", b =>
@@ -219,7 +228,7 @@ namespace H3LibraryProject.Repositories.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AuthorId")
+                    b.Property<int>("AuthorId")
                         .HasColumnType("int");
 
                     b.Property<int>("GenreId")
@@ -251,6 +260,36 @@ namespace H3LibraryProject.Repositories.Migrations
                     b.ToTable("Title");
                 });
 
+            modelBuilder.Entity("H3LibraryProject.Repositories.Database.Loan", b =>
+                {
+                    b.HasOne("H3LibraryProject.Repositories.Database.Loaner", "LoanerLoaning")
+                        .WithMany("Loans")
+                        .HasForeignKey("LoanerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("H3LibraryProject.Repositories.Database.Material", "MaterialLoaned")
+                        .WithMany()
+                        .HasForeignKey("MaterialId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("LoanerLoaning");
+
+                    b.Navigation("MaterialLoaned");
+                });
+
+            modelBuilder.Entity("H3LibraryProject.Repositories.Database.Loaner", b =>
+                {
+                    b.HasOne("H3LibraryProject.Repositories.Database.LoanerType", "TypeOfLoaner")
+                        .WithMany()
+                        .HasForeignKey("LoanerTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TypeOfLoaner");
+                });
+
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Material", b =>
                 {
                     b.HasOne("H3LibraryProject.Repositories.Database.Location", null)
@@ -270,7 +309,9 @@ namespace H3LibraryProject.Repositories.Migrations
                 {
                     b.HasOne("H3LibraryProject.Repositories.Database.Models.Author", null)
                         .WithMany("Titles")
-                        .HasForeignKey("AuthorId");
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("H3LibraryProject.Repositories.Database.Genre", null)
                         .WithMany("Titles")
@@ -293,6 +334,11 @@ namespace H3LibraryProject.Repositories.Migrations
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Language", b =>
                 {
                     b.Navigation("Titles");
+                });
+
+            modelBuilder.Entity("H3LibraryProject.Repositories.Database.Loaner", b =>
+                {
+                    b.Navigation("Loans");
                 });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Location", b =>
