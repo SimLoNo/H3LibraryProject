@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace H3LibraryProject.Repositories.Migrations
 {
-    public partial class initialCreate : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,9 +16,9 @@ namespace H3LibraryProject.Repositories.Migrations
                     LName = table.Column<string>(type: "nvarchar(32)", nullable: true),
                     FName = table.Column<string>(type: "nvarchar(32)", nullable: false),
                     MName = table.Column<string>(type: "nvarchar(32)", nullable: true),
-                    BYear = table.Column<short>(type: "smallint", nullable: false),
-                    DYear = table.Column<short>(type: "smallint", nullable: true),
-                    Nationality = table.Column<short>(type: "smallint", nullable: false)
+                    BYear = table.Column<int>(type: "int", nullable: false),
+                    DYear = table.Column<int>(type: "int", nullable: true),
+                    NationalityId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -122,12 +122,6 @@ namespace H3LibraryProject.Repositories.Migrations
                 {
                     table.PrimaryKey("PK_Title", x => x.TitleId);
                     table.ForeignKey(
-                        name: "FK_Title_Author_AuthorId",
-                        column: x => x.AuthorId,
-                        principalTable: "Author",
-                        principalColumn: "AuthorId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_Title_Genre_GenreId",
                         column: x => x.GenreId,
                         principalTable: "Genre",
@@ -159,6 +153,30 @@ namespace H3LibraryProject.Repositories.Migrations
                         column: x => x.LoanerTypeId,
                         principalTable: "LoanerTypes",
                         principalColumn: "LoanerTypeId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AuthorTitle",
+                columns: table => new
+                {
+                    AuthorsAuthorId = table.Column<int>(type: "int", nullable: false),
+                    TitlesTitleId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AuthorTitle", x => new { x.AuthorsAuthorId, x.TitlesTitleId });
+                    table.ForeignKey(
+                        name: "FK_AuthorTitle_Author_AuthorsAuthorId",
+                        column: x => x.AuthorsAuthorId,
+                        principalTable: "Author",
+                        principalColumn: "AuthorId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AuthorTitle_Title_TitlesTitleId",
+                        column: x => x.TitlesTitleId,
+                        principalTable: "Title",
+                        principalColumn: "TitleId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -196,7 +214,7 @@ namespace H3LibraryProject.Repositories.Migrations
                     LoanId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     LoanerId = table.Column<int>(type: "int", nullable: false),
-                    MaterialId = table.Column<short>(type: "smallint", nullable: false),
+                    MaterialId = table.Column<int>(type: "int", nullable: false),
                     LoanDate = table.Column<DateTime>(type: "date", nullable: false),
                     ReturnDate = table.Column<DateTime>(type: "date", nullable: false)
                 },
@@ -209,12 +227,28 @@ namespace H3LibraryProject.Repositories.Migrations
                         principalTable: "Loaner",
                         principalColumn: "LoanerId",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Loan_Material_MaterialId",
+                        column: x => x.MaterialId,
+                        principalTable: "Material",
+                        principalColumn: "MaterialId",
+                        onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AuthorTitle_TitlesTitleId",
+                table: "AuthorTitle",
+                column: "TitlesTitleId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Loan_LoanerId",
                 table: "Loan",
                 column: "LoanerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Loan_MaterialId",
+                table: "Loan",
+                column: "MaterialId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Loaner_LoanerTypeId",
@@ -232,11 +266,6 @@ namespace H3LibraryProject.Repositories.Migrations
                 column: "TitleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Title_AuthorId",
-                table: "Title",
-                column: "AuthorId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Title_GenreId",
                 table: "Title",
                 column: "GenreId");
@@ -250,10 +279,10 @@ namespace H3LibraryProject.Repositories.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Loan");
+                name: "AuthorTitle");
 
             migrationBuilder.DropTable(
-                name: "Material");
+                name: "Loan");
 
             migrationBuilder.DropTable(
                 name: "Nationality");
@@ -262,19 +291,22 @@ namespace H3LibraryProject.Repositories.Migrations
                 name: "Publisher");
 
             migrationBuilder.DropTable(
+                name: "Author");
+
+            migrationBuilder.DropTable(
                 name: "Loaner");
+
+            migrationBuilder.DropTable(
+                name: "Material");
+
+            migrationBuilder.DropTable(
+                name: "LoanerTypes");
 
             migrationBuilder.DropTable(
                 name: "Location");
 
             migrationBuilder.DropTable(
                 name: "Title");
-
-            migrationBuilder.DropTable(
-                name: "LoanerTypes");
-
-            migrationBuilder.DropTable(
-                name: "Author");
 
             migrationBuilder.DropTable(
                 name: "Genre");

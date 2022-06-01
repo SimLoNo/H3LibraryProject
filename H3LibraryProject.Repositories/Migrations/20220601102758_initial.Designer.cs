@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace H3LibraryProject.Repositories.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20220601075359_test1")]
-    partial class test1
+    [Migration("20220601102758_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -82,8 +82,8 @@ namespace H3LibraryProject.Repositories.Migrations
                     b.Property<int>("LoanerId")
                         .HasColumnType("int");
 
-                    b.Property<short>("MaterialId")
-                        .HasColumnType("smallint");
+                    b.Property<int>("MaterialId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("ReturnDate")
                         .HasColumnType("date");
@@ -91,6 +91,8 @@ namespace H3LibraryProject.Repositories.Migrations
                     b.HasKey("LoanId");
 
                     b.HasIndex("LoanerId");
+
+                    b.HasIndex("MaterialId");
 
                     b.ToTable("Loan");
                 });
@@ -180,11 +182,11 @@ namespace H3LibraryProject.Repositories.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<short>("BYear")
-                        .HasColumnType("smallint");
+                    b.Property<int>("BYear")
+                        .HasColumnType("int");
 
-                    b.Property<short?>("DYear")
-                        .HasColumnType("smallint");
+                    b.Property<int?>("DYear")
+                        .HasColumnType("int");
 
                     b.Property<string>("FName")
                         .IsRequired()
@@ -196,8 +198,8 @@ namespace H3LibraryProject.Repositories.Migrations
                     b.Property<string>("MName")
                         .HasColumnType("nvarchar(32)");
 
-                    b.Property<short>("NationalityId")
-                        .HasColumnType("smallint");
+                    b.Property<int>("NationalityId")
+                        .HasColumnType("int");
 
                     b.HasKey("AuthorId");
 
@@ -288,11 +290,21 @@ namespace H3LibraryProject.Repositories.Migrations
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Loan", b =>
                 {
-                    b.HasOne("H3LibraryProject.Repositories.Database.Loaner", null)
+                    b.HasOne("H3LibraryProject.Repositories.Database.Loaner", "LoanerLoaning")
                         .WithMany("Loans")
                         .HasForeignKey("LoanerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("H3LibraryProject.Repositories.Database.Material", "MaterialLoaned")
+                        .WithMany()
+                        .HasForeignKey("MaterialId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("LoanerLoaning");
+
+                    b.Navigation("MaterialLoaned");
                 });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Loaner", b =>
@@ -314,11 +326,13 @@ namespace H3LibraryProject.Repositories.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("H3LibraryProject.Repositories.Database.Title", null)
+                    b.HasOne("H3LibraryProject.Repositories.Database.Title", "BookTitle")
                         .WithMany("Materials")
                         .HasForeignKey("TitleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("BookTitle");
                 });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Title", b =>

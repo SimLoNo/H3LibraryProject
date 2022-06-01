@@ -39,7 +39,7 @@ namespace H3LibraryProject.Repositories.Repositories
         {
             return await _context.Loan
                 .Include(b => b.LoanerLoaning).ThenInclude(b => b.TypeOfLoaner)
-                .Include(b => b.MaterialLoaned).ThenInclude(b => b.BookTitle)
+                .Include(b => b.MaterialLoaned).ThenInclude(b => b.Title)
                 .ToListAsync(); 
         }
 

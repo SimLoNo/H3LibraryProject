@@ -117,13 +117,13 @@ namespace H3LibraryProject.Services.Services
                 DYear = author.DYear,
                 NationalityId = author.NationalityId,
 
-                Titles = author.Titles.Select(title => new AuthorTitleResponse
+                Titles =author.Titles != null? author.Titles.Select(title => new AuthorTitleResponse
                 { 
                 TitleId = title.TitleId,
                 Name = title.Name,
                 Pages = title.Pages,
                 RYear = title.RYear
-                }).ToList()
+                }).ToList() : new()
             };
         }
     }

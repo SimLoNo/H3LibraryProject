@@ -13,7 +13,7 @@ namespace H3LibraryProject.Services.Services
     public interface ITitleService
     {
         //Create
-        Task<TitleResponse> CreateTitle(TitleRequest newBook);
+        Task<TitleResponse> CreateTitle(TitleRequest newTitle);
 
         //Read
         Task<List<TitleResponse>> GetAllTitles();
