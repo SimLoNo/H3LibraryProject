@@ -26,7 +26,7 @@ namespace H3LibraryProject.API.DTOs
 
         [Required]
         [StringLength(32, ErrorMessage = "Nationalitet max 32 anslag")]
-        public string Nationality { get; set; }
+        public int NationalityId { get; set; }
 
     }
 }

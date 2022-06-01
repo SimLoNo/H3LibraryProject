@@ -15,7 +15,7 @@ namespace H3LibraryProject.API.DTOs
         public string MName { get; set; } //Funktionelt implicit nullable, da en string bare kan være ""
         public int BYear { get; set; }
         public int? DYear { get; set; }
-        public string Nationality { get; set; }
+        public int NationalityId { get; set; }
 
         public List<AuthorTitleResponse> Titles { get; set; } = new List<AuthorTitleResponse>();
         //Sådan har den virket i mit program tidligere.
