@@ -24,7 +24,9 @@ namespace H3LibraryProject.API.DTOs
         [Required]
         [Range(1, 1000000000, ErrorMessage = "Genre-ID must be above 0")]
         public int GenreId { get; set; }
-
+        [Required]
+        [Range(1,10000, ErrorMessage ="Publisher minimum 1")]
+        public int PublisherId { get; set; }
         [Required]
         [Range(1, 1000000000, ErrorMessage = "Forfatter-ID must be above 0")]
         public int AuthorId { get; set; } //Så er der plads til en millard forfattere - burde være nok

@@ -72,7 +72,6 @@ namespace H3LibraryProject.API.Controllers
             }
             catch (Exception ex)
             {
-
                 return Problem(ex.Message);
             }
         }

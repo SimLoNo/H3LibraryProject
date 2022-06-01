@@ -49,6 +49,7 @@ namespace H3LibraryProject.Services.Services
                 RYear = title.RYear,
                 LanguageId = title.LanguageId,
                 GenreId = title.GenreId,
+                PublisherId = title.PublisherId,
 
 
                 Author = title.Authors != null ? title.Authors.Select(AuthorObj => new TitleAuthorResponse //Modsat AuthorTitleResponse ikke liste
@@ -74,7 +75,8 @@ namespace H3LibraryProject.Services.Services
                 RYear = titleRequest.RYear,
                 LanguageId = titleRequest.LanguageId,
                 GenreId = titleRequest.GenreId,
-                AuthorId = titleRequest.AuthorId
+                AuthorId = titleRequest.AuthorId,
+                PublisherId = titleRequest.PublisherId
             };
         }
 
