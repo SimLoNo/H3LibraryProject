@@ -1,0 +1,10 @@
+<nav>
+<mat-form-field appearance="fill">
+  <mat-label>admin page</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let page of adminPages" [value]="page">
+      <a href="/admin/{{page}}">{{page}}</a>
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+</nav>
