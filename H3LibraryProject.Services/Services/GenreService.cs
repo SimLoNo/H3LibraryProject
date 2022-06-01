@@ -13,12 +13,11 @@ namespace H3LibraryProject.Services.Services
     {
         Task<List<GenreResponse>> GetAllGenres();
         Task<GenreResponse> GetGenreById(int id);
-        Task<List<GenreResponse>> GetGenreByName(string name);
         Task<GenreResponse> CreateGenre(GenreRequest request);
         Task<GenreResponse> UpdateGenre(int id, GenreRequest request);
         Task<GenreResponse> DeleteGenre(int id);
     }
-    public class GenreService
+    public class GenreService : IGenreService
     {
         private readonly IGenreRepository _repository;
 
@@ -102,7 +101,7 @@ namespace H3LibraryProject.Services.Services
                     Pages = t.Pages,
                     PublisherId = t.PublisherId,
                     GenreId=t.GenreId
-                }).ToList() : null
+                }).ToList() : new()
             };
 
         }

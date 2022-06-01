@@ -80,8 +80,8 @@ namespace H3LibraryProject.Repositories.Migrations
                     b.Property<int>("LoanerId")
                         .HasColumnType("int");
 
-                    b.Property<short>("MaterialId")
-                        .HasColumnType("smallint");
+                    b.Property<int>("MaterialId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("ReturnDate")
                         .HasColumnType("date");
@@ -89,6 +89,8 @@ namespace H3LibraryProject.Repositories.Migrations
                     b.HasKey("LoanId");
 
                     b.HasIndex("LoanerId");
+
+                    b.HasIndex("MaterialId");
 
                     b.ToTable("Loan");
                 });
@@ -269,28 +271,23 @@ namespace H3LibraryProject.Repositories.Migrations
                     b.ToTable("Title");
                 });
 
-            modelBuilder.Entity("AuthorTitle", b =>
-                {
-                    b.HasOne("H3LibraryProject.Repositories.Database.Models.Author", null)
-                        .WithMany()
-                        .HasForeignKey("AuthorsAuthorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("H3LibraryProject.Repositories.Database.Title", null)
-                        .WithMany()
-                        .HasForeignKey("TitlesTitleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Loan", b =>
                 {
-                    b.HasOne("H3LibraryProject.Repositories.Database.Loaner", null)
+                    b.HasOne("H3LibraryProject.Repositories.Database.Loaner", "LoanerLoaning")
                         .WithMany("Loans")
                         .HasForeignKey("LoanerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("H3LibraryProject.Repositories.Database.Material", "MaterialLoaned")
+                        .WithMany()
+                        .HasForeignKey("MaterialId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("LoanerLoaning");
+
+                    b.Navigation("MaterialLoaned");
                 });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Loaner", b =>
@@ -312,15 +309,23 @@ namespace H3LibraryProject.Repositories.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("H3LibraryProject.Repositories.Database.Title", null)
+                    b.HasOne("H3LibraryProject.Repositories.Database.Title", "BookTitle")
                         .WithMany("Materials")
                         .HasForeignKey("TitleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("BookTitle");
                 });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Title", b =>
                 {
+                    b.HasOne("H3LibraryProject.Repositories.Database.Models.Author", null)
+                        .WithMany("Titles")
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("H3LibraryProject.Repositories.Database.Genre", null)
                         .WithMany("Titles")
                         .HasForeignKey("GenreId")
@@ -345,6 +350,11 @@ namespace H3LibraryProject.Repositories.Migrations
                 });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Loaner", b =>
+                {
+                    b.Navigation("Loans");
+                });
+
+            modelBuilder.Entity("H3LibraryProject.Repositories.Database.Location", b =>
                 {
                     b.Navigation("Loans");
                 });

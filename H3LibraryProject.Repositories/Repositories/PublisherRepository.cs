@@ -39,7 +39,6 @@ namespace H3LibraryProject.Repositories.Repositories
         {
 
             return await _context.Publisher
-                .Include(b => b.Name)
                 .ToListAsync();
         }       
         public async Task<Publisher> SelectPublisherById(int publisherId)
