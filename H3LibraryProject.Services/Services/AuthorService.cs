@@ -115,8 +115,15 @@ namespace H3LibraryProject.Services.Services
                 MName = author.MName,
                 BYear = author.BYear,
                 DYear = author.DYear,
-                NationalityId = author.NationalityId
+                NationalityId = author.NationalityId,
 
+                Titles = author.Titles.Select(title => new AuthorTitleResponse
+                { 
+                TitleId = title.TitleId,
+                Name = title.Name,
+                Pages = title.Pages,
+                RYear = title.RYear
+                }).ToList()
             };
         }
     }
