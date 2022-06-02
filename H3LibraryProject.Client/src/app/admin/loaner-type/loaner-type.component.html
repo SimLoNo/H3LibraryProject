@@ -10,33 +10,28 @@
     </mat-form-field>
     </nav>
   <div class="infoDiv">
-    <h1>Administrer nationaliteter</h1>
-    <div class="centerDiv">
+    <h1>Administrer låner typer</h1>
+    <div class="inputField">
       <label>Navn: </label>
-      <input [(ngModel)]="currentNationality.name">
+      <input [(ngModel)]="currentLoanerType.name">
     </div>
     <div class="centerDiv">
-      <button (click)="deleteNationality()">slet</button>
-      <button (click)="saveNationality()">gem</button>
+      <button (click)="deleteLoanerType()">slet</button>
+      <button (click)="saveLoanerType()">gem</button>
     </div>
     <div >
       <div class="centerDiv">
         <mat-form-field appearance="fill">
-          <mat-label>Nationaliteter</mat-label>
+          <mat-label>Låner type</mat-label>
           <mat-select>
             <mat-option (click)="reset()">
               <p>Ny</p>
             </mat-option>
-            <mat-option *ngFor="let nationality of nationalities" [value]="nationality" (click)="edit(nationality)">
-              <p>{{nationality.name}}</p>
+            <mat-option *ngFor="let loanerType of loanerTypes" [value]="loanerType" (click)="edit(loanerType)">
+              <p>{{loanerType.name}}</p>
             </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
   </div>
 </div>
-
-
-
-
-

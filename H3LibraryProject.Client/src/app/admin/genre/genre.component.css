@@ -13,7 +13,7 @@
 
 }
 input{
-  width: 80%;
+  width: 70%;
 }
 
 .infoDiv{
@@ -22,10 +22,16 @@ input{
   margin-bottom: 5%;
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
+  text-align: left;
 }
 
 nav{
   background-color: rebeccapurple;
+}
+input{
+  float: right;
+}
 
+.inputField{
+  margin-bottom: 2%;
 }

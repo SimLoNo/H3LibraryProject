@@ -7,7 +7,6 @@ import {HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class NationalityService {
-
   private httpOptions = {
     headers: new HttpHeaders({
       'content-type': 'application/json'

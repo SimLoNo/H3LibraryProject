@@ -13,6 +13,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NationalityComponent } from './admin/nationality/nationality.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { GenreComponent } from './admin/genre/genre.component';
+import { LanguageComponent } from './admin/language/language.component';
+import { LoanerTypeComponent } from './admin/loaner-type/loaner-type.component';
 
 
 
@@ -20,7 +24,10 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    NationalityComponent
+    NationalityComponent,
+    GenreComponent,
+    LanguageComponent,
+    LoanerTypeComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
 
   ],
   providers: [],
