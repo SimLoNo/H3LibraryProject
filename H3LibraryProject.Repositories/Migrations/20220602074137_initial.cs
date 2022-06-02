@@ -235,6 +235,91 @@ namespace H3LibraryProject.Repositories.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Author",
+                columns: new[] { "AuthorId", "BYear", "DYear", "FName", "LName", "MName", "NationalityId" },
+                values: new object[,]
+                {
+                    { 3, 1821, 1881, "Fjodor", "Dostoyevskij", "Mikhájlovitj", 5 },
+                    { 4, 1960, null, "Elsebeth", "Egholm", null, 1 },
+                    { 2, 1805, 1875, "Hans", "Andersen", "Christian", 1 },
+                    { 1, 973, 1031, "Shibiku", "Murasaki", null, 2 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Genre",
+                columns: new[] { "GenreId", "LeasePeriod", "Name" },
+                values: new object[,]
+                {
+                    { 1, (short)30, "Skønlitteratur" },
+                    { 2, (short)7, "Quicklån" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Language",
+                columns: new[] { "LanguageId", "Name" },
+                values: new object[,]
+                {
+                    { 2, "Engelsk" },
+                    { 1, "Dansk" },
+                    { 3, "Japansk" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Location",
+                columns: new[] { "LocationId", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Bibliotek Vest" },
+                    { 2, "Bibliotek Øst" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Nationality",
+                columns: new[] { "NationalityId", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Danmark" },
+                    { 2, "Japan" },
+                    { 3, "Storbritanien" },
+                    { 4, "USA" },
+                    { 5, "Rusland" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Publisher",
+                columns: new[] { "PublisherId", "Name" },
+                values: new object[,]
+                {
+                    { 2, "Lindhardt & Ringhoff" },
+                    { 1, "Gyldendal" },
+                    { 3, "People's Press" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Title",
+                columns: new[] { "TitleId", "AuthorId", "GenreId", "LanguageId", "Name", "Pages", "PublisherId", "RYear" },
+                values: new object[,]
+                {
+                    { 2, 2, 1, 1, "Eventyr, fortalt for Børn", (short)300, 2, (short)1837 },
+                    { 3, 3, 1, 1, "Forbrydelse og Straf", (short)684, 1, (short)1866 },
+                    { 5, 4, 2, 1, "Den Røde Glente", (short)408, 3, (short)2022 },
+                    { 4, 3, 1, 2, "Idioten", (short)843, 1, (short)1869 },
+                    { 1, 1, 1, 3, "Fortællingen om Genji", (short)224, 1, (short)1021 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Material",
+                columns: new[] { "MaterialId", "Home", "LocationId", "TitleId" },
+                values: new object[,]
+                {
+                    { 3, true, 1, 2 },
+                    { 4, true, 1, 3 },
+                    { 5, true, 2, 3 },
+                    { 1, true, 1, 1 },
+                    { 2, true, 2, 1 }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AuthorTitle_TitlesTitleId",
                 table: "AuthorTitle",

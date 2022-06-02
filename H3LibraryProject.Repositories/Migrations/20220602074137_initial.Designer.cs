@@ -4,14 +4,16 @@ using H3LibraryProject.Repositories.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace H3LibraryProject.Repositories.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    partial class LibraryContextModelSnapshot : ModelSnapshot
+    [Migration("20220602074137_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -147,29 +149,6 @@ namespace H3LibraryProject.Repositories.Migrations
                     b.HasIndex("LoanerTypeId");
 
                     b.ToTable("Loaner");
-
-                    b.HasData(
-                        new
-                        {
-                            LoanerId = 1,
-                            LoanerTypeId = 2,
-                            Name = "Simon",
-                            Password = "Passw0rd"
-                        },
-                        new
-                        {
-                            LoanerId = 2,
-                            LoanerTypeId = 2,
-                            Name = "Robin",
-                            Password = "Passw0rd"
-                        },
-                        new
-                        {
-                            LoanerId = 3,
-                            LoanerTypeId = 1,
-                            Name = "Flemming",
-                            Password = "Passw0rd"
-                        });
                 });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.LoanerType", b =>
@@ -185,18 +164,6 @@ namespace H3LibraryProject.Repositories.Migrations
                     b.HasKey("LoanerTypeId");
 
                     b.ToTable("LoanerTypes");
-
-                    b.HasData(
-                        new
-                        {
-                            LoanerTypeId = 1,
-                            Name = "Låner"
-                        },
-                        new
-                        {
-                            LoanerTypeId = 2,
-                            Name = "Ansat"
-                        });
                 });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Location", b =>

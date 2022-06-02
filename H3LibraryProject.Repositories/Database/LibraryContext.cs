@@ -28,6 +28,41 @@ namespace H3LibraryProject.Repositories.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<LoanerType>().HasData(
+               new()
+               {
+                   LoanerTypeId = 1,
+                   Name = "Låner"
+               },
+               new()
+               {
+                   LoanerTypeId = 2,
+                   Name = "Ansat"
+               }
+               );
+            modelBuilder.Entity<Loaner>().HasData(
+               new()
+               {
+                   LoanerId = 1,
+                   Name = "Simon",
+                   LoanerTypeId = 2,
+                   Password = "Passw0rd"
+               },
+               new()
+               {
+                   LoanerId = 2,
+                   Name = "Robin",
+                   LoanerTypeId = 2,
+                   Password = "Passw0rd"
+               },
+               new()
+               {
+                   LoanerId = 3,
+                   Name = "Flemming",
+                   LoanerTypeId = 1,
+                   Password = "Passw0rd"
+               }
+               );
             modelBuilder.Entity<Publisher>().HasData(
                new()
                {
@@ -169,7 +204,7 @@ namespace H3LibraryProject.Repositories.Database
                 new()
                 {
                     TitleId = 2,
-                    Name = "Eventyr, fortalt for Børn. Første Samling.",
+                    Name = "Eventyr, fortalt for Børn",
                     RYear = 1837,
                     Pages = 300,
                     AuthorId = 2,
