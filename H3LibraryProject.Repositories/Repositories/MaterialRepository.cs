@@ -12,11 +12,11 @@ namespace H3LibraryProject.Repositories.Repositories
     public interface IMaterialRepository
     {
         Task<Material> CreateMaterial(Material material);
-        Task<List<Material>> GetAllMaterials(); //Vi kalder den "select" og ikke "get" da det er SQL-relateret        
+        Task<List<Material>> GetAllMaterials();     
         Task<Material> GetMaterialById(int materialId);
         Task<List<Material>> GetMaterialsByTitleId(int titleId);              
         Task<Material> UpdateMaterial(int materialId, Material material);
-        Task<Material> DeleteMaterial(int materialId); //jeg har på et tidspunkt kaldt den DeleteTitleById: måske vigtigt
+        Task<Material> DeleteMaterial(int materialId); 
 
     }
     public class MaterialRepository : IMaterialRepository
@@ -38,7 +38,7 @@ namespace H3LibraryProject.Repositories.Repositories
             return material;
         }
 
-
+        //Read
         public async Task<List<Material>> GetAllMaterials()
         {
             return await _context.Material
@@ -59,6 +59,7 @@ namespace H3LibraryProject.Repositories.Repositories
                 .ToListAsync();
         }
 
+        //Update
         public async Task<Material> UpdateMaterial(int materialId, Material material)
         {
             Material updatematerial = await _context.Material
@@ -74,6 +75,7 @@ namespace H3LibraryProject.Repositories.Repositories
             return updatematerial;
         }
 
+        //Delete
         public async Task<Material> DeleteMaterial(int materialId)
         {
             Material deletematerial = await _context.Material.FirstOrDefaultAsync(material => material.MaterialId == materialId);

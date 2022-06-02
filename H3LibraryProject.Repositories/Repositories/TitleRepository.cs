@@ -116,15 +116,6 @@ namespace H3LibraryProject.Repositories.Repositories
             //det gør vi dog heller ikke rigtig.
         }
 
-        public async Task<Title> DeletetitleById(int titleId)
-        {
-            Title deletetitle = await _context.Title.FirstOrDefaultAsync(title => title.TitleId == titleId);
-            if (deletetitle != null)
-            {
-                _context.Title.Remove(deletetitle);
-                await _context.SaveChangesAsync();
-            }
-            return deletetitle;
-        }
+        
     }
 }
