@@ -28,6 +28,14 @@ namespace H3LibraryProject.Repositories.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Author>().HasMany(x => x.Titles)
+                .WithMany(x => x.Authors)
+                .UsingEntity<AuthorTitle>(
+                    x => x.HasOne(x => x.Title)
+                    .WithMany().HasForeignKey(x => x.TitleId),
+                    x => x.HasOne(x => x.Author)
+                   .WithMany().HasForeignKey(x => x.AuthorId));
+
             modelBuilder.Entity<LoanerType>().HasData(
                new()
                {

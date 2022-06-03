@@ -19,21 +19,6 @@ namespace H3LibraryProject.Repositories.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("AuthorTitle", b =>
-                {
-                    b.Property<int>("AuthorsAuthorId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TitlesTitleId")
-                        .HasColumnType("int");
-
-                    b.HasKey("AuthorsAuthorId", "TitlesTitleId");
-
-                    b.HasIndex("TitlesTitleId");
-
-                    b.ToTable("AuthorTitle");
-                });
-
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Genre", b =>
                 {
                     b.Property<int>("GenreId")
@@ -360,6 +345,28 @@ namespace H3LibraryProject.Repositories.Migrations
                         });
                 });
 
+            modelBuilder.Entity("H3LibraryProject.Repositories.Database.Models.AuthorTitle", b =>
+                {
+                    b.Property<int>("AuthorTitleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AuthorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TitleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AuthorTitleId");
+
+                    b.HasIndex("AuthorId");
+
+                    b.HasIndex("TitleId");
+
+                    b.ToTable("AuthorTitle");
+                });
+
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Nationality", b =>
                 {
                     b.Property<int>("NationalityId")
@@ -528,21 +535,6 @@ namespace H3LibraryProject.Repositories.Migrations
                         });
                 });
 
-            modelBuilder.Entity("AuthorTitle", b =>
-                {
-                    b.HasOne("H3LibraryProject.Repositories.Database.Models.Author", null)
-                        .WithMany()
-                        .HasForeignKey("AuthorsAuthorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("H3LibraryProject.Repositories.Database.Title", null)
-                        .WithMany()
-                        .HasForeignKey("TitlesTitleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Loan", b =>
                 {
                     b.HasOne("H3LibraryProject.Repositories.Database.Loaner", "LoanerLoaning")
@@ -599,6 +591,25 @@ namespace H3LibraryProject.Repositories.Migrations
                         .IsRequired();
 
                     b.Navigation("Nationality");
+                });
+
+            modelBuilder.Entity("H3LibraryProject.Repositories.Database.Models.AuthorTitle", b =>
+                {
+                    b.HasOne("H3LibraryProject.Repositories.Database.Models.Author", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("H3LibraryProject.Repositories.Database.Title", "Title")
+                        .WithMany()
+                        .HasForeignKey("TitleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Author");
+
+                    b.Navigation("Title");
                 });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Title", b =>

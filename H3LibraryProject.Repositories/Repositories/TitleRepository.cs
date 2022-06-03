@@ -34,11 +34,10 @@ namespace H3LibraryProject.Repositories.Repositories
         //CREATE
         public async Task<Title> InsertNewTitle(Title title)
         {
-            Author author = _context.Author
-                .Include(t => t.Titles)
-                .SingleOrDefault(a => a.AuthorId == title.AuthorId);
-            _context.Title.Add(title); //Denne indeholder ikke en ID
+            Author author = _context.Author.Single(a => a.AuthorId == title.AuthorId);
             title.Authors.Add(author);
+            _context.Title.Add(title); //Denne indeholder ikke en ID
+            //title.Authors.Add(author);
             await _context.SaveChangesAsync();
             return title; 
         }
@@ -47,7 +46,7 @@ namespace H3LibraryProject.Repositories.Repositories
         public async Task<List<Title>> SelectAllTitles()
         {
             return await _context.Title
-                //.Include(b => b.Name) //bruger Linq. Name er ikke en FK.
+                .Include(b => b.Authors) //bruger Linq. Name er ikke en FK.
                 .OrderBy(b => b.LanguageId)
                 .ThenBy(b => b.AuthorId)
                 .ThenBy(b => b.RYear)
@@ -90,6 +89,7 @@ namespace H3LibraryProject.Repositories.Repositories
         public async Task<Title> UpdateExistingTitle(int titleId, Title title)
         {
             Title updatetitle = await _context.Title
+                .Include(a => a.Authors)
                 .FirstOrDefaultAsync(title => title.TitleId == titleId);
             if (updatetitle != null)
             {
@@ -100,6 +100,28 @@ namespace H3LibraryProject.Repositories.Repositories
                 updatetitle.Pages = title.Pages;
                 updatetitle.RYear = title.RYear;
                 updatetitle.GenreId = title.GenreId;
+                foreach (Author sentAuthor in title.Authors)
+                {
+                    if (updatetitle.Authors.Exists(a => a.AuthorId == sentAuthor.AuthorId) == false)
+                    {
+                        Author newAuthor = _context.Author.SingleOrDefault(a => a.AuthorId == sentAuthor.AuthorId);
+                        if (newAuthor != null)
+                        {
+                            updatetitle.Authors.Add(newAuthor);
+                        }
+                    }
+                }
+                //foreach (Author existingAuthor in updatetitle.Authors)
+                //{
+                //    if (title.Authors.Exists(a => a.AuthorId == existingAuthor.AuthorId) == false)
+                //    {
+                //        Author newAuthor = _context.Author.SingleOrDefault(a => a.AuthorId == existingAuthor.AuthorId);
+                //        if (newAuthor != null)
+                //        {
+                //            updatetitle.Authors.Remove(newAuthor);
+                //        }
+                //    }
+                //}
                 await _context.SaveChangesAsync();
             }
             return updatetitle;

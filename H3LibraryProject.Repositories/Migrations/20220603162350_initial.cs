@@ -193,21 +193,23 @@ namespace H3LibraryProject.Repositories.Migrations
                 name: "AuthorTitle",
                 columns: table => new
                 {
-                    AuthorsAuthorId = table.Column<int>(type: "int", nullable: false),
-                    TitlesTitleId = table.Column<int>(type: "int", nullable: false)
+                    AuthorTitleId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AuthorId = table.Column<int>(type: "int", nullable: false),
+                    TitleId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AuthorTitle", x => new { x.AuthorsAuthorId, x.TitlesTitleId });
+                    table.PrimaryKey("PK_AuthorTitle", x => x.AuthorTitleId);
                     table.ForeignKey(
-                        name: "FK_AuthorTitle_Author_AuthorsAuthorId",
-                        column: x => x.AuthorsAuthorId,
+                        name: "FK_AuthorTitle_Author_AuthorId",
+                        column: x => x.AuthorId,
                         principalTable: "Author",
                         principalColumn: "AuthorId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AuthorTitle_Title_TitlesTitleId",
-                        column: x => x.TitlesTitleId,
+                        name: "FK_AuthorTitle_Title_TitleId",
+                        column: x => x.TitleId,
                         principalTable: "Title",
                         principalColumn: "TitleId",
                         onDelete: ReferentialAction.Cascade);
@@ -351,9 +353,14 @@ namespace H3LibraryProject.Repositories.Migrations
                 column: "NationalityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AuthorTitle_TitlesTitleId",
+                name: "IX_AuthorTitle_AuthorId",
                 table: "AuthorTitle",
-                column: "TitlesTitleId");
+                column: "AuthorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AuthorTitle_TitleId",
+                table: "AuthorTitle",
+                column: "TitleId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Loan_LoanerId",
