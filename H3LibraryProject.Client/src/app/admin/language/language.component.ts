@@ -9,7 +9,7 @@ import { LanguageService } from 'src/app/_services/language.service';
 })
 export class LanguageComponent implements OnInit {
 
-  adminPages:string[] = ['author','genre','language','loanertype','location','material','nationality','publisher','title','nationality'];
+  adminPages:string[] = ['author','genre','language','loan','loaner','loanertype','location','material','nationality','publisher','title'];
   languages:Language[] = [];
   currentLanguage:Language = {languageId:0,name:"",titles:[]};
   constructor(private languageService:LanguageService){}

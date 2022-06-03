@@ -1,3 +1,6 @@
+import { LoanerComponent } from './admin/loaner/loaner.component';
+import { LocationComponent } from './admin/location/location.component';
+import { PublisherComponent } from './admin/publisher/publisher.component';
 import { LoanerTypeComponent } from './admin/loaner-type/loaner-type.component';
 import { GenreComponent } from './admin/genre/genre.component';
 import { NationalityComponent } from './admin/nationality/nationality.component';
@@ -12,7 +15,10 @@ const routes: Routes = [
   {path: "admin/nationality", component:NationalityComponent},
   {path: "admin/genre", component:GenreComponent},
   {path: "admin/language", component:LanguageComponent},
-  {path: "admin/loanertype", component:LoanerTypeComponent}
+  {path: "admin/loanertype", component:LoanerTypeComponent},
+  {path: "admin/publisher", component:PublisherComponent},
+  {path: "admin/location", component:LocationComponent},
+  {path: "admin/loaner", component:LoanerComponent}
 ];
 
 @NgModule({

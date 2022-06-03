@@ -1,0 +1,63 @@
+<div class="MainDiv">
+  <nav>
+    <mat-form-field appearance="fill">
+      <mat-label>admin sider</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let page of adminPages" [value]="page">
+          <a href="/admin/{{page}}">{{page}}</a>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    </nav>
+  <div class="infoDiv">
+    <h1>Administrer lånere</h1>
+    <div class="centerDiv">
+      <label>Navn: </label>
+      <input [(ngModel)]="currentAuthor.fName">
+    </div>
+    <div class="centerDiv">
+      <label>Kodeord: </label>
+      <input [(ngModel)]="currentAuthor.mName">
+    </div>
+    <div class="centerDiv">
+      <label>Kodeord: </label>
+      <input [(ngModel)]="currentAuthor.lName">
+    </div>
+    <div class="centerDiv">
+      <mat-form-field appearance="fill">
+        <mat-label>lånere type</mat-label>
+        <mat-select [(value)]="currentAuthor.nationalityId">
+          <mat-option (click)="reset()">
+            <p>vælg nationaitet</p>
+          </mat-option>
+          <mat-option  *ngFor="let nationality of nationalities" [value]="nationality.nationalityId">
+            <p>{{nationality.name}}</p>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="centerDiv">
+      <button (click)="deleteAuthor()">slet</button>
+      <button (click)="saveAuthor()">gem</button>
+    </div>
+    <div >
+      <div class="centerDiv">
+        <mat-form-field appearance="fill">
+          <mat-label>lånere</mat-label>
+          <mat-select>
+            <mat-option (click)="reset()">
+              <p>Ny</p>
+            </mat-option>
+            <mat-option *ngFor="let author of authors" [value]="author" (click)="edit(author)">
+              <p>{{author.lName}}, {{author.fName}} {{author.mName[0]}}, {{author.bYear}} - {{author.dYear}}</p>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  </div>
+</div>
+
+
+
+
+

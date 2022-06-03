@@ -3,7 +3,8 @@ import { LoanerType } from './loanerType';
 export interface Loaner{
   loanerId:number;
   loanerTypeId:number;
-  name:string;
+  loanerName:string;
+  password?:string;
   typeOfLoaner?:LoanerType;
   loans?:Loan[];
 }

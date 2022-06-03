@@ -17,6 +17,10 @@ import { FormsModule } from '@angular/forms';
 import { GenreComponent } from './admin/genre/genre.component';
 import { LanguageComponent } from './admin/language/language.component';
 import { LoanerTypeComponent } from './admin/loaner-type/loaner-type.component';
+import { PublisherComponent } from './admin/publisher/publisher.component';
+import { LocationComponent } from './admin/location/location.component';
+import { LoanerComponent } from './admin/loaner/loaner.component';
+import { AuthorComponent } from './admin/author/author.component';
 
 
 
@@ -27,7 +31,11 @@ import { LoanerTypeComponent } from './admin/loaner-type/loaner-type.component';
     NationalityComponent,
     GenreComponent,
     LanguageComponent,
-    LoanerTypeComponent
+    LoanerTypeComponent,
+    PublisherComponent,
+    LocationComponent,
+    LoanerComponent,
+    AuthorComponent
   ],
   imports: [
     BrowserModule,

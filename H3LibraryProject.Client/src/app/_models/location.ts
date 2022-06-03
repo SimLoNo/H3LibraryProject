@@ -1,5 +1,5 @@
 import { Material } from './material';
-export interface Location{
+export interface LibLocation{
   locationId:number;
   name:string;
   materials?:Material[];

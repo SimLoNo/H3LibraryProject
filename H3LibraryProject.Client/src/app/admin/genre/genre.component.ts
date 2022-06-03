@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GenreComponent implements OnInit {
 
-  adminPages:string[] = ['author','genre','language','loanertype','location','material','Genre','publisher','title','nationality'];
+  adminPages:string[] = ['author','genre','language','loan','loaner','loanertype','location','material','nationality','publisher','title'];
   genres:Genre[] = [];
   currentGenre:Genre = {genreId:0,name:"",leasePeriod:0};
   constructor(private genreService:GenreService){}

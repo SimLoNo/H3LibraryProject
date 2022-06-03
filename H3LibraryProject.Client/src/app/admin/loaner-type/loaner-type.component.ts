@@ -9,7 +9,7 @@ import { LoanerTypeService } from 'src/app/_services/loaner-type.service';
 })
 export class LoanerTypeComponent implements OnInit {
 
-  adminPages:string[] = ['author','genre','language','loanertype','location','material','nationality','publisher','title','nationality'];
+  adminPages:string[] = ['author','genre','language','loan','loaner','loanertype','location','material','nationality','publisher','title'];
   loanerTypes:LoanerType[] = [];
   currentLoanerType:LoanerType = {loanerTypeId:0,name:""};
   constructor(private loanerTypeService:LoanerTypeService){}

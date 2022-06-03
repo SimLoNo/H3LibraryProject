@@ -9,6 +9,6 @@ export interface Author{
   dYear:number;
   nationalityId:number;
   titles?:Title[];
-  nationality:Nationality;
+  nationality?:Nationality;
 
 }

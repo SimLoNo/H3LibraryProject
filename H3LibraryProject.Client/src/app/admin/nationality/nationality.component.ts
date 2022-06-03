@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nationality.component.css']
 })
 export class NationalityComponent implements OnInit {
-  adminPages:string[] = ['author','genre','language','loanertype','location','material','nationality','publisher','title'];
+  adminPages:string[] = ['author','genre','language','loan','loaner','loanertype','location','material','nationality','publisher','title'];
   nationalities:Nationality[] = [];
   currentNationality:Nationality = {nationalityId:0,name:""};
   constructor(private nationalityService: NationalityService) { }
@@ -18,7 +18,9 @@ export class NationalityComponent implements OnInit {
     this.nationalityService.readAllNationalities()
     .subscribe((data) => {
       console.log(data);
-      this.nationalities = data;
+      if (data != null) {
+        this.nationalities = data;
+      }
 
     })
   }
