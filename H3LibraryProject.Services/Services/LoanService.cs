@@ -109,7 +109,7 @@ namespace H3LibraryProject.Services.Services
                     MaterialId=loan.MaterialLoaned.MaterialId,
                     TitleId=loan.MaterialLoaned.TitleId,
                     LocationId =loan.MaterialLoaned.LocationId,
-                    TitleName = loan.MaterialLoaned.BookTitle.Name
+                    TitleName = loan.MaterialLoaned.Title.Name
                 } : null
             };
 

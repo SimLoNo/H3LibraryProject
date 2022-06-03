@@ -11,10 +11,10 @@ namespace H3LibraryProject.Repositories.Repositories
 {
     public interface IAuthorRepository
     {
-        Task<Author> InsertNewAuthor(Author author);
-        Task<List<Author>> SelectAllAuthors(); //Vi kalder den "select" og ikke "get" da det er SQL-relateret
-        Task<Author> SelectAuthorById(int authorId);
-        Task<Author> SelectAuthorsByNationality(int nationalityId);        
+        Task<Author> CreateAuthor(Author author);
+        Task<List<Author>> GetAllAuthors(); //Vi kalder den "select" og ikke "get" da det er SQL-relateret
+        Task<Author> GetAuthorById(int authorId);
+        Task<List<Author>> GetAuthorsByNationality(int nationalityId);        
         Task<Author> UpdateExistingAuthor(int authorId, Author author);
         Task<Author> DeleteAuthor(int authorId); //jeg har på et tidspunkt kaldt den DeleteAuthorById: måske vigtigt
     }
@@ -28,7 +28,7 @@ namespace H3LibraryProject.Repositories.Repositories
         }
 
         //CREATE
-        public async Task<Author> InsertNewAuthor(Author author)
+        public async Task<Author> CreateAuthor(Author author)
         {
             _context.Author.Add(author); //Denne indeholder ikke en ID
             await _context.SaveChangesAsync();
@@ -36,25 +36,26 @@ namespace H3LibraryProject.Repositories.Repositories
         }
 
         //READ
-        public async Task<List<Author>> SelectAllAuthors()
+        public async Task<List<Author>> GetAllAuthors()
         {
             return await _context.Author
                 .Include(a => a.Titles) //hahahah det virker slet ikke fml //19.05.22 - nu virker det.
                 .ToListAsync();
         }
 
-        public async Task<Author> SelectAuthorById(int authorId)
+        public async Task<Author> GetAuthorById(int authorId)
         {
             return await _context.Author
                 .Include(a => a.Titles)
                 .FirstOrDefaultAsync(author => author.AuthorId == authorId);
         }
 
-        public async Task<Author> SelectAuthorsByNationality(int nationalityId)
+        public async Task<List<Author>> GetAuthorsByNationality(int nationalityId)
         {
             return await _context.Author
                 .Include(a => a.Titles)
-                .FirstOrDefaultAsync(author => author.AuthorId == nationalityId);
+                .Where(author => author.NationalityId == nationalityId)
+                .ToListAsync();
         }
 
         //UPDATE
@@ -69,7 +70,7 @@ namespace H3LibraryProject.Repositories.Repositories
                 updateAuthor.LName = author.LName;
                 updateAuthor.BYear = author.BYear;
                 updateAuthor.DYear = author.DYear;
-                updateAuthor.Nationality = author.Nationality;
+                updateAuthor.NationalityId = author.NationalityId;
                 await _context.SaveChangesAsync();
             }
             return updateAuthor;

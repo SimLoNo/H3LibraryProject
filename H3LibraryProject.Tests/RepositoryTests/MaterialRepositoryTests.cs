@@ -56,7 +56,7 @@ namespace H3LibraryProject.Tests.RepositoryTests
             await _context.SaveChangesAsync();
 
             //Act
-            var result = await _repository.SelectAllMaterials();
+            var result = await _repository.GetAllMaterials();
             //assert
             Assert.NotNull(result);
             Assert.IsType<List<Material>>(result);
@@ -70,7 +70,7 @@ namespace H3LibraryProject.Tests.RepositoryTests
             await _context.SaveChangesAsync();
 
             //Act
-            var result = await _repository.SelectAllMaterials();
+            var result = await _repository.GetAllMaterials();
             //assert
             Assert.NotNull(result);
             Assert.IsType<List<Material>>(result);
@@ -94,7 +94,7 @@ namespace H3LibraryProject.Tests.RepositoryTests
             await _context.SaveChangesAsync();
 
             //Act
-            var result = await _repository.SelectMaterialById(id);
+            var result = await _repository.GetMaterialById(id);
             //assert
             Assert.NotNull(result);
             Assert.IsType<Material>(result);
@@ -109,7 +109,7 @@ namespace H3LibraryProject.Tests.RepositoryTests
             await _context.SaveChangesAsync();
 
             //Act
-            var result = await _repository.SelectMaterialById(id);
+            var result = await _repository.GetMaterialById(id);
             //assert
             Assert.Null(result);
         }
@@ -132,7 +132,7 @@ namespace H3LibraryProject.Tests.RepositoryTests
             await _context.SaveChangesAsync();
 
             //Act
-            async Task action() => await _repository.InsertNewMaterial(material);
+            async Task action() => await _repository.CreateMaterial(material);
             //Assert
             var ex = await Assert.ThrowsAsync<ArgumentException>(action);
             Assert.Contains("An item with the same key has already been added", ex.Message);
@@ -152,7 +152,7 @@ namespace H3LibraryProject.Tests.RepositoryTests
             await _context.Database.EnsureDeletedAsync();
 
             //Act
-            var result = await _repository.InsertNewMaterial(material);
+            var result = await _repository.CreateMaterial(material);
             //Assert
             Assert.NotNull(result);
             Assert.IsType<Material>(result);
@@ -176,7 +176,7 @@ namespace H3LibraryProject.Tests.RepositoryTests
             await _context.SaveChangesAsync();
 
             //Act
-            var result = await _repository.UpdateExistingMaterial(id, material);
+            var result = await _repository.UpdateMaterial(id, material);
             //Assert
             Assert.NotNull(result);
             Assert.IsType<Material>(result);
@@ -199,7 +199,7 @@ namespace H3LibraryProject.Tests.RepositoryTests
             await _context.SaveChangesAsync();
 
             //Act
-            var result = await _repository.UpdateExistingMaterial(id, material);
+            var result = await _repository.UpdateMaterial(id, material);
             //Assert
             Assert.Null(result);
         }

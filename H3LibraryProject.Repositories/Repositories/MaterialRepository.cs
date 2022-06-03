@@ -11,12 +11,12 @@ namespace H3LibraryProject.Repositories.Repositories
 {
     public interface IMaterialRepository
     {
-        Task<Material> InsertNewMaterial(Material material);
-        Task<List<Material>> SelectAllMaterials(); //Vi kalder den "select" og ikke "get" da det er SQL-relateret        
-        Task<Material> SelectMaterialById(int materialId);
-        Task<Material> SelectMaterialByTitleId(int titleId);              
-        Task<Material> UpdateExistingMaterial(int materialId, Material material);
-        Task<Material> DeleteMaterial(int materialId); //jeg har på et tidspunkt kaldt den DeleteTitleById: måske vigtigt
+        Task<Material> CreateMaterial(Material material);
+        Task<List<Material>> GetAllMaterials();     
+        Task<Material> GetMaterialById(int materialId);
+        Task<List<Material>> GetMaterialsByTitleId(int titleId);              
+        Task<Material> UpdateMaterial(int materialId, Material material);
+        Task<Material> DeleteMaterial(int materialId); 
 
     }
     public class MaterialRepository : IMaterialRepository
@@ -31,34 +31,36 @@ namespace H3LibraryProject.Repositories.Repositories
 
 
         //CREATE
-        public async Task<Material> InsertNewMaterial(Material material)
+        public async Task<Material> CreateMaterial(Material material)
         {
             _context.Material.Add(material);
             await _context.SaveChangesAsync();
             return material;
         }
 
-
-        public async Task<List<Material>> SelectAllMaterials()
+        //Read
+        public async Task<List<Material>> GetAllMaterials()
         {
             return await _context.Material
                 .OrderBy(b => b.LocationId)
                 .ToListAsync();
         }
 
-        public async Task<Material> SelectMaterialById(int materialId)
+        public async Task<Material> GetMaterialById(int materialId)
         {
             return await _context.Material
                 .FirstOrDefaultAsync(material => material.MaterialId == materialId);
         }
 
-        public async Task<Material> SelectMaterialByTitleId(int titleId)
+        public async Task<List<Material>> GetMaterialsByTitleId(int titleId)
         {
             return await _context.Material
-                .FirstOrDefaultAsync(material => material.TitleId == titleId);
+                .Include(material => material.TitleId == titleId)
+                .ToListAsync();
         }
 
-        public async Task<Material> UpdateExistingMaterial(int materialId, Material material)
+        //Update
+        public async Task<Material> UpdateMaterial(int materialId, Material material)
         {
             Material updatematerial = await _context.Material
                 .FirstOrDefaultAsync(material => material.MaterialId == materialId);
@@ -73,6 +75,7 @@ namespace H3LibraryProject.Repositories.Repositories
             return updatematerial;
         }
 
+        //Delete
         public async Task<Material> DeleteMaterial(int materialId)
         {
             Material deletematerial = await _context.Material.FirstOrDefaultAsync(material => material.MaterialId == materialId);
