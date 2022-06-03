@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace H3LibraryProject.Repositories.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20220602075528_update")]
-    partial class update
+    [Migration("20220603093639_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -318,6 +318,8 @@ namespace H3LibraryProject.Repositories.Migrations
 
                     b.HasKey("AuthorId");
 
+                    b.HasIndex("NationalityId");
+
                     b.ToTable("Author");
 
                     b.HasData(
@@ -588,6 +590,17 @@ namespace H3LibraryProject.Repositories.Migrations
                         .IsRequired();
 
                     b.Navigation("Title");
+                });
+
+            modelBuilder.Entity("H3LibraryProject.Repositories.Database.Models.Author", b =>
+                {
+                    b.HasOne("H3LibraryProject.Repositories.Database.Nationality", "Nationality")
+                        .WithMany()
+                        .HasForeignKey("NationalityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Nationality");
                 });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Title", b =>

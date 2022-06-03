@@ -34,7 +34,11 @@ namespace H3LibraryProject.Repositories.Repositories
         //CREATE
         public async Task<Title> InsertNewTitle(Title title)
         {
+            Author author = _context.Author
+                .Include(t => t.Titles)
+                .SingleOrDefault(a => a.AuthorId == title.AuthorId);
             _context.Title.Add(title); //Denne indeholder ikke en ID
+            title.Authors.Add(author);
             await _context.SaveChangesAsync();
             return title; 
         }

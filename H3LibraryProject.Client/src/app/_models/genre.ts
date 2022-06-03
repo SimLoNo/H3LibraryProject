@@ -1,7 +1,7 @@
-import { Title } from './title';
+import { MaterialTitle } from './title';
 export interface Genre{
   genreId:number;
   name:string;
   leasePeriod:number;
-  titles?:Title[];
+  titles?:MaterialTitle[];
 }

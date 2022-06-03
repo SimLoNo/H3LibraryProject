@@ -1,6 +1,7 @@
 import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { FormControl } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './admin/admin-layout/admin-layout.component';
@@ -13,7 +14,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NationalityComponent } from './admin/nationality/nationality.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GenreComponent } from './admin/genre/genre.component';
 import { LanguageComponent } from './admin/language/language.component';
 import { LoanerTypeComponent } from './admin/loaner-type/loaner-type.component';
@@ -47,7 +48,8 @@ import { AuthorComponent } from './admin/author/author.component';
     MatDatepickerModule,
     MatNativeDateModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
 
   ],
   providers: [],

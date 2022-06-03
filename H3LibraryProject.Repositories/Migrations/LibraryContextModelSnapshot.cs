@@ -316,6 +316,8 @@ namespace H3LibraryProject.Repositories.Migrations
 
                     b.HasKey("AuthorId");
 
+                    b.HasIndex("NationalityId");
+
                     b.ToTable("Author");
 
                     b.HasData(
@@ -586,6 +588,17 @@ namespace H3LibraryProject.Repositories.Migrations
                         .IsRequired();
 
                     b.Navigation("Title");
+                });
+
+            modelBuilder.Entity("H3LibraryProject.Repositories.Database.Models.Author", b =>
+                {
+                    b.HasOne("H3LibraryProject.Repositories.Database.Nationality", "Nationality")
+                        .WithMany()
+                        .HasForeignKey("NationalityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Nationality");
                 });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Title", b =>

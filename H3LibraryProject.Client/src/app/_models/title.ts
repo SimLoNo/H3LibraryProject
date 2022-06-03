@@ -1,5 +1,5 @@
 import { Material } from './material';
-export interface Title{
+export interface MaterialTitle{
   titleId:number;
   name:string;
   languageId:number;

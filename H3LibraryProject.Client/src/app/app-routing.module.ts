@@ -1,3 +1,4 @@
+import { AuthorComponent } from './admin/author/author.component';
 import { LoanerComponent } from './admin/loaner/loaner.component';
 import { LocationComponent } from './admin/location/location.component';
 import { PublisherComponent } from './admin/publisher/publisher.component';
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path: "admin/loanertype", component:LoanerTypeComponent},
   {path: "admin/publisher", component:PublisherComponent},
   {path: "admin/location", component:LocationComponent},
-  {path: "admin/loaner", component:LoanerComponent}
+  {path: "admin/loaner", component:LoanerComponent},
+  {path: "admin/author", component:AuthorComponent}
 ];
 
 @NgModule({

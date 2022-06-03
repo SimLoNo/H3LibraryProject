@@ -1,6 +1,6 @@
-import { Title } from './title';
+import { MaterialTitle } from './title';
 export interface Language{
   languageId:number;
   name:string;
-  titles?:Title[];
+  titles?:MaterialTitle[];
 }

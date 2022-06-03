@@ -1,14 +1,14 @@
 import { Nationality } from './nationality';
-import { Title } from './title';
+import { MaterialTitle } from './title';
 export interface Author{
   authorId:number;
   lName:string;
   fName:string;
-  mName:string;
+  mName?:string;
   bYear:number;
   dYear:number;
   nationalityId:number;
-  titles?:Title[];
+  titles?:MaterialTitle[];
   nationality?:Nationality;
 
 }

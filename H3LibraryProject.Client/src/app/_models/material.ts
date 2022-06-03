@@ -1,9 +1,9 @@
-import { Title } from './title';
+import { MaterialTitle } from './title';
 export interface Material{
   materialId:number;
   titleId:number;
   locationId:number;
   home:boolean;
-  bookTitle?:Title;
+  bookTitle?:MaterialTitle;
 
 }

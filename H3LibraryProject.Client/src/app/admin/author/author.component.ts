@@ -1,8 +1,11 @@
+import { TitleService } from './../../_services/title.service';
 import { NationalityService } from './../../_services/nationality.service';
 import { Nationality } from './../../_models/nationality';
 import { Component, OnInit } from '@angular/core';
 import { Author } from 'src/app/_models/author';
 import { AuthorService } from 'src/app/_services/author.service';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { MaterialTitle } from 'src/app/_models/title';
 
 @Component({
   selector: 'app-author',
@@ -15,7 +18,9 @@ export class AuthorComponent implements OnInit {
   nationalities:Nationality[] = [];
   currentAuthor:Author = {authorId:0,lName:"",fName:"",mName:"",bYear:0,dYear:0,nationalityId:0,};
   currentNationality:Nationality = {nationalityId:0, name:""};
-  constructor(private authorService: AuthorService, private nationalityService:NationalityService) { }
+  authorTitles = new FormControl();
+  titles:MaterialTitle[] = [];
+  constructor(private authorService: AuthorService, private nationalityService:NationalityService, private titleService:TitleService) { }
 
 
   ngOnInit(): void {
@@ -24,8 +29,10 @@ export class AuthorComponent implements OnInit {
       console.log(data);
       if (data != null) {
         data.forEach(element => {
-          console.log(`author name: ${element.fName} ${element.mName} ${element.lName}`);
-
+          console.log(`author name: ${element.fName} ${element.mName} ${element.lName}, ${element.titles}`);
+          if (element.mName == null) {
+            // element.mName = "";
+          }
         });
         this.authors = data;
       }
@@ -37,6 +44,15 @@ export class AuthorComponent implements OnInit {
       console.log(data);
       if (data != null) {
         this.nationalities = data;
+      }
+
+    })
+
+    this.titleService.readAllTitles()
+    .subscribe((data) => {
+      console.log(data);
+      if (data != null) {
+        this.titles = data;
       }
 
     })
