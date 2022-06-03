@@ -76,7 +76,11 @@ namespace H3LibraryProject.Services.Services
                 LanguageId = titleRequest.LanguageId,
                 GenreId = titleRequest.GenreId,
                 AuthorId = titleRequest.AuthorId,
-                PublisherId = titleRequest.PublisherId
+                PublisherId = titleRequest.PublisherId,
+                Authors = titleRequest.AuthorsList != null ? titleRequest.AuthorsList.Select(authorObj => new Author
+                {
+                    AuthorId = authorObj
+                }).ToList() : new()
             };
         }
 

@@ -33,5 +33,6 @@ namespace H3LibraryProject.API.DTOs
         [Required]
         [Range(1, 1000000000, ErrorMessage = "Language-ID must be above 0")]
         public int LanguageId { get; set; }
+        public List<int> AuthorsList { get; set; }
     }
 }
