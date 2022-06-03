@@ -52,6 +52,7 @@ namespace H3LibraryProject.API
 
             services.AddScoped<ILoanerTypeRepository, LoanerTypeRepository>();
             services.AddScoped<ILoanerTypeService, LoanerTypeService>();
+
             services.AddScoped<ILoanerRepository, LoanerRepository>();
             services.AddScoped<ILoanerService, LoanerService>();
             services.AddScoped<IGenreService, GenreService>();
@@ -68,6 +69,24 @@ namespace H3LibraryProject.API
             services.AddScoped<IPublisherService, PublisherService>();
             services.AddScoped<ILoanRepository, LoanRepository>();
             services.AddScoped<ILoanService, LoanService>();
+
+            services.AddScoped<IAuthorRepository, AuthorRepository>();
+            services.AddScoped<IAuthorService, AuthorService>();
+            services.AddScoped<ITitleRepository, TitleRepository>();
+            services.AddScoped<ITitleService, TitleService>();
+            services.AddScoped<IMaterialRepository, MaterialRepository>();
+            services.AddScoped<IMaterialService, MaterialService>();
+
+            services.AddScoped<INationalityRepository, NationalityRepository>();
+            //services.AddScoped<INationalityService, NationalityService>();
+
+            //services.AddScoped<IGenreRepository, GenreRepository>();
+            //services.AddScoped<IGenreService, GenreService>();
+
+            //services.AddScoped<ILanguageRepository, LanguageRepository>();
+            //services.AddScoped<ILanguageService, LanguageService>();
+
+
 
         }
 

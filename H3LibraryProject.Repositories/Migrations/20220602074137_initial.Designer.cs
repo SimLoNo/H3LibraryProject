@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace H3LibraryProject.Repositories.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20220531090225_FkAddedToLoans")]
-    partial class FkAddedToLoans
+    [Migration("20220602074137_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,21 @@ namespace H3LibraryProject.Repositories.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("AuthorTitle", b =>
+                {
+                    b.Property<int>("AuthorsAuthorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TitlesTitleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AuthorsAuthorId", "TitlesTitleId");
+
+                    b.HasIndex("TitlesTitleId");
+
+                    b.ToTable("AuthorTitle");
+                });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Genre", b =>
                 {
@@ -37,6 +52,20 @@ namespace H3LibraryProject.Repositories.Migrations
                     b.HasKey("GenreId");
 
                     b.ToTable("Genre");
+
+                    b.HasData(
+                        new
+                        {
+                            GenreId = 1,
+                            LeasePeriod = (short)30,
+                            Name = "Skønlitteratur"
+                        },
+                        new
+                        {
+                            GenreId = 2,
+                            LeasePeriod = (short)7,
+                            Name = "Quicklån"
+                        });
                 });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Language", b =>
@@ -52,6 +81,23 @@ namespace H3LibraryProject.Repositories.Migrations
                     b.HasKey("LanguageId");
 
                     b.ToTable("Language");
+
+                    b.HasData(
+                        new
+                        {
+                            LanguageId = 1,
+                            Name = "Dansk"
+                        },
+                        new
+                        {
+                            LanguageId = 2,
+                            Name = "Engelsk"
+                        },
+                        new
+                        {
+                            LanguageId = 3,
+                            Name = "Japansk"
+                        });
                 });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Loan", b =>
@@ -133,6 +179,18 @@ namespace H3LibraryProject.Repositories.Migrations
                     b.HasKey("LocationId");
 
                     b.ToTable("Location");
+
+                    b.HasData(
+                        new
+                        {
+                            LocationId = 1,
+                            Name = "Bibliotek Vest"
+                        },
+                        new
+                        {
+                            LocationId = 2,
+                            Name = "Bibliotek Øst"
+                        });
                 });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Material", b =>
@@ -158,6 +216,43 @@ namespace H3LibraryProject.Repositories.Migrations
                     b.HasIndex("TitleId");
 
                     b.ToTable("Material");
+
+                    b.HasData(
+                        new
+                        {
+                            MaterialId = 1,
+                            Home = true,
+                            LocationId = 1,
+                            TitleId = 1
+                        },
+                        new
+                        {
+                            MaterialId = 2,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 1
+                        },
+                        new
+                        {
+                            MaterialId = 3,
+                            Home = true,
+                            LocationId = 1,
+                            TitleId = 2
+                        },
+                        new
+                        {
+                            MaterialId = 4,
+                            Home = true,
+                            LocationId = 1,
+                            TitleId = 3
+                        },
+                        new
+                        {
+                            MaterialId = 5,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 3
+                        });
                 });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Models.Author", b =>
@@ -167,11 +262,11 @@ namespace H3LibraryProject.Repositories.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<short>("BYear")
-                        .HasColumnType("smallint");
+                    b.Property<int>("BYear")
+                        .HasColumnType("int");
 
-                    b.Property<short?>("DYear")
-                        .HasColumnType("smallint");
+                    b.Property<int?>("DYear")
+                        .HasColumnType("int");
 
                     b.Property<string>("FName")
                         .IsRequired()
@@ -183,12 +278,51 @@ namespace H3LibraryProject.Repositories.Migrations
                     b.Property<string>("MName")
                         .HasColumnType("nvarchar(32)");
 
-                    b.Property<short>("Nationality")
-                        .HasColumnType("smallint");
+                    b.Property<int>("NationalityId")
+                        .HasColumnType("int");
 
                     b.HasKey("AuthorId");
 
                     b.ToTable("Author");
+
+                    b.HasData(
+                        new
+                        {
+                            AuthorId = 1,
+                            BYear = 973,
+                            DYear = 1031,
+                            FName = "Shibiku",
+                            LName = "Murasaki",
+                            NationalityId = 2
+                        },
+                        new
+                        {
+                            AuthorId = 2,
+                            BYear = 1805,
+                            DYear = 1875,
+                            FName = "Hans",
+                            LName = "Andersen",
+                            MName = "Christian",
+                            NationalityId = 1
+                        },
+                        new
+                        {
+                            AuthorId = 3,
+                            BYear = 1821,
+                            DYear = 1881,
+                            FName = "Fjodor",
+                            LName = "Dostoyevskij",
+                            MName = "Mikhájlovitj",
+                            NationalityId = 5
+                        },
+                        new
+                        {
+                            AuthorId = 4,
+                            BYear = 1960,
+                            FName = "Elsebeth",
+                            LName = "Egholm",
+                            NationalityId = 1
+                        });
                 });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Nationality", b =>
@@ -204,6 +338,33 @@ namespace H3LibraryProject.Repositories.Migrations
                     b.HasKey("NationalityId");
 
                     b.ToTable("Nationality");
+
+                    b.HasData(
+                        new
+                        {
+                            NationalityId = 1,
+                            Name = "Danmark"
+                        },
+                        new
+                        {
+                            NationalityId = 2,
+                            Name = "Japan"
+                        },
+                        new
+                        {
+                            NationalityId = 3,
+                            Name = "Storbritanien"
+                        },
+                        new
+                        {
+                            NationalityId = 4,
+                            Name = "USA"
+                        },
+                        new
+                        {
+                            NationalityId = 5,
+                            Name = "Rusland"
+                        });
                 });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Publisher", b =>
@@ -219,6 +380,23 @@ namespace H3LibraryProject.Repositories.Migrations
                     b.HasKey("PublisherId");
 
                     b.ToTable("Publisher");
+
+                    b.HasData(
+                        new
+                        {
+                            PublisherId = 1,
+                            Name = "Gyldendal"
+                        },
+                        new
+                        {
+                            PublisherId = 2,
+                            Name = "Lindhardt & Ringhoff"
+                        },
+                        new
+                        {
+                            PublisherId = 3,
+                            Name = "People's Press"
+                        });
                 });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Title", b =>
@@ -251,13 +429,83 @@ namespace H3LibraryProject.Repositories.Migrations
 
                     b.HasKey("TitleId");
 
-                    b.HasIndex("AuthorId");
-
                     b.HasIndex("GenreId");
 
                     b.HasIndex("LanguageId");
 
                     b.ToTable("Title");
+
+                    b.HasData(
+                        new
+                        {
+                            TitleId = 1,
+                            AuthorId = 1,
+                            GenreId = 1,
+                            LanguageId = 3,
+                            Name = "Fortællingen om Genji",
+                            Pages = (short)224,
+                            PublisherId = 1,
+                            RYear = (short)1021
+                        },
+                        new
+                        {
+                            TitleId = 2,
+                            AuthorId = 2,
+                            GenreId = 1,
+                            LanguageId = 1,
+                            Name = "Eventyr, fortalt for Børn",
+                            Pages = (short)300,
+                            PublisherId = 2,
+                            RYear = (short)1837
+                        },
+                        new
+                        {
+                            TitleId = 3,
+                            AuthorId = 3,
+                            GenreId = 1,
+                            LanguageId = 1,
+                            Name = "Forbrydelse og Straf",
+                            Pages = (short)684,
+                            PublisherId = 1,
+                            RYear = (short)1866
+                        },
+                        new
+                        {
+                            TitleId = 4,
+                            AuthorId = 3,
+                            GenreId = 1,
+                            LanguageId = 2,
+                            Name = "Idioten",
+                            Pages = (short)843,
+                            PublisherId = 1,
+                            RYear = (short)1869
+                        },
+                        new
+                        {
+                            TitleId = 5,
+                            AuthorId = 4,
+                            GenreId = 2,
+                            LanguageId = 1,
+                            Name = "Den Røde Glente",
+                            Pages = (short)408,
+                            PublisherId = 3,
+                            RYear = (short)2022
+                        });
+                });
+
+            modelBuilder.Entity("AuthorTitle", b =>
+                {
+                    b.HasOne("H3LibraryProject.Repositories.Database.Models.Author", null)
+                        .WithMany()
+                        .HasForeignKey("AuthorsAuthorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("H3LibraryProject.Repositories.Database.Title", null)
+                        .WithMany()
+                        .HasForeignKey("TitlesTitleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Loan", b =>
@@ -298,23 +546,17 @@ namespace H3LibraryProject.Repositories.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("H3LibraryProject.Repositories.Database.Title", "BookTitle")
+                    b.HasOne("H3LibraryProject.Repositories.Database.Title", "Title")
                         .WithMany("Materials")
                         .HasForeignKey("TitleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("BookTitle");
+                    b.Navigation("Title");
                 });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Title", b =>
                 {
-                    b.HasOne("H3LibraryProject.Repositories.Database.Models.Author", null)
-                        .WithMany("Titles")
-                        .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("H3LibraryProject.Repositories.Database.Genre", null)
                         .WithMany("Titles")
                         .HasForeignKey("GenreId")
@@ -346,11 +588,6 @@ namespace H3LibraryProject.Repositories.Migrations
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Location", b =>
                 {
                     b.Navigation("Materials");
-                });
-
-            modelBuilder.Entity("H3LibraryProject.Repositories.Database.Models.Author", b =>
-                {
-                    b.Navigation("Titles");
                 });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Title", b =>

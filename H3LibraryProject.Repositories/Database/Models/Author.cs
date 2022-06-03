@@ -21,10 +21,10 @@ namespace H3LibraryProject.Repositories.Database.Models
         [Column(TypeName = "nvarchar(32)")]
         public string MName { get; set; }
 
-        [Column(TypeName = "smallint")] //Rigeligt til årstal
+        [Column(TypeName = "int")] //Rigeligt til årstal
         public int BYear { get; set; }
 
-        [Column(TypeName = "smallint")]
+        [Column(TypeName = "int")]
         public int? DYear { get; set; } //Nullable
 
         [Column(TypeName = "int")]
