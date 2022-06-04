@@ -30,42 +30,44 @@
       <input [(ngModel)]="currentAuthor.dYear" type="number">
     </div>
 
-    <div class="centerDiv">
-      <mat-form-field appearance="fill">
-        <mat-label>Nationalitet</mat-label>
-        <mat-select [(value)]="currentAuthor.nationalityId">
-          <mat-option (click)="reset()">
-            <p>vælg nationaitet</p>
-          </mat-option>
-          <mat-option  *ngFor="let nationality of nationalities" [value]="nationality.nationalityId">
-            <p>{{nationality.name}}</p>
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+    <div>
+      <div class="centerDiv">
+        <mat-form-field appearance="fill">
+          <mat-label>Nationalitet</mat-label>
+          <mat-select [(value)]="currentAuthor.nationalityId">
+            <mat-option (click)="reset()">
+              <p>vælg nationaitet</p>
+            </mat-option>
+            <mat-option  *ngFor="let nationality of nationalities" [value]="nationality.nationalityId">
+              <p>{{nationality.name}}</p>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Tilføj titler</mat-label>
-        <mat-select [(value)]="titleSelect">
-          <!-- <mat-option value="0">Tilføj titler</mat-option> -->
-          <mat-option *ngFor="let title of unaddedTitles" (click)="addTitle(title)" [value]="title.titleId">{{title.name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Tilføj titler</mat-label>
+          <mat-select [(value)]="titleSelect">
+            <!-- <mat-option value="0">Tilføj titler</mat-option> -->
+            <mat-option *ngFor="let title of unaddedTitles" (click)="addTitle(title)" [value]="title.titleId">{{title.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Fjern titler</mat-label>
-        <mat-select value="titleSelect">
-          <!-- <mat-option value="0">Fjern titler</mat-option> -->
-          <mat-option *ngFor="let title of addedTitles" (click)="removeTitle(title)" [value]="title.titleId">{{title.name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Fjern titler</mat-label>
+          <mat-select value="titleSelect">
+            <!-- <mat-option value="0">Fjern titler</mat-option> -->
+            <mat-option *ngFor="let title of addedTitles" (click)="removeTitle(title)" [value]="title.titleId">{{title.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+    </div>
     <!-- </div>
 
     <div class="centerDiv">
       </div>
 
       <div class="centerDiv">
-      </div> -->
-    </div>
+      </div>
+    </div>-->
     <div class="centerDiv">
       <button (click)="deleteAuthor()">slet</button>
       <button (click)="saveAuthor()">gem</button>

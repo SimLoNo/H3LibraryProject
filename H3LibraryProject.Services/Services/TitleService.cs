@@ -75,7 +75,7 @@ namespace H3LibraryProject.Services.Services
                 RYear = titleRequest.RYear,
                 LanguageId = titleRequest.LanguageId,
                 GenreId = titleRequest.GenreId,
-                AuthorId = titleRequest.AuthorId,
+                //AuthorId = titleRequest.AuthorId,
                 PublisherId = titleRequest.PublisherId,
                 Authors = titleRequest.AuthorsList != null ? titleRequest.AuthorsList.Select(authorObj => new Author
                 {

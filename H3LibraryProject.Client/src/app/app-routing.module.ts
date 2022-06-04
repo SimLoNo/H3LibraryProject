@@ -1,3 +1,4 @@
+import { TitleComponent } from './admin/title/title.component';
 import { AuthorComponent } from './admin/author/author.component';
 import { LoanerComponent } from './admin/loaner/loaner.component';
 import { LocationComponent } from './admin/location/location.component';
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path: "admin/publisher", component:PublisherComponent},
   {path: "admin/location", component:LocationComponent},
   {path: "admin/loaner", component:LoanerComponent},
-  {path: "admin/author", component:AuthorComponent}
+  {path: "admin/author", component:AuthorComponent},
+  {path: "admin/title", component:TitleComponent}
 ];
 
 @NgModule({

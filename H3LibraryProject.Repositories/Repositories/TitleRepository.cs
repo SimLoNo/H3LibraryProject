@@ -34,8 +34,17 @@ namespace H3LibraryProject.Repositories.Repositories
         //CREATE
         public async Task<Title> InsertNewTitle(Title title)
         {
-            Author author = _context.Author.Single(a => a.AuthorId == title.AuthorId);
-            title.Authors.Add(author);
+            //Author author = _context.Author.Single(a => a.AuthorId == title.AuthorId);
+            foreach (Author author in title.Authors.ToList())
+            {
+                Author newAuthor = _context.Author.First(t => t.AuthorId == author.AuthorId);
+                if (newAuthor != null)
+                {
+                    title.Authors.Remove(author);
+                    title.Authors.Add(newAuthor);
+                }
+            }
+            //title.Authors.Add(author);
             _context.Title.Add(title); //Denne indeholder ikke en ID
             //title.Authors.Add(author);
             await _context.SaveChangesAsync();

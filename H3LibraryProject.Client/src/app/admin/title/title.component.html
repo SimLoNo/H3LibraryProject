@@ -1,0 +1,117 @@
+<div class="MainDiv">
+  <nav>
+    <mat-form-field appearance="fill">
+      <mat-label>admin sider</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let page of adminPages" [value]="page">
+          <a href="/admin/{{page}}">{{page}}</a>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    </nav>
+  <div class="infoDiv">
+    <h1>Administrer titler</h1>
+    <div class="centerDiv">
+      <label>Navn: </label>
+      <input [(ngModel)]="currentTitle.name">
+    </div>
+    <div class="centerDiv">
+      <label>udgivelsesår: </label>
+      <input [(ngModel)]="currentTitle.rYear" type="number">
+    </div>
+    <div class="centerDiv">
+      <label>sider: </label>
+      <input [(ngModel)]="currentTitle.pages" type="number">
+    </div>
+
+    <div class="centerDiv">
+      <mat-form-field appearance="fill">
+        <mat-label>Sprog</mat-label>
+        <mat-select [(value)]="currentTitle.languageId">
+          <mat-option (click)="reset()">
+            <p>vælg sprog</p>
+          </mat-option>
+          <mat-option  *ngFor="let language of languages" [value]="language.languageId">
+            <p>{{language.name}}</p>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="centerDiv">
+        <mat-form-field appearance="fill">
+          <mat-label>Genre</mat-label>
+          <mat-select [(value)]="currentTitle.genreId">
+            <mat-option (click)="reset()">
+              <p>vælg genre</p>
+            </mat-option>
+            <mat-option  *ngFor="let genre of genres" [value]="genre.genreId">
+              <p>{{genre.name}}</p>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div class="centerDiv">
+          <mat-form-field appearance="fill">
+            <mat-label>Udgivere</mat-label>
+            <mat-select [(value)]="currentTitle.publisherId">
+              <mat-option (click)="reset()">
+                <p>vælg udgivere</p>
+              </mat-option>
+              <mat-option  *ngFor="let publisher of publishers" [value]="publisher.publisherId">
+                <p>{{publisher.name}}</p>
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+      <div class="centerDiv">
+        <mat-form-field appearance="fill">
+          <mat-label>Tilføj titler</mat-label>
+          <mat-select [(value)]="authorSelect">
+            <!-- <mat-option value="0">Tilføj titler</mat-option> -->
+            <mat-option *ngFor="let author of unaddedAuthors" (click)="addAuthor(author)" [value]="author.authorId">{{author.lName}}, {{author.fName}} {{author.mName}} {{author.bYear}} - {{author.dYear}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Fjern titler</mat-label>
+          <mat-select value="titleSelect">
+            <!-- <mat-option value="0">Fjern titler</mat-option> -->
+            <mat-option *ngFor="let author of addedAuthors" (click)="removeAuthor(author)" [value]="author.authorId">{{author.lName}}, {{author.fName}} {{author.mName}} {{author.bYear}} - {{author.dYear}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+<!--
+    <div class="centerDiv">
+      </div>
+
+      <div class="centerDiv">
+      </div>
+    </div>-->
+    <div class="centerDiv">
+      <button (click)="deleteTitle()">slet</button>
+      <button (click)="saveTitle()">gem</button>
+    </div>
+    <div >
+      <div class="centerDiv">
+        <mat-form-field appearance="fill">
+          <mat-label>Titler</mat-label>
+          <mat-select>
+            <mat-option (click)="reset()">
+              <p>Ny</p>
+            </mat-option>
+            <mat-option *ngFor="let title of titles" [value]="title" (click)="edit(title)">
+              <p>{{title.name}}, {{title.rYear}} {{title.pages}}</p>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  </div>
+</div>
+
+
+
+
+

@@ -22,7 +22,8 @@ import { PublisherComponent } from './admin/publisher/publisher.component';
 import { LocationComponent } from './admin/location/location.component';
 import { LoanerComponent } from './admin/loaner/loaner.component';
 import { AuthorComponent } from './admin/author/author.component';
-import {MatListModule} from '@angular/material/list'
+import {MatListModule} from '@angular/material/list';
+import { TitleComponent } from './admin/title/title.component'
 
 
 
@@ -37,7 +38,8 @@ import {MatListModule} from '@angular/material/list'
     PublisherComponent,
     LocationComponent,
     LoanerComponent,
-    AuthorComponent
+    AuthorComponent,
+    TitleComponent
   ],
   imports: [
     BrowserModule,
