@@ -114,23 +114,12 @@ namespace H3LibraryProject.Repositories.Repositories
 
                 if (updatetitle.Authors.Count > 0)
                 {
-
-                    //updatetitle.Authors.ForEach(a =>
-                    //{
-                    //    if (title.Authors.Exists(b => b.AuthorId == a.AuthorId) == false)
-                    //    {
-                    //        updatetitle.Authors.Remove(a);
-                    //    }
-                    //});
                     foreach (Author existingAuthor in updatetitle.Authors.ToList())
                     {
                         if (title.Authors.Exists(a => a.AuthorId == existingAuthor.AuthorId) == false)
                         {
-                            Author deleteAuthor = _context.Author.First(a => a.AuthorId == existingAuthor.AuthorId);
-                            if (deleteAuthor != null && deleteAuthor is Author)
-                            {
-                                updatetitle.Authors.Remove(existingAuthor);
-                            }
+                            updatetitle.Authors.Remove(existingAuthor);
+                            
                         }
                     }
                 }
