@@ -99,7 +99,11 @@ namespace H3LibraryProject.Services.Services
                 LName = request.LName,
                 BYear = request.BYear,
                 DYear = request.DYear,
-                NationalityId = request.NationalityId
+                NationalityId = request.NationalityId,
+                Titles = request.TitlesList != null ? request.TitlesList.Select(titleObj => new Title
+                {
+                    TitleId = titleObj
+                }).ToList() : new()
             };
         }
         private AuthorResponse MapAuthorToAuthorResponse(Author author)

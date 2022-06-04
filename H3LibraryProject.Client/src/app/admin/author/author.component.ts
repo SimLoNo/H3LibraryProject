@@ -16,20 +16,29 @@ export class AuthorComponent implements OnInit {
   adminPages:string[] = ['author','genre','language','loan','loaner','loanertype','location','material','nationality','publisher','title'];
   authors:Author[] = [];
   nationalities:Nationality[] = [];
-  currentAuthor:Author = {authorId:0,lName:"",fName:"",mName:"",bYear:0,dYear:0,nationalityId:0,};
+  currentAuthor:Author = {authorId:0,lName:"",fName:"",mName:"",bYear:0,dYear:0,nationalityId:0,titles:[],titlesList:[]};
   currentNationality:Nationality = {nationalityId:0, name:""};
   authorTitles = new FormControl();
   titles:MaterialTitle[] = [];
+  unaddedTitles:MaterialTitle[] = [];
+  addedTitles:MaterialTitle[] = [];
+  titleSelect:number = 0;
   constructor(private authorService: AuthorService, private nationalityService:NationalityService, private titleService:TitleService) { }
 
 
   ngOnInit(): void {
+
+    // Henter alle forfattere
     this.authorService.readAllAuthors()
     .subscribe((data) => {
       console.log(data);
       if (data != null) {
         data.forEach(element => {
           console.log(`author name: ${element.fName} ${element.mName} ${element.lName}, ${element.titles}`);
+          element.titles?.forEach(a => {
+            console.log(`Author with titles: ${a.genreId}, ${a.name}`);
+
+          })
           if (element.mName == null) {
             // element.mName = "";
           }
@@ -39,6 +48,7 @@ export class AuthorComponent implements OnInit {
 
     });
 
+    // Henter alle nationaliteter
     this.nationalityService.readAllNationalities()
     .subscribe((data) => {
       console.log(data);
@@ -48,6 +58,7 @@ export class AuthorComponent implements OnInit {
 
     })
 
+    // Henter alle titler
     this.titleService.readAllTitles()
     .subscribe((data) => {
       console.log(data);
@@ -59,8 +70,23 @@ export class AuthorComponent implements OnInit {
   }
   edit(author:Author){
     console.log(`selected author: ${author.fName} ${author.mName} ${author.lName}`);
+    author.titles?.forEach(a =>{
+      console.log(`Author has title: ${a}`);
+
+    })
+    this.unaddedTitles = [];
+    this.addedTitles = [];
+    this.titles.forEach(t => {
+      if (author.titles?.find(b => b.titleId == t.titleId)) {
+        this.addedTitles.push(t);
+      }
+      else{
+        this.unaddedTitles.push(t);
+      }
+    })
 
     this.currentAuthor = author;
+
   }
 
   deleteAuthor(){
@@ -77,6 +103,18 @@ export class AuthorComponent implements OnInit {
 
   saveAuthor(){
     console.log(`Saved author: id: ${this.currentAuthor.authorId}, author name: ${this.currentAuthor.fName} ${this.currentAuthor.mName} ${this.currentAuthor.lName}`);
+    this.currentAuthor.titles = this.addedTitles; // Overskriver den nuvalgte forfatters titler, til dem der er gemt i de midlertidige lister (un)addedTitles.
+    this.currentAuthor.titlesList = [];
+    this.addedTitles.forEach(t => {
+      this.currentAuthor.titlesList.push(t.titleId);
+      console.log(`Added to titlesList: ${t.titleId}, ${t.name}`);
+
+    })
+    this.currentAuthor.titlesList.forEach(element => {
+
+    console.log(`currentAuthor titlelist: ${element}`);
+    });
+
 
   if (this.currentAuthor.authorId <= 0 || this.currentAuthor.authorId == null) {
       this.authorService.createAuthor(this.currentAuthor)
@@ -98,8 +136,19 @@ export class AuthorComponent implements OnInit {
 
   }
 
+  removeTitle(title:MaterialTitle){
+    this.addedTitles = this.addedTitles.filter(t => t.titleId != title.titleId); // Returnere den samme liste, undtagen det object der blev fjernet
+    this.unaddedTitles.push(title);
+    this.titleSelect = 0; // nulstiller select menuen, for hver gang den er brugt.
+  }
+  addTitle(title:MaterialTitle){
+    this.unaddedTitles = this.unaddedTitles.filter(t => t.titleId != title.titleId); // Returnere den samme liste, undtagen det object der blev tilføjet
+    this.addedTitles.push(title);
+    this.titleSelect = 0; // nulstiller select menuen, for hver gang den er brugt.
+  }
+
   reset(){
-    this.currentAuthor = {authorId:0, fName:"",mName:"",lName:"",nationalityId:0, bYear:0,dYear:0};
+    this.currentAuthor = {authorId:0, fName:"",mName:"",lName:"",nationalityId:0, bYear:0,dYear:0,titlesList:[]};
   }
 
 }

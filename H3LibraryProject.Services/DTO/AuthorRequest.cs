@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace H3LibraryProject.API.DTOs
@@ -27,6 +28,8 @@ namespace H3LibraryProject.API.DTOs
         [Required]
         [Range(0, 3000, ErrorMessage = "Nationalitet mellem 0 og 3000")]
         public int NationalityId { get; set; }
+
+        public List<int> TitlesList { get; set; }
 
     }
 }

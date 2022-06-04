@@ -29,6 +29,7 @@
       <label>Dødsår: </label>
       <input [(ngModel)]="currentAuthor.dYear" type="number">
     </div>
+
     <div class="centerDiv">
       <mat-form-field appearance="fill">
         <mat-label>Nationalitet</mat-label>
@@ -41,15 +42,29 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-    </div>
-    <div class="centerDiv">
+
       <mat-form-field appearance="fill">
-        <mat-label>Titler</mat-label>
-        <mat-select [(value)]="currentAuthor.titles" multiple>
-          <mat-option *ngFor="let title of titles" [value]="title.titleId">{{title.name}}</mat-option>
+        <mat-label>Tilføj titler</mat-label>
+        <mat-select [(value)]="titleSelect">
+          <mat-option value="0">Tilføj titler</mat-option>
+          <mat-option *ngFor="let title of unaddedTitles" (click)="addTitle(title)" [value]="title.titleId">{{title.name}}</mat-option>
         </mat-select>
       </mat-form-field>
 
+      <mat-form-field appearance="fill">
+        <mat-label>Fjern titler</mat-label>
+        <mat-select value="titleSelect">
+          <mat-option value="0">Fjern titler</mat-option>
+          <mat-option *ngFor="let title of addedTitles" (click)="removeTitle(title)" [value]="title.titleId">{{title.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    <!-- </div>
+
+    <div class="centerDiv">
+      </div>
+
+      <div class="centerDiv">
+      </div> -->
     </div>
     <div class="centerDiv">
       <button (click)="deleteAuthor()">slet</button>

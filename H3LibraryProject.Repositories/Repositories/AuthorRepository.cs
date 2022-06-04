@@ -30,7 +30,45 @@ namespace H3LibraryProject.Repositories.Repositories
         //CREATE
         public async Task<Author> CreateAuthor(Author author)
         {
+            //Title newTitle = _context.Title.First(t => t.TitleId == author.Titles[0].TitleId);
+            //if (newTitle != null)
+            //{
+            //    author.Titles.Add(newTitle);
+            //}
+            // Fordi de medsendte id'er er forklædt som Titles, bliver de fjernet fra author.Titles, og id'erne gemt i en liste.
+            List<int> titleIdList = new();
+            foreach (Title title in author.Titles.ToList())
+            {
+                Title newTitle = _context.Title.First(t => t.TitleId == title.TitleId);
+                if (newTitle != null)
+                {
+                    author.Titles.Remove(title);
+                    author.Titles.Add(newTitle);
+                }
+            }
+           
+            // For hvert title id der er medsendt, kaldes dbcontext for at finde titlen, og sætte den ind i author.
+            //titleIdList.ForEach(title =>
+            //{
+            //    Title newTitle = _context.Title.First(t => t.TitleId == title);
+            //    if (newTitle != null)
+            //    {
+            //        author.Titles.Add(newTitle);
+            //    }
+            //}).ToList();
+
+            //foreach (int titleId in titleIdList.ToList())
+            //{
+            //    Title newTitle = _context.Title.First(t => t.TitleId == titleId);
+            //    if (newTitle != null)
+            //    {
+            //        author.Titles.Add
+            //    }
+            //}
             _context.Author.Add(author); //Denne indeholder ikke en ID
+
+            Console.WriteLine();
+
             await _context.SaveChangesAsync();
             return author; //Denne indeholder en ID
         }
@@ -62,6 +100,7 @@ namespace H3LibraryProject.Repositories.Repositories
         public async Task<Author> UpdateExistingAuthor(int authorId, Author author)
         {
             Author updateAuthor = await _context.Author
+                .Include(t => t.Titles)
                 .FirstOrDefaultAsync(author => author.AuthorId == authorId);
             if (updateAuthor != null)
             {
@@ -71,6 +110,32 @@ namespace H3LibraryProject.Repositories.Repositories
                 updateAuthor.BYear = author.BYear;
                 updateAuthor.DYear = author.DYear;
                 updateAuthor.NationalityId = author.NationalityId;
+
+                // Køre igennem de titler der er sent med fra frontend, og kigger på om de hver især er tilføjet til forfatteren i databasen, og tilføjer dem hvis de ikke er
+                foreach (Title sentTitle in author.Titles)
+                {
+                    if (updateAuthor.Titles.Exists(t => t.TitleId == sentTitle.TitleId) == false)
+                    {
+                        Title newTitle = _context.Title.First(t => t.TitleId == sentTitle.TitleId);
+                        if (newTitle != null)
+                        {
+                            updateAuthor.Titles.Add(newTitle);
+                        }
+                    }
+                }
+
+                // Kigger alle de tilknyttede titler igennem der er i databasen, og hvis de ikke er i den tilsendte request, bliver forbindelsen fjernet i databasen.
+                if (updateAuthor.Titles.Count > 0)
+                {
+                    foreach (Title existingTitle in updateAuthor.Titles.ToList())
+                    {
+                        if (author.Titles.Exists(t => t.TitleId == existingTitle.TitleId) == false)
+                        {
+                            updateAuthor.Titles.Remove(existingTitle);
+
+                        }
+                    }
+                }
                 await _context.SaveChangesAsync();
             }
             return updateAuthor;

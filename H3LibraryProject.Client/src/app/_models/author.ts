@@ -10,5 +10,6 @@ export interface Author{
   nationalityId:number;
   titles?:MaterialTitle[];
   nationality?:Nationality;
+  titlesList:number[];
 
 }

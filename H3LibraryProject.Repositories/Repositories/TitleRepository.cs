@@ -100,6 +100,8 @@ namespace H3LibraryProject.Repositories.Repositories
                 updatetitle.Pages = title.Pages;
                 updatetitle.RYear = title.RYear;
                 updatetitle.GenreId = title.GenreId;
+
+                // Køre igennem de forfater der er sent med fra frontend, og kigger på om de hver især er tilføjet til titlen i databasen, og tilføjer dem hvis de ikke er
                 foreach (Author sentAuthor in title.Authors)
                 {
                     if (updatetitle.Authors.Exists(a => a.AuthorId == sentAuthor.AuthorId) == false)
@@ -112,6 +114,7 @@ namespace H3LibraryProject.Repositories.Repositories
                     }
                 }
 
+                // Kigger alle de tilknyttede forfattere igennem der er i databasen, og hvis de ikke er i den tilsendte request, bliver forbindelsen fjernet i databasen.
                 if (updatetitle.Authors.Count > 0)
                 {
                     foreach (Author existingAuthor in updatetitle.Authors.ToList())
