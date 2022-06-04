@@ -103,17 +103,19 @@ export class AuthorComponent implements OnInit {
 
   saveAuthor(){
     console.log(`Saved author: id: ${this.currentAuthor.authorId}, author name: ${this.currentAuthor.fName} ${this.currentAuthor.mName} ${this.currentAuthor.lName}`);
-    this.currentAuthor.titles = this.addedTitles; // Overskriver den nuvalgte forfatters titler, til dem der er gemt i de midlertidige lister (un)addedTitles.
-    this.currentAuthor.titlesList = [];
+
+    this.currentAuthor.titlesList = []; // Sørger for at titleslist er en tom liste.
+
+    // For hver titel der er markeret som tilføjet, bliver id'et til titlesList, som så sendes til API'et.
     this.addedTitles.forEach(t => {
       this.currentAuthor.titlesList.push(t.titleId);
       console.log(`Added to titlesList: ${t.titleId}, ${t.name}`);
 
     })
-    this.currentAuthor.titlesList.forEach(element => {
 
-    console.log(`currentAuthor titlelist: ${element}`);
-    });
+    // nulstiller de lister der holder de tilføjede og utilføjede titler.
+    this.addedTitles = [];
+    this.unaddedTitles = []
 
 
   if (this.currentAuthor.authorId <= 0 || this.currentAuthor.authorId == null) {

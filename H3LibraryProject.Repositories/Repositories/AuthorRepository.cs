@@ -30,13 +30,7 @@ namespace H3LibraryProject.Repositories.Repositories
         //CREATE
         public async Task<Author> CreateAuthor(Author author)
         {
-            //Title newTitle = _context.Title.First(t => t.TitleId == author.Titles[0].TitleId);
-            //if (newTitle != null)
-            //{
-            //    author.Titles.Add(newTitle);
-            //}
-            // Fordi de medsendte id'er er forklædt som Titles, bliver de fjernet fra author.Titles, og id'erne gemt i en liste.
-            List<int> titleIdList = new();
+            // fjerne de medsendte Titler som kun indeholder id, så der kan indsættet de rigtige Titler.
             foreach (Title title in author.Titles.ToList())
             {
                 Title newTitle = _context.Title.First(t => t.TitleId == title.TitleId);
@@ -47,24 +41,7 @@ namespace H3LibraryProject.Repositories.Repositories
                 }
             }
            
-            // For hvert title id der er medsendt, kaldes dbcontext for at finde titlen, og sætte den ind i author.
-            //titleIdList.ForEach(title =>
-            //{
-            //    Title newTitle = _context.Title.First(t => t.TitleId == title);
-            //    if (newTitle != null)
-            //    {
-            //        author.Titles.Add(newTitle);
-            //    }
-            //}).ToList();
-
-            //foreach (int titleId in titleIdList.ToList())
-            //{
-            //    Title newTitle = _context.Title.First(t => t.TitleId == titleId);
-            //    if (newTitle != null)
-            //    {
-            //        author.Titles.Add
-            //    }
-            //}
+            
             _context.Author.Add(author); //Denne indeholder ikke en ID
 
             Console.WriteLine();
