@@ -1,0 +1,70 @@
+<div class="MainDiv">
+  <nav>
+    <mat-form-field appearance="fill">
+      <mat-label>admin sider</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let page of adminPages" [value]="page">
+          <a href="/admin/{{page}}">{{page}}</a>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    </nav>
+  <div class="infoDiv">
+    <h1>Administrer materiale</h1>
+    <div class="centerDiv">
+      <mat-checkbox [(ngModel)]="currentMaterial.home">Materiale hjemme</mat-checkbox>
+    </div>
+    <div class="centerDiv">
+      <mat-form-field appearance="fill">
+        <mat-label>Titel</mat-label>
+        <mat-select [(value)]="currentMaterial.titleId">
+          <mat-option>
+            <p>vælg titel</p>
+          </mat-option>
+          <mat-option  *ngFor="let title of titles" [value]="title.titleId">
+            <p>{{title.name}}</p>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="centerDiv">
+        <mat-form-field appearance="fill">
+          <mat-label>Lokation</mat-label>
+          <mat-select [(value)]="currentMaterial.locationId">
+            <mat-option>
+              <p>vælg lokation</p>
+            </mat-option>
+            <mat-option  *ngFor="let location of locations" [value]="location.locationId">
+              <p>{{location.name}}</p>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+    <div class="centerDiv">
+      <button (click)="deleteMaterial()">slet</button>
+      <button (click)="saveMaterial()">gem</button>
+    </div>
+    <div >
+      <div class="centerDiv">
+        <mat-form-field appearance="fill">
+          <mat-label>Materiale</mat-label>
+          <mat-select>
+            <mat-option (click)="reset()">
+              <p>Ny</p>
+            </mat-option>
+            <mat-option *ngFor="let material of materials" [value]="material" (click)="edit(material)">
+              <p>{{material.materialId}} - {{material.title.name}}, {{material.location.name}}</p>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  </div>
+</div>
+
+
+
+
+

@@ -42,20 +42,26 @@ namespace H3LibraryProject.Repositories.Repositories
         public async Task<List<Material>> GetAllMaterials()
         {
             return await _context.Material
-                .OrderBy(b => b.LocationId)
+                .Include(m => m.Title)
+                .Include(m => m.Location)
+                .OrderBy(m => m.LocationId)
                 .ToListAsync();
         }
 
         public async Task<Material> GetMaterialById(int materialId)
         {
             return await _context.Material
+                .Include(m => m.Title)
+                .Include(m => m.Location)
                 .FirstOrDefaultAsync(material => material.MaterialId == materialId);
         }
 
         public async Task<List<Material>> GetMaterialsByTitleId(int titleId)
         {
             return await _context.Material
-                .Include(material => material.TitleId == titleId)
+                .Include(m => m.Title)
+                .Include(m => m.Location)
+                .Where(m => m.TitleId == titleId)
                 .ToListAsync();
         }
 
@@ -66,7 +72,6 @@ namespace H3LibraryProject.Repositories.Repositories
                 .FirstOrDefaultAsync(material => material.MaterialId == materialId);
             if (updatematerial != null)
             {
-                updatematerial.MaterialId = material.MaterialId;
                 updatematerial.LocationId = material.LocationId;
                 updatematerial.Home = material.Home;
                 updatematerial.TitleId = material.TitleId;

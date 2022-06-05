@@ -28,8 +28,7 @@ namespace H3LibraryProject.Tests.ControllerTests
             {
                 Name = "Test-titel",
                 Pages = 300,
-                RYear = 2000,
-                AuthorId = 1
+                RYear = 2000
             };
             int TitleId = 1;
 
@@ -61,8 +60,7 @@ namespace H3LibraryProject.Tests.ControllerTests
             {
                 Name = "Test-titel",
                 Pages = 300,
-                RYear = 2000,
-                AuthorId = 1
+                RYear = 2000
             };
 
             _titleServiceMock

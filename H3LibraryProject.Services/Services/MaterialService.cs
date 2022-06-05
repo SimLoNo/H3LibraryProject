@@ -34,7 +34,18 @@ namespace H3LibraryProject.Services.Services
                 MaterialId = material.MaterialId,
                 TitleId = material.TitleId,
                 LocationId = material.LocationId,
-                Home = material.Home
+                Home = material.Home,
+                Title = material.Title != null ? new MaterialTitleResponse {
+                    TitleId = material.Title.TitleId,
+                    Name = material.Title.Name,
+                    RYear = material.Title.RYear,
+                    Pages = material.Title.Pages
+                } : new(),
+                Location = material.Location != null ? new MaterialLocationResponse
+                {
+                    LocationId = material.Location.LocationId,
+                    Name = material.Location.Name
+                } : new()
             };
         }
 

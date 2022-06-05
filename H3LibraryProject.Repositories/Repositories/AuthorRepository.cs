@@ -55,6 +55,9 @@ namespace H3LibraryProject.Repositories.Repositories
         {
             return await _context.Author
                 .Include(a => a.Titles) //hahahah det virker slet ikke fml //19.05.22 - nu virker det.
+                .OrderBy(a => a.LName)
+                .OrderBy(a => a.FName)
+                .OrderBy(a => a.MName)
                 .ToListAsync();
         }
 

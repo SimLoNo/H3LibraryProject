@@ -22,9 +22,11 @@ import { PublisherComponent } from './admin/publisher/publisher.component';
 import { LocationComponent } from './admin/location/location.component';
 import { LoanerComponent } from './admin/loaner/loaner.component';
 import { AuthorComponent } from './admin/author/author.component';
-import {MatListModule} from '@angular/material/list';
-import { TitleComponent } from './admin/title/title.component'
-
+import { MatListModule} from '@angular/material/list';
+import { TitleComponent } from './admin/title/title.component';
+import { MaterialComponent } from './admin/material/material.component'
+import { MatCheckboxModule} from '@angular/material/checkbox';
+import { LoanComponent } from './admin/loan/loan.component';
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { TitleComponent } from './admin/title/title.component'
     LocationComponent,
     LoanerComponent,
     AuthorComponent,
-    TitleComponent
+    TitleComponent,
+    MaterialComponent,
+    LoanComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +58,8 @@ import { TitleComponent } from './admin/title/title.component'
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatListModule
+    MatListModule,
+    MatCheckboxModule
 
   ],
   providers: [],

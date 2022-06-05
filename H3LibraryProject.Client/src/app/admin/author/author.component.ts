@@ -64,6 +64,7 @@ export class AuthorComponent implements OnInit {
       console.log(data);
       if (data != null) {
         this.titles = data;
+        this.unaddedTitles = data;
       }
 
     })
@@ -115,7 +116,7 @@ export class AuthorComponent implements OnInit {
 
     // nulstiller de lister der holder de tilføjede og utilføjede titler.
     this.addedTitles = [];
-    this.unaddedTitles = []
+    this.unaddedTitles = this.titles;
 
 
   if (this.currentAuthor.authorId <= 0 || this.currentAuthor.authorId == null) {

@@ -16,11 +16,11 @@
       <input [(ngModel)]="currentTitle.name">
     </div>
     <div class="centerDiv">
-      <label>udgivelsesår: </label>
+      <label>Udgivelsesår: </label>
       <input [(ngModel)]="currentTitle.rYear" type="number">
     </div>
     <div class="centerDiv">
-      <label>sider: </label>
+      <label>Sider: </label>
       <input [(ngModel)]="currentTitle.pages" type="number">
     </div>
 
@@ -28,7 +28,7 @@
       <mat-form-field appearance="fill">
         <mat-label>Sprog</mat-label>
         <mat-select [(value)]="currentTitle.languageId">
-          <mat-option (click)="reset()">
+          <mat-option>
             <p>vælg sprog</p>
           </mat-option>
           <mat-option  *ngFor="let language of languages" [value]="language.languageId">
@@ -41,7 +41,7 @@
         <mat-form-field appearance="fill">
           <mat-label>Genre</mat-label>
           <mat-select [(value)]="currentTitle.genreId">
-            <mat-option (click)="reset()">
+            <mat-option>
               <p>vælg genre</p>
             </mat-option>
             <mat-option  *ngFor="let genre of genres" [value]="genre.genreId">
@@ -54,7 +54,7 @@
           <mat-form-field appearance="fill">
             <mat-label>Udgivere</mat-label>
             <mat-select [(value)]="currentTitle.publisherId">
-              <mat-option (click)="reset()">
+              <mat-option>
                 <p>vælg udgivere</p>
               </mat-option>
               <mat-option  *ngFor="let publisher of publishers" [value]="publisher.publisherId">
@@ -68,7 +68,7 @@
 
       <div class="centerDiv">
         <mat-form-field appearance="fill">
-          <mat-label>Tilføj titler</mat-label>
+          <mat-label>Tilføj forfattere</mat-label>
           <mat-select [(value)]="authorSelect">
             <!-- <mat-option value="0">Tilføj titler</mat-option> -->
             <mat-option *ngFor="let author of unaddedAuthors" (click)="addAuthor(author)" [value]="author.authorId">{{author.lName}}, {{author.fName}} {{author.mName}} {{author.bYear}} - {{author.dYear}}</mat-option>
@@ -76,7 +76,7 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <mat-label>Fjern titler</mat-label>
+          <mat-label>Fjern forfattere</mat-label>
           <mat-select value="titleSelect">
             <!-- <mat-option value="0">Fjern titler</mat-option> -->
             <mat-option *ngFor="let author of addedAuthors" (click)="removeAuthor(author)" [value]="author.authorId">{{author.lName}}, {{author.fName}} {{author.mName}} {{author.bYear}} - {{author.dYear}}</mat-option>

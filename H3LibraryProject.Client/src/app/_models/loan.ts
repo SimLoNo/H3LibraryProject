@@ -6,7 +6,22 @@ export interface Loan{
   materialId:number;
   loanDate:Date;
   returnDate:Date;
-  loanerLoaning?:Loaner;
-  materialLoaned?:Material;
+  loaner:LoanLoaner;
+  material:LoanMaterial;
+
+}
+
+export interface LoanLoaner{
+  loanerId:number;
+  loanerTypeId:number;
+  loanerTypeName:string;
+  name:string;
+}
+
+export interface LoanMaterial{
+  locationId:number;
+  materialId:number;
+  titleId:number;
+  titleName:string
 
 }

@@ -51,6 +51,7 @@ export class TitleComponent implements OnInit {
           }
         });
         this.authors = data;
+        this.unaddedAuthors = data;
       }
 
     });
@@ -138,7 +139,7 @@ export class TitleComponent implements OnInit {
 
     // nulstiller de lister der holder de tilføjede og utilføjede titler.
     this.addedAuthors = [];
-    this.unaddedAuthors = []
+    this.unaddedAuthors = this.authors;
 
 
   if (this.currentTitle.titleId <= 0 || this.currentTitle.titleId == null) {
@@ -185,7 +186,7 @@ export class TitleComponent implements OnInit {
 
   reset(){
     this.addedAuthors = [];
-    this.unaddedAuthors = [];
+    this.unaddedAuthors = this.authors;
     this.currentTitle = {titleId:0,name:"",languageId:0,rYear:0,pages:0,publisherId:0,genreId:0,materials:[],authorsList:[]};
   }
 }
