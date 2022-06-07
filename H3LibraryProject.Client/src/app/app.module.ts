@@ -29,6 +29,7 @@ import { MatCheckboxModule} from '@angular/material/checkbox';
 import { LoanComponent } from './admin/loan/loan.component';
 import { FrontpageComponent } from './user/frontpage/frontpage.component';
 import { SearchMaterialComponent } from './user/search-material/search-material.component';
+import { MaterialDisplayComponent } from './user/material-display/material-display.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { SearchMaterialComponent } from './user/search-material/search-material.
     MaterialComponent,
     LoanComponent,
     FrontpageComponent,
-    SearchMaterialComponent
+    SearchMaterialComponent,
+    MaterialDisplayComponent
   ],
   imports: [
     BrowserModule,

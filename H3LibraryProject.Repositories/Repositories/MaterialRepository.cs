@@ -14,6 +14,7 @@ namespace H3LibraryProject.Repositories.Repositories
         Task<Material> CreateMaterial(Material material);
         Task<List<Material>> GetAllMaterials();     
         Task<Material> GetMaterialById(int materialId);
+        Task<List<Material>> SearchMaterial(string searchTitle, string location, string genre, string author);
         Task<List<Material>> GetMaterialsByTitleId(int titleId);              
         Task<Material> UpdateMaterial(int materialId, Material material);
         Task<Material> DeleteMaterial(int materialId); 
@@ -54,6 +55,16 @@ namespace H3LibraryProject.Repositories.Repositories
                 .Include(m => m.Title)
                 .Include(m => m.Location)
                 .FirstOrDefaultAsync(material => material.MaterialId == materialId);
+        }
+
+        public async Task<List<Material>> SearchMaterial(string searchTitle, string location, string genre, string author)
+        {
+            return await _context.Material
+                .Include(m => m.Title)
+                .Include(m => m.Location)
+                .OrderBy(m => m.LocationId)
+                .Where(m => (m.Title.Name.Contains(searchTitle) || searchTitle == "") && (m.Location.Name.Contains(location) || location == "") && (m.Title.Genre.Name.Contains(genre) || genre == ""))
+                .ToListAsync();
         }
 
         public async Task<List<Material>> GetMaterialsByTitleId(int titleId)

@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Material } from '../_models/material';
@@ -18,6 +18,17 @@ export class MaterialService {
 
   readAllMaterials():Observable<Material[]>{
     return this.http.get<Material[]>(this.baseUrl);
+  }
+
+  readMaterialsBySearch(title:string,location:string, genre:string,author:string):Observable<Material[]>{
+    let queryOptions = new HttpParams();
+    queryOptions = queryOptions.append("searchTitle",title);
+    queryOptions = queryOptions.append("location",location);
+    queryOptions = queryOptions.append("genre",genre);
+    queryOptions = queryOptions.append("author",author);
+    console.log(`Data er modtaget, title: ${title}, lokation: ${location}, genre: ${genre}, forfatter: ${author}`);
+
+    return this.http.get<Material[]>(this.baseUrl, {params:queryOptions});
   }
 
   readMaterialById(id:number):Observable<Material>{

@@ -19,16 +19,33 @@ namespace H3LibraryProject.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllMaterials()
+        public async Task<IActionResult> GetAllMaterials([FromQuery] string searchTitle = "", [FromQuery] string location = "", [FromQuery] string genre = "", [FromQuery] string author = "")
         {
+            
             try
             {
-                List<MaterialResponse> materialList = await _service.GetAllMaterials();
-                if (materialList.Count > 0)
+                
+                if (searchTitle == null && location == null && genre == null && author == null)
                 {
-                    return Ok(materialList);
+                    List<MaterialResponse> materialList = await _service.GetAllMaterials();
+
+                    if (materialList.Count > 0)
+                    {
+                        return Ok(materialList);
+                    }
+                    return NoContent();
                 }
-                return NoContent();
+
+                else
+                {
+                    List<MaterialResponse> materialList = await _service.SearchMaterial(searchTitle, location, genre, author);
+
+                    if (materialList.Count > 0)
+                    {
+                        return Ok(materialList);
+                    }
+                    return NoContent();
+                }
             }
             catch (Exception ex)
             {
@@ -50,6 +67,29 @@ namespace H3LibraryProject.API.Controllers
                     return Ok(material);
                 }
                 return NotFound();
+            }
+            catch (Exception ex)
+            {
+
+                return Problem(ex.Message);
+            }
+        }
+
+        [HttpGet("search/{searchText}")]
+        public async Task<IActionResult> GetMaterialBySearch([FromQuery] string searchTitle = "", [FromQuery] string location = "", [FromQuery] string genre = "", [FromQuery] string author = "")
+        {
+            if (searchTitle == "" && location == "" && genre == "" && author == "")
+            {
+                return BadRequest();
+            }
+            try
+            {
+                List<MaterialResponse> materials = await _service.SearchMaterial(searchTitle, location, genre, author);
+                if (materials.Count > 0)
+                {
+                    return Ok(materials);
+                }
+                return NoContent();
             }
             catch (Exception ex)
             {

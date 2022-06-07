@@ -15,6 +15,7 @@ namespace H3LibraryProject.Services.Services
         Task<MaterialResponse> CreateMaterial(MaterialRequest newMaterial);
         Task<MaterialResponse> GetMaterialById(int id);
         Task<List<MaterialResponse>> GetMaterialsByTitleId(int id);
+        Task<List<MaterialResponse>> SearchMaterial(string searchTitle, string location, string genre, string author);
         Task<MaterialResponse> UpdateMaterial(int materialId, MaterialRequest updateMaterial);
         Task<MaterialResponse> DeleteMaterial(int MaterialId);
     }
@@ -74,6 +75,28 @@ namespace H3LibraryProject.Services.Services
         public async Task<List<MaterialResponse>> GetAllMaterials()
         {
             List<Material> materials = await _materialRepository.GetAllMaterials();
+            return materials.Select(materials => MapMaterialToMaterialResponse(materials)).ToList();
+        }
+
+        public async Task<List<MaterialResponse>> SearchMaterial(string searchTitle, string location, string genre, string author)
+        {
+            if (searchTitle == null)
+            {
+                searchTitle = "";
+            }
+            if (location == null)
+            {
+                location = "";
+            }
+            if (genre == null)
+            {
+                genre = "";
+            }
+            if (author == null)
+            {
+                author = "";
+            }
+            List<Material> materials = await _materialRepository.SearchMaterial(searchTitle, location, genre, author);
             return materials.Select(materials => MapMaterialToMaterialResponse(materials)).ToList();
         }
         public async Task<MaterialResponse> GetMaterialById(int id)

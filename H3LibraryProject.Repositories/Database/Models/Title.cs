@@ -35,6 +35,7 @@ namespace H3LibraryProject.Repositories.Database
         public int GenreId { get; set; }
 
         public List<Material> Materials { get; set; } = new List<Material>(); //Giver mening at kunne se instanserne af titlerne.
+        public Genre Genre { get; set; }
 
         public List<Author> Authors { get; set; } = new List<Author>();
     }
