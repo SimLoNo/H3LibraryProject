@@ -1,3 +1,5 @@
+import { SearchMaterialComponent } from './user/search-material/search-material.component';
+import { FrontpageComponent } from './user/frontpage/frontpage.component';
 import { LoanComponent } from './admin/loan/loan.component';
 import { MaterialComponent } from './admin/material/material.component';
 import { TitleComponent } from './admin/title/title.component';
@@ -14,7 +16,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LanguageComponent } from './admin/language/language.component';
 
 const routes: Routes = [
-  {path:"", component:NationalityComponent},
+  {path:"", component:FrontpageComponent},
   {path: "admin", component:AdminLayoutComponent},
   {path: "admin/nationality", component:NationalityComponent},
   {path: "admin/genre", component:GenreComponent},
@@ -26,7 +28,8 @@ const routes: Routes = [
   {path: "admin/author", component:AuthorComponent},
   {path: "admin/title", component:TitleComponent},
   {path: "admin/material", component:MaterialComponent},
-  {path: "admin/loan", component:LoanComponent}
+  {path: "admin/loan", component:LoanComponent},
+  {path: "material", component:SearchMaterialComponent}
 ];
 
 @NgModule({

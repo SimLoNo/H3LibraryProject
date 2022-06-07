@@ -27,6 +27,8 @@ import { TitleComponent } from './admin/title/title.component';
 import { MaterialComponent } from './admin/material/material.component'
 import { MatCheckboxModule} from '@angular/material/checkbox';
 import { LoanComponent } from './admin/loan/loan.component';
+import { FrontpageComponent } from './user/frontpage/frontpage.component';
+import { SearchMaterialComponent } from './user/search-material/search-material.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { LoanComponent } from './admin/loan/loan.component';
     AuthorComponent,
     TitleComponent,
     MaterialComponent,
-    LoanComponent
+    LoanComponent,
+    FrontpageComponent,
+    SearchMaterialComponent
   ],
   imports: [
     BrowserModule,

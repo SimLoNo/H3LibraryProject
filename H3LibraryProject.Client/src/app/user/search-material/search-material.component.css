@@ -1,0 +1,10 @@
+nav{
+  background-color: lightcyan;
+  height: 7vh;
+  display: flex;
+  align-items: center;
+}
+a{
+  margin-left: 1%;
+  margin-right: 1%;
+}
