@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace H3LibraryProject.Repositories.Migrations
 {
-    public partial class initial : Migration
+    public partial class tirs0706 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

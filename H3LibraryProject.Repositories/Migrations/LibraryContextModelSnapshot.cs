@@ -616,7 +616,7 @@ namespace H3LibraryProject.Repositories.Migrations
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Title", b =>
                 {
-                    b.HasOne("H3LibraryProject.Repositories.Database.Genre", null)
+                    b.HasOne("H3LibraryProject.Repositories.Database.Genre", "Genre")
                         .WithMany("Titles")
                         .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -627,6 +627,8 @@ namespace H3LibraryProject.Repositories.Migrations
                         .HasForeignKey("LanguageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Genre");
                 });
 
             modelBuilder.Entity("H3LibraryProject.Repositories.Database.Genre", b =>

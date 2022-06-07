@@ -30,7 +30,7 @@ namespace H3LibraryProject.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(options =>
+            services.AddCors(options =>    //CORS-regler. 
             {
                 options.AddPolicy("InitialRules",
                 builder =>
