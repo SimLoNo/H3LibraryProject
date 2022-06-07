@@ -24,28 +24,22 @@ namespace H3LibraryProject.API.Controllers
             
             try
             {
-                
+                List<MaterialResponse> materialList;
                 if (searchTitle == null && location == null && genre == null && author == null)
                 {
-                    List<MaterialResponse> materialList = await _service.GetAllMaterials();
-
-                    if (materialList.Count > 0)
-                    {
-                        return Ok(materialList);
-                    }
-                    return NoContent();
+                    materialList = await _service.GetAllMaterials();
                 }
 
                 else
                 {
-                    List<MaterialResponse> materialList = await _service.SearchMaterial(searchTitle, location, genre, author);
-
-                    if (materialList.Count > 0)
-                    {
-                        return Ok(materialList);
-                    }
-                    return NoContent();
+                    materialList = await _service.SearchMaterial(searchTitle, location, genre, author);
                 }
+
+                if (materialList.Count > 0)
+                {
+                    return Ok(materialList);
+                }
+                return NoContent();
             }
             catch (Exception ex)
             {

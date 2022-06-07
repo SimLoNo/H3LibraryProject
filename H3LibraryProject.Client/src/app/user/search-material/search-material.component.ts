@@ -20,6 +20,8 @@ export class SearchMaterialComponent implements OnInit {
 
   this.materialService.readAllMaterials()
   .subscribe((data) => {
+    console.log(data);
+
     this.materials = data;
   })
   }

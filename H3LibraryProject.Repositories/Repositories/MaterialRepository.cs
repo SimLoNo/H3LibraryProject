@@ -52,7 +52,7 @@ namespace H3LibraryProject.Repositories.Repositories
         public async Task<Material> GetMaterialById(int materialId)
         {
             return await _context.Material
-                .Include(m => m.Title)
+                .Include(m => m.Title).ThenInclude(t => t.Authors)
                 .Include(m => m.Location)
                 .FirstOrDefaultAsync(material => material.MaterialId == materialId);
         }

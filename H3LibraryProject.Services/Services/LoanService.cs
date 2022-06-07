@@ -16,6 +16,7 @@ namespace H3LibraryProject.Services.Services
         Task<LoanResponse> CreateLoan(LoanRequest request);
         Task<LoanResponse> UpdateLoan(int id, LoanRequest request);
         Task<LoanResponse> DeleteLoan(int id);
+        Task<LoanResponse> UserLoanChange(int loanerId, int materialId, int loanChange);
     }
 
         public class LoanService : ILoanService
@@ -77,7 +78,31 @@ namespace H3LibraryProject.Services.Services
                 return null;
             }
 
-            private Loan MapLoanRequestToLoan(LoanRequest request)
+        public async Task<LoanResponse> UserLoanChange(int loanerId, int materialId, int loanChange)
+        {
+            Loan loanObject = new();
+            if (loanChange == 1)
+            {
+                loanObject = await _repository.CreateLoan(loanerId,materialId);
+            }
+            else if (loanChange == 2)
+            {
+                loanObject = await _repository.ExtendLoan(loanerId);
+            }
+            else if (loanChange == 3)
+            {
+                
+                loanObject = await _repository.ReturnLoan(loanerId);
+            }
+            if (loanObject != null)
+            {
+                return MapLoanToLoanResponse(loanObject);
+            }
+
+            return null;
+        }
+
+        private Loan MapLoanRequestToLoan(LoanRequest request)
             {
                 return new()
                 {
@@ -98,18 +123,19 @@ namespace H3LibraryProject.Services.Services
                 MaterialId=loan.MaterialId,
                 LoanDate=loan.LoanDate,
                 ReturnDate=loan.ReturnDate,
+                IsReturned = loan.IsReturned,
                 Loaner = loan.LoanerLoaning != null ? new LoanLoanerResponse{
                     LoanerId=loan.LoanerLoaning.LoanerId,
                     LoanerTypeId=loan.LoanerLoaning.LoanerTypeId,
                     Name=loan.LoanerLoaning.Name,
-                    LoanerTypeName = loan.LoanerLoaning.TypeOfLoaner.Name
+                    LoanerTypeName = loan.LoanerLoaning.TypeOfLoaner != null ? loan.LoanerLoaning.TypeOfLoaner.Name : null,
                 } : null,
                 Material = loan.MaterialLoaned != null ? new LoanMaterialResponse
                 {
                     MaterialId=loan.MaterialLoaned.MaterialId,
                     TitleId=loan.MaterialLoaned.TitleId,
                     LocationId =loan.MaterialLoaned.LocationId,
-                    TitleName = loan.MaterialLoaned.Title.Name
+                    TitleName = loan.MaterialLoaned.Title != null ? loan.MaterialLoaned.Title.Name : null
                 } : null
             };
 

@@ -21,6 +21,6 @@
 </div>
 <button (click)="search()">Søg</button>
 </div>
-<div *ngFor="let material of materials">
-<p>{{material.title.name}}, {{material.title.name}} {{material.location.name}}</p>
+<div class="productDiv" *ngFor="let material of materials">
+<a routerLink="/material/{{material.materialId}}">{{material.title.name}}, {{material.title.name}} {{material.location.name}}</a>
 </div>

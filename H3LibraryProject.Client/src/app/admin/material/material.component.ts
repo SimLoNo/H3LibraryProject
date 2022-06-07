@@ -19,7 +19,7 @@ export class MaterialComponent implements OnInit {
   locations:LibLocation[] = [];
   publishers:Publisher[] = [];
   materials:Material[] = [];
-  currentMaterial:Material = {materialId:0,titleId:0,locationId:0,home:false,location:{locationId:0,name:""},title:{titleId:0,name:"",rYear:0,pages:0}};
+  currentMaterial:Material = {materialId:0,titleId:0,locationId:0,home:false,location:{locationId:0,name:""},title:{titleId:0,name:"",rYear:0,pages:0,authors:[]}};
   authorSelect:number = 0;
   constructor(private locationService: LocationService, private publisherService:PublisherService, private titleService:TitleService, private materialService:MaterialService) { }
 
@@ -109,6 +109,6 @@ export class MaterialComponent implements OnInit {
 
 
   reset(){
-    this.currentMaterial = {materialId:0,titleId:0,locationId:0,home:false,location:{locationId:0,name:""},title:{titleId:0,name:"",rYear:0,pages:0}};
+    this.currentMaterial = {materialId:0,titleId:0,locationId:0,home:false,location:{locationId:0,name:""},title:{titleId:0,name:"",rYear:0,pages:0,authors:[]}};
   }
 }

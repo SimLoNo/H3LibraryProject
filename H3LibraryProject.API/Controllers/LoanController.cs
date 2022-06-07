@@ -100,6 +100,29 @@ namespace H3LibraryProject.API.Controllers
             }
         }
 
+        [HttpPut]
+        public async Task<IActionResult> UserLoanChange([FromQuery] int loanerid, [FromQuery] int materialId, [FromQuery] int loanChange)
+        {
+            if (loanerid <= 0)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                LoanResponse loanResult = await _service.UserLoanChange(loanerid, materialId, loanChange);
+                if (loanResult != null)
+                {
+                    return Ok(loanResult);
+                }
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+
+                return Problem(ex.Message);
+            }
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLoan([FromRoute] int id)
         {

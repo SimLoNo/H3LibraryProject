@@ -1,4 +1,4 @@
-import { LibLocation } from './location';
+import { Author } from './author';
 import { MaterialTitle } from './title';
 export interface Material{
   materialId:number;
@@ -16,6 +16,7 @@ export interface MaterialMaterialTitle{
   name:String;
   rYear:number;
   pages:number;
+  authors:Author[];
 }
 
 export interface MaterialLibLocation{

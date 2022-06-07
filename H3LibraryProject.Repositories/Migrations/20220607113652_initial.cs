@@ -224,7 +224,8 @@ namespace H3LibraryProject.Repositories.Migrations
                     LoanerId = table.Column<int>(type: "int", nullable: false),
                     MaterialId = table.Column<int>(type: "int", nullable: false),
                     LoanDate = table.Column<DateTime>(type: "date", nullable: false),
-                    ReturnDate = table.Column<DateTime>(type: "date", nullable: false)
+                    ReturnDate = table.Column<DateTime>(type: "date", nullable: false),
+                    IsReturned = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

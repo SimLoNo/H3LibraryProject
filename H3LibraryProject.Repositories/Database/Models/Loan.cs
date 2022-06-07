@@ -25,6 +25,9 @@ namespace H3LibraryProject.Repositories.Database
         [Column(TypeName = "date")] //Ideel? Kan diskuteres
         public DateTime ReturnDate { get; set; }
 
+        [Column(TypeName = "bit")]
+        public bool IsReturned { get; set; }
+
         public Loaner LoanerLoaning { get; set; }
         public Material MaterialLoaned { get; set; }
 

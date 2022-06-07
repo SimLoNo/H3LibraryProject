@@ -9,6 +9,7 @@ namespace H3LibraryProject.API.DTOs
         public int MaterialId { get; set; }
         public DateTime LoanDate { get; set; }
         public DateTime ReturnDate { get; set; }
+        public bool IsReturned { get; set; }
         public LoanLoanerResponse Loaner { get; set; }
         public LoanMaterialResponse Material { get; set; }
     }

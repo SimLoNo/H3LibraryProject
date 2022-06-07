@@ -36,13 +36,20 @@ namespace H3LibraryProject.Services.Services
                 TitleId = material.TitleId,
                 LocationId = material.LocationId,
                 Home = material.Home,
-                Title = material.Title != null ? new MaterialTitleResponse {
+                Title = material.Title != null ? new MaterialTitleResponse { // gemmer titlen på materialet, hvis der af en årsag ikke er en title på materialet bliver der genrereret en generisk ny title
                     TitleId = material.Title.TitleId,
                     Name = material.Title.Name,
                     RYear = material.Title.RYear,
-                    Pages = material.Title.Pages
+                    Pages = material.Title.Pages,
+                    Authors = material.Title.Authors != null ? material.Title.Authors.Select(authorObj => new MaterialTitleAuthorResponse // Hver title kan have en, flere eller ingen forattere
+                    {
+                        AuthorId = authorObj.AuthorId,
+                        FName = authorObj.FName,
+                        LName = authorObj.LName,
+                        MName = authorObj.MName
+                    }).ToList() : new()
                 } : new(),
-                Location = material.Location != null ? new MaterialLocationResponse
+                Location = material.Location != null ? new MaterialLocationResponse // Hver materiale skal tilhøre et sted.
                 {
                     LocationId = material.Location.LocationId,
                     Name = material.Location.Name

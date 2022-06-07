@@ -17,3 +17,11 @@ a{
   align-items: center;
   justify-content: center;
 }
+
+.productDiv{
+  margin-top: 1%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
