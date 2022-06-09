@@ -39,15 +39,21 @@ namespace H3LibraryProject.Tests.RepositoryTests
             await _context.Database.EnsureDeletedAsync();
 
             int expectedNewId = 1;
+            int nationalityId = 1;
+            Nationality nationality = new() { NationalityId = nationalityId, Name = "Nation" };
 
             Author author = new()
             {
                 FName = "Aage",
                 MName = "Tom",
                 LName = "Kristensen",
-                BYear = 1893
+                BYear = 1893,
+                NationalityId = nationalityId,
+                Titles = new()
             };
 
+            _context.Nationality.Add(nationality);
+            await _context.SaveChangesAsync();
             //Act
             var result = await _repository.CreateAuthor(author);
 
@@ -62,6 +68,8 @@ namespace H3LibraryProject.Tests.RepositoryTests
         {
             //Arrange
             await _context.Database.EnsureDeletedAsync();
+            int nationalityId = 1;
+            Nationality nationality = new() { NationalityId = nationalityId, Name = "Nation" };
 
             Author author = new()
             {
@@ -69,9 +77,12 @@ namespace H3LibraryProject.Tests.RepositoryTests
                 FName = "Aage",
                 MName = "Tom",
                 LName = "Kristensen",
-                BYear = 1893
+                BYear = 1893,
+                NationalityId = nationalityId,
+                Titles = new()
             };
 
+            _context.Nationality.Add(nationality);
             _context.Author.Add(author);
             await _context.SaveChangesAsync();
 
@@ -91,11 +102,22 @@ namespace H3LibraryProject.Tests.RepositoryTests
             await _context.Database.EnsureDeletedAsync(); //Tømmer listen
 
             int authorId = 100;
+            int nationalityId = 1;
+            Nationality nationality = new() { NationalityId = nationalityId, Name = "Nation" };
+
 
             Author author = new()
-            { AuthorId = authorId, FName = "Aage", MName = "Tom", LName = "Kristensen", BYear = 1893 };
+            { AuthorId = authorId, 
+              FName = "Aage",
+              MName = "Tom",
+              LName = "Kristensen",
+              BYear = 1893,
+              NationalityId = nationalityId,
+              Titles = new()
+            };
 
 
+            _context.Nationality.Add(nationality);
             _context.Author.Add(author); //Heri opstår (forhåbentlig) problemet; man må ikke kunne oprette den samme flere gange
 
 
@@ -117,10 +139,31 @@ namespace H3LibraryProject.Tests.RepositoryTests
             //Arrange
             await _context.Database.EnsureDeletedAsync(); //Funktion, der ryder ud, så vi tester på nyt emne
 
+
+            int nationalityId = 1;
+            Nationality nationality = new() { NationalityId = nationalityId, Name = "Nation" };
+
+            _context.Nationality.Add(nationality);
             _context.Author.Add(new()
-            { AuthorId = 100, FName = "Aage", MName = "Tom", LName = "Kristensen", BYear = 1893 });
+            { 
+                AuthorId = 100,
+                FName = "Aage",
+                MName = "Tom",
+                LName = "Kristensen",
+                BYear = 1893,
+                NationalityId = nationalityId,
+                Titles = new()
+            });
             _context.Author.Add(new()
-            { AuthorId = 101, FName = "Hans", MName = "Christian", LName = "Scherfig", BYear = 1905 });
+            { 
+                AuthorId = 101,
+                FName = "Hans",
+                MName = "Christian", 
+                LName = "Scherfig", 
+                BYear = 1905,
+                NationalityId = nationalityId,
+                Titles = new()
+            });
 
             await _context.SaveChangesAsync();
 
@@ -157,9 +200,20 @@ namespace H3LibraryProject.Tests.RepositoryTests
             await _context.Database.EnsureDeletedAsync(); //Tømmer listen
 
             int authorId = 100;
+            int nationalityId = 1;
+            Nationality nationality = new() { NationalityId = nationalityId, Name = "Nation" };
 
+            _context.Nationality.Add(nationality);
             _context.Author.Add(new()
-            { AuthorId = authorId, FName = "Aage", MName = "Tom", LName = "Kristensen", BYear = 1893 });
+            { 
+                AuthorId = authorId, 
+                FName = "Aage", 
+                MName = "Tom", 
+                LName = "Kristensen", 
+                BYear = 1893,
+                NationalityId = nationalityId,
+                Titles = new()
+            });
 
             await _context.SaveChangesAsync();
 
@@ -194,15 +248,36 @@ namespace H3LibraryProject.Tests.RepositoryTests
             await _context.Database.EnsureDeletedAsync(); //Tømmer listen
 
             int authorId = 100;
+            int nationalityId = 1;
+            Nationality nationality = new() { NationalityId = nationalityId, Name = "Nation" };
 
             Author newAuthor = new()
-            { AuthorId = authorId, FName = "Aage", MName = "Tom", LName = "Kristensen", BYear = 1893, DYear = 1976 };
+            { 
+                AuthorId = authorId,
+                FName = "Aage", 
+                MName = "Tom", 
+                LName = "Kristensen", 
+                BYear = 1893, 
+                DYear = 1976,
+                NationalityId = nationalityId,
+                Titles = new()
+            };
 
+            _context.Nationality.Add(nationality);
             _context.Author.Add(newAuthor);
             await _context.SaveChangesAsync();
 
             Author updateAuthor = new()
-            { AuthorId = authorId, FName = "Henrik", MName = "Johan", LName = "Ibsen", BYear = 1828, DYear = 1906 };
+            { 
+                AuthorId = authorId,
+                FName = "Henrik", 
+                MName = "Johan", 
+                LName = "Ibsen", 
+                BYear = 1828, 
+                DYear = 1906,
+                NationalityId = nationalityId,
+                Titles = new()
+            };
 
 
             //Act
@@ -227,7 +302,8 @@ namespace H3LibraryProject.Tests.RepositoryTests
             int authorId = 1;
 
             Author updateAuthor = new()
-            { AuthorId = authorId, FName = "Henrik", MName = "Johan", LName = "Ibsen", BYear = 1828, DYear = 1906 };
+            {
+                AuthorId = authorId, FName = "Henrik", MName = "Johan", LName = "Ibsen", BYear = 1828, DYear = 1906 };
 
             //Act
             var result = await _repository.UpdateExistingAuthor(authorId, updateAuthor);

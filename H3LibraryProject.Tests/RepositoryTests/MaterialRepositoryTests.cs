@@ -49,6 +49,9 @@ namespace H3LibraryProject.Tests.RepositoryTests
                 }
             };
             await _context.Database.EnsureDeletedAsync();
+
+            _context.Location.Add(new() { LocationId = id,Name="Test" });
+            _context.Title.Add(new() { TitleId = id, Name = "Test", LanguageId = id, RYear = 4, Pages = 4, });
             foreach (Material item in materialList)
             {
                 _context.Material.Add(item);
@@ -90,6 +93,9 @@ namespace H3LibraryProject.Tests.RepositoryTests
                 Home = false
             };
             await _context.Database.EnsureDeletedAsync();
+
+            _context.Location.Add(new() { LocationId = id, Name = "Test" });
+            _context.Title.Add(new() { TitleId = id, Name = "Test", LanguageId = id, RYear = 4, Pages = 4, });
             _context.Material.Add(material);
             await _context.SaveChangesAsync();
 

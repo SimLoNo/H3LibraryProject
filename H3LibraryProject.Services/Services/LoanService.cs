@@ -11,7 +11,7 @@ namespace H3LibraryProject.Services.Services
 {
     public interface ILoanService
     {
-        Task<List<LoanResponse>> GetAllLoans();
+        Task<List<LoanResponse>> GetAllLoans(int loanerId);
         Task<LoanResponse> GetLoanById(int id);
         Task<LoanResponse> CreateLoan(LoanRequest request);
         Task<LoanResponse> UpdateLoan(int id, LoanRequest request);
@@ -50,9 +50,18 @@ namespace H3LibraryProject.Services.Services
                 return null;
             }
 
-            public async Task<List<LoanResponse>> GetAllLoans()
+            public async Task<List<LoanResponse>> GetAllLoans(int loanerId)
             {
-                List<Loan> loans = await _repository.SelectAllLoans();
+                List<Loan> loans = new();
+                if (loanerId > 0)
+                {
+                    loans = await _repository.SelectAllLoansByLoanerId(loanerId);
+                }
+                else
+                {
+
+                    loans = await _repository.SelectAllLoans();
+                }
                 return loans.Select(loan => MapLoanToLoanResponse(loan)).ToList();
             }
 

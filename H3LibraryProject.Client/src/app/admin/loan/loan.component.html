@@ -59,6 +59,7 @@
     <div class="centerDiv">
       <button (click)="deleteLoan()">slet</button>
       <button (click)="saveLoan()">gem</button>
+      <button (click)="returnLoan()">returner lån</button>
     </div>
     <div >
       <div class="centerDiv">
@@ -69,7 +70,7 @@
               <p>Ny</p>
             </mat-option>
             <mat-option *ngFor="let loan of loans" [value]="loan" (click)="edit(loan)">
-              <p>{{loan.loanerId}} {{loan.loaner.name}} {{loan.material.titleName}}</p>
+              <p>{{loan.loanId}} - {{loan.loanerId}} {{loan.loaner.name}} {{loan.material.titleName}}</p>
             </mat-option>
           </mat-select>
         </mat-form-field>

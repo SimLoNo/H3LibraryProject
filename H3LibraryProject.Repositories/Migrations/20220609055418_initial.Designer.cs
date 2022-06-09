@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace H3LibraryProject.Repositories.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20220607113652_initial")]
+    [Migration("20220609055418_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

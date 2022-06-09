@@ -25,7 +25,7 @@ namespace H3LibraryProject.API.Controllers
             try
             {
                 List<MaterialResponse> materialList;
-                if (searchTitle == null && location == null && genre == null && author == null)
+                if ((searchTitle == null || searchTitle == "") && (location == null || location == "") && (genre == null || genre == "") && (author == null || author == ""))
                 {
                     materialList = await _service.GetAllMaterials();
                 }

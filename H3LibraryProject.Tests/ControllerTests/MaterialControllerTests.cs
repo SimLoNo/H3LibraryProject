@@ -151,7 +151,10 @@ namespace H3LibraryProject.Tests.ControllerTests
                 MaterialId = 1,
                 Home = true,
                 TitleId = 1965,
-                LocationId = 3
+                LocationId = 3,
+                Loans = new(),
+                Title = new(),
+                Location = new()
             });
 
             
@@ -160,7 +163,10 @@ namespace H3LibraryProject.Tests.ControllerTests
                 MaterialId = 2,
                 Home = true,
                 TitleId = 1965,
-                LocationId = 3
+                LocationId = 3,
+                Loans = new(),
+                Title = new(),
+                Location = new()
             });
 
             _MaterialServiceMock

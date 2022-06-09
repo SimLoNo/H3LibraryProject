@@ -40,6 +40,7 @@ namespace H3LibraryProject.Tests.RepositoryTests
                     MaterialId = id,
                     LoanDate = DateTime.Now,
                     ReturnDate = DateTime.Now,
+                    IsReturned = true
                 },
                 new()
                 {
@@ -48,9 +49,17 @@ namespace H3LibraryProject.Tests.RepositoryTests
                     MaterialId = id,
                     LoanDate = DateTime.Now,
                     ReturnDate = DateTime.Now,
+                    IsReturned = true
                 }
             };
             await _context.Database.EnsureDeletedAsync();
+
+            _context.LoanerTypes.Add(new() { LoanerTypeId = id, Name = "Test" });
+            _context.Title.Add(new() { TitleId = id,Name = "Test",LanguageId=id,RYear=4,Pages=4, });
+            _context.Material.Add(new() { MaterialId = id, TitleId = id, LocationId = id, Home = true });
+            _context.Loaner.Add(new() { LoanerId = id, Name = "test", LoanerTypeId = id, Password = "test" });
+
+
             foreach (Loan item in loanList)
             {
                 _context.Loan.Add(item);

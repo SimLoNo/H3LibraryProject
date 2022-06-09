@@ -17,7 +17,7 @@ export class LoanComponent implements OnInit {
   loans:Loan[] = [];
   loaners:Loaner[] = [];
   materials:Material[] = [];
-  currentLoan:Loan = {loanId:0,loanerId:0,materialId:0,loanDate:new Date(),returnDate:new Date(),loaner:{loanerId:0,loanerTypeId:0,loanerTypeName:"",name:""},material:{materialId:0,titleId:0,locationId:0,titleName:""}};
+  currentLoan:Loan = {loanId:0,loanerId:0,materialId:0,loanDate:new Date(),returnDate:new Date(),isReturned:false,loaner:{loanerId:0,loanerTypeId:0,loanerTypeName:"",name:""},material:{materialId:0,titleId:0,locationId:0,titleName:""}};
   constructor(private loanerService: LoanerService, private loanService:LoanService, private materialService:MaterialService) { }
 
 
@@ -93,7 +93,18 @@ export class LoanComponent implements OnInit {
   }
 
   reset(){
-    this.currentLoan = {loanId:0,loanerId:0,materialId:0,loanDate:new Date(),returnDate:new Date(),loaner:{loanerId:0,loanerTypeId:0,loanerTypeName:"",name:""},material:{materialId:0,titleId:0,locationId:0,titleName:""}};
+    this.currentLoan = {loanId:0,loanerId:0,materialId:0,loanDate:new Date(),returnDate:new Date(),isReturned:false,loaner:{loanerId:0,loanerTypeId:0,loanerTypeName:"",name:""},material:{materialId:0,titleId:0,locationId:0,titleName:""}};
+  }
+
+  returnLoan(){
+    // Det første hardcoded tal, skal rettes til den indloggede brugers id, når vi har fået login til at virke. Det sidste hardcoded tal skal forblive 1,
+    // som er koden for at oprette et lån i API'et.
+    this.loanService.userLoan(this.currentLoan.loanId,this.currentLoan.materialId, 3)
+    .subscribe((data) => {
+      console.log(data);
+
+
+    }) // Vi skal finde ud af en måde at sige til brugeren at lånet er gået igennem.
   }
 
 }

@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminLayoutComponent implements OnInit {
 
-  adminPages:string[] = ['author','genre','language','loanertype','location','material','nationality','publisher','title'];
+  adminPages:string[] = ['author','genre','language','loan','loaner','loanertype','location','material','nationality','publisher','title'];
 
   constructor() { }
 

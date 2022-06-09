@@ -19,11 +19,11 @@ namespace H3LibraryProject.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllLoans()
+        public async Task<IActionResult> GetAllLoans([FromQuery] int loanerId)
         {
             try
             {
-                List<LoanResponse> loanList = await _service.GetAllLoans();
+                List<LoanResponse> loanList = await _service.GetAllLoans(loanerId);
                 if (loanList.Count > 0)
                 {
                     return Ok(loanList);
@@ -101,15 +101,15 @@ namespace H3LibraryProject.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UserLoanChange([FromQuery] int loanerid, [FromQuery] int materialId, [FromQuery] int loanChange)
+        public async Task<IActionResult> UserLoanChange([FromQuery] int loanerId, [FromQuery] int materialId, [FromQuery] int loanChange)
         {
-            if (loanerid <= 0)
+            if (loanerId <= 0)
             {
                 return BadRequest();
             }
             try
             {
-                LoanResponse loanResult = await _service.UserLoanChange(loanerid, materialId, loanChange);
+                LoanResponse loanResult = await _service.UserLoanChange(loanerId, materialId, loanChange);
                 if (loanResult != null)
                 {
                     return Ok(loanResult);

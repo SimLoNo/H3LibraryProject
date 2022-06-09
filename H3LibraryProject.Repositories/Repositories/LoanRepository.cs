@@ -14,6 +14,7 @@ namespace H3LibraryProject.Repositories.Repositories
         Task<Loan> InsertNewLoan(Loan loan);
         Task<List<Loan>> SelectAllLoans(); //Vi kalder den "select" og ikke "get" da det er SQL-relateret
         Task<Loan> SelectLoanById(int loan);
+        Task<List<Loan>> SelectAllLoansByLoanerId(int loanerId);
         Task<Loan> UpdateExistingLoan(int loanId, Loan loan);
         Task<Loan> ExtendLoan(int loanId);
         Task<Loan> CreateLoan(int materialId, int loanerId);
@@ -52,6 +53,13 @@ namespace H3LibraryProject.Repositories.Repositories
                     .FirstOrDefaultAsync(loan => loan.LoanId == loanId);
         }
 
+        public async Task<List<Loan>> SelectAllLoansByLoanerId(int loanerId)
+        {
+            return await _context.Loan
+                .Where(l => l.LoanerId == loanerId)
+                .ToListAsync();
+        }
+
         public async Task<Loan> UpdateExistingLoan(int loanId, Loan loan)
         {
             Loan updateLoan = await _context.Loan
@@ -66,7 +74,7 @@ namespace H3LibraryProject.Repositories.Repositories
             }
             return updateLoan;
         }
-        public async Task<Loan> CreateLoan(int materialId, int loanerId)
+        public async Task<Loan> CreateLoan(int loanerId, int materialId)
         {
             Material loanMaterial = await _context.Material
                 .Include(m => m.Title).ThenInclude(t => t.Genre)
@@ -74,9 +82,9 @@ namespace H3LibraryProject.Repositories.Repositories
             Loaner loanLoaner = await _context.Loaner
                 .FirstOrDefaultAsync(loanerObj => loanerObj.LoanerId == loanerId);
 
-            Loan newLoan = new();
-            if (loanMaterial != null && loanLoaner != null)
+            if (loanMaterial != null && loanLoaner != null && loanMaterial.Home == true)
             {
+                Loan newLoan = new();
                 newLoan.LoanerLoaning = loanLoaner;
                 newLoan.MaterialLoaned = loanMaterial;
                 newLoan.LoanDate = DateTime.Today;
@@ -85,8 +93,9 @@ namespace H3LibraryProject.Repositories.Repositories
                 _context.Loan.Add(newLoan);
                 loanMaterial.Home = false;
                 await _context.SaveChangesAsync();
+                return newLoan;
             }
-            return newLoan;
+            return null;
         }
 
         public async Task<Loan> ExtendLoan(int loanId)
@@ -95,7 +104,7 @@ namespace H3LibraryProject.Repositories.Repositories
             Loan extendLoan = await _context.Loan
                 .Include(l => l.MaterialLoaned).ThenInclude(m => m.Title).ThenInclude(t => t.Genre)
                 .FirstOrDefaultAsync(l => l.LoanId == loanId);
-            if (extendLoan != null)
+            if (extendLoan != null && extendLoan.IsReturned == false)
             {
                 extendLoan.ReturnDate = extendLoan.ReturnDate.AddDays(extendLoan.MaterialLoaned.Title.Genre.LeasePeriod);
                 await _context.SaveChangesAsync();
@@ -108,7 +117,7 @@ namespace H3LibraryProject.Repositories.Repositories
             Loan returnLoan = await _context.Loan
                 .Include(l => l.MaterialLoaned)
                 .FirstOrDefaultAsync(l => l.LoanId == loanId);
-            if (returnLoan != null)
+            if (returnLoan != null && returnLoan.IsReturned == false)
             {
                 returnLoan.IsReturned = true;
                 returnLoan.MaterialLoaned.Home = true;

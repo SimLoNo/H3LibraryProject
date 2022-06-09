@@ -8,6 +8,7 @@ export interface Loan{
   returnDate:Date;
   loaner:LoanLoaner;
   material:LoanMaterial;
+  isReturned:boolean;
 
 }
 

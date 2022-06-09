@@ -3,7 +3,29 @@ nav{
 
 }
 
-mat-form-field{
+.MainDiv{
+  height: 100vh;
+  width: 100vw;
+}
+
+.centerDiv{
+  width: 100%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  display: flex;
   align-items: center;
-  align-content: center;
+  justify-content: center;
+
+}
+input{
+  width: 80%;
+}
+
+.infoDiv{
+  width: 30%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }

@@ -30,6 +30,7 @@ import { LoanComponent } from './admin/loan/loan.component';
 import { FrontpageComponent } from './user/frontpage/frontpage.component';
 import { SearchMaterialComponent } from './user/search-material/search-material.component';
 import { MaterialDisplayComponent } from './user/material-display/material-display.component';
+import { AccountPageComponent } from './user/account-page/account-page.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { MaterialDisplayComponent } from './user/material-display/material-displ
     LoanComponent,
     FrontpageComponent,
     SearchMaterialComponent,
-    MaterialDisplayComponent
+    MaterialDisplayComponent,
+    AccountPageComponent
   ],
   imports: [
     BrowserModule,
