@@ -50,12 +50,16 @@ namespace H3LibraryProject.Repositories.Repositories
         public async Task<Loan> SelectLoanById(int loanId)
         {
             return await _context.Loan
-                    .FirstOrDefaultAsync(loan => loan.LoanId == loanId);
+                .Include(b => b.LoanerLoaning).ThenInclude(b => b.TypeOfLoaner)
+                .Include(b => b.MaterialLoaned).ThenInclude(b => b.Title)
+                .FirstOrDefaultAsync(loan => loan.LoanId == loanId);
         }
 
         public async Task<List<Loan>> SelectAllLoansByLoanerId(int loanerId)
         {
             return await _context.Loan
+                .Include(b => b.LoanerLoaning).ThenInclude(b => b.TypeOfLoaner)
+                .Include(b => b.MaterialLoaned).ThenInclude(b => b.Title)
                 .Where(l => l.LoanerId == loanerId)
                 .ToListAsync();
         }
@@ -106,8 +110,11 @@ namespace H3LibraryProject.Repositories.Repositories
                 .FirstOrDefaultAsync(l => l.LoanId == loanId);
             if (extendLoan != null && extendLoan.IsReturned == false)
             {
-                extendLoan.ReturnDate = extendLoan.ReturnDate.AddDays(extendLoan.MaterialLoaned.Title.Genre.LeasePeriod);
-                await _context.SaveChangesAsync();
+                if (extendLoan.ReturnDate < extendLoan.LoanDate.AddDays(extendLoan.MaterialLoaned.Title.Genre.LeasePeriod*2))
+                {
+                    extendLoan.ReturnDate = extendLoan.ReturnDate.AddDays(extendLoan.MaterialLoaned.Title.Genre.LeasePeriod);
+                    await _context.SaveChangesAsync();
+                }
             }
             return extendLoan;
         }
