@@ -110,6 +110,14 @@ namespace H3LibraryProject.Repositories.Database
                {
                    LanguageId = 2,
                    Name = "Engelsk"
+               }, new()
+               {
+                   LanguageId = 4,
+                   Name = "Russisk"
+               }, new()
+               {
+                   LanguageId = 5,
+                   Name = "Hebræisk"
                },
                 new()
                 {
@@ -129,6 +137,11 @@ namespace H3LibraryProject.Repositories.Database
                    GenreId = 2,
                    Name = "Quicklån",
                    LeasePeriod = 7
+               }, new()
+               {
+                   GenreId = 3,
+                   Name = "Faglitteratur",
+                   LeasePeriod = 30
                }
                );
             modelBuilder.Entity<Nationality>().HasData(
@@ -194,6 +207,15 @@ namespace H3LibraryProject.Repositories.Database
                     LName = "Egholm",
                     BYear = 1960,
                     NationalityId = 1
+                },
+                new()
+                {
+                    AuthorId = 5,
+                    FName = "Hans",
+                    LName = "Scherfig",
+                    BYear = 1905,
+                    DYear = 1979,
+                    NationalityId = 1
                 }
                 );
 
@@ -252,6 +274,17 @@ namespace H3LibraryProject.Repositories.Database
                     LanguageId= 1,
                     PublisherId = 3,
                     GenreId = 2
+                },
+                new()
+                {
+                    TitleId = 6,
+                    Name = "Idioten",
+                    RYear = 2022,
+                    Pages = 843,
+                    AuthorId = 4,
+                    LanguageId = 4,
+                    PublisherId = 3,
+                    GenreId = 2
                 }
                 );
             modelBuilder.Entity<Material>().HasData(
@@ -287,6 +320,20 @@ namespace H3LibraryProject.Repositories.Database
                   MaterialId = 5,
                   TitleId = 3,
                   LocationId = 2,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 6,
+                  TitleId = 4,
+                  LocationId = 2,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 7,
+                  TitleId = 5,
+                  LocationId = 1,
                   Home = true
               }
               );
