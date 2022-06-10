@@ -400,7 +400,7 @@ namespace H3LibraryProject.Repositories.Database
                 },
                 new()
                 {
-                    TitleId = 7,
+                    TitleId = 8,
                     Name = "Aben Osvald",
                     RYear = 1947,
                     Pages = 33,
@@ -411,7 +411,7 @@ namespace H3LibraryProject.Repositories.Database
                 },
                 new()
                 {
-                    TitleId = 8,
+                    TitleId = 9,
                     Name = "Embedded",
                     RYear = 2011,
                     Pages = 352,
@@ -422,7 +422,7 @@ namespace H3LibraryProject.Repositories.Database
                 },                
                 new()
                 {
-                    TitleId = 9,
+                    TitleId = 10,
                     Name = "Hard-boiled Wonderland & The End of The World",
                     RYear = 1985,
                     Pages = 618,
@@ -433,7 +433,7 @@ namespace H3LibraryProject.Repositories.Database
                 },
                 new()
                 {
-                    TitleId = 10,
+                    TitleId = 11,
                     Name = "Hard-boiled Wonderland & The End of The World",
                     RYear = 1991,
                     Pages = 400,
@@ -444,7 +444,7 @@ namespace H3LibraryProject.Repositories.Database
                 },
                 new()
                 {
-                    TitleId = 11,
+                    TitleId = 12,
                     Name = "Den Forsvundne Fuldmægtig",
                     RYear = 1938,
                     Pages = 183,
@@ -455,7 +455,7 @@ namespace H3LibraryProject.Repositories.Database
                 },
                 new()
                 {
-                    TitleId = 12,
+                    TitleId = 13,
                     Name = "Det Forsømte Forår",
                     RYear = 1940,
                     Pages = 179,
@@ -466,7 +466,7 @@ namespace H3LibraryProject.Repositories.Database
                 },
                 new()
                 {
-                    TitleId = 13,
+                    TitleId = 14,
                     Name = "Dammen",
                     RYear = 1958,
                     Pages = 108,
@@ -477,7 +477,7 @@ namespace H3LibraryProject.Repositories.Database
                 },
                 new()
                 {
-                    TitleId = 14,
+                    TitleId = 15,
                     Name = "Hærværk",
                     RYear = 1930,
                     Pages = 430,
@@ -488,7 +488,7 @@ namespace H3LibraryProject.Repositories.Database
                 },
                 new()
                 {
-                    TitleId = 15,
+                    TitleId = 16,
                     Name = "Manden der ikke ville være høflig",
                     RYear = 2020,
                     Pages = 331,
@@ -499,7 +499,7 @@ namespace H3LibraryProject.Repositories.Database
                 },
                 new()
                 {
-                    TitleId = 16,
+                    TitleId = 17,
                     Name = "Man tager en alligator eller leguan af passende størrelse",
                     RYear = 2006,
                     Pages = 139,
@@ -510,7 +510,7 @@ namespace H3LibraryProject.Repositories.Database
                 },
                 new()
                 {
-                    TitleId = 17,
+                    TitleId = 18,
                     Name = "No Country for Old Men",
                     RYear = 2005,
                     Pages = 320,
@@ -521,7 +521,7 @@ namespace H3LibraryProject.Repositories.Database
                 },
                 new()
                 {
-                    TitleId = 18,
+                    TitleId = 19,
                     Name = "The Road",
                     RYear = 2006,
                     Pages = 287,
@@ -532,7 +532,7 @@ namespace H3LibraryProject.Repositories.Database
                 },
                 new()
                 {
-                    TitleId = 19,
+                    TitleId = 20,
                     Name = "De siger man kan elske uden at få børn",
                     RYear = 2003,
                     Pages = 202,
@@ -543,7 +543,7 @@ namespace H3LibraryProject.Repositories.Database
                 },
                 new()
                 {
-                    TitleId = 20,
+                    TitleId = 21,
                     Name = "Personskade - sådan sikrer du dig den erstatning, du har ret til",
                     RYear = 2019,
                     Pages = 166,
@@ -730,30 +730,37 @@ namespace H3LibraryProject.Repositories.Database
               },
               new()
               {
-                  MaterialId = 25,
+                  MaterialId = 26,
                   TitleId = 18,
                   LocationId = 1,
                   Home = true
               },
               new()
               {
-                  MaterialId = 25,
-                  TitleId = 18,
-                  LocationId = 2,
-                  Home = true
-              },
-              new()
-              {
-                  MaterialId = 25,
+                  MaterialId = 27,
                   TitleId = 19,
                   LocationId = 2,
                   Home = true
               },
               new()
               {
-                  MaterialId = 25,
-                  TitleId = 17,
+                  MaterialId = 28,
+                  TitleId = 19,
                   LocationId = 1,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 29,
+                  TitleId = 20,
+                  LocationId = 1,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 30,
+                  TitleId = 21,
+                  LocationId = 2,
                   Home = true
               }
               );

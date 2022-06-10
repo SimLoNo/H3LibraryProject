@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace H3LibraryProject.Repositories.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20220609055418_initial")]
-    partial class initial
+    [Migration("20220610220011_fredagaften")]
+    partial class fredagaften
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,6 +50,30 @@ namespace H3LibraryProject.Repositories.Migrations
                             GenreId = 2,
                             LeasePeriod = (short)7,
                             Name = "Quicklån"
+                        },
+                        new
+                        {
+                            GenreId = 3,
+                            LeasePeriod = (short)30,
+                            Name = "Faglitteratur"
+                        },
+                        new
+                        {
+                            GenreId = 4,
+                            LeasePeriod = (short)30,
+                            Name = "Børnebøger"
+                        },
+                        new
+                        {
+                            GenreId = 5,
+                            LeasePeriod = (short)30,
+                            Name = "Krimi"
+                        },
+                        new
+                        {
+                            GenreId = 6,
+                            LeasePeriod = (short)30,
+                            Name = "Sci-Fi"
                         });
                 });
 
@@ -82,6 +106,16 @@ namespace H3LibraryProject.Repositories.Migrations
                         {
                             LanguageId = 3,
                             Name = "Japansk"
+                        },
+                        new
+                        {
+                            LanguageId = 4,
+                            Name = "Russisk"
+                        },
+                        new
+                        {
+                            LanguageId = 5,
+                            Name = "Hebræisk"
                         });
                 });
 
@@ -158,6 +192,20 @@ namespace H3LibraryProject.Repositories.Migrations
                             LoanerId = 3,
                             LoanerTypeId = 1,
                             Name = "Flemming",
+                            Password = "Passw0rd"
+                        },
+                        new
+                        {
+                            LoanerId = 4,
+                            LoanerTypeId = 1,
+                            Name = "Anders",
+                            Password = "Passw0rd"
+                        },
+                        new
+                        {
+                            LoanerId = 5,
+                            LoanerTypeId = 1,
+                            Name = "Kasper",
                             Password = "Passw0rd"
                         });
                 });
@@ -275,6 +323,181 @@ namespace H3LibraryProject.Repositories.Migrations
                             Home = true,
                             LocationId = 2,
                             TitleId = 3
+                        },
+                        new
+                        {
+                            MaterialId = 6,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 4
+                        },
+                        new
+                        {
+                            MaterialId = 7,
+                            Home = true,
+                            LocationId = 1,
+                            TitleId = 5
+                        },
+                        new
+                        {
+                            MaterialId = 8,
+                            Home = true,
+                            LocationId = 1,
+                            TitleId = 5
+                        },
+                        new
+                        {
+                            MaterialId = 9,
+                            Home = true,
+                            LocationId = 1,
+                            TitleId = 6
+                        },
+                        new
+                        {
+                            MaterialId = 10,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 6
+                        },
+                        new
+                        {
+                            MaterialId = 11,
+                            Home = true,
+                            LocationId = 1,
+                            TitleId = 7
+                        },
+                        new
+                        {
+                            MaterialId = 12,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 8
+                        },
+                        new
+                        {
+                            MaterialId = 13,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 9
+                        },
+                        new
+                        {
+                            MaterialId = 14,
+                            Home = true,
+                            LocationId = 1,
+                            TitleId = 10
+                        },
+                        new
+                        {
+                            MaterialId = 15,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 10
+                        },
+                        new
+                        {
+                            MaterialId = 16,
+                            Home = true,
+                            LocationId = 1,
+                            TitleId = 11
+                        },
+                        new
+                        {
+                            MaterialId = 17,
+                            Home = true,
+                            LocationId = 1,
+                            TitleId = 12
+                        },
+                        new
+                        {
+                            MaterialId = 18,
+                            Home = true,
+                            LocationId = 1,
+                            TitleId = 13
+                        },
+                        new
+                        {
+                            MaterialId = 19,
+                            Home = true,
+                            LocationId = 1,
+                            TitleId = 14
+                        },
+                        new
+                        {
+                            MaterialId = 20,
+                            Home = true,
+                            LocationId = 1,
+                            TitleId = 15
+                        },
+                        new
+                        {
+                            MaterialId = 21,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 15
+                        },
+                        new
+                        {
+                            MaterialId = 22,
+                            Home = true,
+                            LocationId = 1,
+                            TitleId = 15
+                        },
+                        new
+                        {
+                            MaterialId = 23,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 16
+                        },
+                        new
+                        {
+                            MaterialId = 24,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 3
+                        },
+                        new
+                        {
+                            MaterialId = 25,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 17
+                        },
+                        new
+                        {
+                            MaterialId = 26,
+                            Home = true,
+                            LocationId = 1,
+                            TitleId = 18
+                        },
+                        new
+                        {
+                            MaterialId = 27,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 19
+                        },
+                        new
+                        {
+                            MaterialId = 28,
+                            Home = true,
+                            LocationId = 1,
+                            TitleId = 19
+                        },
+                        new
+                        {
+                            MaterialId = 29,
+                            Home = true,
+                            LocationId = 1,
+                            TitleId = 20
+                        },
+                        new
+                        {
+                            MaterialId = 30,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 21
                         });
                 });
 
@@ -346,6 +569,82 @@ namespace H3LibraryProject.Repositories.Migrations
                             BYear = 1960,
                             FName = "Elsebeth",
                             LName = "Egholm",
+                            NationalityId = 1
+                        },
+                        new
+                        {
+                            AuthorId = 5,
+                            BYear = 1905,
+                            DYear = 1979,
+                            FName = "Hans",
+                            LName = "Scherfig",
+                            NationalityId = 1
+                        },
+                        new
+                        {
+                            AuthorId = 6,
+                            BYear = 1949,
+                            FName = "Haruki",
+                            LName = "Murakami",
+                            NationalityId = 2
+                        },
+                        new
+                        {
+                            AuthorId = 7,
+                            BYear = 1907,
+                            DYear = 1976,
+                            FName = "Egon",
+                            LName = "Mathiesen",
+                            NationalityId = 1
+                        },
+                        new
+                        {
+                            AuthorId = 8,
+                            BYear = 1965,
+                            FName = "Dan",
+                            LName = "Abnett",
+                            NationalityId = 3
+                        },
+                        new
+                        {
+                            AuthorId = 9,
+                            BYear = 1907,
+                            DYear = 1976,
+                            FName = "Tom",
+                            LName = "Kristensen",
+                            NationalityId = 1
+                        },
+                        new
+                        {
+                            AuthorId = 10,
+                            BYear = 1961,
+                            FName = "Jesper",
+                            LName = "Kurt-Nielsen",
+                            NationalityId = 1
+                        },
+                        new
+                        {
+                            AuthorId = 11,
+                            BYear = 1933,
+                            FName = "Cormac",
+                            LName = "McCarthy",
+                            NationalityId = 5
+                        },
+                        new
+                        {
+                            AuthorId = 12,
+                            BYear = 1972,
+                            FName = "Camille",
+                            LName = "Blomst",
+                            NationalityId = 1
+                        },
+                        new
+                        {
+                            AuthorId = 13,
+                            BYear = 1984,
+                            FName = "Leif",
+                            LName = "Thomsen",
+                            MName = "Donbæk",
                             NationalityId = 1
                         });
                 });
@@ -443,6 +742,11 @@ namespace H3LibraryProject.Repositories.Migrations
                         {
                             PublisherId = 3,
                             Name = "People's Press"
+                        },
+                        new
+                        {
+                            PublisherId = 4,
+                            Name = "Angry Robot"
                         });
                 });
 
@@ -537,6 +841,182 @@ namespace H3LibraryProject.Repositories.Migrations
                             Pages = (short)408,
                             PublisherId = 3,
                             RYear = (short)2022
+                        },
+                        new
+                        {
+                            TitleId = 6,
+                            AuthorId = 4,
+                            GenreId = 5,
+                            LanguageId = 1,
+                            Name = "Den Røde Glente",
+                            Pages = (short)408,
+                            PublisherId = 3,
+                            RYear = (short)2022
+                        },
+                        new
+                        {
+                            TitleId = 7,
+                            AuthorId = 4,
+                            GenreId = 1,
+                            LanguageId = 4,
+                            Name = "Idioten",
+                            Pages = (short)843,
+                            PublisherId = 3,
+                            RYear = (short)2022
+                        },
+                        new
+                        {
+                            TitleId = 8,
+                            AuthorId = 7,
+                            GenreId = 4,
+                            LanguageId = 1,
+                            Name = "Aben Osvald",
+                            Pages = (short)33,
+                            PublisherId = 1,
+                            RYear = (short)1947
+                        },
+                        new
+                        {
+                            TitleId = 9,
+                            AuthorId = 8,
+                            GenreId = 6,
+                            LanguageId = 2,
+                            Name = "Embedded",
+                            Pages = (short)352,
+                            PublisherId = 4,
+                            RYear = (short)2011
+                        },
+                        new
+                        {
+                            TitleId = 10,
+                            AuthorId = 6,
+                            GenreId = 6,
+                            LanguageId = 3,
+                            Name = "Hard-boiled Wonderland & The End of The World",
+                            Pages = (short)618,
+                            PublisherId = 3,
+                            RYear = (short)1985
+                        },
+                        new
+                        {
+                            TitleId = 11,
+                            AuthorId = 6,
+                            GenreId = 6,
+                            LanguageId = 2,
+                            Name = "Hard-boiled Wonderland & The End of The World",
+                            Pages = (short)400,
+                            PublisherId = 3,
+                            RYear = (short)1991
+                        },
+                        new
+                        {
+                            TitleId = 12,
+                            AuthorId = 5,
+                            GenreId = 1,
+                            LanguageId = 1,
+                            Name = "Den Forsvundne Fuldmægtig",
+                            Pages = (short)183,
+                            PublisherId = 1,
+                            RYear = (short)1938
+                        },
+                        new
+                        {
+                            TitleId = 13,
+                            AuthorId = 5,
+                            GenreId = 1,
+                            LanguageId = 1,
+                            Name = "Det Forsømte Forår",
+                            Pages = (short)179,
+                            PublisherId = 1,
+                            RYear = (short)1940
+                        },
+                        new
+                        {
+                            TitleId = 14,
+                            AuthorId = 5,
+                            GenreId = 3,
+                            LanguageId = 1,
+                            Name = "Dammen",
+                            Pages = (short)108,
+                            PublisherId = 1,
+                            RYear = (short)1958
+                        },
+                        new
+                        {
+                            TitleId = 15,
+                            AuthorId = 9,
+                            GenreId = 1,
+                            LanguageId = 1,
+                            Name = "Hærværk",
+                            Pages = (short)430,
+                            PublisherId = 1,
+                            RYear = (short)1930
+                        },
+                        new
+                        {
+                            TitleId = 16,
+                            AuthorId = 10,
+                            GenreId = 3,
+                            LanguageId = 1,
+                            Name = "Manden der ikke ville være høflig",
+                            Pages = (short)331,
+                            PublisherId = 1,
+                            RYear = (short)2020
+                        },
+                        new
+                        {
+                            TitleId = 17,
+                            AuthorId = 10,
+                            GenreId = 3,
+                            LanguageId = 1,
+                            Name = "Man tager en alligator eller leguan af passende størrelse",
+                            Pages = (short)139,
+                            PublisherId = 1,
+                            RYear = (short)2006
+                        },
+                        new
+                        {
+                            TitleId = 18,
+                            AuthorId = 11,
+                            GenreId = 1,
+                            LanguageId = 2,
+                            Name = "No Country for Old Men",
+                            Pages = (short)320,
+                            PublisherId = 5,
+                            RYear = (short)2005
+                        },
+                        new
+                        {
+                            TitleId = 19,
+                            AuthorId = 11,
+                            GenreId = 1,
+                            LanguageId = 2,
+                            Name = "The Road",
+                            Pages = (short)287,
+                            PublisherId = 5,
+                            RYear = (short)2006
+                        },
+                        new
+                        {
+                            TitleId = 20,
+                            AuthorId = 12,
+                            GenreId = 1,
+                            LanguageId = 1,
+                            Name = "De siger man kan elske uden at få børn",
+                            Pages = (short)202,
+                            PublisherId = 1,
+                            RYear = (short)2003
+                        },
+                        new
+                        {
+                            TitleId = 21,
+                            AuthorId = 13,
+                            GenreId = 3,
+                            LanguageId = 1,
+                            Name = "Personskade - sådan sikrer du dig den erstatning, du har ret til",
+                            Pages = (short)166,
+                            PublisherId = 1,
+                            RYear = (short)2019
                         });
                 });
 
