@@ -103,6 +103,10 @@ namespace H3LibraryProject.Tests.RepositoryTests
             };
             await _context.Database.EnsureDeletedAsync();
             _context.Loan.Add(loan);
+            _context.LoanerTypes.Add(new() { LoanerTypeId = id, Name = "Test" });
+            _context.Title.Add(new() { TitleId = id, Name = "Test", LanguageId = id, RYear = 4, Pages = 4, });
+            _context.Material.Add(new() { MaterialId = id, TitleId = id, LocationId = id, Home = true });
+            _context.Loaner.Add(new() { LoanerId = id, Name = "test", LoanerTypeId = id, Password = "test" });
             await _context.SaveChangesAsync();
 
             //Act

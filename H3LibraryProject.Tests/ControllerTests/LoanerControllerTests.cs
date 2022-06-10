@@ -32,13 +32,13 @@ namespace H3LibraryProject.Tests.ControllerTests
                 {
                     LoanerId = 1,
                     LoanerName = "Test",
-                    Password = "Test"
+                    //Password = "Test"
                 },
                 new()
                 {
                     LoanerId = 1,
                     LoanerName = "Test",
-                    Password = "Test"
+                    //Password = "Test"
                 }
             };
 
@@ -94,7 +94,7 @@ namespace H3LibraryProject.Tests.ControllerTests
             {
                 LoanerId = 1,
                 LoanerName = "Test",
-                Password = "Test"
+                //Password = "Test"
             };
 
             _mockService
@@ -151,7 +151,7 @@ namespace H3LibraryProject.Tests.ControllerTests
             {
                 LoanerId = 1,
                 LoanerName = "Test",
-                Password = "Test"
+                //Password = "Test"
             };
 
             _mockService
@@ -218,7 +218,7 @@ namespace H3LibraryProject.Tests.ControllerTests
             {
                 LoanerId = 1,
                 LoanerName = "Test",
-                Password = "Test"
+                //Password = "Test"
             };
 
             _mockService
@@ -297,7 +297,7 @@ namespace H3LibraryProject.Tests.ControllerTests
             {
                 LoanerId = 1,
                 LoanerName = "Test",
-                Password = "Test"
+                //Password = "Test"
             };
 
             _mockService

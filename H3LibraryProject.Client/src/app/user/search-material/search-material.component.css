@@ -25,3 +25,11 @@ a{
   align-items: center;
   justify-content: center;
 }
+
+.materialDiv{
+  margin-top: 1%;
+  width: 100%;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}

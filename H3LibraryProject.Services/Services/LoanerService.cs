@@ -105,7 +105,7 @@ namespace H3LibraryProject.Services.Services
             {
                 LoanerId = loaner.LoanerId,
                 LoanerName = loaner.Name,
-                Password = loaner.Password,
+                //Password = loaner.Password, // Password skal aldrig sendes retur til kalderen.
 
                 Loans = loaner.Loans != null ? loaner.Loans.Select(loan => new LoanerLoanResponse
                 {

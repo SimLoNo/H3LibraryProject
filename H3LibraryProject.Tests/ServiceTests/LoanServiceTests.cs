@@ -50,7 +50,7 @@ namespace H3LibraryProject.Tests.ServiceTests
                 .Setup(x => x.SelectAllLoans())
                 .ReturnsAsync(loaners);
             //Act
-            var result = await _service.GetAllLoans();
+            var result = await _service.GetAllLoans(0);
             //Assert
             Assert.NotNull(result);
             Assert.IsType<List<LoanResponse>>(result);
@@ -66,7 +66,7 @@ namespace H3LibraryProject.Tests.ServiceTests
                 .Setup(x => x.SelectAllLoans())
                 .ReturnsAsync(loaners);
             //Act
-            var result = await _service.GetAllLoans();
+            var result = await _service.GetAllLoans(0);
             //Assert
             Assert.NotNull(result);
             Assert.IsType<List<LoanResponse>>(result);

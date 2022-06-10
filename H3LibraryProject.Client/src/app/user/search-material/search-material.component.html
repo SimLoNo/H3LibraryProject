@@ -18,10 +18,13 @@
 </div>
 <div class="inputField">
 <label>Forfatter: </label>
-<input [(ngModel)]="searchAuthor">
+<input [(ngModel)]="searchAuthor  ">
 </div>
 <button (click)="search()">Søg</button>
 </div>
-<div class="productDiv" *ngFor="let material of materials">
-<a routerLink="/material/{{material.materialId}}">{{material.title.name}}, {{material.title.name}} {{material.location.name}}</a>
+<div class="materialDiv" *ngFor="let material of materials">
+  <div>
+  <h3 routerLink="/material/{{material.materialId}}">{{material.title.name}}</h3>
+  <p>{{material.title.pages}} sider, bibliotek: {{material.location.name}}</p>
+  </div>
 </div>
