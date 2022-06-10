@@ -14,7 +14,7 @@ namespace H3LibraryProject.Repositories.Migrations
                     GenreId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(32)", nullable: true),
-                    LeasePeriod = table.Column<short>(type: "smallint", nullable: false)
+                    LeasePeriod = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -92,10 +92,10 @@ namespace H3LibraryProject.Repositories.Migrations
                 {
                     TitleId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(32)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(128)", nullable: true),
                     LanguageId = table.Column<int>(type: "int", nullable: false),
-                    RYear = table.Column<short>(type: "smallint", nullable: false),
-                    Pages = table.Column<short>(type: "smallint", nullable: false),
+                    RYear = table.Column<int>(type: "int", nullable: false),
+                    Pages = table.Column<int>(type: "int", nullable: false),
                     PublisherId = table.Column<int>(type: "int", nullable: false),
                     AuthorId = table.Column<int>(type: "int", nullable: false),
                     GenreId = table.Column<int>(type: "int", nullable: false)
@@ -249,12 +249,12 @@ namespace H3LibraryProject.Repositories.Migrations
                 columns: new[] { "GenreId", "LeasePeriod", "Name" },
                 values: new object[,]
                 {
-                    { 1, (short)30, "Skønlitteratur" },
-                    { 2, (short)7, "Quicklån" },
-                    { 3, (short)30, "Faglitteratur" },
-                    { 4, (short)30, "Børnebøger" },
-                    { 5, (short)30, "Krimi" },
-                    { 6, (short)30, "Sci-Fi" }
+                    { 1, 30, "Skønlitteratur" },
+                    { 2, 7, "Quicklån" },
+                    { 3, 30, "Faglitteratur" },
+                    { 4, 30, "Børnebøger" },
+                    { 5, 30, "Krimi" },
+                    { 6, 30, "Sci-Fi" }
                 });
 
             migrationBuilder.InsertData(
@@ -347,27 +347,27 @@ namespace H3LibraryProject.Repositories.Migrations
                 columns: new[] { "TitleId", "AuthorId", "GenreId", "LanguageId", "Name", "Pages", "PublisherId", "RYear" },
                 values: new object[,]
                 {
-                    { 7, 4, 1, 4, "Idioten", (short)843, 3, (short)2022 },
-                    { 10, 6, 6, 3, "Hard-boiled Wonderland & The End of The World", (short)618, 3, (short)1985 },
-                    { 19, 11, 1, 2, "The Road", (short)287, 5, (short)2006 },
-                    { 3, 3, 1, 1, "Forbrydelse og Straf", (short)684, 1, (short)1866 },
-                    { 5, 4, 2, 1, "Den Røde Glente", (short)408, 3, (short)2022 },
-                    { 6, 4, 5, 1, "Den Røde Glente", (short)408, 3, (short)2022 },
-                    { 8, 7, 4, 1, "Aben Osvald", (short)33, 1, (short)1947 },
-                    { 12, 5, 1, 1, "Den Forsvundne Fuldmægtig", (short)183, 1, (short)1938 },
-                    { 13, 5, 1, 1, "Det Forsømte Forår", (short)179, 1, (short)1940 },
-                    { 14, 5, 3, 1, "Dammen", (short)108, 1, (short)1958 },
-                    { 1, 1, 1, 3, "Fortællingen om Genji", (short)224, 1, (short)1021 },
-                    { 15, 9, 1, 1, "Hærværk", (short)430, 1, (short)1930 },
-                    { 17, 10, 3, 1, "Man tager en alligator eller leguan af passende størrelse", (short)139, 1, (short)2006 },
-                    { 20, 12, 1, 1, "De siger man kan elske uden at få børn", (short)202, 1, (short)2003 },
-                    { 21, 13, 3, 1, "Personskade - sådan sikrer du dig den erstatning, du har ret til", (short)166, 1, (short)2019 },
-                    { 4, 3, 1, 2, "Idioten", (short)843, 1, (short)1869 },
-                    { 9, 8, 6, 2, "Embedded", (short)352, 4, (short)2011 },
-                    { 11, 6, 6, 2, "Hard-boiled Wonderland & The End of The World", (short)400, 3, (short)1991 },
-                    { 18, 11, 1, 2, "No Country for Old Men", (short)320, 5, (short)2005 },
-                    { 16, 10, 3, 1, "Manden der ikke ville være høflig", (short)331, 1, (short)2020 },
-                    { 2, 2, 1, 1, "Eventyr, fortalt for Børn", (short)300, 2, (short)1837 }
+                    { 7, 4, 1, 4, "Idioten", 843, 3, 2022 },
+                    { 10, 6, 6, 3, "Hard-boiled Wonderland and The End of The World", 618, 3, 1985 },
+                    { 19, 11, 1, 2, "The Road", 287, 5, 2006 },
+                    { 3, 3, 1, 1, "Forbrydelse og Straf", 684, 1, 1866 },
+                    { 5, 4, 2, 1, "Den Røde Glente", 408, 3, 2022 },
+                    { 6, 4, 5, 1, "Den Røde Glente", 408, 3, 2022 },
+                    { 8, 7, 4, 1, "Aben Osvald", 33, 1, 1947 },
+                    { 12, 5, 1, 1, "Den Forsvundne Fuldmægtig", 183, 1, 1938 },
+                    { 13, 5, 1, 1, "Det Forsømte Forår", 179, 1, 1940 },
+                    { 14, 5, 3, 1, "Dammen", 108, 1, 1958 },
+                    { 1, 1, 1, 3, "Fortællingen om Genji", 224, 1, 1021 },
+                    { 15, 9, 1, 1, "Hærværk", 430, 1, 1930 },
+                    { 17, 10, 3, 1, "Man tager en alligator eller leguan af passende størrelse", 139, 1, 2006 },
+                    { 20, 12, 1, 1, "De siger man kan elske uden at få børn", 202, 1, 2003 },
+                    { 21, 13, 3, 1, "Personskade - sådan sikrer du dig den erstatning, du har ret til", 166, 1, 2019 },
+                    { 4, 3, 1, 2, "Idioten", 843, 1, 1869 },
+                    { 9, 8, 6, 2, "Embedded", 352, 4, 2011 },
+                    { 11, 6, 6, 2, "Hard-boiled Wonderland and The End of The World", 400, 3, 1991 },
+                    { 18, 11, 1, 2, "No Country for Old Men", 320, 5, 2005 },
+                    { 16, 10, 3, 1, "Manden der ikke ville være høflig", 331, 1, 2020 },
+                    { 2, 2, 1, 1, "Eventyr, fortalt for Børn", 300, 2, 1837 }
                 });
 
             migrationBuilder.InsertData(

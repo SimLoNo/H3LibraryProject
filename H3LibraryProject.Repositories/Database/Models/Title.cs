@@ -14,16 +14,16 @@ namespace H3LibraryProject.Repositories.Database
         [Key]
         public int TitleId { get; set; }
 
-        [Column(TypeName = "nvarchar(32)")]
+        [Column(TypeName = "nvarchar(128)")]
         public string Name { get; set; }
 
         [Column(TypeName = "int")]
         public int LanguageId { get; set; }
 
-        [Column(TypeName = "smallint")] //Rigeligt til årstal
+        [Column(TypeName = "int")] //Rigeligt til årstal
         public int RYear { get; set; }
 
-        [Column(TypeName = "smallint")]
+        [Column(TypeName = "int")]
         public int Pages { get; set; }
 
         [Column(TypeName = "int")]

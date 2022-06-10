@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace H3LibraryProject.Repositories.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20220610220011_fredagaften")]
+    [Migration("20220610221345_fredagaften")]
     partial class fredagaften
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,8 +28,8 @@ namespace H3LibraryProject.Repositories.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<short>("LeasePeriod")
-                        .HasColumnType("smallint");
+                    b.Property<int>("LeasePeriod")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(32)");
@@ -42,37 +42,37 @@ namespace H3LibraryProject.Repositories.Migrations
                         new
                         {
                             GenreId = 1,
-                            LeasePeriod = (short)30,
+                            LeasePeriod = 30,
                             Name = "Skønlitteratur"
                         },
                         new
                         {
                             GenreId = 2,
-                            LeasePeriod = (short)7,
+                            LeasePeriod = 7,
                             Name = "Quicklån"
                         },
                         new
                         {
                             GenreId = 3,
-                            LeasePeriod = (short)30,
+                            LeasePeriod = 30,
                             Name = "Faglitteratur"
                         },
                         new
                         {
                             GenreId = 4,
-                            LeasePeriod = (short)30,
+                            LeasePeriod = 30,
                             Name = "Børnebøger"
                         },
                         new
                         {
                             GenreId = 5,
-                            LeasePeriod = (short)30,
+                            LeasePeriod = 30,
                             Name = "Krimi"
                         },
                         new
                         {
                             GenreId = 6,
-                            LeasePeriod = (short)30,
+                            LeasePeriod = 30,
                             Name = "Sci-Fi"
                         });
                 });
@@ -767,16 +767,16 @@ namespace H3LibraryProject.Repositories.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(32)");
+                        .HasColumnType("nvarchar(128)");
 
-                    b.Property<short>("Pages")
-                        .HasColumnType("smallint");
+                    b.Property<int>("Pages")
+                        .HasColumnType("int");
 
                     b.Property<int>("PublisherId")
                         .HasColumnType("int");
 
-                    b.Property<short>("RYear")
-                        .HasColumnType("smallint");
+                    b.Property<int>("RYear")
+                        .HasColumnType("int");
 
                     b.HasKey("TitleId");
 
@@ -794,9 +794,9 @@ namespace H3LibraryProject.Repositories.Migrations
                             GenreId = 1,
                             LanguageId = 3,
                             Name = "Fortællingen om Genji",
-                            Pages = (short)224,
+                            Pages = 224,
                             PublisherId = 1,
-                            RYear = (short)1021
+                            RYear = 1021
                         },
                         new
                         {
@@ -805,9 +805,9 @@ namespace H3LibraryProject.Repositories.Migrations
                             GenreId = 1,
                             LanguageId = 1,
                             Name = "Eventyr, fortalt for Børn",
-                            Pages = (short)300,
+                            Pages = 300,
                             PublisherId = 2,
-                            RYear = (short)1837
+                            RYear = 1837
                         },
                         new
                         {
@@ -816,9 +816,9 @@ namespace H3LibraryProject.Repositories.Migrations
                             GenreId = 1,
                             LanguageId = 1,
                             Name = "Forbrydelse og Straf",
-                            Pages = (short)684,
+                            Pages = 684,
                             PublisherId = 1,
-                            RYear = (short)1866
+                            RYear = 1866
                         },
                         new
                         {
@@ -827,9 +827,9 @@ namespace H3LibraryProject.Repositories.Migrations
                             GenreId = 1,
                             LanguageId = 2,
                             Name = "Idioten",
-                            Pages = (short)843,
+                            Pages = 843,
                             PublisherId = 1,
-                            RYear = (short)1869
+                            RYear = 1869
                         },
                         new
                         {
@@ -838,9 +838,9 @@ namespace H3LibraryProject.Repositories.Migrations
                             GenreId = 2,
                             LanguageId = 1,
                             Name = "Den Røde Glente",
-                            Pages = (short)408,
+                            Pages = 408,
                             PublisherId = 3,
-                            RYear = (short)2022
+                            RYear = 2022
                         },
                         new
                         {
@@ -849,9 +849,9 @@ namespace H3LibraryProject.Repositories.Migrations
                             GenreId = 5,
                             LanguageId = 1,
                             Name = "Den Røde Glente",
-                            Pages = (short)408,
+                            Pages = 408,
                             PublisherId = 3,
-                            RYear = (short)2022
+                            RYear = 2022
                         },
                         new
                         {
@@ -860,9 +860,9 @@ namespace H3LibraryProject.Repositories.Migrations
                             GenreId = 1,
                             LanguageId = 4,
                             Name = "Idioten",
-                            Pages = (short)843,
+                            Pages = 843,
                             PublisherId = 3,
-                            RYear = (short)2022
+                            RYear = 2022
                         },
                         new
                         {
@@ -871,9 +871,9 @@ namespace H3LibraryProject.Repositories.Migrations
                             GenreId = 4,
                             LanguageId = 1,
                             Name = "Aben Osvald",
-                            Pages = (short)33,
+                            Pages = 33,
                             PublisherId = 1,
-                            RYear = (short)1947
+                            RYear = 1947
                         },
                         new
                         {
@@ -882,9 +882,9 @@ namespace H3LibraryProject.Repositories.Migrations
                             GenreId = 6,
                             LanguageId = 2,
                             Name = "Embedded",
-                            Pages = (short)352,
+                            Pages = 352,
                             PublisherId = 4,
-                            RYear = (short)2011
+                            RYear = 2011
                         },
                         new
                         {
@@ -892,10 +892,10 @@ namespace H3LibraryProject.Repositories.Migrations
                             AuthorId = 6,
                             GenreId = 6,
                             LanguageId = 3,
-                            Name = "Hard-boiled Wonderland & The End of The World",
-                            Pages = (short)618,
+                            Name = "Hard-boiled Wonderland and The End of The World",
+                            Pages = 618,
                             PublisherId = 3,
-                            RYear = (short)1985
+                            RYear = 1985
                         },
                         new
                         {
@@ -903,10 +903,10 @@ namespace H3LibraryProject.Repositories.Migrations
                             AuthorId = 6,
                             GenreId = 6,
                             LanguageId = 2,
-                            Name = "Hard-boiled Wonderland & The End of The World",
-                            Pages = (short)400,
+                            Name = "Hard-boiled Wonderland and The End of The World",
+                            Pages = 400,
                             PublisherId = 3,
-                            RYear = (short)1991
+                            RYear = 1991
                         },
                         new
                         {
@@ -915,9 +915,9 @@ namespace H3LibraryProject.Repositories.Migrations
                             GenreId = 1,
                             LanguageId = 1,
                             Name = "Den Forsvundne Fuldmægtig",
-                            Pages = (short)183,
+                            Pages = 183,
                             PublisherId = 1,
-                            RYear = (short)1938
+                            RYear = 1938
                         },
                         new
                         {
@@ -926,9 +926,9 @@ namespace H3LibraryProject.Repositories.Migrations
                             GenreId = 1,
                             LanguageId = 1,
                             Name = "Det Forsømte Forår",
-                            Pages = (short)179,
+                            Pages = 179,
                             PublisherId = 1,
-                            RYear = (short)1940
+                            RYear = 1940
                         },
                         new
                         {
@@ -937,9 +937,9 @@ namespace H3LibraryProject.Repositories.Migrations
                             GenreId = 3,
                             LanguageId = 1,
                             Name = "Dammen",
-                            Pages = (short)108,
+                            Pages = 108,
                             PublisherId = 1,
-                            RYear = (short)1958
+                            RYear = 1958
                         },
                         new
                         {
@@ -948,9 +948,9 @@ namespace H3LibraryProject.Repositories.Migrations
                             GenreId = 1,
                             LanguageId = 1,
                             Name = "Hærværk",
-                            Pages = (short)430,
+                            Pages = 430,
                             PublisherId = 1,
-                            RYear = (short)1930
+                            RYear = 1930
                         },
                         new
                         {
@@ -959,9 +959,9 @@ namespace H3LibraryProject.Repositories.Migrations
                             GenreId = 3,
                             LanguageId = 1,
                             Name = "Manden der ikke ville være høflig",
-                            Pages = (short)331,
+                            Pages = 331,
                             PublisherId = 1,
-                            RYear = (short)2020
+                            RYear = 2020
                         },
                         new
                         {
@@ -970,9 +970,9 @@ namespace H3LibraryProject.Repositories.Migrations
                             GenreId = 3,
                             LanguageId = 1,
                             Name = "Man tager en alligator eller leguan af passende størrelse",
-                            Pages = (short)139,
+                            Pages = 139,
                             PublisherId = 1,
-                            RYear = (short)2006
+                            RYear = 2006
                         },
                         new
                         {
@@ -981,9 +981,9 @@ namespace H3LibraryProject.Repositories.Migrations
                             GenreId = 1,
                             LanguageId = 2,
                             Name = "No Country for Old Men",
-                            Pages = (short)320,
+                            Pages = 320,
                             PublisherId = 5,
-                            RYear = (short)2005
+                            RYear = 2005
                         },
                         new
                         {
@@ -992,9 +992,9 @@ namespace H3LibraryProject.Repositories.Migrations
                             GenreId = 1,
                             LanguageId = 2,
                             Name = "The Road",
-                            Pages = (short)287,
+                            Pages = 287,
                             PublisherId = 5,
-                            RYear = (short)2006
+                            RYear = 2006
                         },
                         new
                         {
@@ -1003,9 +1003,9 @@ namespace H3LibraryProject.Repositories.Migrations
                             GenreId = 1,
                             LanguageId = 1,
                             Name = "De siger man kan elske uden at få børn",
-                            Pages = (short)202,
+                            Pages = 202,
                             PublisherId = 1,
-                            RYear = (short)2003
+                            RYear = 2003
                         },
                         new
                         {
@@ -1014,9 +1014,9 @@ namespace H3LibraryProject.Repositories.Migrations
                             GenreId = 3,
                             LanguageId = 1,
                             Name = "Personskade - sådan sikrer du dig den erstatning, du har ret til",
-                            Pages = (short)166,
+                            Pages = 166,
                             PublisherId = 1,
-                            RYear = (short)2019
+                            RYear = 2019
                         });
                 });
 

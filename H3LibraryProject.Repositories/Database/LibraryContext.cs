@@ -423,7 +423,7 @@ namespace H3LibraryProject.Repositories.Database
                 new()
                 {
                     TitleId = 10,
-                    Name = "Hard-boiled Wonderland & The End of The World",
+                    Name = "Hard-boiled Wonderland and The End of The World",
                     RYear = 1985,
                     Pages = 618,
                     AuthorId = 6,
@@ -434,7 +434,7 @@ namespace H3LibraryProject.Repositories.Database
                 new()
                 {
                     TitleId = 11,
-                    Name = "Hard-boiled Wonderland & The End of The World",
+                    Name = "Hard-boiled Wonderland and The End of The World",
                     RYear = 1991,
                     Pages = 400,
                     AuthorId = 6,
