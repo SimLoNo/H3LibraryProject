@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace H3LibraryProject.Repositories.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20220610221345_fredagaften")]
+    [Migration("20220611002046_fredagaften")]
     partial class fredagaften
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -74,6 +74,12 @@ namespace H3LibraryProject.Repositories.Migrations
                             GenreId = 6,
                             LeasePeriod = 30,
                             Name = "Sci-Fi"
+                        },
+                        new
+                        {
+                            GenreId = 7,
+                            LeasePeriod = 30,
+                            Name = "Biografier"
                         });
                 });
 
@@ -498,6 +504,146 @@ namespace H3LibraryProject.Repositories.Migrations
                             Home = true,
                             LocationId = 2,
                             TitleId = 21
+                        },
+                        new
+                        {
+                            MaterialId = 31,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 22
+                        },
+                        new
+                        {
+                            MaterialId = 32,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 23
+                        },
+                        new
+                        {
+                            MaterialId = 33,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 24
+                        },
+                        new
+                        {
+                            MaterialId = 34,
+                            Home = true,
+                            LocationId = 1,
+                            TitleId = 25
+                        },
+                        new
+                        {
+                            MaterialId = 35,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 25
+                        },
+                        new
+                        {
+                            MaterialId = 36,
+                            Home = true,
+                            LocationId = 1,
+                            TitleId = 26
+                        },
+                        new
+                        {
+                            MaterialId = 37,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 27
+                        },
+                        new
+                        {
+                            MaterialId = 38,
+                            Home = true,
+                            LocationId = 1,
+                            TitleId = 27
+                        },
+                        new
+                        {
+                            MaterialId = 39,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 28
+                        },
+                        new
+                        {
+                            MaterialId = 40,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 28
+                        },
+                        new
+                        {
+                            MaterialId = 41,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 29
+                        },
+                        new
+                        {
+                            MaterialId = 42,
+                            Home = true,
+                            LocationId = 1,
+                            TitleId = 29
+                        },
+                        new
+                        {
+                            MaterialId = 43,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 30
+                        },
+                        new
+                        {
+                            MaterialId = 44,
+                            Home = true,
+                            LocationId = 1,
+                            TitleId = 30
+                        },
+                        new
+                        {
+                            MaterialId = 45,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 30
+                        },
+                        new
+                        {
+                            MaterialId = 46,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 31
+                        },
+                        new
+                        {
+                            MaterialId = 47,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 32
+                        },
+                        new
+                        {
+                            MaterialId = 48,
+                            Home = true,
+                            LocationId = 1,
+                            TitleId = 32
+                        },
+                        new
+                        {
+                            MaterialId = 49,
+                            Home = true,
+                            LocationId = 1,
+                            TitleId = 33
+                        },
+                        new
+                        {
+                            MaterialId = 50,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 34
                         });
                 });
 
@@ -608,8 +754,8 @@ namespace H3LibraryProject.Repositories.Migrations
                         new
                         {
                             AuthorId = 9,
-                            BYear = 1907,
-                            DYear = 1976,
+                            BYear = 1893,
+                            DYear = 1974,
                             FName = "Tom",
                             LName = "Kristensen",
                             NationalityId = 1
@@ -628,7 +774,7 @@ namespace H3LibraryProject.Repositories.Migrations
                             BYear = 1933,
                             FName = "Cormac",
                             LName = "McCarthy",
-                            NationalityId = 5
+                            NationalityId = 4
                         },
                         new
                         {
@@ -645,6 +791,85 @@ namespace H3LibraryProject.Repositories.Migrations
                             FName = "Leif",
                             LName = "Thomsen",
                             MName = "Donbæk",
+                            NationalityId = 1
+                        },
+                        new
+                        {
+                            AuthorId = 14,
+                            BYear = 1907,
+                            DYear = 1988,
+                            FName = "Robert",
+                            LName = "Heinlein",
+                            MName = "Anson",
+                            NationalityId = 4
+                        },
+                        new
+                        {
+                            AuthorId = 15,
+                            BYear = 1936,
+                            DYear = 2006,
+                            FName = "Hunter",
+                            LName = "Thompson",
+                            MName = "Stockton",
+                            NationalityId = 4
+                        },
+                        new
+                        {
+                            AuthorId = 16,
+                            BYear = 1828,
+                            DYear = 1910,
+                            FName = "Lev",
+                            LName = "Tolstoj",
+                            MName = "Nikolajevitj",
+                            NationalityId = 5
+                        },
+                        new
+                        {
+                            AuthorId = 17,
+                            BYear = 1964,
+                            FName = "Bret",
+                            LName = "Ellis",
+                            MName = "Easton",
+                            NationalityId = 4
+                        },
+                        new
+                        {
+                            AuthorId = 18,
+                            BYear = 1962,
+                            FName = "Chuck",
+                            LName = "Palahniuk",
+                            NationalityId = 4
+                        },
+                        new
+                        {
+                            AuthorId = 19,
+                            BYear = 1943,
+                            FName = "Henning",
+                            LName = "Jensen",
+                            NationalityId = 1
+                        },
+                        new
+                        {
+                            AuthorId = 20,
+                            BYear = 1947,
+                            FName = "Jørn",
+                            LName = "Mader",
+                            NationalityId = 1
+                        },
+                        new
+                        {
+                            AuthorId = 21,
+                            BYear = 1953,
+                            FName = "Pablo",
+                            LName = "Fenjves",
+                            NationalityId = 4
+                        },
+                        new
+                        {
+                            AuthorId = 22,
+                            BYear = 1949,
+                            FName = "Erwin",
+                            LName = "Neutzky-Wulff",
                             NationalityId = 1
                         });
                 });
@@ -1017,6 +1242,149 @@ namespace H3LibraryProject.Repositories.Migrations
                             Pages = 166,
                             PublisherId = 1,
                             RYear = 2019
+                        },
+                        new
+                        {
+                            TitleId = 22,
+                            AuthorId = 14,
+                            GenreId = 6,
+                            LanguageId = 2,
+                            Name = "The Moon Is A Harsh Mistress",
+                            Pages = 408,
+                            PublisherId = 3,
+                            RYear = 1966
+                        },
+                        new
+                        {
+                            TitleId = 23,
+                            AuthorId = 14,
+                            GenreId = 6,
+                            LanguageId = 2,
+                            Name = "Starship Trooper",
+                            Pages = 275,
+                            PublisherId = 3,
+                            RYear = 1959
+                        },
+                        new
+                        {
+                            TitleId = 24,
+                            AuthorId = 15,
+                            GenreId = 1,
+                            LanguageId = 2,
+                            Name = "Fear and Loathing in Las Vegas",
+                            Pages = 204,
+                            PublisherId = 3,
+                            RYear = 1972
+                        },
+                        new
+                        {
+                            TitleId = 25,
+                            AuthorId = 16,
+                            GenreId = 1,
+                            LanguageId = 1,
+                            Name = "Hos Kosakkerne",
+                            Pages = 212,
+                            PublisherId = 1,
+                            RYear = 1928
+                        },
+                        new
+                        {
+                            TitleId = 26,
+                            AuthorId = 16,
+                            GenreId = 1,
+                            LanguageId = 4,
+                            Name = "Kazakh",
+                            Pages = 212,
+                            PublisherId = 1,
+                            RYear = 1863
+                        },
+                        new
+                        {
+                            TitleId = 27,
+                            AuthorId = 17,
+                            GenreId = 1,
+                            LanguageId = 2,
+                            Name = "American Psycho",
+                            Pages = 384,
+                            PublisherId = 5,
+                            RYear = 1991
+                        },
+                        new
+                        {
+                            TitleId = 28,
+                            AuthorId = 18,
+                            GenreId = 1,
+                            LanguageId = 2,
+                            Name = "Survivor",
+                            Pages = 304,
+                            PublisherId = 5,
+                            RYear = 1999
+                        },
+                        new
+                        {
+                            TitleId = 29,
+                            AuthorId = 19,
+                            GenreId = 7,
+                            LanguageId = 1,
+                            Name = "Henning Jensen - En Skidt Knægt",
+                            Pages = 332,
+                            PublisherId = 1,
+                            RYear = 2022
+                        },
+                        new
+                        {
+                            TitleId = 30,
+                            AuthorId = 19,
+                            GenreId = 2,
+                            LanguageId = 1,
+                            Name = "Henning Jensen - En Skidt Knægt",
+                            Pages = 332,
+                            PublisherId = 1,
+                            RYear = 2022
+                        },
+                        new
+                        {
+                            TitleId = 31,
+                            AuthorId = 20,
+                            GenreId = 2,
+                            LanguageId = 1,
+                            Name = "Sidste tour - Mader og Leth",
+                            Pages = 256,
+                            PublisherId = 2,
+                            RYear = 2022
+                        },
+                        new
+                        {
+                            TitleId = 32,
+                            AuthorId = 20,
+                            GenreId = 7,
+                            LanguageId = 1,
+                            Name = "Sidste tour - Mader og Leth",
+                            Pages = 256,
+                            PublisherId = 2,
+                            RYear = 2022
+                        },
+                        new
+                        {
+                            TitleId = 33,
+                            AuthorId = 21,
+                            GenreId = 7,
+                            LanguageId = 2,
+                            Name = "If I Did It",
+                            Pages = 210,
+                            PublisherId = 5,
+                            RYear = 2007
+                        },
+                        new
+                        {
+                            TitleId = 34,
+                            AuthorId = 22,
+                            GenreId = 6,
+                            LanguageId = 1,
+                            Name = "Møde",
+                            Pages = 497,
+                            PublisherId = 5,
+                            RYear = 2018
                         });
                 });
 

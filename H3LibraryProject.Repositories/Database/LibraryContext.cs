@@ -177,6 +177,11 @@ namespace H3LibraryProject.Repositories.Database
                    GenreId = 6,
                    Name = "Sci-Fi",
                    LeasePeriod = 30
+               }, new()
+               {
+                   GenreId = 7,
+                   Name = "Biografier",
+                   LeasePeriod = 30
                }
                );
             modelBuilder.Entity<Nationality>().HasData(
@@ -282,8 +287,8 @@ namespace H3LibraryProject.Repositories.Database
                     AuthorId = 9,
                     FName = "Tom",
                     LName = "Kristensen",
-                    BYear = 1907,
-                    DYear = 1976,
+                    BYear = 1893,
+                    DYear = 1974,
                     NationalityId = 1
                 },
                 new()
@@ -300,7 +305,7 @@ namespace H3LibraryProject.Repositories.Database
                     FName = "Cormac",
                     LName = "McCarthy",
                     BYear = 1933,
-                    NationalityId = 5
+                    NationalityId = 4
                 },
                 new()
                 {
@@ -317,6 +322,85 @@ namespace H3LibraryProject.Repositories.Database
                     MName = "Donbæk",
                     LName = "Thomsen",
                     BYear = 1984,
+                    NationalityId = 1
+                },
+                new()
+                {
+                    AuthorId = 14,
+                    FName = "Robert",
+                    MName = "Anson",
+                    LName = "Heinlein",
+                    BYear = 1907,
+                    DYear = 1988,
+                    NationalityId = 4
+                },
+                new()
+                {
+                    AuthorId = 15,
+                    FName = "Hunter",
+                    MName = "Stockton",
+                    LName = "Thompson",
+                    BYear = 1936,
+                    DYear = 2006,
+                    NationalityId = 4
+                },
+                new()
+                {
+                    AuthorId = 16,
+                    FName = "Lev",
+                    MName = "Nikolajevitj",
+                    LName = "Tolstoj",
+                    BYear = 1828,
+                    DYear = 1910,
+                    NationalityId = 5
+                },
+                new()
+                {
+                    AuthorId = 17,
+                    FName = "Bret",
+                    MName = "Easton",
+                    LName = "Ellis",
+                    BYear = 1964,
+                    NationalityId = 4
+                },
+                new()
+                {
+                    AuthorId = 18,
+                    FName = "Chuck",
+                    LName = "Palahniuk",
+                    BYear = 1962,
+                    NationalityId = 4
+                },
+                new()
+                {
+                    AuthorId = 19,
+                    FName = "Henning",
+                    LName = "Jensen",
+                    BYear = 1943,
+                    NationalityId = 1
+                },
+                new()
+                {
+                    AuthorId = 20,
+                    FName = "Jørn",
+                    LName = "Mader",
+                    BYear = 1947,
+                    NationalityId = 1
+                },
+                new()
+                {
+                    AuthorId = 21,
+                    FName = "Pablo",
+                    LName = "Fenjves",
+                    BYear = 1953,
+                    NationalityId = 4
+                },
+                new()
+                {
+                    AuthorId = 22,
+                    FName = "Erwin",
+                    LName = "Neutzky-Wulff",
+                    BYear = 1949,
                     NationalityId = 1
                 }
                 );
@@ -551,6 +635,149 @@ namespace H3LibraryProject.Repositories.Database
                     LanguageId = 1,
                     PublisherId = 1,
                     GenreId = 3
+                },
+                new()
+                {
+                    TitleId = 22,
+                    Name = "The Moon Is A Harsh Mistress",
+                    RYear = 1966,
+                    Pages = 408,
+                    AuthorId = 14,
+                    LanguageId = 2,
+                    PublisherId = 3,
+                    GenreId = 6
+                },
+                new()
+                {
+                    TitleId = 23,
+                    Name = "Starship Trooper",
+                    RYear = 1959,
+                    Pages = 275,
+                    AuthorId = 14,
+                    LanguageId = 2,
+                    PublisherId = 3,
+                    GenreId = 6
+                },
+                new()
+                {
+                    TitleId = 24,
+                    Name = "Fear and Loathing in Las Vegas",
+                    RYear = 1972,
+                    Pages = 204,
+                    AuthorId = 15,
+                    LanguageId = 2,
+                    PublisherId = 3,
+                    GenreId = 1
+                },
+                new()
+                {
+                    TitleId = 25,
+                    Name = "Hos Kosakkerne",
+                    RYear = 1928,
+                    Pages = 212,
+                    AuthorId = 16,
+                    LanguageId = 1,
+                    PublisherId = 1,
+                    GenreId = 1
+                },
+                new()
+                {
+                    TitleId = 26,
+                    Name = "Kazakh",
+                    RYear = 1863,
+                    Pages = 212,
+                    AuthorId = 16,
+                    LanguageId = 4,
+                    PublisherId = 1,
+                    GenreId = 1
+                },
+                new()
+                {
+                    TitleId = 27,
+                    Name = "American Psycho",
+                    RYear = 1991,
+                    Pages = 384,
+                    AuthorId = 17,
+                    LanguageId = 2,
+                    PublisherId = 5,
+                    GenreId = 1
+                },
+                new()
+                {
+                    TitleId = 28,
+                    Name = "Survivor",
+                    RYear = 1999,
+                    Pages = 304,
+                    AuthorId = 18,
+                    LanguageId = 2,
+                    PublisherId = 5,
+                    GenreId = 1
+                },
+                new()
+                {
+                    TitleId = 29,
+                    Name = "Henning Jensen - En Skidt Knægt",
+                    RYear = 2022,
+                    Pages = 332,
+                    AuthorId = 19,
+                    LanguageId = 1,
+                    PublisherId = 1,
+                    GenreId = 7
+                },
+                new()
+                {
+                    TitleId = 30,
+                    Name = "Henning Jensen - En Skidt Knægt",
+                    RYear = 2022,
+                    Pages = 332,
+                    AuthorId = 19,
+                    LanguageId = 1,
+                    PublisherId = 1,
+                    GenreId = 2
+                },
+                new()
+                {
+                    TitleId = 31,
+                    Name = "Sidste tour - Mader og Leth",
+                    RYear = 2022,
+                    Pages = 256,
+                    AuthorId = 20,
+                    LanguageId = 1,
+                    PublisherId = 2,
+                    GenreId = 2
+                },
+                new()
+                {
+                    TitleId = 32,
+                    Name = "Sidste tour - Mader og Leth",
+                    RYear = 2022,
+                    Pages = 256,
+                    AuthorId = 20,
+                    LanguageId = 1,
+                    PublisherId = 2,
+                    GenreId = 7
+                },
+                new()
+                {
+                    TitleId = 33,
+                    Name = "If I Did It",
+                    RYear = 2007,
+                    Pages = 210,
+                    AuthorId = 21,
+                    LanguageId = 2,
+                    PublisherId = 5,
+                    GenreId = 7
+                },
+                new()
+                {
+                    TitleId = 34,
+                    Name = "Møde",
+                    RYear = 2018,
+                    Pages = 497,
+                    AuthorId = 22,
+                    LanguageId = 1,
+                    PublisherId = 5,
+                    GenreId = 6
                 }
                 );
             modelBuilder.Entity<Material>().HasData(
@@ -760,6 +987,146 @@ namespace H3LibraryProject.Repositories.Database
               {
                   MaterialId = 30,
                   TitleId = 21,
+                  LocationId = 2,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 31,
+                  TitleId = 22,
+                  LocationId = 2,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 32,
+                  TitleId = 23,
+                  LocationId = 2,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 33,
+                  TitleId = 24,
+                  LocationId = 2,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 34,
+                  TitleId = 25,
+                  LocationId = 1,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 35,
+                  TitleId = 25,
+                  LocationId = 2,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 36,
+                  TitleId = 26,
+                  LocationId = 1,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 37,
+                  TitleId = 27,
+                  LocationId = 2,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 38,
+                  TitleId = 27,
+                  LocationId = 1,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 39,
+                  TitleId = 28,
+                  LocationId = 2,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 40,
+                  TitleId = 28,
+                  LocationId = 2,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 41,
+                  TitleId = 29,
+                  LocationId = 2,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 42,
+                  TitleId = 29,
+                  LocationId = 1,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 43,
+                  TitleId = 30,
+                  LocationId = 2,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 44,
+                  TitleId = 30,
+                  LocationId = 1,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 45,
+                  TitleId = 30,
+                  LocationId = 2,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 46,
+                  TitleId = 31,
+                  LocationId = 2,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 47,
+                  TitleId = 32,
+                  LocationId = 2,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 48,
+                  TitleId = 32,
+                  LocationId = 1,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 49,
+                  TitleId = 33,
+                  LocationId = 1,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 50,
+                  TitleId = 34,
                   LocationId = 2,
                   Home = true
               }
