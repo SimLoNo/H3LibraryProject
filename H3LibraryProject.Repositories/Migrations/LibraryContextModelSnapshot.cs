@@ -642,6 +642,34 @@ namespace H3LibraryProject.Repositories.Migrations
                             Home = true,
                             LocationId = 2,
                             TitleId = 34
+                        },
+                        new
+                        {
+                            MaterialId = 51,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 35
+                        },
+                        new
+                        {
+                            MaterialId = 52,
+                            Home = true,
+                            LocationId = 1,
+                            TitleId = 35
+                        },
+                        new
+                        {
+                            MaterialId = 53,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 36
+                        },
+                        new
+                        {
+                            MaterialId = 54,
+                            Home = true,
+                            LocationId = 1,
+                            TitleId = 37
                         });
                 });
 
@@ -869,6 +897,14 @@ namespace H3LibraryProject.Repositories.Migrations
                             FName = "Erwin",
                             LName = "Neutzky-Wulff",
                             NationalityId = 1
+                        },
+                        new
+                        {
+                            AuthorId = 23,
+                            BYear = 1945,
+                            FName = "Knud",
+                            LName = "Holten",
+                            NationalityId = 1
                         });
                 });
 
@@ -1094,7 +1130,7 @@ namespace H3LibraryProject.Repositories.Migrations
                             GenreId = 4,
                             LanguageId = 1,
                             Name = "Aben Osvald",
-                            Pages = 33,
+                            Pages = 48,
                             PublisherId = 1,
                             RYear = 1947
                         },
@@ -1383,6 +1419,50 @@ namespace H3LibraryProject.Repositories.Migrations
                             Pages = 497,
                             PublisherId = 5,
                             RYear = 2018
+                        },
+                        new
+                        {
+                            TitleId = 35,
+                            AuthorId = 7,
+                            GenreId = 4,
+                            LanguageId = 1,
+                            Name = "Mis med de blå øjne",
+                            Pages = 120,
+                            PublisherId = 1,
+                            RYear = 1949
+                        },
+                        new
+                        {
+                            TitleId = 36,
+                            AuthorId = 7,
+                            GenreId = 4,
+                            LanguageId = 1,
+                            Name = "Blå mand - en remse til vrøvle og glæde",
+                            Pages = 28,
+                            PublisherId = 1,
+                            RYear = 1956
+                        },
+                        new
+                        {
+                            TitleId = 37,
+                            AuthorId = 23,
+                            GenreId = 4,
+                            LanguageId = 1,
+                            Name = "Kaspers rejse til de mærkelige væseners land - et eventyr for børn",
+                            Pages = 62,
+                            PublisherId = 1,
+                            RYear = 1969
+                        },
+                        new
+                        {
+                            TitleId = 38,
+                            AuthorId = 23,
+                            GenreId = 4,
+                            LanguageId = 1,
+                            Name = "Karfunkel-Jægerne : en eventyr-roman",
+                            Pages = 85,
+                            PublisherId = 1,
+                            RYear = 1980
                         });
                 });
 

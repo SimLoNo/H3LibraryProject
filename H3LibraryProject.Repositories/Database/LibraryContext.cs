@@ -402,6 +402,14 @@ namespace H3LibraryProject.Repositories.Database
                     LName = "Neutzky-Wulff",
                     BYear = 1949,
                     NationalityId = 1
+                },
+                new()
+                {
+                    AuthorId = 23,
+                    FName = "Knud",
+                    LName = "Holten",
+                    BYear = 1945,
+                    NationalityId = 1
                 }
                 );
 
@@ -487,7 +495,7 @@ namespace H3LibraryProject.Repositories.Database
                     TitleId = 8,
                     Name = "Aben Osvald",
                     RYear = 1947,
-                    Pages = 33,
+                    Pages = 48,
                     AuthorId = 7,
                     LanguageId = 1,
                     PublisherId = 1,
@@ -778,6 +786,50 @@ namespace H3LibraryProject.Repositories.Database
                     LanguageId = 1,
                     PublisherId = 5,
                     GenreId = 6
+                },
+                new()
+                {
+                    TitleId = 35,
+                    Name = "Mis med de blå øjne",
+                    RYear = 1949,
+                    Pages = 120,
+                    AuthorId = 7,
+                    LanguageId = 1,
+                    PublisherId = 1,
+                    GenreId = 4
+                },
+                new()
+                {
+                    TitleId = 36,
+                    Name = "Blå mand - en remse til vrøvle og glæde",
+                    RYear = 1956,
+                    Pages = 28,
+                    AuthorId = 7,
+                    LanguageId = 1,
+                    PublisherId = 1,
+                    GenreId = 4
+                },
+                new()
+                {
+                    TitleId = 37,
+                    Name = "Kaspers rejse til de mærkelige væseners land - et eventyr for børn",
+                    RYear = 1969,
+                    Pages = 62,
+                    AuthorId = 23,
+                    LanguageId = 1,
+                    PublisherId = 1,
+                    GenreId = 4
+                },
+                new()
+                {
+                    TitleId = 38,
+                    Name = "Karfunkel-Jægerne : en eventyr-roman",
+                    RYear = 1980,
+                    Pages = 85,
+                    AuthorId = 23,
+                    LanguageId = 1,
+                    PublisherId = 1,
+                    GenreId = 4
                 }
                 );
             modelBuilder.Entity<Material>().HasData(
@@ -1128,6 +1180,34 @@ namespace H3LibraryProject.Repositories.Database
                   MaterialId = 50,
                   TitleId = 34,
                   LocationId = 2,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 51,
+                  TitleId = 35,
+                  LocationId = 2,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 52,
+                  TitleId = 35,
+                  LocationId = 1,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 53,
+                  TitleId = 36,
+                  LocationId = 2,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 54,
+                  TitleId = 37,
+                  LocationId = 1,
                   Home = true
               }
               );

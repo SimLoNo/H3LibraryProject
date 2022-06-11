@@ -322,22 +322,23 @@ namespace H3LibraryProject.Repositories.Migrations
                     { 5, 1905, 1979, "Hans", "Scherfig", null, 1 },
                     { 7, 1907, 1976, "Egon", "Mathiesen", null, 1 },
                     { 9, 1893, 1974, "Tom", "Kristensen", null, 1 },
-                    { 10, 1961, null, "Jesper", "Kurt-Nielsen", null, 1 },
+                    { 12, 1972, null, "Camille", "Blomst", null, 1 },
                     { 13, 1984, null, "Leif", "Thomsen", "Donbæk", 1 },
                     { 19, 1943, null, "Henning", "Jensen", null, 1 },
                     { 20, 1947, null, "Jørn", "Mader", null, 1 },
-                    { 12, 1972, null, "Camille", "Blomst", null, 1 },
-                    { 1, 973, 1031, "Shibiku", "Murasaki", null, 2 },
                     { 22, 1949, null, "Erwin", "Neutzky-Wulff", null, 1 },
+                    { 10, 1961, null, "Jesper", "Kurt-Nielsen", null, 1 },
+                    { 1, 973, 1031, "Shibiku", "Murasaki", null, 2 },
+                    { 23, 1945, null, "Knud", "Holten", null, 1 },
+                    { 21, 1953, null, "Pablo", "Fenjves", null, 4 },
                     { 18, 1962, null, "Chuck", "Palahniuk", null, 4 },
                     { 17, 1964, null, "Bret", "Ellis", "Easton", 4 },
                     { 15, 1936, 2006, "Hunter", "Thompson", "Stockton", 4 },
-                    { 21, 1953, null, "Pablo", "Fenjves", null, 4 },
+                    { 3, 1821, 1881, "Fjodor", "Dostoyevskij", "Mikhájlovitj", 5 },
                     { 11, 1933, null, "Cormac", "McCarthy", null, 4 },
                     { 8, 1965, null, "Dan", "Abnett", null, 3 },
                     { 6, 1949, null, "Haruki", "Murakami", null, 2 },
-                    { 14, 1907, 1988, "Robert", "Heinlein", "Anson", 4 },
-                    { 3, 1821, 1881, "Fjodor", "Dostoyevskij", "Mikhájlovitj", 5 }
+                    { 14, 1907, 1988, "Robert", "Heinlein", "Anson", 4 }
                 });
 
             migrationBuilder.InsertData(
@@ -345,11 +346,11 @@ namespace H3LibraryProject.Repositories.Migrations
                 columns: new[] { "LoanerId", "LoanerTypeId", "Name", "Password" },
                 values: new object[,]
                 {
-                    { 2, 2, "Robin", "Passw0rd" },
                     { 1, 2, "Simon", "Passw0rd" },
                     { 5, 1, "Kasper", "Passw0rd" },
                     { 4, 1, "Anders", "Passw0rd" },
-                    { 3, 1, "Flemming", "Passw0rd" }
+                    { 3, 1, "Flemming", "Passw0rd" },
+                    { 2, 2, "Robin", "Passw0rd" }
                 });
 
             migrationBuilder.InsertData(
@@ -357,21 +358,20 @@ namespace H3LibraryProject.Repositories.Migrations
                 columns: new[] { "TitleId", "AuthorId", "GenreId", "LanguageId", "Name", "Pages", "PublisherId", "RYear" },
                 values: new object[,]
                 {
-                    { 10, 6, 6, 3, "Hard-boiled Wonderland and The End of The World", 618, 3, 1985 },
+                    { 33, 21, 7, 2, "If I Did It", 210, 5, 2007 },
                     { 26, 16, 1, 4, "Kazakh", 212, 1, 1863 },
                     { 7, 4, 1, 4, "Idioten", 843, 3, 2022 },
+                    { 10, 6, 6, 3, "Hard-boiled Wonderland and The End of The World", 618, 3, 1985 },
                     { 1, 1, 1, 3, "Fortællingen om Genji", 224, 1, 1021 },
                     { 28, 18, 1, 2, "Survivor", 304, 5, 1999 },
+                    { 24, 15, 1, 2, "Fear and Loathing in Las Vegas", 204, 3, 1972 },
                     { 3, 3, 1, 1, "Forbrydelse og Straf", 684, 1, 1866 },
                     { 5, 4, 2, 1, "Den Røde Glente", 408, 3, 2022 },
                     { 6, 4, 5, 1, "Den Røde Glente", 408, 3, 2022 },
-                    { 8, 7, 4, 1, "Aben Osvald", 33, 1, 1947 },
+                    { 8, 7, 4, 1, "Aben Osvald", 48, 1, 1947 },
                     { 12, 5, 1, 1, "Den Forsvundne Fuldmægtig", 183, 1, 1938 },
                     { 13, 5, 1, 1, "Det Forsømte Forår", 179, 1, 1940 },
-                    { 14, 5, 3, 1, "Dammen", 108, 1, 1958 },
-                    { 15, 9, 1, 1, "Hærværk", 430, 1, 1930 },
-                    { 16, 10, 3, 1, "Manden der ikke ville være høflig", 331, 1, 2020 },
-                    { 17, 10, 3, 1, "Man tager en alligator eller leguan af passende størrelse", 139, 1, 2006 }
+                    { 14, 5, 3, 1, "Dammen", 108, 1, 1958 }
                 });
 
             migrationBuilder.InsertData(
@@ -379,6 +379,9 @@ namespace H3LibraryProject.Repositories.Migrations
                 columns: new[] { "TitleId", "AuthorId", "GenreId", "LanguageId", "Name", "Pages", "PublisherId", "RYear" },
                 values: new object[,]
                 {
+                    { 15, 9, 1, 1, "Hærværk", 430, 1, 1930 },
+                    { 16, 10, 3, 1, "Manden der ikke ville være høflig", 331, 1, 2020 },
+                    { 17, 10, 3, 1, "Man tager en alligator eller leguan af passende størrelse", 139, 1, 2006 },
                     { 20, 12, 1, 1, "De siger man kan elske uden at få børn", 202, 1, 2003 },
                     { 21, 13, 3, 1, "Personskade - sådan sikrer du dig den erstatning, du har ret til", 166, 1, 2019 },
                     { 25, 16, 1, 1, "Hos Kosakkerne", 212, 1, 1928 },
@@ -387,6 +390,10 @@ namespace H3LibraryProject.Repositories.Migrations
                     { 31, 20, 2, 1, "Sidste tour - Mader og Leth", 256, 2, 2022 },
                     { 32, 20, 7, 1, "Sidste tour - Mader og Leth", 256, 2, 2022 },
                     { 34, 22, 6, 1, "Møde", 497, 5, 2018 },
+                    { 35, 7, 4, 1, "Mis med de blå øjne", 120, 1, 1949 },
+                    { 36, 7, 4, 1, "Blå mand - en remse til vrøvle og glæde", 28, 1, 1956 },
+                    { 37, 23, 4, 1, "Kaspers rejse til de mærkelige væseners land - et eventyr for børn", 62, 1, 1969 },
+                    { 38, 23, 4, 1, "Karfunkel-Jægerne : en eventyr-roman", 85, 1, 1980 },
                     { 4, 3, 1, 2, "Idioten", 843, 1, 1869 },
                     { 9, 8, 6, 2, "Embedded", 352, 4, 2011 },
                     { 11, 6, 6, 2, "Hard-boiled Wonderland and The End of The World", 400, 3, 1991 },
@@ -394,9 +401,7 @@ namespace H3LibraryProject.Repositories.Migrations
                     { 19, 11, 1, 2, "The Road", 287, 5, 2006 },
                     { 22, 14, 6, 2, "The Moon Is A Harsh Mistress", 408, 3, 1966 },
                     { 23, 14, 6, 2, "Starship Trooper", 275, 3, 1959 },
-                    { 24, 15, 1, 2, "Fear and Loathing in Las Vegas", 204, 3, 1972 },
                     { 27, 17, 1, 2, "American Psycho", 384, 5, 1991 },
-                    { 33, 21, 7, 2, "If I Did It", 210, 5, 2007 },
                     { 2, 2, 1, 1, "Eventyr, fortalt for Børn", 300, 2, 1837 }
                 });
 
@@ -406,9 +411,11 @@ namespace H3LibraryProject.Repositories.Migrations
                 values: new object[,]
                 {
                     { 3, true, 1, 2 },
-                    { 47, true, 2, 32 },
-                    { 48, true, 1, 32 },
                     { 50, true, 2, 34 },
+                    { 51, true, 2, 35 },
+                    { 52, true, 1, 35 },
+                    { 53, true, 2, 36 },
+                    { 54, true, 1, 37 },
                     { 6, true, 2, 4 },
                     { 13, true, 2, 9 },
                     { 16, true, 1, 11 },
@@ -427,10 +434,10 @@ namespace H3LibraryProject.Repositories.Migrations
                     { 2, true, 2, 1 },
                     { 14, true, 1, 10 },
                     { 15, true, 2, 10 },
+                    { 48, true, 1, 32 },
+                    { 47, true, 2, 32 },
                     { 46, true, 2, 31 },
                     { 45, true, 2, 30 },
-                    { 44, true, 1, 30 },
-                    { 43, true, 2, 30 },
                     { 4, true, 1, 3 },
                     { 5, true, 2, 3 },
                     { 24, true, 2, 3 },
@@ -441,12 +448,10 @@ namespace H3LibraryProject.Repositories.Migrations
                     { 12, true, 2, 8 },
                     { 17, true, 1, 12 },
                     { 18, true, 1, 13 },
-                    { 11, true, 1, 7 },
                     { 19, true, 1, 14 },
-                    { 21, true, 2, 15 },
-                    { 22, true, 1, 15 },
-                    { 23, true, 2, 16 },
-                    { 25, true, 2, 17 }
+                    { 11, true, 1, 7 },
+                    { 20, true, 1, 15 },
+                    { 22, true, 1, 15 }
                 });
 
             migrationBuilder.InsertData(
@@ -454,13 +459,17 @@ namespace H3LibraryProject.Repositories.Migrations
                 columns: new[] { "MaterialId", "Home", "LocationId", "TitleId" },
                 values: new object[,]
                 {
+                    { 23, true, 2, 16 },
+                    { 25, true, 2, 17 },
                     { 29, true, 1, 20 },
                     { 30, true, 2, 21 },
                     { 34, true, 1, 25 },
                     { 35, true, 2, 25 },
                     { 41, true, 2, 29 },
                     { 42, true, 1, 29 },
-                    { 20, true, 1, 15 },
+                    { 43, true, 2, 30 },
+                    { 44, true, 1, 30 },
+                    { 21, true, 2, 15 },
                     { 36, true, 1, 26 }
                 });
 
