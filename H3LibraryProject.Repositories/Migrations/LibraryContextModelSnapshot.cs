@@ -48,36 +48,6 @@ namespace H3LibraryProject.Repositories.Migrations
                             GenreId = 2,
                             LeasePeriod = 7,
                             Name = "Quicklån"
-                        },
-                        new
-                        {
-                            GenreId = 3,
-                            LeasePeriod = 30,
-                            Name = "Faglitteratur"
-                        },
-                        new
-                        {
-                            GenreId = 4,
-                            LeasePeriod = 30,
-                            Name = "Børnebøger"
-                        },
-                        new
-                        {
-                            GenreId = 5,
-                            LeasePeriod = 30,
-                            Name = "Krimi"
-                        },
-                        new
-                        {
-                            GenreId = 6,
-                            LeasePeriod = 30,
-                            Name = "Sci-Fi"
-                        },
-                        new
-                        {
-                            GenreId = 7,
-                            LeasePeriod = 30,
-                            Name = "Biografier"
                         });
                 });
 
@@ -110,16 +80,6 @@ namespace H3LibraryProject.Repositories.Migrations
                         {
                             LanguageId = 3,
                             Name = "Japansk"
-                        },
-                        new
-                        {
-                            LanguageId = 4,
-                            Name = "Russisk"
-                        },
-                        new
-                        {
-                            LanguageId = 5,
-                            Name = "Hebræisk"
                         });
                 });
 
