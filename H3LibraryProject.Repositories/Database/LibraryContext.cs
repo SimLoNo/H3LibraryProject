@@ -182,6 +182,12 @@ namespace H3LibraryProject.Repositories.Database
                    GenreId = 7,
                    Name = "Biografier",
                    LeasePeriod = 30
+               },
+               new()
+               {
+                   GenreId = 8,
+                   Name = "Historisk fiktion",
+                   LeasePeriod = 7
                }
                );
             modelBuilder.Entity<Nationality>().HasData(
@@ -410,6 +416,22 @@ namespace H3LibraryProject.Repositories.Database
                     LName = "Holten",
                     BYear = 1945,
                     NationalityId = 1
+                },
+                new()
+                {
+                    AuthorId = 24,
+                    FName = "Ken",
+                    LName = "Follet",
+                    BYear = 1949,
+                    NationalityId = 3
+                },
+                new()
+                {
+                    AuthorId = 25,
+                    FName = "Dianna",
+                    LName = "Gabaldon",
+                    BYear = 1952,
+                    NationalityId = 4
                 }
                 );
 
@@ -830,6 +852,138 @@ namespace H3LibraryProject.Repositories.Database
                     LanguageId = 1,
                     PublisherId = 1,
                     GenreId = 4
+                },
+                new()
+                {
+                    TitleId = 39,
+                    Name = "Pillars of the Earth",
+                    RYear = 1989,
+                    Pages = 806,
+                    AuthorId = 24,
+                    LanguageId = 2,
+                    PublisherId = 5,
+                    GenreId = 3
+                },
+                new()
+                {
+                    TitleId = 40,
+                    Name = "World Without End",
+                    RYear = 2007,
+                    Pages = 1024,
+                    AuthorId = 24,
+                    LanguageId = 2,
+                    PublisherId = 5,
+                    GenreId = 3
+                },
+                new()
+                {
+                    TitleId = 41,
+                    Name = "A column of Fire",
+                    RYear = 2017,
+                    Pages = 804,
+                    AuthorId = 24,
+                    LanguageId = 2,
+                    PublisherId = 6,
+                    GenreId = 3
+                },
+                new()
+                {
+                    TitleId = 42,
+                    Name = "The Evening and the Morning",
+                    RYear = 2020,
+                    Pages = 832,
+                    AuthorId = 24,
+                    LanguageId = 2,
+                    PublisherId = 5,
+                    GenreId = 3
+                },
+                new()
+                {
+                    TitleId = 43,
+                    Name = "Outlander",
+                    RYear = 1991,
+                    Pages = 850,
+                    AuthorId = 25,
+                    LanguageId = 2,
+                    PublisherId = 7,
+                    GenreId = 3
+                },
+                new()
+                {
+                    TitleId = 44,
+                    Name = "Dragonfly in Amber",
+                    RYear = 1992,
+                    Pages = 752,
+                    AuthorId = 25,
+                    LanguageId = 2,
+                    PublisherId = 7,
+                    GenreId = 3
+                },
+                new()
+                {
+                    TitleId = 45,
+                    Name = "Voyager",
+                    RYear = 1993,
+                    Pages = 870,
+                    AuthorId = 25,
+                    LanguageId = 2,
+                    PublisherId = 7,
+                    GenreId = 3
+                },
+                new()
+                {
+                    TitleId = 46,
+                    Name = "Drums of Autumn",
+                    RYear = 1996,
+                    Pages = 880,
+                    AuthorId = 25,
+                    LanguageId = 2,
+                    PublisherId = 7,
+                    GenreId = 3
+                },
+                new()
+                {
+                    TitleId = 47,
+                    Name = "The Fiery Cross",
+                    RYear = 2001,
+                    Pages = 992,
+                    AuthorId = 25,
+                    LanguageId = 2,
+                    PublisherId = 7,
+                    GenreId = 3
+                },
+                new()
+                {
+                    TitleId = 48,
+                    Name = "A Breath of Snow and Ashes",
+                    RYear = 2005,
+                    Pages = 1157,
+                    AuthorId = 25,
+                    LanguageId = 2,
+                    PublisherId = 7,
+                    GenreId = 3
+                },
+                new()
+                {
+                    TitleId = 49,
+                    Name = "An Echo in the Bone",
+                    RYear = 2009,
+                    Pages = 820,
+                    AuthorId = 25,
+                    LanguageId = 2,
+                    PublisherId = 7,
+                    GenreId = 3
+                },
+                new()
+                {
+                    TitleId = 50,
+                    Name = "Written in My Own Heart's Blood",
+                    RYear = 2014,
+                    Pages = 825,
+                    AuthorId = 25,
+                    LanguageId = 2,
+                    PublisherId = 7,
+                    GenreId = 3
                 }
                 );
             modelBuilder.Entity<Material>().HasData(
