@@ -16,7 +16,7 @@ namespace H3LibraryProject.Repositories.Database
 
         [Column(TypeName = "nvarchar(32)")]
         public string Name { get; set; }
-        [Column(TypeName = "smallint")]
+        [Column(TypeName = "int")]
         public int LeasePeriod { get; set; }
 
         public List<Title> Titles { get; set; }

@@ -22,29 +22,29 @@ namespace H3LibraryProject.Tests.ServiceTests
             _service = new(_mockRepository.Object);
         }
 
-        [Fact]
-        public async Task GetAllLoans_ShouldReturnListOfLoanResponse_WhenLoansExist()
-        {
-            //Arrange
-            List<Loan> loaners = new()
-            {
-                new()
-                {
-                    LoanId = 1,
-                    LoanerId = 1,
-                    MaterialId = 1,
-                    LoanDate = DateTime.Now,
-                    ReturnDate = DateTime.Now
-                },
-                new()
-                {
-                    LoanId = 2,
-                    LoanerId = 1,
-                    MaterialId = 1,
-                    LoanDate = DateTime.Now,
-                    ReturnDate = DateTime.Now
-                }
-            };
+        //[Fact]
+        //public async Task GetAllLoans_ShouldReturnListOfLoanResponse_WhenLoansExist()
+        //{
+        //    //Arrange
+        //    List<Loan> loaners = new()
+        //    {
+        //        new()
+        //        {
+        //            LoanId = 1,
+        //            LoanerId = 1,
+        //            MaterialId = 1,
+        //            LoanDate = DateTime.Now,
+        //            ReturnDate = DateTime.Now
+        //        },
+        //        new()
+        //        {
+        //            LoanId = 2,
+        //            LoanerId = 1,
+        //            MaterialId = 1,
+        //            LoanDate = DateTime.Now,
+        //            ReturnDate = DateTime.Now
+        //        }
+        //    };
 
             _mockRepository
                 .Setup(x => x.SelectAllLoans())
@@ -72,7 +72,7 @@ namespace H3LibraryProject.Tests.ServiceTests
             Assert.IsType<List<LoanResponse>>(result);
             Assert.Empty(result);
 
-        }
+        //}
 
         [Fact]
         public async void GetLoanById_ShouldReturnLoanResponse_WhenTheLoanerExist()
