@@ -86,6 +86,21 @@ namespace H3LibraryProject.Repositories.Database
                {
                    PublisherId = 3,
                    Name = "People's Press"
+               },
+               new()
+               {
+                   PublisherId = 4,
+                   Name = "Macmilan"
+               },
+               new()
+               {
+                   PublisherId = 5,
+                   Name = "Vikung Press"
+               },
+               new()
+               {
+                   PublisherId = 6,
+                   Name = "Delacorte Books"
                }
                );
             modelBuilder.Entity<Location>().HasData(
@@ -128,6 +143,12 @@ namespace H3LibraryProject.Repositories.Database
                {
                    GenreId = 2,
                    Name = "Quicklån",
+                   LeasePeriod = 7
+               },
+               new()
+               {
+                   GenreId = 3,
+                   Name = "Historisk fiktion",
                    LeasePeriod = 7
                }
                );
@@ -194,6 +215,22 @@ namespace H3LibraryProject.Repositories.Database
                     LName = "Egholm",
                     BYear = 1960,
                     NationalityId = 1
+                },
+                new()
+                {
+                    AuthorId = 5,
+                    FName = "Ken",
+                    LName = "Follet",
+                    BYear = 1949,
+                    NationalityId = 3
+                },
+                new()
+                {
+                    AuthorId = 6,
+                    FName = "Dianna",
+                    LName = "Gabaldon",
+                    BYear = 1952,
+                    NationalityId = 4
                 }
                 );
 
@@ -252,6 +289,138 @@ namespace H3LibraryProject.Repositories.Database
                     LanguageId= 1,
                     PublisherId = 3,
                     GenreId = 2
+                },
+                new()
+                {
+                    TitleId = 6,
+                    Name = "Pillars of the Earth",
+                    RYear = 1989,
+                    Pages = 806,
+                    AuthorId = 5,
+                    LanguageId = 2,
+                    PublisherId = 4,
+                    GenreId = 3
+                },
+                new()
+                {
+                    TitleId = 7,
+                    Name = "World Without End",
+                    RYear = 2007,
+                    Pages = 1024,
+                    AuthorId = 5,
+                    LanguageId = 2,
+                    PublisherId = 4,
+                    GenreId = 3
+                },
+                new()
+                {
+                    TitleId = 8,
+                    Name = "A column of Fire",
+                    RYear = 2017,
+                    Pages = 804,
+                    AuthorId = 5,
+                    LanguageId = 2,
+                    PublisherId = 5,
+                    GenreId = 3
+                },
+                new()
+                {
+                    TitleId = 9,
+                    Name = "The Evening and the Morning",
+                    RYear = 2020,
+                    Pages = 832,
+                    AuthorId = 5,
+                    LanguageId = 2,
+                    PublisherId = 4,
+                    GenreId = 3
+                },
+                new()
+                {
+                    TitleId = 10,
+                    Name = "Outlander",
+                    RYear = 1991,
+                    Pages = 850,
+                    AuthorId = 6,
+                    LanguageId = 2,
+                    PublisherId = 6,
+                    GenreId = 3
+                },
+                new()
+                {
+                    TitleId = 11,
+                    Name = "Dragonfly in Amber",
+                    RYear = 1992,
+                    Pages = 752,
+                    AuthorId = 6,
+                    LanguageId = 2,
+                    PublisherId = 6,
+                    GenreId = 3
+                },
+                new()
+                {
+                    TitleId = 12,
+                    Name = "Voyager",
+                    RYear = 1993,
+                    Pages = 870,
+                    AuthorId = 6,
+                    LanguageId = 2,
+                    PublisherId = 6,
+                    GenreId = 3
+                },
+                new()
+                {
+                    TitleId = 13,
+                    Name = "Drums of Autumn",
+                    RYear = 1996,
+                    Pages = 880,
+                    AuthorId = 6,
+                    LanguageId = 2,
+                    PublisherId = 6,
+                    GenreId = 3
+                },
+                new()
+                {
+                    TitleId = 14,
+                    Name = "The Fiery Cross",
+                    RYear = 2001,
+                    Pages = 992,
+                    AuthorId = 6,
+                    LanguageId = 2,
+                    PublisherId = 6,
+                    GenreId = 3
+                },
+                new()
+                {
+                    TitleId = 15,
+                    Name = "A Breath of Snow and Ashes",
+                    RYear = 2005,
+                    Pages = 1157,
+                    AuthorId = 6,
+                    LanguageId = 2,
+                    PublisherId = 6,
+                    GenreId = 3
+                },
+                new()
+                {
+                    TitleId = 16,
+                    Name = "An Echo in the Bone",
+                    RYear = 2009,
+                    Pages = 820,
+                    AuthorId = 6,
+                    LanguageId = 2,
+                    PublisherId = 6,
+                    GenreId = 3
+                },
+                new()
+                {
+                    TitleId = 17,
+                    Name = "Written in My Own Heart's Blood",
+                    RYear = 2014,
+                    Pages = 825,
+                    AuthorId = 6,
+                    LanguageId = 2,
+                    PublisherId = 6,
+                    GenreId = 3
                 }
                 );
             modelBuilder.Entity<Material>().HasData(

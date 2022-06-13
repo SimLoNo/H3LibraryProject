@@ -48,6 +48,12 @@ namespace H3LibraryProject.Repositories.Migrations
                             GenreId = 2,
                             LeasePeriod = (short)7,
                             Name = "Quicklån"
+                        },
+                        new
+                        {
+                            GenreId = 3,
+                            LeasePeriod = (short)7,
+                            Name = "Historisk fiktion"
                         });
                 });
 
@@ -345,6 +351,22 @@ namespace H3LibraryProject.Repositories.Migrations
                             FName = "Elsebeth",
                             LName = "Egholm",
                             NationalityId = 1
+                        },
+                        new
+                        {
+                            AuthorId = 5,
+                            BYear = 1949,
+                            FName = "Ken",
+                            LName = "Follet",
+                            NationalityId = 3
+                        },
+                        new
+                        {
+                            AuthorId = 6,
+                            BYear = 1952,
+                            FName = "Dianna",
+                            LName = "Gabaldon",
+                            NationalityId = 4
                         });
                 });
 
@@ -441,6 +463,21 @@ namespace H3LibraryProject.Repositories.Migrations
                         {
                             PublisherId = 3,
                             Name = "People's Press"
+                        },
+                        new
+                        {
+                            PublisherId = 4,
+                            Name = "Macmilan"
+                        },
+                        new
+                        {
+                            PublisherId = 5,
+                            Name = "Vikung Press"
+                        },
+                        new
+                        {
+                            PublisherId = 6,
+                            Name = "Delacorte Books"
                         });
                 });
 
@@ -535,6 +572,138 @@ namespace H3LibraryProject.Repositories.Migrations
                             Pages = (short)408,
                             PublisherId = 3,
                             RYear = (short)2022
+                        },
+                        new
+                        {
+                            TitleId = 6,
+                            AuthorId = 5,
+                            GenreId = 3,
+                            LanguageId = 2,
+                            Name = "Pillars of the Earth",
+                            Pages = (short)806,
+                            PublisherId = 4,
+                            RYear = (short)1989
+                        },
+                        new
+                        {
+                            TitleId = 7,
+                            AuthorId = 5,
+                            GenreId = 3,
+                            LanguageId = 2,
+                            Name = "World Without End",
+                            Pages = (short)1024,
+                            PublisherId = 4,
+                            RYear = (short)2007
+                        },
+                        new
+                        {
+                            TitleId = 8,
+                            AuthorId = 5,
+                            GenreId = 3,
+                            LanguageId = 2,
+                            Name = "A column of Fire",
+                            Pages = (short)804,
+                            PublisherId = 5,
+                            RYear = (short)2017
+                        },
+                        new
+                        {
+                            TitleId = 9,
+                            AuthorId = 5,
+                            GenreId = 3,
+                            LanguageId = 2,
+                            Name = "The Evening and the Morning",
+                            Pages = (short)832,
+                            PublisherId = 4,
+                            RYear = (short)2020
+                        },
+                        new
+                        {
+                            TitleId = 10,
+                            AuthorId = 6,
+                            GenreId = 3,
+                            LanguageId = 2,
+                            Name = "Outlander",
+                            Pages = (short)850,
+                            PublisherId = 6,
+                            RYear = (short)1991
+                        },
+                        new
+                        {
+                            TitleId = 11,
+                            AuthorId = 6,
+                            GenreId = 3,
+                            LanguageId = 2,
+                            Name = "Dragonfly in Amber",
+                            Pages = (short)752,
+                            PublisherId = 6,
+                            RYear = (short)1992
+                        },
+                        new
+                        {
+                            TitleId = 12,
+                            AuthorId = 6,
+                            GenreId = 3,
+                            LanguageId = 2,
+                            Name = "Voyager",
+                            Pages = (short)870,
+                            PublisherId = 6,
+                            RYear = (short)1993
+                        },
+                        new
+                        {
+                            TitleId = 13,
+                            AuthorId = 6,
+                            GenreId = 3,
+                            LanguageId = 2,
+                            Name = "Drums of Autumn",
+                            Pages = (short)880,
+                            PublisherId = 6,
+                            RYear = (short)1996
+                        },
+                        new
+                        {
+                            TitleId = 14,
+                            AuthorId = 6,
+                            GenreId = 3,
+                            LanguageId = 2,
+                            Name = "The Fiery Cross",
+                            Pages = (short)992,
+                            PublisherId = 6,
+                            RYear = (short)2001
+                        },
+                        new
+                        {
+                            TitleId = 15,
+                            AuthorId = 6,
+                            GenreId = 3,
+                            LanguageId = 2,
+                            Name = "A Breath of Snow and Ashes",
+                            Pages = (short)1157,
+                            PublisherId = 6,
+                            RYear = (short)2005
+                        },
+                        new
+                        {
+                            TitleId = 16,
+                            AuthorId = 6,
+                            GenreId = 3,
+                            LanguageId = 2,
+                            Name = "An Echo in the Bone",
+                            Pages = (short)820,
+                            PublisherId = 6,
+                            RYear = (short)2009
+                        },
+                        new
+                        {
+                            TitleId = 17,
+                            AuthorId = 6,
+                            GenreId = 3,
+                            LanguageId = 2,
+                            Name = "Written in My Own Heart's Blood",
+                            Pages = (short)825,
+                            PublisherId = 6,
+                            RYear = (short)2014
                         });
                 });
 

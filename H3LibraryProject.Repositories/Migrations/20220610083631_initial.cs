@@ -250,7 +250,8 @@ namespace H3LibraryProject.Repositories.Migrations
                 values: new object[,]
                 {
                     { 1, (short)30, "Skønlitteratur" },
-                    { 2, (short)7, "Quicklån" }
+                    { 2, (short)7, "Quicklån" },
+                    { 3, (short)7, "Historisk fiktion" }
                 });
 
             migrationBuilder.InsertData(
@@ -277,8 +278,8 @@ namespace H3LibraryProject.Repositories.Migrations
                 columns: new[] { "LocationId", "Name" },
                 values: new object[,]
                 {
-                    { 2, "Bibliotek Øst" },
-                    { 1, "Bibliotek Vest" }
+                    { 1, "Bibliotek Vest" },
+                    { 2, "Bibliotek Øst" }
                 });
 
             migrationBuilder.InsertData(
@@ -286,11 +287,11 @@ namespace H3LibraryProject.Repositories.Migrations
                 columns: new[] { "NationalityId", "Name" },
                 values: new object[,]
                 {
+                    { 5, "Rusland" },
+                    { 4, "USA" },
                     { 1, "Danmark" },
                     { 2, "Japan" },
-                    { 3, "Storbritanien" },
-                    { 4, "USA" },
-                    { 5, "Rusland" }
+                    { 3, "Storbritanien" }
                 });
 
             migrationBuilder.InsertData(
@@ -298,9 +299,12 @@ namespace H3LibraryProject.Repositories.Migrations
                 columns: new[] { "PublisherId", "Name" },
                 values: new object[,]
                 {
-                    { 2, "Lindhardt & Ringhoff" },
+                    { 5, "Vikung Press" },
                     { 1, "Gyldendal" },
-                    { 3, "People's Press" }
+                    { 2, "Lindhardt & Ringhoff" },
+                    { 3, "People's Press" },
+                    { 4, "Macmilan" },
+                    { 6, "Delacorte Books" }
                 });
 
             migrationBuilder.InsertData(
@@ -308,10 +312,12 @@ namespace H3LibraryProject.Repositories.Migrations
                 columns: new[] { "AuthorId", "BYear", "DYear", "FName", "LName", "MName", "NationalityId" },
                 values: new object[,]
                 {
-                    { 2, 1805, 1875, "Hans", "Andersen", "Christian", 1 },
-                    { 4, 1960, null, "Elsebeth", "Egholm", null, 1 },
+                    { 3, 1821, 1881, "Fjodor", "Dostoyevskij", "Mikhájlovitj", 5 },
+                    { 5, 1949, null, "Ken", "Follet", null, 3 },
                     { 1, 973, 1031, "Shibiku", "Murasaki", null, 2 },
-                    { 3, 1821, 1881, "Fjodor", "Dostoyevskij", "Mikhájlovitj", 5 }
+                    { 4, 1960, null, "Elsebeth", "Egholm", null, 1 },
+                    { 2, 1805, 1875, "Hans", "Andersen", "Christian", 1 },
+                    { 6, 1952, null, "Dianna", "Gabaldon", null, 4 }
                 });
 
             migrationBuilder.InsertData(
@@ -319,9 +325,9 @@ namespace H3LibraryProject.Repositories.Migrations
                 columns: new[] { "LoanerId", "LoanerTypeId", "Name", "Password" },
                 values: new object[,]
                 {
-                    { 3, 1, "Flemming", "Passw0rd" },
+                    { 2, 2, "Robin", "Passw0rd" },
                     { 1, 2, "Simon", "Passw0rd" },
-                    { 2, 2, "Robin", "Passw0rd" }
+                    { 3, 1, "Flemming", "Passw0rd" }
                 });
 
             migrationBuilder.InsertData(
@@ -329,11 +335,23 @@ namespace H3LibraryProject.Repositories.Migrations
                 columns: new[] { "TitleId", "AuthorId", "GenreId", "LanguageId", "Name", "Pages", "PublisherId", "RYear" },
                 values: new object[,]
                 {
-                    { 2, 2, 1, 1, "Eventyr, fortalt for Børn", (short)300, 2, (short)1837 },
-                    { 3, 3, 1, 1, "Forbrydelse og Straf", (short)684, 1, (short)1866 },
-                    { 5, 4, 2, 1, "Den Røde Glente", (short)408, 3, (short)2022 },
+                    { 1, 1, 1, 3, "Fortællingen om Genji", (short)224, 1, (short)1021 },
+                    { 17, 6, 3, 2, "Written in My Own Heart's Blood", (short)825, 6, (short)2014 },
+                    { 16, 6, 3, 2, "An Echo in the Bone", (short)820, 6, (short)2009 },
+                    { 15, 6, 3, 2, "A Breath of Snow and Ashes", (short)1157, 6, (short)2005 },
+                    { 14, 6, 3, 2, "The Fiery Cross", (short)992, 6, (short)2001 },
+                    { 12, 6, 3, 2, "Voyager", (short)870, 6, (short)1993 },
+                    { 11, 6, 3, 2, "Dragonfly in Amber", (short)752, 6, (short)1992 },
+                    { 10, 6, 3, 2, "Outlander", (short)850, 6, (short)1991 },
+                    { 9, 5, 3, 2, "The Evening and the Morning", (short)832, 4, (short)2020 },
+                    { 8, 5, 3, 2, "A column of Fire", (short)804, 5, (short)2017 },
+                    { 7, 5, 3, 2, "World Without End", (short)1024, 4, (short)2007 },
+                    { 6, 5, 3, 2, "Pillars of the Earth", (short)806, 4, (short)1989 },
                     { 4, 3, 1, 2, "Idioten", (short)843, 1, (short)1869 },
-                    { 1, 1, 1, 3, "Fortællingen om Genji", (short)224, 1, (short)1021 }
+                    { 5, 4, 2, 1, "Den Røde Glente", (short)408, 3, (short)2022 },
+                    { 3, 3, 1, 1, "Forbrydelse og Straf", (short)684, 1, (short)1866 },
+                    { 13, 6, 3, 2, "Drums of Autumn", (short)880, 6, (short)1996 },
+                    { 2, 2, 1, 1, "Eventyr, fortalt for Børn", (short)300, 2, (short)1837 }
                 });
 
             migrationBuilder.InsertData(
