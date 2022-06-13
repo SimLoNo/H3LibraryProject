@@ -16,6 +16,7 @@ import { AdminLayoutComponent } from './admin/admin-layout/admin-layout.componen
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LanguageComponent } from './admin/language/language.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path:"", component:FrontpageComponent},
@@ -33,7 +34,8 @@ const routes: Routes = [
   {path: "admin/loan", component:LoanComponent},
   {path: "material", component:SearchMaterialComponent},
   {path: "material/:id", component:MaterialDisplayComponent},
-  {path: "account", component:AccountPageComponent}
+  {path: "account", component:AccountPageComponent},
+  {path: "login", component: LoginComponent}
 ];
 
 @NgModule({
