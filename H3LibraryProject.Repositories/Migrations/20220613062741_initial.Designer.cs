@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace H3LibraryProject.Repositories.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20220613061204_initial")]
+    [Migration("20220613062741_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,6 +50,12 @@ namespace H3LibraryProject.Repositories.Migrations
                             GenreId = 2,
                             LeasePeriod = 7,
                             Name = "Quicklån"
+                        },
+                        new
+                        {
+                            GenreId = 3,
+                            LeasePeriod = 7,
+                            Name = "Historisk fiktion"
                         });
                 });
 
@@ -632,6 +638,90 @@ namespace H3LibraryProject.Repositories.Migrations
                             Home = true,
                             LocationId = 1,
                             TitleId = 37
+                        },
+                        new
+                        {
+                            MaterialId = 55,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 39
+                        },
+                        new
+                        {
+                            MaterialId = 56,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 40
+                        },
+                        new
+                        {
+                            MaterialId = 57,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 41
+                        },
+                        new
+                        {
+                            MaterialId = 58,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 42
+                        },
+                        new
+                        {
+                            MaterialId = 59,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 43
+                        },
+                        new
+                        {
+                            MaterialId = 60,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 44
+                        },
+                        new
+                        {
+                            MaterialId = 61,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 45
+                        },
+                        new
+                        {
+                            MaterialId = 62,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 46
+                        },
+                        new
+                        {
+                            MaterialId = 63,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 47
+                        },
+                        new
+                        {
+                            MaterialId = 64,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 48
+                        },
+                        new
+                        {
+                            MaterialId = 65,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 49
+                        },
+                        new
+                        {
+                            MaterialId = 66,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 50
                         });
                 });
 
@@ -867,6 +957,22 @@ namespace H3LibraryProject.Repositories.Migrations
                             FName = "Knud",
                             LName = "Holten",
                             NationalityId = 1
+                        },
+                        new
+                        {
+                            AuthorId = 24,
+                            BYear = 1949,
+                            FName = "Ken",
+                            LName = "Follet",
+                            NationalityId = 3
+                        },
+                        new
+                        {
+                            AuthorId = 25,
+                            BYear = 1952,
+                            FName = "Dianna",
+                            LName = "Gabaldon",
+                            NationalityId = 4
                         });
                 });
 
@@ -968,6 +1074,21 @@ namespace H3LibraryProject.Repositories.Migrations
                         {
                             PublisherId = 4,
                             Name = "Angry Robot"
+                        },
+                        new
+                        {
+                            PublisherId = 5,
+                            Name = "Macmilan"
+                        },
+                        new
+                        {
+                            PublisherId = 6,
+                            Name = "Vikung Press"
+                        },
+                        new
+                        {
+                            PublisherId = 7,
+                            Name = "Delacorte Books"
                         });
                 });
 
@@ -1425,6 +1546,138 @@ namespace H3LibraryProject.Repositories.Migrations
                             Pages = 85,
                             PublisherId = 1,
                             RYear = 1980
+                        },
+                        new
+                        {
+                            TitleId = 39,
+                            AuthorId = 24,
+                            GenreId = 3,
+                            LanguageId = 2,
+                            Name = "Pillars of the Earth",
+                            Pages = 806,
+                            PublisherId = 5,
+                            RYear = 1989
+                        },
+                        new
+                        {
+                            TitleId = 40,
+                            AuthorId = 24,
+                            GenreId = 3,
+                            LanguageId = 2,
+                            Name = "World Without End",
+                            Pages = 1024,
+                            PublisherId = 5,
+                            RYear = 2007
+                        },
+                        new
+                        {
+                            TitleId = 41,
+                            AuthorId = 24,
+                            GenreId = 3,
+                            LanguageId = 2,
+                            Name = "A column of Fire",
+                            Pages = 804,
+                            PublisherId = 6,
+                            RYear = 2017
+                        },
+                        new
+                        {
+                            TitleId = 42,
+                            AuthorId = 24,
+                            GenreId = 3,
+                            LanguageId = 2,
+                            Name = "The Evening and the Morning",
+                            Pages = 832,
+                            PublisherId = 5,
+                            RYear = 2020
+                        },
+                        new
+                        {
+                            TitleId = 43,
+                            AuthorId = 25,
+                            GenreId = 3,
+                            LanguageId = 2,
+                            Name = "Outlander",
+                            Pages = 850,
+                            PublisherId = 7,
+                            RYear = 1991
+                        },
+                        new
+                        {
+                            TitleId = 44,
+                            AuthorId = 25,
+                            GenreId = 3,
+                            LanguageId = 2,
+                            Name = "Dragonfly in Amber",
+                            Pages = 752,
+                            PublisherId = 7,
+                            RYear = 1992
+                        },
+                        new
+                        {
+                            TitleId = 45,
+                            AuthorId = 25,
+                            GenreId = 3,
+                            LanguageId = 2,
+                            Name = "Voyager",
+                            Pages = 870,
+                            PublisherId = 7,
+                            RYear = 1993
+                        },
+                        new
+                        {
+                            TitleId = 46,
+                            AuthorId = 25,
+                            GenreId = 3,
+                            LanguageId = 2,
+                            Name = "Drums of Autumn",
+                            Pages = 880,
+                            PublisherId = 7,
+                            RYear = 1996
+                        },
+                        new
+                        {
+                            TitleId = 47,
+                            AuthorId = 25,
+                            GenreId = 3,
+                            LanguageId = 2,
+                            Name = "The Fiery Cross",
+                            Pages = 992,
+                            PublisherId = 7,
+                            RYear = 2001
+                        },
+                        new
+                        {
+                            TitleId = 48,
+                            AuthorId = 25,
+                            GenreId = 3,
+                            LanguageId = 2,
+                            Name = "A Breath of Snow and Ashes",
+                            Pages = 1157,
+                            PublisherId = 7,
+                            RYear = 2005
+                        },
+                        new
+                        {
+                            TitleId = 49,
+                            AuthorId = 25,
+                            GenreId = 3,
+                            LanguageId = 2,
+                            Name = "An Echo in the Bone",
+                            Pages = 820,
+                            PublisherId = 7,
+                            RYear = 2009
+                        },
+                        new
+                        {
+                            TitleId = 50,
+                            AuthorId = 25,
+                            GenreId = 3,
+                            LanguageId = 2,
+                            Name = "Written in My Own Heart's Blood",
+                            Pages = 825,
+                            PublisherId = 7,
+                            RYear = 2014
                         });
                 });
 
