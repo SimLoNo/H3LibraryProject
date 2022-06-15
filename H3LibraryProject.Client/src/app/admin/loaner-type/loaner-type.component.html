@@ -1,0 +1,37 @@
+<div class="MainDiv">
+  <nav>
+    <mat-form-field appearance="fill">
+      <mat-label>admin sider</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let page of adminPages" [value]="page">
+          <a href="/admin/{{page}}">{{page}}</a>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    </nav>
+  <div class="infoDiv">
+    <h1>Administrer låner typer</h1>
+    <div class="inputField">
+      <label>Navn: </label>
+      <input [(ngModel)]="currentLoanerType.name">
+    </div>
+    <div class="centerDiv">
+      <button (click)="deleteLoanerType()">slet</button>
+      <button (click)="saveLoanerType()">gem</button>
+    </div>
+    <div >
+      <div class="centerDiv">
+        <mat-form-field appearance="fill">
+          <mat-label>Låner type</mat-label>
+          <mat-select>
+            <mat-option (click)="reset()">
+              <p>Ny</p>
+            </mat-option>
+            <mat-option *ngFor="let loanerType of loanerTypes" [value]="loanerType" (click)="edit(loanerType)">
+              <p>{{loanerType.name}}</p>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  </div>
+</div>

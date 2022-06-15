@@ -53,6 +53,41 @@ namespace H3LibraryProject.API
             services.AddScoped<ILoanerTypeRepository, LoanerTypeRepository>();
             services.AddScoped<ILoanerTypeService, LoanerTypeService>();
 
+            services.AddScoped<ILoanerRepository, LoanerRepository>();
+            services.AddScoped<ILoanerService, LoanerService>();
+            services.AddScoped<IGenreService, GenreService>();
+            services.AddScoped<IGenreRepository, GenreRepository>();
+            services.AddScoped<ILanguageService,LanguageService>();
+            services.AddScoped<ILanguageRepository,LanguageRepository>();
+            services.AddScoped<ILoanService, LoanService>();
+            services.AddScoped<ILoanRepository, LoanRepository>();
+            services.AddScoped<ILocationService, LocationService>();
+            services.AddScoped<ILocationRepository, LocationRepository>();
+            services.AddScoped<INationalityRepository, NationalityRepository>();
+            services.AddScoped<INationalityService, NationalityService>();
+            services.AddScoped<IPublisherRepository, PublisherRepository>();
+            services.AddScoped<IPublisherService, PublisherService>();
+            services.AddScoped<ILoanRepository, LoanRepository>();
+            services.AddScoped<ILoanService, LoanService>();
+
+            services.AddScoped<IAuthorRepository, AuthorRepository>();
+            services.AddScoped<IAuthorService, AuthorService>();
+            services.AddScoped<ITitleRepository, TitleRepository>();
+            services.AddScoped<ITitleService, TitleService>();
+            services.AddScoped<IMaterialRepository, MaterialRepository>();
+            services.AddScoped<IMaterialService, MaterialService>();
+
+            services.AddScoped<INationalityRepository, NationalityRepository>();
+            //services.AddScoped<INationalityService, NationalityService>();
+
+            //services.AddScoped<IGenreRepository, GenreRepository>();
+            //services.AddScoped<IGenreService, GenreService>();
+
+            //services.AddScoped<ILanguageRepository, LanguageRepository>();
+            //services.AddScoped<ILanguageService, LanguageService>();
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

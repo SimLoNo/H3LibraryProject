@@ -1,0 +1,22 @@
+<nav>
+  <a href="">Forside</a>
+  <a href="material">Materialer</a>
+  <a href="account">konto</a>
+</nav>
+<div>
+  <h1>{{material.title.name}}</h1>
+  <div *ngFor="let author of material.title.authors">
+    <p >{{author.lName}}, {{author.fName}} {{author.mName}}</p>
+  </div>
+  <div>
+    <h2>Information</h2>
+    <p>sider: {{material.title.pages}}</p>
+    <p>Udgivet: {{material.title.rYear}}</p>
+    <p *ngIf="material.home == true">Status: Hjemme</p>
+    <p *ngIf="material.home == false">Status: Udlånt</p>
+    <p>Lokation: {{material.location.name}}</p>
+  </div>
+  <div>
+    <button *ngIf="material.home" (click)="loanMaterial()">Lån</button>
+  </div>
+</div>

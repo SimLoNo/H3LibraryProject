@@ -1,0 +1,59 @@
+<div class="MainDiv">
+  <nav>
+    <mat-form-field appearance="fill">
+      <mat-label>admin sider</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let page of adminPages" [value]="page">
+          <a href="/admin/{{page}}">{{page}}</a>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    </nav>
+  <div class="infoDiv">
+    <h1>Administrer lånere</h1>
+    <div class="centerDiv">
+      <label>Navn: </label>
+      <input [(ngModel)]="currentLoaner.loanerName">
+    </div>
+    <div class="centerDiv">
+      <label>Kodeord: </label>
+      <input [(ngModel)]="currentLoaner.password">
+    </div>
+    <div class="centerDiv">
+      <mat-form-field appearance="fill">
+        <mat-label>lånere type</mat-label>
+        <mat-select [(value)]="currentLoaner.loanerTypeId">
+          <mat-option (click)="reset()">
+            <p>vælg lånertype</p>
+          </mat-option>
+          <mat-option  *ngFor="let loanerType of loanerTypes" [value]="loanerType.loanerTypeId">
+            <p>{{loanerType.name}}</p>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="centerDiv">
+      <button (click)="deleteLoaner()">slet</button>
+      <button (click)="saveLoaner()">gem</button>
+    </div>
+    <div >
+      <div class="centerDiv">
+        <mat-form-field appearance="fill">
+          <mat-label>lånere</mat-label>
+          <mat-select>
+            <mat-option (click)="reset()">
+              <p>Ny</p>
+            </mat-option>
+            <mat-option *ngFor="let loaner of loaners" [value]="loaner" (click)="edit(loaner)">
+              <p>{{loaner.loanerName}}</p>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  </div>
+</div>
+
+
+
+
+

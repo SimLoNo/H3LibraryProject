@@ -1,0 +1,42 @@
+<div class="MainDiv">
+  <nav>
+    <mat-form-field appearance="fill">
+      <mat-label>admin sider</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let page of adminPages" [value]="page">
+          <a href="/admin/{{page}}">{{page}}</a>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    </nav>
+  <div class="infoDiv">
+    <h1>Administrer forlag</h1>
+    <div class="centerDiv">
+      <label>Navn: </label>
+      <input [(ngModel)]="currentPublisher.name">
+    </div>
+    <div class="centerDiv">
+      <button (click)="deletePublisher()">slet</button>
+      <button (click)="savePublisher()">gem</button>
+    </div>
+    <div >
+      <div class="centerDiv">
+        <mat-form-field appearance="fill">
+          <mat-label>Forlag</mat-label>
+          <mat-select>
+            <mat-option (click)="reset()">
+              <p>Ny</p>
+            </mat-option>
+            <mat-option *ngFor="let publisher of publishers" [value]="publisher" (click)="edit(publisher)">
+              <p>{{publisher.name}}</p>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  </div>
+</div>
+
+
+
+
+

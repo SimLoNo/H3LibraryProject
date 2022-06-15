@@ -13,6 +13,8 @@ namespace H3LibraryProject.API.DTOs
 
         public List<MaterialLoanResponse> Loans { get; set; } = new List<MaterialLoanResponse>();
         //Sådan har den virket i mit program tidligere.
+        public MaterialTitleResponse Title { get; set; }
+        public MaterialLocationResponse Location { get; set; }
 
     }
 
@@ -23,5 +25,30 @@ namespace H3LibraryProject.API.DTOs
         public int PublisherId { get; set; }
         public DateTime LoanDate { get; set; }
         public DateTime ReturnDate { get; set; }
+    }
+
+    public class MaterialTitleResponse
+    {
+        public int TitleId { get; set; }
+        public string Name { get; set; }
+
+        public int RYear { get; set; }
+        public int Pages { get; set; }
+        public List<MaterialTitleAuthorResponse> Authors{ get; set; }
+
+    }
+
+    public class MaterialLocationResponse
+    {
+        public int LocationId { get; set; }
+        public string Name { get; set; }
+    }
+
+    public class MaterialTitleAuthorResponse
+    {
+        public int AuthorId { get; set; }
+        public string FName { get; set; }
+        public string MName { get; set; }
+        public string LName { get; set; }
     }
 }

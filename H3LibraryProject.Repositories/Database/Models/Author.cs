@@ -21,16 +21,17 @@ namespace H3LibraryProject.Repositories.Database.Models
         [Column(TypeName = "nvarchar(32)")]
         public string MName { get; set; }
 
-        [Column(TypeName = "smallint")] //Rigeligt til årstal
+        [Column(TypeName = "int")] //Rigeligt til årstal
         public int BYear { get; set; }
 
-        [Column(TypeName = "smallint")]
+        [Column(TypeName = "int")]
         public int? DYear { get; set; } //Nullable
 
-        [Column(TypeName = "smallint")]
-        public int Nationality { get; set; }
+        [Column(TypeName = "int")]
+        public int NationalityId { get; set; }
 
         public List<Title> Titles { get; set; }
+        public Nationality Nationality { get; set; }
         //public ICollection<Course> courses  {get; set;} //Flemming foreviser denne her i stedet - måske generelt, men i al fald i forbindelse med mange-til-mange
     }
 }

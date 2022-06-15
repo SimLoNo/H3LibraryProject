@@ -1,0 +1,36 @@
+<nav>
+  <a href="">Forside</a>
+  <a href="material">Materialer</a>
+  <a href="account">konto</a>
+</nav>
+<div>
+  <h1>Brugerside</h1>
+  <div>
+    <h2>Bruger</h2>
+    <p>Navn: {{loaner.loanerName}}</p>
+    <p>Lånertype: {{loaner.typeOfLoaner?.name}}</p>
+    <button routerLink="/editUser">Rediger bruger</button>
+  </div>
+  <div>
+    <h2>Lån</h2>
+    <ul *ngFor="let loan of activeLoans">
+      <li>Materiale: {{loan.material.titleName}} senest afleveres: {{loan.returnDate}}
+      <button (click)="extendLoan(loan)">Forlæng</button>
+      <button (click)="returnLoan(loan)">Aflever</button>
+      </li>
+    </ul>
+    <div>
+      <h2 (click)="this.showHistory = !this.showHistory">Lånehistorik <ng-container *ngIf="!showHistory">^</ng-container> </h2>
+      <ng-container *ngIf="showHistory">
+        <ul *ngFor="let loan of inactiveLoans">
+          <li>
+            Materiale: {{loan.material.titleName}} Låneperiode: {{loan.loanDate}} - {{loan.returnDate}}
+          </li>
+        </ul>
+      </ng-container>
+
+    </div>
+
+  </div>
+
+</div>

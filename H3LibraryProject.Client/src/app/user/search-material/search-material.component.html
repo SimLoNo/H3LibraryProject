@@ -1,0 +1,30 @@
+<nav>
+  <a href="">Forside</a>
+  <a href="material">Materialer</a>
+  <a href="account">konto</a>
+</nav>
+<div class="centerDiv">
+  <div class="inputField">
+  <label>Titel: </label>
+  <input [(ngModel)]="searchTitle">
+</div>
+<div class="inputField">
+<label>Lokation: </label>
+<input [(ngModel)]="searchLocation">
+</div>
+<div class="inputField">
+<label>genre: </label>
+<input [(ngModel)]="searchGenre">
+</div>
+<div class="inputField">
+<label>Forfatter: </label>
+<input [(ngModel)]="searchAuthor  ">
+</div>
+<button (click)="search()">Søg</button>
+</div>
+<div class="materialDiv" *ngFor="let material of materials">
+  <div>
+  <h3 routerLink="/material/{{material.materialId}}">{{material.title.name}}</h3>
+  <p>{{material.title.pages}} sider, bibliotek: {{material.location.name}}</p>
+  </div>
+</div>

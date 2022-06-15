@@ -11,12 +11,13 @@ namespace H3LibraryProject.Repositories.Repositories
 {
     public interface IMaterialRepository
     {
-        Task<Material> InsertNewMaterial(Material material);
-        Task<List<Material>> SelectAllMaterials(); //Vi kalder den "select" og ikke "get" da det er SQL-relateret        
-        Task<Material> SelectMaterialById(int materialId);
-        Task<Material> SelectMaterialByTitleId(int titleId);              
-        Task<Material> UpdateExistingMaterial(int materialId, Material material);
-        Task<Material> DeleteMaterial(int materialId); //jeg har på et tidspunkt kaldt den DeleteTitleById: måske vigtigt
+        Task<Material> CreateMaterial(Material material);
+        Task<List<Material>> GetAllMaterials();     
+        Task<Material> GetMaterialById(int materialId);
+        Task<List<Material>> SearchMaterial(string searchTitle, string location, string genre, string author);
+        Task<List<Material>> GetMaterialsByTitleId(int titleId);              
+        Task<Material> UpdateMaterial(int materialId, Material material);
+        Task<Material> DeleteMaterial(int materialId); 
 
     }
     public class MaterialRepository : IMaterialRepository
@@ -31,41 +32,57 @@ namespace H3LibraryProject.Repositories.Repositories
 
 
         //CREATE
-        public async Task<Material> InsertNewMaterial(Material material)
+        public async Task<Material> CreateMaterial(Material material)
         {
             _context.Material.Add(material);
             await _context.SaveChangesAsync();
             return material;
         }
 
-
-        public async Task<List<Material>> SelectAllMaterials()
+        //Read
+        public async Task<List<Material>> GetAllMaterials()
         {
             return await _context.Material
-                .Include(b => b.MaterialId)
-                .OrderBy(b => b.LocationId)
+                .Include(m => m.Title)
+                .Include(m => m.Location)
+                .OrderBy(m => m.LocationId)
                 .ToListAsync();
         }
 
-        public async Task<Material> SelectMaterialById(int materialId)
+        public async Task<Material> GetMaterialById(int materialId)
         {
             return await _context.Material
+                .Include(m => m.Title).ThenInclude(t => t.Authors)
+                .Include(m => m.Location)
                 .FirstOrDefaultAsync(material => material.MaterialId == materialId);
         }
 
-        public async Task<Material> SelectMaterialByTitleId(int titleId)
+        public async Task<List<Material>> SearchMaterial(string searchTitle, string location, string genre, string author)
         {
             return await _context.Material
-                .FirstOrDefaultAsync(material => material.TitleId == titleId);
+                .Include(m => m.Title)
+                .Include(m => m.Location)
+                .OrderBy(m => m.LocationId)
+                .Where(m => (m.Title.Name.Contains(searchTitle) || searchTitle == "") && (m.Location.Name.Contains(location) || location == "") && (m.Title.Genre.Name.Contains(genre) || genre == ""))
+                .ToListAsync();
         }
 
-        public async Task<Material> UpdateExistingMaterial(int materialId, Material material)
+        public async Task<List<Material>> GetMaterialsByTitleId(int titleId)
+        {
+            return await _context.Material
+                .Include(m => m.Title)
+                .Include(m => m.Location)
+                .Where(m => m.TitleId == titleId)
+                .ToListAsync();
+        }
+
+        //Update
+        public async Task<Material> UpdateMaterial(int materialId, Material material)
         {
             Material updatematerial = await _context.Material
                 .FirstOrDefaultAsync(material => material.MaterialId == materialId);
             if (updatematerial != null)
             {
-                updatematerial.MaterialId = material.MaterialId;
                 updatematerial.LocationId = material.LocationId;
                 updatematerial.Home = material.Home;
                 updatematerial.TitleId = material.TitleId;
@@ -74,6 +91,7 @@ namespace H3LibraryProject.Repositories.Repositories
             return updatematerial;
         }
 
+        //Delete
         public async Task<Material> DeleteMaterial(int materialId)
         {
             Material deletematerial = await _context.Material.FirstOrDefaultAsync(material => material.MaterialId == materialId);

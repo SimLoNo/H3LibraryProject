@@ -1,0 +1,41 @@
+<div class="MainDiv">
+  <nav>
+    <mat-form-field appearance="fill">
+      <mat-label>admin sider</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let page of adminPages" [value]="page">
+          <a href="/admin/{{page}}">{{page}}</a>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    </nav>
+  <div class="infoDiv">
+    <h1>Administrer genre</h1>
+    <div class="inputField">
+      <label>Navn: </label>
+      <input [(ngModel)]="currentGenre.name">
+    </div>
+    <div class="inputField">
+      <label>Låneperiode: </label>
+      <input [(ngModel)]="currentGenre.leasePeriod">
+    </div>
+    <div class="centerDiv">
+      <button (click)="deleteGenre()">slet</button>
+      <button (click)="saveGenre()">gem</button>
+    </div>
+    <div >
+      <div class="centerDiv">
+        <mat-form-field appearance="fill">
+          <mat-label>Genre</mat-label>
+          <mat-select>
+            <mat-option (click)="reset()">
+              <p>Ny</p>
+            </mat-option>
+            <mat-option *ngFor="let genre of genres" [value]="genre" (click)="edit(genre)">
+              <p>{{genre.name}}</p>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  </div>
+</div>

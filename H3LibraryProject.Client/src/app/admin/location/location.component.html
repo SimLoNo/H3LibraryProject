@@ -1,0 +1,42 @@
+<div class="MainDiv">
+  <nav>
+    <mat-form-field appearance="fill">
+      <mat-label>admin sider</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let page of adminPages" [value]="page">
+          <a href="/admin/{{page}}">{{page}}</a>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    </nav>
+  <div class="infoDiv">
+    <h1>Administrer lokationer</h1>
+    <div class="centerDiv">
+      <label>Navn: </label>
+      <input [(ngModel)]="currentLocation.name">
+    </div>
+    <div class="centerDiv">
+      <button (click)="deleteLocation()">slet</button>
+      <button (click)="saveLocation()">gem</button>
+    </div>
+    <div >
+      <div class="centerDiv">
+        <mat-form-field appearance="fill">
+          <mat-label>lokation</mat-label>
+          <mat-select>
+            <mat-option (click)="reset()">
+              <p>Ny</p>
+            </mat-option>
+            <mat-option *ngFor="let location of locations" [value]="location" (click)="edit(location)">
+              <p>{{location.name}}</p>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  </div>
+</div>
+
+
+
+
+

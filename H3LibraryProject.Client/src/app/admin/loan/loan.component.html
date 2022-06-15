@@ -1,0 +1,84 @@
+<div class="MainDiv">
+  <nav>
+    <mat-form-field appearance="fill">
+      <mat-label>admin sider</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let page of adminPages" [value]="page">
+          <a href="/admin/{{page}}">{{page}}</a>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    </nav>
+  <div class="infoDiv">
+
+    <h1>Administrer Lån</h1>
+    <div class="centerDiv">
+      <mat-form-field appearance="fill">
+        <mat-label>låner</mat-label>
+        <mat-select [(value)]="currentLoan.loanerId">
+          <mat-option (click)="reset()">
+            <p>vælg låner</p>
+          </mat-option>
+          <mat-option  *ngFor="let loaner of loaners" [value]="loaner.loanerId">
+            <p>{{loaner.loanerId}} - {{loaner.loanerName}}</p>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <mat-form-field appearance="fill">
+        <mat-label>Materiale</mat-label>
+        <mat-select [(value)]="currentLoan.materialId">
+          <mat-option (click)="reset()">
+            <p>vælg materiale</p>
+          </mat-option>
+          <mat-option  *ngFor="let material of materials" [value]="material.materialId">
+            <p>{{material.materialId}} - {{material.title.name}}</p>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="centerDiv">
+      <mat-form-field appearance="fill">
+        <mat-label>Låner dato</mat-label>
+        <input [(ngModel)]="currentLoan.loanDate" matInput [matDatepicker]="loanPicker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="loanPicker"></mat-datepicker-toggle>
+        <mat-datepicker #loanPicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Afleverings dato</mat-label>
+        <input [(ngModel)]="currentLoan.returnDate" matInput [matDatepicker]="returnPicker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="returnPicker"></mat-datepicker-toggle>
+        <mat-datepicker #returnPicker></mat-datepicker>
+      </mat-form-field>
+
+    </div>
+    <div class="centerDiv">
+      <button (click)="deleteLoan()">slet</button>
+      <button (click)="saveLoan()">gem</button>
+      <button (click)="returnLoan()">returner lån</button>
+    </div>
+    <div >
+      <div class="centerDiv">
+        <mat-form-field appearance="fill">
+          <mat-label>lån</mat-label>
+          <mat-select>
+            <mat-option (click)="reset()">
+              <p>Ny</p>
+            </mat-option>
+            <mat-option *ngFor="let loan of loans" [value]="loan" (click)="edit(loan)">
+              <p>{{loan.loanId}} - {{loan.loanerId}} {{loan.loaner.name}} {{loan.material.titleName}}</p>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  </div>
+</div>
+
+
+
+
+

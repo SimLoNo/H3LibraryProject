@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using H3LibraryProject.Repositories.Database.Models;
 
 namespace H3LibraryProject.Repositories.Database
 {
@@ -14,16 +14,16 @@ namespace H3LibraryProject.Repositories.Database
         [Key]
         public int TitleId { get; set; }
 
-        [Column(TypeName = "nvarchar(32)")]
+        [Column(TypeName = "nvarchar(128)")]
         public string Name { get; set; }
 
         [Column(TypeName = "int")]
         public int LanguageId { get; set; }
 
-        [Column(TypeName = "smallint")] //Rigeligt til årstal
+        [Column(TypeName = "int")] //Rigeligt til årstal
         public int RYear { get; set; }
 
-        [Column(TypeName = "smallint")]
+        [Column(TypeName = "int")]
         public int Pages { get; set; }
 
         [Column(TypeName = "int")]
@@ -34,6 +34,9 @@ namespace H3LibraryProject.Repositories.Database
         [Column(TypeName = "int")]
         public int GenreId { get; set; }
 
-        public List<Material> Materials { get; set; } //Giver mening at kunne se instanserne af titlerne.
+        public List<Material> Materials { get; set; } = new List<Material>(); //Giver mening at kunne se instanserne af titlerne.
+        public Genre Genre { get; set; }
+
+        public List<Author> Authors { get; set; } = new List<Author>();
     }
 }
