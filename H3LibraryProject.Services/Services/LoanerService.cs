@@ -1,5 +1,6 @@
 ﻿using H3LibraryProject.API.DTOs;
 using H3LibraryProject.Repositories.Database;
+using H3LibraryProject.Repositories.Database.Models;
 using H3LibraryProject.Repositories.Repositories;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace H3LibraryProject.Services.Services
         Task<LoanerResponse> CreateLoaner(LoanerRequest request);
         Task<LoanerResponse> UpdateLoaner(int id, LoanerRequest request);
         Task<LoanerResponse> DeleteLoaner(int id);
+        Task<LoanerResponse> LoanerUserUpdate(LoanerRequest request, LoanerAuthenticator credentials);
     }
     public class LoanerService : ILoanerService
     {
@@ -84,11 +86,24 @@ namespace H3LibraryProject.Services.Services
             return null;
         }
 
+        public async
+        Task<LoanerResponse> LoanerUserUpdate(LoanerRequest request, LoanerAuthenticator credentials)
+        {
+            Loaner updateLoaner = MapLoanerRequestToLoaner(request);
+            updateLoaner = await _repository.LoanerUserUpdate(updateLoaner, credentials);
+
+            if (updateLoaner != null)
+            {
+                return MapLoanerToLoanerResponse(updateLoaner);
+            }
+            return null;
+        }
+
         private Loaner MapLoanerRequestToLoaner(LoanerRequest request)
         {
             return new()
             {
-                Name = request.Name,
+                Name = request.LoanerName,
                 LoanerTypeId = request.LoanerTypeId,
                 Password = request.Password
             };
@@ -105,6 +120,7 @@ namespace H3LibraryProject.Services.Services
             {
                 LoanerId = loaner.LoanerId,
                 LoanerName = loaner.Name,
+                LoanerTypeId = loaner.LoanerTypeId,
                 //Password = loaner.Password, // Password skal aldrig sendes retur til kalderen.
 
                 Loans = loaner.Loans != null ? loaner.Loans.Select(loan => new LoanerLoanResponse

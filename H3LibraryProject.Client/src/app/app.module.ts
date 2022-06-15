@@ -31,6 +31,7 @@ import { FrontpageComponent } from './user/frontpage/frontpage.component';
 import { SearchMaterialComponent } from './user/search-material/search-material.component';
 import { MaterialDisplayComponent } from './user/material-display/material-display.component';
 import { AccountPageComponent } from './user/account-page/account-page.component';
+import { EditUserComponent } from './user/edit-user/edit-user.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { AccountPageComponent } from './user/account-page/account-page.component
     FrontpageComponent,
     SearchMaterialComponent,
     MaterialDisplayComponent,
-    AccountPageComponent
+    AccountPageComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
