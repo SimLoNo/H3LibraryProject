@@ -28,11 +28,17 @@ export class SearchMaterialComponent implements OnInit {
 search(){
   this.materialService.readMaterialsBySearch(this.searchTitle,this.searchLocation,this.searchGenre,this.searchAuthor)
   .subscribe((data) => {
-    data.forEach(m => {
-      console.log(`Materiale er modtaget: ${m.materialId}, ${m.title.name}`);
+    if (data != null) {
+      data.forEach(m => {
+        console.log(`Materiale er modtaget: ${m.materialId}, ${m.title.name}`);
 
-    })
-    this.materials = data;
+      })
+      this.materials = data;
+    }
+    else
+    {
+      this.materials = [];
+    }
   })
 }
 

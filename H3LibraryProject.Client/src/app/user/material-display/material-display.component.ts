@@ -20,7 +20,7 @@ export class MaterialDisplayComponent implements OnInit {
         this.materialId = Number(params.get('id'));
         this.materialService.readMaterialById(this.materialId)
           .subscribe((data) => {
-            console.log(`material is: ${data.title.name}, is home: ${data.home}`);
+            console.log(`material is: ${data.title.name}, is home: ${data.home} genre: ${data.title}`);
 
             data.title.authors.forEach(a =>{
               console.log(`Author: ${a.authorId}, ${a.lName}`);

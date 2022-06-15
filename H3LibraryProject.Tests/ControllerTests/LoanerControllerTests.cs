@@ -145,7 +145,7 @@ namespace H3LibraryProject.Tests.ControllerTests
             //Arrange
             LoanerRequest request = new()
             {
-                Name = "Test"
+                LoanerName = "Test"
             };
             LoanerResponse response = new()
             {
@@ -170,7 +170,7 @@ namespace H3LibraryProject.Tests.ControllerTests
             //Arrange
             LoanerRequest request = new()
             {
-                Name = "Test"
+                LoanerName = "Test"
             };
 
             _mockService
@@ -190,7 +190,7 @@ namespace H3LibraryProject.Tests.ControllerTests
             //Arrange
             LoanerRequest request = new()
             {
-                Name = "Test"
+                LoanerName = "Test"
             };
 
             _mockService
@@ -212,7 +212,7 @@ namespace H3LibraryProject.Tests.ControllerTests
             int id = 1;
             LoanerRequest request = new()
             {
-                Name = "Test"
+                LoanerName = "Test"
             };
             LoanerResponse response = new()
             {
@@ -238,7 +238,7 @@ namespace H3LibraryProject.Tests.ControllerTests
             int id = 1;
             LoanerRequest request = new()
             {
-                Name = "Test"
+                LoanerName = "Test"
             };
 
             _mockService
@@ -258,7 +258,7 @@ namespace H3LibraryProject.Tests.ControllerTests
             int id = 0;
             LoanerRequest request = new()
             {
-                Name = "Test"
+                LoanerName = "Test"
             };
             //Act
             var result = await _controller.UpdateLoaner(id, request);
@@ -274,7 +274,7 @@ namespace H3LibraryProject.Tests.ControllerTests
             int id = 1;
             LoanerRequest request = new()
             {
-                Name = "Test"
+                LoanerName = "Test"
             };
 
             _mockService

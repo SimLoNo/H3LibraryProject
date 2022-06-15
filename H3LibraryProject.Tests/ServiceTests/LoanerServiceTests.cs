@@ -40,7 +40,7 @@ namespace H3LibraryProject.Tests.ServiceTests
             LoanerRequest request = new()
             {
                 LoanerTypeId = id,
-                Name = "Test",
+                LoanerName = "Test",
                 Password = "Test"
             };
 
@@ -64,7 +64,7 @@ namespace H3LibraryProject.Tests.ServiceTests
             LoanerRequest request = new()
             {
                 LoanerTypeId = id,
-                Name = "Test",
+                LoanerName = "Test",
                 Password = "Test"
             };
 
@@ -211,7 +211,7 @@ namespace H3LibraryProject.Tests.ServiceTests
             int id = 1;
             LoanerRequest request = new()
             {
-                Name = "test",
+                LoanerName = "test",
                 LoanerTypeId = 1,
                 Password = "Test"
             };
@@ -240,7 +240,7 @@ namespace H3LibraryProject.Tests.ServiceTests
             int id = 1;
             LoanerRequest request = new()
             {
-                Name = "test",
+                LoanerName = "test",
                 LoanerTypeId = 1,
                 Password = "Test"
             };
