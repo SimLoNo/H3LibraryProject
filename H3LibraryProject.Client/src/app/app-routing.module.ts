@@ -1,3 +1,4 @@
+import { EditUserComponent } from './user/edit-user/edit-user.component';
 import { AccountPageComponent } from './user/account-page/account-page.component';
 import { MaterialDisplayComponent } from './user/material-display/material-display.component';
 import { SearchMaterialComponent } from './user/search-material/search-material.component';
@@ -33,7 +34,8 @@ const routes: Routes = [
   {path: "admin/loan", component:LoanComponent},
   {path: "material", component:SearchMaterialComponent},
   {path: "material/:id", component:MaterialDisplayComponent},
-  {path: "account", component:AccountPageComponent}
+  {path: "account", component:AccountPageComponent},
+  {path: "editUser", component:EditUserComponent}
 ];
 
 @NgModule({

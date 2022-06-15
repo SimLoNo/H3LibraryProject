@@ -105,6 +105,21 @@ namespace H3LibraryProject.Repositories.Database
                {
                    PublisherId = 4,
                    Name = "Angry Robot"
+               },
+               new()
+               {
+                   PublisherId = 5,
+                   Name = "Macmilan"
+               },
+               new()
+               {
+                   PublisherId = 6,
+                   Name = "Vikung Press"
+               },
+               new()
+               {
+                   PublisherId = 7,
+                   Name = "Delacorte Books"
                }
                );
             modelBuilder.Entity<Location>().HasData(
@@ -134,16 +149,7 @@ namespace H3LibraryProject.Repositories.Database
                 {
                     LanguageId = 3,
                     Name = "Japansk"
-                },
-                new()
-               {
-                   LanguageId = 4,
-                   Name = "Russisk"
-               }, new()
-               {
-                   LanguageId = 5,
-                   Name = "Hebræisk"
-               }
+                }
                );
             modelBuilder.Entity<Genre>().HasData(
                new()
@@ -157,7 +163,8 @@ namespace H3LibraryProject.Repositories.Database
                    GenreId = 2,
                    Name = "Quicklån",
                    LeasePeriod = 7
-               }, new()
+               },
+               new()
                {
                    GenreId = 3,
                    Name = "Faglitteratur",
@@ -1362,6 +1369,101 @@ namespace H3LibraryProject.Repositories.Database
                   MaterialId = 54,
                   TitleId = 37,
                   LocationId = 1,
+                  Home = true
+              },
+              new()
+              {
+                  MaterialId = 55,
+                  TitleId = 39,
+                  LocationId = 2,
+                  Home = true
+              }
+,
+              new()
+              {
+                  MaterialId = 56,
+                  TitleId = 40,
+                  LocationId = 2,
+                  Home = true
+              }
+,
+              new()
+              {
+                  MaterialId = 57,
+                  TitleId = 41,
+                  LocationId = 2,
+                  Home = true
+              }
+,
+              new()
+              {
+                  MaterialId = 58,
+                  TitleId = 42,
+                  LocationId = 2,
+                  Home = true
+              }
+,
+              new()
+              {
+                  MaterialId = 59,
+                  TitleId = 43,
+                  LocationId = 2,
+                  Home = true
+              }
+,
+              new()
+              {
+                  MaterialId = 60,
+                  TitleId = 44,
+                  LocationId = 2,
+                  Home = true
+              }
+,
+              new()
+              {
+                  MaterialId = 61,
+                  TitleId = 45,
+                  LocationId = 2,
+                  Home = true
+              }
+,
+              new()
+              {
+                  MaterialId = 62,
+                  TitleId = 46,
+                  LocationId = 2,
+                  Home = true
+              }
+,
+              new()
+              {
+                  MaterialId = 63,
+                  TitleId = 47,
+                  LocationId = 2,
+                  Home = true
+              }
+,
+              new()
+              {
+                  MaterialId = 64,
+                  TitleId = 48,
+                  LocationId = 2,
+                  Home = true
+              }
+,
+              new()
+              {
+                  MaterialId = 65,
+                  TitleId = 49,
+                  LocationId = 2,
+                  Home = true
+              }
+,
+              new()
+              {
+                  MaterialId = 66,
+                  TitleId = 50,
+                  LocationId = 2,
                   Home = true
               }
               );

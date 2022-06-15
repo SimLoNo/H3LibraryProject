@@ -1,0 +1,35 @@
+<nav>
+  <a href="">Forside</a>
+  <a href="material">Materialer</a>
+  <a href="account">konto</a>
+</nav>
+<div>
+  <h1>{{user.loanerName}}</h1>
+  <div>
+    <h2>Informationer</h2>
+    <div>
+      <label >Navn:</label>
+      <input [(ngModel)]="user.loanerName" type="text">
+    </div>
+    <div>
+      <label >Kodeord:</label>
+      <input [(ngModel)]="user.password" type="password">
+    </div>
+  </div>
+</div>
+
+<div>
+  <h1>Indtast brugeroplysninger</h1>
+  <div>
+    <label >Navn:</label>
+    <input [(ngModel)]="loanerAuthenticator.name" type="text">
+  </div>
+  <div>
+    <label >Kodeord:</label>
+    <input [(ngModel)]="loanerAuthenticator.password" type="password">
+  </div>
+  <button (click)="updateUser()">Gem</button>
+</div>
+
+
+

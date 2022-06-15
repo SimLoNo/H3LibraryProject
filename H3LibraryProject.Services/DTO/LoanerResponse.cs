@@ -7,7 +7,8 @@ namespace H3LibraryProject.API.DTOs
     {
         public int LoanerId {get; set;}
         public string LoanerName {get; set;}
-        public string Password { get; set; }
+        //public string Password { get; set; }
+        public int LoanerTypeId {get; set;}
 
         public List<LoanerLoanResponse> Loans { get; set; } = new List<LoanerLoanResponse>();
         public LoanerLoanerTypeResponse TypeOfLoaner { get; set; } = new LoanerLoanerTypeResponse();

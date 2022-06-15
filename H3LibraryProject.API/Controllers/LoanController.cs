@@ -23,6 +23,7 @@ namespace H3LibraryProject.API.Controllers
         {
             try
             {
+
                 List<LoanResponse> loanList = await _service.GetAllLoans(loanerId);
                 if (loanList.Count > 0)
                 {

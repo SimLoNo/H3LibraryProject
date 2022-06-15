@@ -1,4 +1,5 @@
 ﻿using H3LibraryProject.API.DTOs;
+using H3LibraryProject.Repositories.Database.Models;
 using H3LibraryProject.Services.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -130,6 +131,31 @@ namespace H3LibraryProject.API.Controllers
                 if (loanerResult != null)
                 {
                     return Ok(loanerResult);
+                }
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+
+                return Problem(ex.Message);
+            }
+        }
+        [Route("userEdit")]
+        [HttpPut]
+        public async Task<IActionResult> LoanerUserUpdate([FromBody] LoanerRequest request, [FromQuery] string name = "", [FromQuery] string password = "")
+        {
+            LoanerAuthenticator credentials = new()
+            {
+                Name = name,
+                Password = password
+            };
+            try
+            {
+                LoanerResponse loanerResponse = await _service.LoanerUserUpdate(request, credentials);
+
+                if (loanerResponse != null)
+                {
+                    return Ok(loanerResponse);
                 }
                 return NotFound();
             }

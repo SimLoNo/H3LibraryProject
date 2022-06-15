@@ -4,14 +4,16 @@ using H3LibraryProject.Repositories.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace H3LibraryProject.Repositories.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    partial class LibraryContextModelSnapshot : ModelSnapshot
+    [Migration("20220613062741_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,36 +54,6 @@ namespace H3LibraryProject.Repositories.Migrations
                         new
                         {
                             GenreId = 3,
-                            LeasePeriod = 30,
-                            Name = "Faglitteratur"
-                        },
-                        new
-                        {
-                            GenreId = 4,
-                            LeasePeriod = 30,
-                            Name = "Børnebøger"
-                        },
-                        new
-                        {
-                            GenreId = 5,
-                            LeasePeriod = 30,
-                            Name = "Krimi"
-                        },
-                        new
-                        {
-                            GenreId = 6,
-                            LeasePeriod = 30,
-                            Name = "Sci-Fi"
-                        },
-                        new
-                        {
-                            GenreId = 7,
-                            LeasePeriod = 30,
-                            Name = "Biografier"
-                        },
-                        new
-                        {
-                            GenreId = 8,
                             LeasePeriod = 7,
                             Name = "Historisk fiktion"
                         });

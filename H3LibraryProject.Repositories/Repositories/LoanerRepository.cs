@@ -1,4 +1,5 @@
 ﻿using H3LibraryProject.Repositories.Database;
+using H3LibraryProject.Repositories.Database.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace H3LibraryProject.Repositories.Repositories
         Task<Loaner> CreateLoaner(Loaner loaner);
         Task<Loaner> UpdateLoaner(int id, Loaner loaner);
         Task<Loaner> DeleteLoaner(int id);
+        Task<Loaner> LoanerUserUpdate(Loaner updateLoaner, LoanerAuthenticator credentials);
     }
     public class LoanerRepository : ILoanerRepository
     {
@@ -69,6 +71,28 @@ namespace H3LibraryProject.Repositories.Repositories
                 await _context.SaveChangesAsync();
             }
             return updatedLoaner;
+        }
+
+        public async Task<Loaner> LoanerUserUpdate(Loaner updateLoaner, LoanerAuthenticator credentials)
+        {
+            Loaner foundLoaner = await _context.Loaner.FirstOrDefaultAsync(l => l.Name == credentials.Name && l.Password == credentials.Password);
+            if (foundLoaner != null)
+            {
+                if (updateLoaner.Name != "")
+                {
+                    foundLoaner.Name = updateLoaner.Name;
+                }
+                if (updateLoaner.LoanerTypeId != 0)
+                {
+                    foundLoaner.LoanerTypeId = updateLoaner.LoanerTypeId;
+                }
+                if (updateLoaner.Password != "")
+                {
+                    foundLoaner.Password = updateLoaner.Password;
+                }
+                await _context.SaveChangesAsync();
+            }
+            return foundLoaner;
         }
 
 
