@@ -116,6 +116,11 @@ namespace H3LibraryProject.Repositories.Migrations
                         {
                             LanguageId = 3,
                             Name = "Japansk"
+                        },
+                        new
+                        {
+                            LanguageId = 4,
+                            Name = "Russisk"
                         });
                 });
 

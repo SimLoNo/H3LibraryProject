@@ -22,6 +22,9 @@
 </div>
 <button (click)="search()">Søg</button>
 </div>
+<div *ngIf="materials.length == 0" class="materialDiv">
+  <h3>Vi kunne ikke finde noget materiale</h3>
+</div>
 <div class="materialDiv" *ngFor="let material of materials">
   <div>
   <h3 routerLink="/material/{{material.materialId}}">{{material.title.name}}</h3>

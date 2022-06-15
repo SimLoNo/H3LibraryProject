@@ -53,6 +53,7 @@ namespace H3LibraryProject.Repositories.Repositories
         {
             return await _context.Material
                 .Include(m => m.Title).ThenInclude(t => t.Authors)
+                .Include(m => m.Title.Genre)
                 .Include(m => m.Location)
                 .FirstOrDefaultAsync(material => material.MaterialId == materialId);
         }
@@ -60,7 +61,7 @@ namespace H3LibraryProject.Repositories.Repositories
         public async Task<List<Material>> SearchMaterial(string searchTitle, string location, string genre, string author)
         {
             return await _context.Material
-                .Include(m => m.Title)
+                .Include(m => m.Title).ThenInclude(t => t.Genre)
                 .Include(m => m.Location)
                 .OrderBy(m => m.LocationId)
                 .Where(m => (m.Title.Name.Contains(searchTitle) || searchTitle == "") && (m.Location.Name.Contains(location) || location == "") && (m.Title.Genre.Name.Contains(genre) || genre == ""))

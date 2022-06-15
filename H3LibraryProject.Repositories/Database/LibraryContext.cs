@@ -149,6 +149,11 @@ namespace H3LibraryProject.Repositories.Database
                 {
                     LanguageId = 3,
                     Name = "Japansk"
+                },
+                new()
+                {
+                    LanguageId = 4,
+                    Name = "Russisk"
                 }
                );
             modelBuilder.Entity<Genre>().HasData(
@@ -284,7 +289,7 @@ namespace H3LibraryProject.Repositories.Database
                     FName = "Egon",
                     LName = "Mathiesen",
                     BYear = 1907,
-                    DYear= 1976,
+                    DYear = 1976,
                     NationalityId = 1
                 },
                 new()
@@ -493,8 +498,8 @@ namespace H3LibraryProject.Repositories.Database
                     Name = "Den Røde Glente",
                     RYear = 2022,
                     Pages = 408,
-                    AuthorId= 4,
-                    LanguageId= 1,
+                    AuthorId = 4,
+                    LanguageId = 1,
                     PublisherId = 3,
                     GenreId = 2
                 }, new()
@@ -540,7 +545,7 @@ namespace H3LibraryProject.Repositories.Database
                     LanguageId = 2,
                     PublisherId = 4,
                     GenreId = 6
-                },                
+                },
                 new()
                 {
                     TitleId = 10,
@@ -1007,7 +1012,7 @@ namespace H3LibraryProject.Repositories.Database
                   TitleId = 1,
                   LocationId = 2,
                   Home = true
-              }, 
+              },
               new()
               {
                   MaterialId = 3,
