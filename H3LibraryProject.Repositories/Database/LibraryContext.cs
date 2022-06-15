@@ -167,6 +167,32 @@ namespace H3LibraryProject.Repositories.Database
                new()
                {
                    GenreId = 3,
+                   Name = "Faglitteratur",
+                   LeasePeriod = 30
+               }, new()
+               {
+                   GenreId = 4,
+                   Name = "Børnebøger",
+                   LeasePeriod = 30
+               }, new()
+               {
+                   GenreId = 5,
+                   Name = "Krimi",
+                   LeasePeriod = 30
+               }, new()
+               {
+                   GenreId = 6,
+                   Name = "Sci-Fi",
+                   LeasePeriod = 30
+               }, new()
+               {
+                   GenreId = 7,
+                   Name = "Biografier",
+                   LeasePeriod = 30
+               },
+               new()
+               {
+                   GenreId = 8,
                    Name = "Historisk fiktion",
                    LeasePeriod = 7
                }
