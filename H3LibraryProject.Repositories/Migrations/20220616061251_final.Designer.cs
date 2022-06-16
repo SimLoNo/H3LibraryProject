@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace H3LibraryProject.Repositories.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20220613063307_test")]
-    partial class test
+    [Migration("20220616061251_final")]
+    partial class final
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -123,11 +123,6 @@ namespace H3LibraryProject.Repositories.Migrations
                         {
                             LanguageId = 4,
                             Name = "Russisk"
-                        },
-                        new
-                        {
-                            LanguageId = 5,
-                            Name = "Hebræisk"
                         });
                 });
 
@@ -678,6 +673,90 @@ namespace H3LibraryProject.Repositories.Migrations
                             Home = true,
                             LocationId = 1,
                             TitleId = 37
+                        },
+                        new
+                        {
+                            MaterialId = 55,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 39
+                        },
+                        new
+                        {
+                            MaterialId = 56,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 40
+                        },
+                        new
+                        {
+                            MaterialId = 57,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 41
+                        },
+                        new
+                        {
+                            MaterialId = 58,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 42
+                        },
+                        new
+                        {
+                            MaterialId = 59,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 43
+                        },
+                        new
+                        {
+                            MaterialId = 60,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 44
+                        },
+                        new
+                        {
+                            MaterialId = 61,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 45
+                        },
+                        new
+                        {
+                            MaterialId = 62,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 46
+                        },
+                        new
+                        {
+                            MaterialId = 63,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 47
+                        },
+                        new
+                        {
+                            MaterialId = 64,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 48
+                        },
+                        new
+                        {
+                            MaterialId = 65,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 49
+                        },
+                        new
+                        {
+                            MaterialId = 66,
+                            Home = true,
+                            LocationId = 2,
+                            TitleId = 50
                         });
                 });
 
@@ -1030,6 +1109,21 @@ namespace H3LibraryProject.Repositories.Migrations
                         {
                             PublisherId = 4,
                             Name = "Angry Robot"
+                        },
+                        new
+                        {
+                            PublisherId = 5,
+                            Name = "Macmilan"
+                        },
+                        new
+                        {
+                            PublisherId = 6,
+                            Name = "Vikung Press"
+                        },
+                        new
+                        {
+                            PublisherId = 7,
+                            Name = "Delacorte Books"
                         });
                 });
 

@@ -39,15 +39,16 @@ namespace H3LibraryProject.Repositories.Database
             modelBuilder.Entity<LoanerType>().HasData(
                new()
                {
-                   LoanerTypeId = 1,
+                   LoanerTypeId = LoanerTypeVariable,
                    Name = "Låner"
+                   LoanerTypeVariable++
                },
                new()
                {
                    LoanerTypeId = 2,
                    Name = "Ansat"
                }
-               );
+               ); ; ;
             modelBuilder.Entity<Loaner>().HasData(
                new()
                {

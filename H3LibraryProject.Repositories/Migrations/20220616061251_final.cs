@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace H3LibraryProject.Repositories.Migrations
 {
-    public partial class test : Migration
+    public partial class final : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -264,11 +264,10 @@ namespace H3LibraryProject.Repositories.Migrations
                 columns: new[] { "LanguageId", "Name" },
                 values: new object[,]
                 {
-                    { 4, "Russisk" },
-                    { 3, "Japansk" },
-                    { 5, "Hebræisk" },
                     { 1, "Dansk" },
-                    { 2, "Engelsk" }
+                    { 2, "Engelsk" },
+                    { 3, "Japansk" },
+                    { 4, "Russisk" }
                 });
 
             migrationBuilder.InsertData(
@@ -276,8 +275,8 @@ namespace H3LibraryProject.Repositories.Migrations
                 columns: new[] { "LoanerTypeId", "Name" },
                 values: new object[,]
                 {
-                    { 1, "Låner" },
-                    { 2, "Ansat" }
+                    { 2, "Ansat" },
+                    { 1, "Låner" }
                 });
 
             migrationBuilder.InsertData(
@@ -306,10 +305,13 @@ namespace H3LibraryProject.Repositories.Migrations
                 columns: new[] { "PublisherId", "Name" },
                 values: new object[,]
                 {
-                    { 3, "People's Press" },
+                    { 6, "Vikung Press" },
                     { 1, "Gyldendal" },
                     { 2, "Lindhardt & Ringhoff" },
-                    { 4, "Angry Robot" }
+                    { 3, "People's Press" },
+                    { 4, "Angry Robot" },
+                    { 5, "Macmilan" },
+                    { 7, "Delacorte Books" }
                 });
 
             migrationBuilder.InsertData(
@@ -426,12 +428,6 @@ namespace H3LibraryProject.Repositories.Migrations
                 values: new object[,]
                 {
                     { 3, true, 1, 2 },
-                    { 50, true, 2, 34 },
-                    { 51, true, 2, 35 },
-                    { 52, true, 1, 35 },
-                    { 53, true, 2, 36 },
-                    { 54, true, 1, 37 },
-                    { 6, true, 2, 4 },
                     { 13, true, 2, 9 },
                     { 16, true, 1, 11 },
                     { 26, true, 1, 18 },
@@ -445,14 +441,26 @@ namespace H3LibraryProject.Repositories.Migrations
                     { 39, true, 2, 28 },
                     { 40, true, 2, 28 },
                     { 49, true, 1, 33 },
+                    { 55, true, 2, 39 },
+                    { 56, true, 2, 40 },
+                    { 57, true, 2, 41 },
+                    { 58, true, 2, 42 },
+                    { 59, true, 2, 43 },
+                    { 60, true, 2, 44 },
+                    { 61, true, 2, 45 },
+                    { 62, true, 2, 46 },
+                    { 63, true, 2, 47 },
+                    { 64, true, 2, 48 },
+                    { 65, true, 2, 49 },
+                    { 66, true, 2, 50 },
                     { 1, true, 1, 1 },
                     { 2, true, 2, 1 },
                     { 14, true, 1, 10 },
                     { 15, true, 2, 10 },
-                    { 48, true, 1, 32 },
-                    { 47, true, 2, 32 },
-                    { 46, true, 2, 31 },
-                    { 45, true, 2, 30 },
+                    { 6, true, 2, 4 },
+                    { 54, true, 1, 37 },
+                    { 53, true, 2, 36 },
+                    { 52, true, 1, 35 },
                     { 4, true, 1, 3 },
                     { 5, true, 2, 3 },
                     { 24, true, 2, 3 },
@@ -460,13 +468,7 @@ namespace H3LibraryProject.Repositories.Migrations
                     { 8, true, 1, 5 },
                     { 9, true, 1, 6 },
                     { 10, true, 2, 6 },
-                    { 12, true, 2, 8 },
-                    { 17, true, 1, 12 },
-                    { 18, true, 1, 13 },
-                    { 19, true, 1, 14 },
-                    { 11, true, 1, 7 },
-                    { 20, true, 1, 15 },
-                    { 22, true, 1, 15 }
+                    { 12, true, 2, 8 }
                 });
 
             migrationBuilder.InsertData(
@@ -474,8 +476,14 @@ namespace H3LibraryProject.Repositories.Migrations
                 columns: new[] { "MaterialId", "Home", "LocationId", "TitleId" },
                 values: new object[,]
                 {
+                    { 17, true, 1, 12 },
+                    { 18, true, 1, 13 },
+                    { 19, true, 1, 14 },
+                    { 20, true, 1, 15 },
+                    { 21, true, 2, 15 },
+                    { 22, true, 1, 15 },
+                    { 11, true, 1, 7 },
                     { 23, true, 2, 16 },
-                    { 25, true, 2, 17 },
                     { 29, true, 1, 20 },
                     { 30, true, 2, 21 },
                     { 34, true, 1, 25 },
@@ -484,7 +492,13 @@ namespace H3LibraryProject.Repositories.Migrations
                     { 42, true, 1, 29 },
                     { 43, true, 2, 30 },
                     { 44, true, 1, 30 },
-                    { 21, true, 2, 15 },
+                    { 45, true, 2, 30 },
+                    { 46, true, 2, 31 },
+                    { 47, true, 2, 32 },
+                    { 48, true, 1, 32 },
+                    { 50, true, 2, 34 },
+                    { 51, true, 2, 35 },
+                    { 25, true, 2, 17 },
                     { 36, true, 1, 26 }
                 });
 
