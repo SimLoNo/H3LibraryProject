@@ -12,6 +12,8 @@ namespace H3LibraryProject.API.DTOs
         public int AuthorId { get; set; }        
         public int LanguageId { get; set; }
 
+        public int PublisherId { get; set; }
+
         public List<TitleMaterialsResponse> Materials { get; set; } = new List<TitleMaterialsResponse>();
         public List<TitleAuthorResponse> Author { get; set; } = new List<TitleAuthorResponse> ();
     }

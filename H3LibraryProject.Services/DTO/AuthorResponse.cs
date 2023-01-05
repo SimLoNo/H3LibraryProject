@@ -8,7 +8,6 @@ namespace H3LibraryProject.API.DTOs
 {
     public class AuthorResponse
     {
-
         public int AuthorId { get; set; }
         public string LName { get; set; }
         public string FName { get; set; }

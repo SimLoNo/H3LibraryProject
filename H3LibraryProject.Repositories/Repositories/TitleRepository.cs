@@ -43,7 +43,7 @@ namespace H3LibraryProject.Repositories.Repositories
         public async Task<List<Title>> SelectAllTitles()
         {
             return await _context.Title
-                .Include(b => b.Name) //bruger Linq
+                //.Include(b => b.Name) //bruger Linq. Name er ikke en FK.
                 .OrderBy(b => b.LanguageId)
                 .ThenBy(b => b.AuthorId)
                 .ThenBy(b => b.RYear)
@@ -116,15 +116,6 @@ namespace H3LibraryProject.Repositories.Repositories
             //det gør vi dog heller ikke rigtig.
         }
 
-        public async Task<Title> DeletetitleById(int titleId)
-        {
-            Title deletetitle = await _context.Title.FirstOrDefaultAsync(title => title.TitleId == titleId);
-            if (deletetitle != null)
-            {
-                _context.Title.Remove(deletetitle);
-                await _context.SaveChangesAsync();
-            }
-            return deletetitle;
-        }
+        
     }
 }

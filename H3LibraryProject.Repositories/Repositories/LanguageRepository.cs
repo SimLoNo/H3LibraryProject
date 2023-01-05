@@ -15,9 +15,9 @@ namespace H3LibraryProject.Repositories.Repositories
         Task<List<Language>> SelectAllLanguages();    
         Task<Language> SelectLanguageById(int languageId);
         Task<Language> UpdateExistingLanguage(int languageId, Language language);
-        Task<Language> DeleteLanguage(int languageId); 
+        Task<Language> DeleteLanguage(int languageId);
     }
-    public class LanguageRepository
+    public class LanguageRepository : ILanguageRepository
     {
         private readonly LibraryContext _context;
 
@@ -38,7 +38,6 @@ namespace H3LibraryProject.Repositories.Repositories
         public async Task<List<Language>> SelectAllLanguages()
         {
             return await _context.Language
-                .Include(b => b.Name)
                 .ToListAsync();
         }
 
